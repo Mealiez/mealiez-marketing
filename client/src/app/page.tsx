@@ -1,65 +1,123 @@
-import Image from "next/image";
+import Link from "next/link";
+import { LeakageCalculator, RoiCalculator } from "@/components/calculators";
+import { products, solutions } from "@/lib/site-data";
+
+const homeSections = [
+  "Trusted By",
+  "Problem",
+  "Product Overview",
+  "Workflow",
+  "Core Features",
+  "Industry Solutions",
+  "Dashboard Showcase",
+  "ROI",
+  "Customer Results",
+  "Testimonials",
+  "Founder Story",
+  "FAQ",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="mx-auto w-full max-w-7xl px-6 pb-12">
+      <section className="relative mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 px-8 py-20 text-white shadow-xl md:px-14">
+        <div className="max-w-3xl animate-fade-up">
+          <p className="text-sm uppercase tracking-[0.2em] text-blue-100">Operating system for modern food operations</p>
+          <h1 className="mt-4 text-4xl font-extrabold leading-tight md:text-6xl">
+            Mealiez powers bookings, billing, attendance, and analytics in one elegant platform.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-5 max-w-2xl text-lg text-blue-100">
+            Built for hostel messes, institutions, cloud kitchens, and enterprise cafeterias focused on scale, trust, and growth.
           </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/book-demo" className="rounded-full bg-white px-6 py-3 font-semibold text-blue-700 transition hover:scale-105">
+              Book Demo
+            </Link>
+            <Link href="/pricing" className="rounded-full border border-white/70 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
+              View Pricing
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {["200+ campuses", "1.2M+ meals/month", "99.95% uptime", "18% avg waste reduction"].map((stat) => (
+          <div key={stat} className="animate-fade-up rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-xl font-bold text-slate-900">{stat}</p>
+            <p className="mt-1 text-sm text-slate-600">Trusted by fast-growing food operations teams.</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-8">
+        <h2 className="text-2xl font-bold">Homepage Content Framework</h2>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {homeSections.map((item, i) => (
+            <div key={item} className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">
+              {String(i + 1).padStart(2, "0")} · {item}
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
+
+      <section className="mt-12">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="text-2xl font-bold">Product Overview</h2>
+          <Link href="/product" className="text-sm font-semibold text-blue-600 hover:text-blue-500">
+            View all product modules
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <Link
+              key={product.slug}
+              href={`/product/${product.slug}`}
+              className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <h3 className="font-semibold text-slate-900">{product.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">{product.summary}</p>
+              <span className="mt-4 inline-block text-sm font-semibold text-blue-600 group-hover:translate-x-1 transition">Explore →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="text-2xl font-bold">Industry Solutions</h2>
+          <Link href="/solutions" className="text-sm font-semibold text-blue-600 hover:text-blue-500">
+            See all industries
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {solutions.map((solution) => (
+            <Link
+              key={solution.slug}
+              href={`/solutions/${solution.slug}`}
+              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md"
+            >
+              <h3 className="font-semibold text-slate-900">{solution.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">{solution.challenge}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-12 grid gap-6 lg:grid-cols-2">
+        <RoiCalculator />
+        <LeakageCalculator />
+      </section>
+
+      <section className="mt-12 rounded-3xl border border-slate-200 bg-white px-8 py-12 text-center">
+        <p className="text-sm uppercase tracking-[0.2em] text-blue-600">Final CTA</p>
+        <h2 className="mt-3 text-3xl font-bold">Ready to modernize your mess operations?</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+          Launch with Mealiez and convert operational complexity into measurable growth.
+        </p>
+        <Link href="/book-demo" className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-500">
+          Book Your Guided Demo
+        </Link>
+      </section>
     </div>
   );
 }
