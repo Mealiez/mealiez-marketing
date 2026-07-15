@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: Inter;
 }
 
 * {
