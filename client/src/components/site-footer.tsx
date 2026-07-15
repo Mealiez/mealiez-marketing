@@ -20,6 +20,7 @@ const footerSections = [
       ["Industrial Canteens", "/solutions/industrial-canteen"],
       ["Corporate Cafeterias", "/solutions/corporate-cafeteria"],
       ["Cloud Kitchens", "/solutions/cloud-kitchen"],
+      ["Subscription Mess", "/solutions/subscription-mess-business"],
     ],
   },
   {
@@ -47,12 +48,20 @@ const footerSections = [
       ["Security", "/security"],
     ],
   },
+  {
+    title: "Socials",
+    links: [
+      ["LinkedIn", "#"],
+      ["Instagram", "#"],
+      ["YouTube", "#"],
+    ],
+  },
 ];
 
 export function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-slate-200 bg-slate-950 text-slate-300">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-6">
         {footerSections.map((section) => (
           <div key={section.title}>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">
