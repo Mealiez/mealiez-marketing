@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/book-demo/page": "/book-demo",
+  "/company/page": "/company",
+  "/customers/page": "/customers",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/pricing/page": "/pricing",
+  "/product/[slug]/page": "/product/[slug]",
+  "/product/overview/page": "/product/overview",
+  "/product/page": "/product",
+  "/resources/cost-leakage-calculator/page": "/resources/cost-leakage-calculator",
+  "/resources/page": "/resources",
+  "/resources/roi-calculator/page": "/resources/roi-calculator",
+  "/security/page": "/security",
+  "/solutions/[slug]/page": "/solutions/[slug]",
+  "/solutions/page": "/solutions",
+  "/why-mealiez/page": "/why-mealiez"
+}
