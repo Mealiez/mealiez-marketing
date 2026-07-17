@@ -73,8 +73,8 @@ export function SiteFooter() {
         .footer-social-btn:hover { background: #fff3ee; color: #FF6B35; }
       `}</style>
       <div style={{
-        maxWidth: 1100, margin: "0 auto",
-        padding: "52px 32px 44px",
+        maxWidth: 1200, margin: "0 auto",
+        padding: "52px 40px 44px",
         display: "flex", gap: 48, alignItems: "flex-start"
       }}>
         {/* ── Left: Logo + copyright + social icons ── */}

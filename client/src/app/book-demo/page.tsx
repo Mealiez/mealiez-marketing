@@ -46,7 +46,7 @@ export default function BookDemoPage() {
                 Step 4 · Contact Details
                 <input type="text" placeholder="Name, email, phone" className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:outline-none focus:ring-1 focus:ring-[#FF6B35]" />
               </label>
-              <Button type="button" className="w-full">
+              <Button className="w-full">
                 Request Demo
               </Button>
             </form>
