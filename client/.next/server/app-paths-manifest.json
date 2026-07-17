@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/book-demo/page": "app/book-demo/page.js",
+  "/company/page": "app/company/page.js",
+  "/customers/page": "app/customers/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/product/[slug]/page": "app/product/[slug]/page.js",
+  "/product/overview/page": "app/product/overview/page.js",
+  "/product/page": "app/product/page.js",
+  "/resources/cost-leakage-calculator/page": "app/resources/cost-leakage-calculator/page.js",
+  "/resources/page": "app/resources/page.js",
+  "/resources/roi-calculator/page": "app/resources/roi-calculator/page.js",
+  "/security/page": "app/security/page.js",
+  "/solutions/[slug]/page": "app/solutions/[slug]/page.js",
+  "/solutions/page": "app/solutions/page.js",
+  "/why-mealiez/page": "app/why-mealiez/page.js"
+}
