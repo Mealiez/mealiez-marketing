@@ -229,7 +229,10 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$site$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/site-data.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
@@ -249,12 +252,15 @@ const topLinks = [
     }
 ];
 function SiteHeader() {
+    _s();
+    const path = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
+    const isActive = (href)=>path === href || path.startsWith(href + "/");
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
         style: {
             position: "sticky",
             top: 0,
             zIndex: 50,
-            background: "rgba(255,252,249,0.85)",
+            background: "rgba(255,252,249,0.88)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             borderBottom: "1px solid rgba(255,107,53,0.08)",
@@ -263,19 +269,28 @@ function SiteHeader() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `
-        .nav-link { font-size: 14px; font-weight: 500; color: #333; text-decoration: none; padding: 8px 0; transition: color 0.15s; }
+        .nav-link {
+          font-size: 14px; font-weight: 500; color: #333;
+          text-decoration: none; padding: 8px 0;
+          transition: color 0.15s; position: relative;
+        }
         .nav-link:hover { color: #FF6B35; }
+        .nav-link.active { color: #FF6B35; font-weight: 600; }
+        .nav-link.active::after {
+          content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+          height: 2px; background: #FF6B35; border-radius: 1px;
+        }
         .nav-group { position: relative; }
         .nav-group .nav-dropdown {
-          position: absolute; top: calc(100% + 8px); left: -16px;
+          position: absolute; top: calc(100% + 10px); left: -16px;
           width: 480px; background: rgba(255,252,249,0.98);
           backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
           border-radius: 16px; border: 1px solid rgba(255,107,53,0.1);
           box-shadow: 0 16px 48px rgba(0,0,0,0.12);
           padding: 16px; z-index: 100;
           opacity: 0; visibility: hidden;
-          transform: translateY(8px);
-          transition: all 0.2s ease;
+          transform: translateY(10px);
+          transition: all 0.22s cubic-bezier(.22,1,.36,1);
           pointer-events: none;
         }
         .nav-group:hover .nav-dropdown {
@@ -283,32 +298,45 @@ function SiteHeader() {
           transform: translateY(0);
           pointer-events: auto;
         }
-        .dropdown-item { font-size: 13px; color: #444; text-decoration: none; display: block; padding: 8px 12px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
+        .dropdown-item {
+          font-size: 13px; color: #444; text-decoration: none;
+          display: block; padding: 8px 12px; border-radius: 8px;
+          transition: background 0.15s, color 0.15s;
+        }
         .dropdown-item:hover { background: #fff3ee; color: #FF6B35; }
+        .dropdown-item.active-item { color: #FF6B35; background: rgba(255,107,53,0.05); }
         .header-book-btn {
           background: #FF6B35; color: #fff; border-radius: 8px;
           padding: 9px 20px; font-weight: 600; font-size: 14px;
           text-decoration: none; display: inline-block;
-          transition: background 0.15s, box-shadow 0.15s;
-          box-shadow: 0 4px 14px rgba(255,107,53,0.25);
+          transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+          box-shadow: 0 4px 14px rgba(255,107,53,0.28);
         }
-        .header-book-btn:hover { background: #e55e28; box-shadow: 0 6px 20px rgba(255,107,53,0.35); }
-        .header-login { font-size: 14px; font-weight: 500; color: #333; text-decoration: none; padding: 8px 12px; border-radius: 8px; transition: color 0.15s, background 0.15s; }
+        .header-book-btn:hover {
+          background: #e55e28;
+          box-shadow: 0 6px 22px rgba(255,107,53,0.38);
+          transform: translateY(-1px);
+        }
+        .header-login {
+          font-size: 14px; font-weight: 500; color: #333;
+          text-decoration: none; padding: 8px 12px; border-radius: 8px;
+          transition: color 0.15s, background 0.15s;
+        }
         .header-login:hover { color: #FF6B35; background: #fff3ee; }
       `
             }, void 0, false, {
                 fileName: "[project]/src/components/site-header.tsx",
-                lineNumber: 22,
+                lineNumber: 26,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
-                    maxWidth: 1100,
+                    maxWidth: 1200,
                     margin: "0 auto",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    padding: "0 32px",
+                    padding: "0 40px",
                     height: 64
                 },
                 children: [
@@ -341,30 +369,21 @@ function SiteHeader() {
                                     strokeWidth: "2.5",
                                     strokeLinecap: "round",
                                     strokeLinejoin: "round",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/site-header.tsx",
-                                            lineNumber: 69,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            d: "M12 8v4l3 3"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/site-header.tsx",
-                                            lineNumber: 70,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        d: "M3 11l19-9-9 19-2-8-8-2z"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/site-header.tsx",
+                                        lineNumber: 97,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "[project]/src/components/site-header.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 96,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 63,
+                                lineNumber: 90,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -377,13 +396,13 @@ function SiteHeader() {
                                 children: "Mealiez"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 73,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-header.tsx",
-                        lineNumber: 62,
+                        lineNumber: 89,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -398,11 +417,11 @@ function SiteHeader() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/product",
-                                        className: "nav-link",
+                                        className: `nav-link${isActive("/product") ? " active" : ""}`,
                                         children: "Product"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 79,
+                                        lineNumber: 106,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -410,17 +429,17 @@ function SiteHeader() {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
-                                                    background: "linear-gradient(135deg, #fff3ee, #ffe8d6)",
+                                                    background: "linear-gradient(135deg,#fff3ee,#ffe8d6)",
                                                     borderRadius: 10,
                                                     padding: "10px 14px",
                                                     fontSize: 12,
                                                     color: "#555",
                                                     marginBottom: 12
                                                 },
-                                                children: "Explore automation modules that power bookings, attendance, billing, and growth intelligence."
+                                                children: "Explore automation modules that power bookings, attendance, billing, and growth."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 81,
+                                                lineNumber: 108,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -431,28 +450,28 @@ function SiteHeader() {
                                                 },
                                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$site$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["navMenus"].product.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: `/product/${item.slug}`,
-                                                        className: "dropdown-item",
+                                                        className: `dropdown-item${path === `/product/${item.slug}` ? " active-item" : ""}`,
                                                         children: item.title
                                                     }, item.slug, false, {
                                                         fileName: "[project]/src/components/site-header.tsx",
-                                                        lineNumber: 86,
+                                                        lineNumber: 113,
                                                         columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 84,
+                                                lineNumber: 111,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 80,
+                                        lineNumber: 107,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 78,
+                                lineNumber: 105,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -460,11 +479,11 @@ function SiteHeader() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/solutions",
-                                        className: "nav-link",
+                                        className: `nav-link${isActive("/solutions") ? " active" : ""}`,
                                         children: "Solutions"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 93,
+                                        lineNumber: 126,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -472,7 +491,7 @@ function SiteHeader() {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
-                                                    background: "linear-gradient(135deg, #fff3ee, #ffe8d6)",
+                                                    background: "linear-gradient(135deg,#fff3ee,#ffe8d6)",
                                                     borderRadius: 10,
                                                     padding: "10px 14px",
                                                     fontSize: 12,
@@ -482,7 +501,7 @@ function SiteHeader() {
                                                 children: "Pick your industry journey and see tailored workflows designed for scale and control."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 95,
+                                                lineNumber: 128,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -493,43 +512,43 @@ function SiteHeader() {
                                                 },
                                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$site$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["navMenus"].solutions.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: `/solutions/${item.slug}`,
-                                                        className: "dropdown-item",
+                                                        className: `dropdown-item${path === `/solutions/${item.slug}` ? " active-item" : ""}`,
                                                         children: item.title
                                                     }, item.slug, false, {
                                                         fileName: "[project]/src/components/site-header.tsx",
-                                                        lineNumber: 100,
+                                                        lineNumber: 133,
                                                         columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 98,
+                                                lineNumber: 131,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 94,
+                                        lineNumber: 127,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 92,
+                                lineNumber: 125,
                                 columnNumber: 11
                             }, this),
                             topLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     href: link.href,
-                                    className: "nav-link",
+                                    className: `nav-link${isActive(link.href) ? " active" : ""}`,
                                     children: link.label
                                 }, link.href, false, {
                                     fileName: "[project]/src/components/site-header.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 146,
                                     columnNumber: 13
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-header.tsx",
-                        lineNumber: 77,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -545,7 +564,7 @@ function SiteHeader() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 113,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -554,28 +573,33 @@ function SiteHeader() {
                                 children: "Book Demo"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 114,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-header.tsx",
-                        lineNumber: 112,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/site-header.tsx",
-                lineNumber: 56,
+                lineNumber: 83,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/site-header.tsx",
-        lineNumber: 14,
+        lineNumber: 18,
         columnNumber: 5
     }, this);
 }
+_s(SiteHeader, "kx72sda92+XlSh1QiZvq/YVQxpY=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"]
+    ];
+});
 _c = SiteHeader;
 var _c;
 __turbopack_context__.k.register(_c, "SiteHeader");
@@ -745,9 +769,9 @@ function SiteFooter() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
-                    maxWidth: 1100,
+                    maxWidth: 1200,
                     margin: "0 auto",
-                    padding: "52px 32px 44px",
+                    padding: "52px 40px 44px",
                     display: "flex",
                     gap: 48,
                     alignItems: "flex-start"
