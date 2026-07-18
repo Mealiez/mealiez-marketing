@@ -1,8 +1,8 @@
+/* Button component — CSS transitions only, no framer-motion. */
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 
 type ButtonProps = {
   children: ReactNode;
@@ -10,60 +10,76 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
+  style?: CSSProperties;
   onClick?: () => void;
   disabled?: boolean;
 };
 
+const variantStyles: Record<string, CSSProperties> = {
+  primary: {
+    background: "linear-gradient(135deg, #FF6B35, #FF875C)",
+    color: "#fff",
+    boxShadow: "0 6px 20px rgba(255,107,53,0.32)",
+    border: "none",
+  },
+  secondary: {
+    background: "#fff",
+    color: "#1a1a1a",
+    border: "1.5px solid rgba(255,107,53,0.25)",
+    boxShadow: "none",
+  },
+  ghost: {
+    background: "transparent",
+    color: "#555",
+    border: "none",
+    boxShadow: "none",
+  },
+};
+
+const sizeStyles: Record<string, CSSProperties> = {
+  sm: { fontSize: 13, padding: "8px 18px", borderRadius: 100 },
+  md: { fontSize: 14, padding: "11px 24px", borderRadius: 100 },
+  lg: { fontSize: 15, padding: "14px 32px", borderRadius: 100 },
+};
+
 export function Button({
-  children,
-  href,
-  variant = "primary",
-  size = "md",
-  className = "",
-  onClick,
-  disabled = false,
+  children, href, variant = "primary", size = "md",
+  className = "", style, onClick, disabled = false,
 }: ButtonProps) {
-  const baseStyles =
-    "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
-
-  const variantStyles = {
-    primary:
-      "bg-gradient-to-r from-[#FF6B35] to-[#FF875C] text-white shadow-lg shadow-[#FF6B35]/25 hover:shadow-xl hover:shadow-[#FF6B35]/35 focus-visible:ring-[#FF6B35]",
-    secondary:
-      "bg-white text-slate-900 border border-[#FF6B35]/20 hover:border-[#FF6B35]/40 hover:bg-[#FF6B35]/5 focus-visible:ring-[#FF6B35]",
-    ghost:
-      "text-slate-700 hover:text-[#FF6B35] hover:bg-[#FF6B35]/5 focus-visible:ring-[#FF6B35]",
+  const baseStyle: CSSProperties = {
+    display: "inline-flex", alignItems: "center", justifyContent: "center",
+    gap: 8, fontWeight: 700, cursor: disabled ? "not-allowed" : "pointer",
+    opacity: disabled ? 0.5 : 1, textDecoration: "none",
+    transition: "opacity 0.15s, box-shadow 0.2s, transform 0.15s",
+    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+    ...variantStyles[variant],
+    ...sizeStyles[size],
+    ...style,
   };
 
-  const sizeStyles = {
-    sm: "text-sm px-4 py-2 rounded-full",
-    md: "text-sm px-6 py-3 rounded-full",
-    lg: "text-base px-8 py-4 rounded-full",
+  const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    if (disabled) return;
+    (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+    (e.currentTarget as HTMLElement).style.opacity = "0.9";
   };
-
-  const motionProps = {
-    whileHover: !disabled ? { scale: 1.02, y: -2 } : {},
-    whileTap: !disabled ? { scale: 0.98 } : {},
+  const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    (e.currentTarget as HTMLElement).style.transform = "none";
+    (e.currentTarget as HTMLElement).style.opacity = "1";
   };
-
-  const content = (
-    <motion.button
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
-      {...motionProps}
-    >
-      {children}
-    </motion.button>
-  );
 
   if (href) {
     return (
-      <Link href={href} className={disabled ? "pointer-events-none" : ""}>
-        {content}
+      <Link href={href} style={baseStyle} className={className}
+        onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {children}
       </Link>
     );
   }
 
-  return content;
+  return (
+    <button style={baseStyle} className={className} onClick={onClick}
+      disabled={disabled} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      {children}
+    </button>
+  );
 }

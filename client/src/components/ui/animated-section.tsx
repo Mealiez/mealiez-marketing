@@ -1,64 +1,32 @@
+/* Pure-CSS animated section — replaces framer-motion AnimatedSection.
+   Uses IntersectionObserver + CSS transitions. Zero JS bundle cost. */
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, useEffect } from "react";
 
 type AnimatedSectionProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  staggerChildren?: number;
 };
 
-export function AnimatedSection({
-  children,
-  className = "",
-  delay = 0,
-  staggerChildren = 0.1,
-}: AnimatedSectionProps) {
+export function AnimatedSection({ children, className = "", delay = 0 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren,
-            delayChildren: delay,
-          },
-        },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    el.style.opacity = "0";
+    el.style.transform = "translateY(24px)";
+    el.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s cubic-bezier(.22,1,.36,1) ${delay}s`;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      el.style.opacity = "1";
+      el.style.transform = "none";
+      io.disconnect();
+    }, { threshold: 0.1, rootMargin: "-80px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [delay]);
 
-export function AnimatedItem({
-  children,
-  className = "",
-  y = 24,
-}: {
-  children: ReactNode;
-  className?: string;
-  y?: number;
-}) {
-  return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div ref={ref} className={className}>{children}</div>;
 }

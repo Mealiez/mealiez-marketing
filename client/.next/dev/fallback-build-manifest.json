@@ -1,6 +1,30 @@
 {
   "pages": {
-    "/_app": []
+    "/_app": [
+      "static/chunks/1gnz_next_dist_compiled_14h9b2i._.js",
+      "static/chunks/1gnz_next_dist_shared_lib_0i6_4tv._.js",
+      "static/chunks/1gnz_next_dist_client_0l0srnt._.js",
+      "static/chunks/1gnz_next_dist_1_de2_c._.js",
+      "static/chunks/1gnz_next_app_1ntxvyb.js",
+      "static/chunks/[next]_entry_page-loader_ts_0igcbg5._.js",
+      "static/chunks/1gnz_react-dom_0_ma_ar._.js",
+      "static/chunks/1gnz_1b6_x0o._.js",
+      "static/chunks/[root-of-the-server]__133mesf._.js",
+      "static/chunks/mealiez-marketing_client_pages__app_0du2_q-._.js",
+      "static/chunks/turbopack-mealiez-marketing_client_pages__app_1o_cqm9._.js"
+    ],
+    "/_error": [
+      "static/chunks/1gnz_next_dist_compiled_14h9b2i._.js",
+      "static/chunks/1gnz_next_dist_shared_lib_09e5b5q._.js",
+      "static/chunks/1gnz_next_dist_client_0l0srnt._.js",
+      "static/chunks/1gnz_next_dist_04nt0_3._.js",
+      "static/chunks/[next]_entry_page-loader_ts_0pnvin5._.js",
+      "static/chunks/1gnz_react-dom_0_ma_ar._.js",
+      "static/chunks/1gnz_1b6_x0o._.js",
+      "static/chunks/[root-of-the-server]__1do977e._.js",
+      "static/chunks/mealiez-marketing_client_pages__error_0du2_q-._.js",
+      "static/chunks/turbopack-mealiez-marketing_client_pages__error_0npidqc._.js"
+    ]
   },
   "devFiles": [],
   "polyfillFiles": [],

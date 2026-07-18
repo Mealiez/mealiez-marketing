@@ -1,7 +1,8 @@
+/* Pure-CSS AnimatedCounter — replaces framer-motion version.
+   Uses IntersectionObserver + requestAnimationFrame. Zero bundle cost. */
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type AnimatedCounterProps = {
   value: number;
@@ -12,29 +13,32 @@ type AnimatedCounterProps = {
 };
 
 export function AnimatedCounter({
-  value, suffix = "", prefix = "", duration = 1.5, className = "" }: AnimatedCounterProps) {
+  value, suffix = "", prefix = "", duration = 1.5, className = "",
+}: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [isClient, setIsClient] = useState(false);
-  const count = useMotionValue(0);
-  const springCount = useSpring(count, { stiffness: 100, damping: 30 });
-  const display = useTransform(springCount, (latest) => Math.round(latest));
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    const el = ref.current; if (!el) return;
+    el.textContent = `${prefix}0${suffix}`;
 
-  useEffect(() => {
-    if (isInView && isClient) {
-      count.set(value);
-    }
-  }, [isInView, value, count, isClient]);
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; io.disconnect();
+      const start = performance.now();
+      const ms = duration * 1000;
+      function tick(now: number) {
+        const t = Math.min((now - start) / ms, 1);
+        // ease-out cubic
+        const ease = 1 - Math.pow(1 - t, 3);
+        const current = Math.round(ease * value);
+        if (el) el.textContent = `${prefix}${current.toLocaleString()}${suffix}`;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }, { threshold: 0.5 });
 
-  return (
-    <span ref={ref} className={className}>
-      {prefix}
-      <motion.span>{isClient ? display : value}</motion.span>
-      {suffix}
-    </span>
-  );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value, suffix, prefix, duration]);
+
+  return <span ref={ref} className={className}>{prefix}{value.toLocaleString()}{suffix}</span>;
 }

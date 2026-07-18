@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+/* Section component — no framer-motion, plain semantic HTML */
 import { ReactNode } from "react";
 
 type SectionProps = {
