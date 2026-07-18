@@ -34,3 +34,6 @@
 {"timestamp":"13:08:47.320","source":"Server","level":"LOG","message":"✓ Compiled in 1249ms"}
 {"timestamp":"13:09:07.166","source":"Server","level":"LOG","message":"✓ Compiled in 417ms"}
 {"timestamp":"13:09:43.301","source":"Server","level":"LOG","message":"○ Compiling /product/meal-booking ..."}
+{"timestamp":"13:13:23.289","source":"Server","level":"LOG","message":"✓ Compiled in 2.8s"}
+{"timestamp":"13:14:26.393","source":"Server","level":"LOG","message":"✓ Compiled in 3.8s"}
+{"timestamp":"13:14:45.462","source":"Server","level":"LOG","message":"✓ Compiled in 1503ms"}

@@ -155,7 +155,7 @@ export function SiteFooter() {
           borderBottom: "1px solid rgba(255,107,53,0.08)",
           padding: "32px 0",
         }}>
-          <div style={{
+          <div className="footer-cta-inner" style={{
             maxWidth: 1200, margin: "0 auto", padding: "0 40px",
             display: "flex", alignItems: "center", justifyContent: "space-between",
             flexWrap: "wrap", gap: 20,
@@ -197,7 +197,7 @@ export function SiteFooter() {
 
         {/* ── Nav columns + brand ── */}
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 40px 40px" }}>
-          <div style={{ display: "flex", gap: 48, alignItems: "flex-start" }}>
+          <div className="footer-inner-flex" style={{ display: "flex", gap: 48, alignItems: "flex-start" }}>
 
             {/* Brand column */}
             <div style={{ flex: "0 0 196px" }}>
@@ -283,7 +283,7 @@ export function SiteFooter() {
             </div>
 
             {/* Nav columns */}
-            <div style={{
+            <div className="footer-nav-cols" style={{
               flex: 1,
               display: "grid",
               gridTemplateColumns: "repeat(5, 1fr)",
@@ -330,7 +330,7 @@ export function SiteFooter() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div style={{
+        <div className="footer-bottom" style={{
           borderTop: "1px solid rgba(255,107,53,0.07)",
           maxWidth: 1200, margin: "0 auto",
           padding: "16px 40px",
