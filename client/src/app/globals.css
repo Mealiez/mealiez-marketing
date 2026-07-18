@@ -1,5 +1,5 @@
-@import "tailwindcss";
-
+/* globals.css — Mealiez design system
+   Tailwind removed: all styling is done via inline styles + custom classes below */
 
 :root {
   /* Brand colours */

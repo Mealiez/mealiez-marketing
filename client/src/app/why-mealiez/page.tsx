@@ -1,321 +1,752 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { LeakageCalculator } from "@/components/calculators";
 
+/* ── Scroll reveal ── */
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".rv");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
 }
 
-const problems = [
-  {
-    icon: "📋",
-    title: "Why Manual Systems Fail",
-    color: "#ef4444",
-    points: [
-      "Paper registers are lost, forged, or illegible",
-      "No real-time visibility into meal counts or food waste",
-      "Head counts done manually are off by 10–20% regularly",
-      "There is no audit trail — disputes have no resolution path",
-    ],
-  },
-  {
-    icon: "📊",
-    title: "Why Excel Fails",
-    color: "#f59e0b",
-    points: [
-      "Spreadsheets break above 200 members with formula errors",
-      "Multiple people editing the same file causes data corruption",
-      "No real-time inputs — data is always stale and historical",
-      "Cannot auto-generate invoices, reminders, or reconciliation reports",
-    ],
-  },
-  {
-    icon: "🏗️",
-    title: "Why Traditional ERPs Fail",
-    color: "#8b5cf6",
-    points: [
-      "Built for manufacturing, not food service workflows",
-      "6–12 month implementations with ₹10L+ setup costs",
-      "Require dedicated IT teams to maintain and configure",
-      "No mobile-first experience for mess operators or members",
-    ],
-  },
-];
+/* ── Animated counter ── */
+function useCounter(target: number, decimals = 0) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; io.disconnect();
+      let start = 0; const step = target / 60;
+      const t = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.textContent = decimals
+          ? start.toFixed(decimals)
+          : Math.floor(start).toLocaleString();
+        if (start >= target) clearInterval(t);
+      }, 16);
+    }, { threshold: 0.5 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [target, decimals]);
+  return ref;
+}
 
-const attendanceIssues = [
-  { stat: "8–15%", label: "Average proxy dining rate in unmonitored messes" },
-  { stat: "₹2.4L", label: "Annual revenue lost per 100 members at ₹80/meal" },
-  { stat: "0%", label: "Accountability with paper registers" },
-];
+/* ── Inline calculator ── */
+function LossCalculator() {
+  const [meals, setMeals] = useState(2500);
+  const [waste, setWaste] = useState(12);
+  const costPerMeal = 55; // ₹ average
+  const annual = Math.round(meals * (waste / 100) * costPerMeal * 365);
+  const fmt = (n: number) => "$" + Math.round(n / 1000).toLocaleString() + ",000";
+  const displayLoss = fmt(annual / 1000);
+  const lossNum = new Intl.NumberFormat("en-US").format(annual);
 
-const billingErrors = [
-  "Missing entries when members skip meals without cancelling",
-  "Incorrect rates applied after mid-month plan changes",
-  "Cash collection delays extending 30–60 days beyond due dates",
-  "No automatic reminder system — follow-ups done manually on WhatsApp",
-];
+  return (
+    <div style={{
+      background: "#fff", border: "1px solid rgba(0,0,0,0.07)",
+      borderRadius: 20, padding: "40px",
+      boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+      display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center",
+    }}>
+      {/* Sliders */}
+      <div>
+        <div style={{ marginBottom: 32 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+            <span style={{ fontSize: 14, fontWeight: 600, color: "#333" }}>Daily Meals Served</span>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>{meals.toLocaleString()}</span>
+          </div>
+          <input type="range" min={100} max={10000} step={100} value={meals}
+            onChange={(e) => setMeals(+e.target.value)}
+            style={{ width: "100%", accentColor: "#FF6B35", height: 4, cursor: "pointer" }} />
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#bbb", marginTop: 4 }}>
+            <span>100</span><span>10,000</span>
+          </div>
+        </div>
+        <div>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+            <span style={{ fontSize: 14, fontWeight: 600, color: "#333" }}>Est. Overproduction Waste</span>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>{waste}%</span>
+          </div>
+          <input type="range" min={1} max={40} step={1} value={waste}
+            onChange={(e) => setWaste(+e.target.value)}
+            style={{ width: "100%", accentColor: "#FF6B35", height: 4, cursor: "pointer" }} />
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#bbb", marginTop: 4 }}>
+            <span>1%</span><span>40%</span>
+          </div>
+        </div>
+      </div>
 
-const wastageStats = [
-  { stat: "18–25%", label: "Average food wastage in undigitised messes" },
-  { stat: "₹12L+", label: "Annual waste cost for a 500-member hostel" },
-  { stat: "60%", label: "Waste reducible with demand-accurate booking" },
-];
+      {/* Result */}
+      <div style={{ textAlign: "center" }}>
+        <p style={{ fontSize: 11, fontWeight: 800, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>
+          Estimated Annual Loss
+        </p>
+        <div style={{
+          fontSize: "clamp(36px,5vw,56px)", fontWeight: 900,
+          color: "#FF6B35", lineHeight: 1.1, letterSpacing: "-0.02em",
+          marginBottom: 12, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+        }}>
+          ${lossNum}
+        </div>
+        <p style={{ fontSize: 13, color: "#888", lineHeight: 1.65, maxWidth: 220, margin: "0 auto 20px" }}>
+          Capital that should be driving growth, currently sitting in the trash.
+        </p>
+        <Link href="/book-demo" style={{
+          display: "inline-flex", alignItems: "center", gap: 7,
+          background: "linear-gradient(135deg,#FF6B35,#FF875C)",
+          color: "#fff", borderRadius: 10, padding: "11px 24px",
+          fontSize: 13.5, fontWeight: 700, textDecoration: "none",
+          boxShadow: "0 6px 18px rgba(255,107,53,0.32)",
+        }}>
+          Eliminate This Waste →
+        </Link>
+      </div>
+    </div>
+  );
+}
 
-const comparison = [
-  { feature: "Real-time meal count visibility", paper: false, excel: false, erp: "Partial", mealiez: true },
-  { feature: "Attendance-linked automated billing", paper: false, excel: false, erp: false, mealiez: true },
-  { feature: "Food wastage reduction tools", paper: false, excel: false, erp: false, mealiez: true },
-  { feature: "Member mobile app", paper: false, excel: false, erp: false, mealiez: true },
-  { feature: "Automatic invoice generation", paper: false, excel: false, erp: "Partial", mealiez: true },
-  { feature: "Setup time", paper: "Immediate", excel: "Days", erp: "6–12 months", mealiez: "5–7 days" },
-  { feature: "Cost for 500 members", paper: "₹0", excel: "₹0", erp: "₹10L+", mealiez: "₹9,999/mo" },
-  { feature: "Scales to enterprise", paper: false, excel: false, erp: true, mealiez: true },
-];
-
-const results = [
-  { stat: "28%", label: "Average food wastage reduction", sub: "within 60 days" },
-  { stat: "22%", label: "Faster monthly collection cycles", sub: "vs. manual billing" },
-  { stat: "15hrs", label: "Saved per week on admin tasks", sub: "per mess operator" },
-  { stat: "100%", label: "Billing accuracy", sub: "with auto-reconciliation" },
+/* ── Comparison table ── */
+const comparisonRows = [
+  { cap: "Ordering & Indents",     manual: "Paper & WhatsApp",        mealiez: "Predictive Digitisation" },
+  { cap: "Diner Authentication",   manual: "Visual Headcounts",        mealiez: "QR & Biometric Scanning" },
+  { cap: "Billing Cycle",          manual: "Days of Reconciliation",   mealiez: "Instant Automated Ledger" },
+  { cap: "Visibility",             manual: "Opaque & Reactive",        mealiez: "Real-Time Dashboards" },
 ];
 
 export default function WhyMealiezPage() {
   useReveal();
+
   return (
     <>
       <style>{`
-        .rv   { opacity:0; transform:translateY(26px); transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1); }
+        *, *::before, *::after { box-sizing: border-box; }
+        .wm { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1a1a1a; }
+        .w  { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+        .w-sm { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+
+        .rv   { opacity:0; transform:translateY(28px); transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
         .rv.in { opacity:1; transform:none; }
-        .d1{transition-delay:.1s!important} .d2{transition-delay:.2s!important}
-        .d3{transition-delay:.3s!important} .d4{transition-delay:.4s!important}
-        .wm { font-family:'Inter',system-ui,sans-serif; color:#1a1a1a; }
-        .w  { max-width:1080px; margin:0 auto; padding:0 40px; }
-        .w-sm{ max-width:760px; margin:0 auto; padding:0 40px; }
-        .s-cream{ background:#fef6f0; padding:80px 0; }
-        .s-white{ background:#fff; padding:80px 0; }
-        .card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:28px;}
-        .btn-ora{background:linear-gradient(135deg,#FF6B35,#FF875C);color:#fff;border:none;border-radius:10px;padding:15px 32px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(255,107,53,.36);transition:transform .2s,opacity .2s;}
-        .btn-ora:hover{transform:translateY(-2px);opacity:.92;}
-        .x-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#444;margin-bottom:12px;line-height:1.65;}
-        .check-item{display:flex;align-items:center;gap:10px;font-size:14px;color:#444;margin-bottom:10px;}
+        .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}
+        .d3{transition-delay:.3s!important}.d4{transition-delay:.4s!important}
+
+        /* Section alternation */
+        .sec-white { background:#fff; padding:88px 0; }
+        .sec-cream  { background:#fef6f0; padding:88px 0; }
+        .sec-dark   { background:#1a1a1a; padding:88px 0; }
+
+        /* Problem cards */
+        .prob-card {
+          background:#fff; border:1px solid rgba(0,0,0,0.07);
+          border-radius:16px; padding:28px 24px;
+          transition:transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s, border-color .28s;
+        }
+        .prob-card:hover { transform:translateY(-5px); box-shadow:0 16px 48px rgba(255,107,53,0.1); border-color:rgba(255,107,53,0.18); }
+
+        /* Leakage cards */
+        .leak-card {
+          background:#fff; border:1px solid rgba(0,0,0,0.07);
+          border-radius:18px; padding:32px 28px;
+          transition:transform .28s, box-shadow .28s;
+        }
+        .leak-card:hover { transform:translateY(-4px); box-shadow:0 14px 44px rgba(255,107,53,0.09); }
+
+        /* Comparison table */
+        .cmp-row {
+          display:grid; grid-template-columns:1fr 1fr 1fr;
+          border-bottom:1px solid rgba(0,0,0,0.06);
+          transition:background .18s;
+        }
+        .cmp-row:last-child { border-bottom:none; }
+        .cmp-row:hover { background:rgba(255,107,53,0.03); }
+        .cmp-cell { padding:18px 20px; font-size:14.5px; display:flex; align-items:center; gap:10px; }
+
+        /* Stat number */
+        .stat-num-big {
+          font-size:52px; font-weight:900; color:#FF6B35; line-height:1;
+          letter-spacing:-0.03em;
+          font-family:'Bricolage Grotesque', system-ui, sans-serif;
+        }
+
+        /* Logo marquee */
+        .marquee-wrap { overflow:hidden; position:relative; }
+        .marquee-track {
+          display:flex; gap:64px; white-space:nowrap;
+          animation:marquee 18s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state:paused; }
+        @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        .logo-text {
+          font-size:13px; font-weight:800; letter-spacing:0.14em;
+          text-transform:uppercase; color:#ccc; flex-shrink:0;
+        }
+
+        /* CTA section */
+        .cta-section {
+          background: linear-gradient(135deg, rgba(255,107,53,0.08) 0%, rgba(255,162,127,0.05) 100%), #fef6f0;
+          padding:88px 40px; text-align:center;
+        }
+
+        /* Spreadsheet mock */
+        .sheet-mock {
+          background:#fff; border:1px solid rgba(0,0,0,0.1); border-radius:12px;
+          overflow:hidden; font-size:11px;
+        }
+        .sheet-header { background:#f3f4f6; display:grid; grid-template-columns:repeat(5,1fr); }
+        .sheet-cell { padding:7px 10px; border-right:1px solid rgba(0,0,0,0.08); border-bottom:1px solid rgba(0,0,0,0.06); color:#555; }
+        .sheet-cell.head { font-weight:700; color:#333; background:#f3f4f6; }
+        .sheet-cell.err  { background:rgba(239,68,68,0.1); color:#dc2626; font-weight:700; }
+        .sheet-cell.warn { background:rgba(255,107,53,0.08); }
+
+        /* Dashed hero border */
+        .hero-dashed {
+          border:2px dashed rgba(99,179,237,0.5);
+          border-radius:20px; padding:40px; margin:0 40px;
+          display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+          background:rgba(235,248,255,0.2);
+        }
+
+        /* Warning pill */
+        .warn-pill {
+          display:flex; align-items:flex-start; gap:10px;
+          padding:12px 16px; border-radius:10px;
+          background:rgba(255,107,53,0.05); border:1px solid rgba(255,107,53,0.12);
+          margin-bottom:10px;
+        }
+
+        /* Metric highlight */
+        .metric-pill {
+          display:inline-flex; align-items:center; gap:6px;
+          background:rgba(255,107,53,0.08); border:1px solid rgba(255,107,53,0.15);
+          border-radius:100px; padding:5px 14px;
+          font-size:12px; font-weight:700; color:#FF6B35;
+          margin-top:16px;
+        }
+
+        @media(max-width:768px){
+          .hero-dashed { grid-template-columns:1fr; margin:0 20px; }
+          .sec-white,.sec-cream,.sec-dark { padding:56px 0; }
+          .cta-section { padding:56px 20px; }
+          .stat-num-big { font-size:38px; }
+        }
       `}</style>
 
       <div className="wm">
 
-        {/* Hero */}
-        <section style={{ background: "#fef6f0", padding: "80px 0 72px", textAlign: "center" }}>
-          <div className="w">
-            <h1 className="rv" style={{ fontSize: 54, fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#1a1a1a", marginBottom: 20 }}>
-              Why leading operators<br />
-              <span style={{ color: "#FF6B35" }}>choose Mealiez</span>
-            </h1>
-            <p className="rv d1" style={{ fontSize: 17, color: "#555", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 38px" }}>
-              See exactly why paper, Excel, and traditional ERP systems all fail at food service operations — and what Mealiez does differently.
-            </p>
-            <Link href="/book-demo" className="btn-ora rv d2">See It Live — Book a Demo</Link>
+        {/* ════════════════════════════════════════
+            HERO — From Manual Chaos to Culinary Precision
+        ════════════════════════════════════════ */}
+        <section style={{ background: "#fff", paddingTop: 56, paddingBottom: 64 }}>
+          <div className="hero-dashed">
+            {/* Left */}
+            <div>
+              <span style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                background: "rgba(99,179,237,0.1)", border: "1px solid rgba(99,179,237,0.3)",
+                borderRadius: 100, padding: "4px 12px",
+                fontSize: 10, fontWeight: 800, color: "#3182ce",
+                letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 22,
+              }}>
+                ✦ Enterprise Operations
+              </span>
+
+              <h1 style={{
+                fontSize: "clamp(30px,4.5vw,48px)", fontWeight: 900,
+                color: "#1a1a1a", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 16,
+                fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+              }}>
+                From Manual Chaos<br />to{" "}
+                <span style={{ color: "#FF6B35" }}>Culinary<br />Precision.</span>
+              </h1>
+
+              <p style={{ fontSize: 14.5, color: "#555", lineHeight: 1.75, maxWidth: 340, marginBottom: 28 }}>
+                Stop letting fragile paper trails and disconnected spreadsheets dictate your food operations.
+                Mealiez provides the intelligent infrastructure to scale securely.
+              </p>
+
+              <Link href="/book-demo" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "linear-gradient(135deg,#FF6B35,#FF875C)",
+                color: "#fff", borderRadius: 10, padding: "13px 28px",
+                fontSize: 14, fontWeight: 700, textDecoration: "none",
+                boxShadow: "0 6px 20px rgba(255,107,53,0.36)",
+              }}>
+                Transform Operations →
+              </Link>
+            </div>
+
+            {/* Right — dark card visual */}
+            <div style={{
+              background: "linear-gradient(145deg,#0f172a,#1e293b)",
+              borderRadius: 16, overflow: "hidden", minHeight: 260,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              position: "relative", padding: 32,
+            }}>
+              {/* Paper chaos illustration */}
+              <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+                {[...Array(10)].map((_, i) => (
+                  <div key={i} style={{
+                    position: "absolute",
+                    width: 52 + (i % 3) * 10, height: 36 + (i % 2) * 8,
+                    background: `rgba(255,255,255,${0.06 + (i % 4) * 0.04})`,
+                    borderRadius: 4,
+                    top: `${8 + (i * 8.5) % 75}%`,
+                    left: `${5 + (i * 12) % 60}%`,
+                    transform: `rotate(${-30 + (i * 15) % 65}deg)`,
+                    border: "1px solid rgba(255,255,255,0.1)",
+                  }} />
+                ))}
+              </div>
+              {/* Phone shape */}
+              <div style={{
+                width: 70, height: 120, background: "linear-gradient(145deg,#FF6B35,#FF875C)",
+                borderRadius: 14, boxShadow: "0 12px 40px rgba(255,107,53,0.5)",
+                position: "relative", zIndex: 2,
+                display: "flex", flexDirection: "column", alignItems: "center",
+                justifyContent: "center", gap: 6, padding: 8,
+              }}>
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} style={{
+                    height: 4, width: `${60 + (i % 3) * 10}%`,
+                    background: "rgba(255,255,255,0.5)", borderRadius: 2,
+                  }} />
+                ))}
+              </div>
+              <p style={{ position: "absolute", bottom: 16, fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                Mealiez OS
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Problems Grid */}
-        <section className="s-white">
+        {/* ════════════════════════════════════════
+            THE COST OF OPERATIONAL FRAGILITY
+        ════════════════════════════════════════ */}
+        <section className="sec-white">
           <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
-              Where Traditional Systems Break Down
-            </h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 500, margin: "0 auto 48px" }}>
-              Most food service operations are still running on tools never designed for the job.
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
-              {problems.map((p, i) => (
-                <div key={i} className={`card rv d${i + 1}`}>
-                  <div style={{ fontSize: 32, marginBottom: 16 }}>{p.icon}</div>
-                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#1a1a1a", marginBottom: 20, paddingBottom: 16, borderBottom: `2px solid ${p.color}20` }}>
-                    {p.title}
+            <div className="rv" style={{ textAlign: "center", marginBottom: 56 }}>
+              <h2 style={{
+                fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800,
+                color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 16,
+                fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+              }}>
+                The Cost of Operational Fragility
+              </h2>
+              <p style={{ fontSize: 15, color: "#666", lineHeight: 1.72, maxWidth: 520, margin: "0 auto" }}>
+                Relying on legacy communication and paper ledgers introduces compounding errors at every step of the service cycle.
+              </p>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+              {[
+                {
+                  icon: "📋", color: "rgba(239,68,68,0.1)", stroke: "rgba(239,68,68,0.25)",
+                  title: "Paper Trails",
+                  body: "Lost indents, illegible & physical damage lead to critical miscommunications between front of house.",
+                },
+                {
+                  icon: "💬", color: "rgba(255,107,53,0.1)", stroke: "rgba(255,107,53,0.25)",
+                  title: "Chat Messengers",
+                  body: "Important updates buried in WhatsApp threads. No audit trails, no structured data, and impossible to track historically.",
+                },
+                {
+                  icon: "📊", color: "rgba(168,85,247,0.1)", stroke: "rgba(168,85,247,0.2)",
+                  title: "Siloed Truths",
+                  body: "Procurement, kitchen, and billing operate on different versions of reality, causing daily reconciliation nightmares.",
+                },
+              ].map((c, i) => (
+                <div key={i} className={`prob-card rv d${i+1}`}>
+                  <div style={{
+                    width: 44, height: 44, borderRadius: 12,
+                    background: c.color, border: `1px solid ${c.stroke}`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 20, marginBottom: 16,
+                  }}>
+                    {c.icon}
+                  </div>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a", marginBottom: 10, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
+                    {c.title}
                   </h3>
-                  {p.points.map((pt, j) => (
-                    <div key={j} className="x-item">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={p.color} strokeWidth="2.5" strokeLinecap="round" style={{ flexShrink: 0, marginTop: 2 }}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                      {pt}
-                    </div>
+                  <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72 }}>{c.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════
+            SPREADSHEET HELL
+        ════════════════════════════════════════ */}
+        <section className="sec-cream">
+          <div className="w">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+
+              {/* Left — spreadsheet mock */}
+              <div className="rv sheet-mock">
+                {/* Header row */}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", background: "#f3f4f6" }}>
+                  {["Item", "Unit", "Status", "Delivery", "Vendor"].map((h) => (
+                    <div key={h} className="sheet-cell head">{h}</div>
                   ))}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Attendance Issues */}
-        <section className="s-cream">
-          <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
-              The Hidden Cost of Attendance Mismatch
-            </h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 500, margin: "0 auto 48px" }}>
-              Proxy dining, untracked guests, and manual count errors bleed thousands from your bottom line every month.
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
-              {attendanceIssues.map((a, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 36, fontWeight: 900, color: "#FF6B35", marginBottom: 8 }}>{a.stat}</div>
-                  <p style={{ fontSize: 14, color: "#555", lineHeight: 1.65 }}>{a.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Billing Errors */}
-        <section className="s-white">
-          <div className="w">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
-              <div>
-                <div className="rv" style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Billing Accuracy</div>
-                <h2 className="rv d1" style={{ fontSize: 36, fontWeight: 900, lineHeight: 1.2, letterSpacing: "-.025em", marginBottom: 20 }}>
-                  Manual billing creates disputes every single month
-                </h2>
-                <p className="rv d2" style={{ fontSize: 15, color: "#666", lineHeight: 1.72, marginBottom: 28 }}>
-                  When billing is done by hand, errors are inevitable. And every error erodes trust with your members.
-                </p>
-                {billingErrors.map((e, i) => (
-                  <div key={i} className={`x-item rv d${i + 1}`}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" style={{ flexShrink: 0, marginTop: 2 }}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    {e}
+                {/* Rows */}
+                {[
+                  ["Rice", "50kg", <span key="v" className="sheet-cell err" style={{display:"inline"}}>vendor?</span>, "Delayed", "Vendor A"],
+                  ["Oil",  "12L",  "✓ OK",   "On time", "—"],
+                  ["Dal",  "30kg", <span key="w" className="sheet-cell warn" style={{display:"inline"}}>#REF!</span>, "Received","Vendor B"],
+                  ["Veg",  "—",    "Unknown","—",        "Vendor A"],
+                  ["Spice","2kg",  "✓ OK",   "On time", "—"],
+                ].map((row, ri) => (
+                  <div key={ri} style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)" }}>
+                    {row.map((cell, ci) => (
+                      <div key={ci} className="sheet-cell" style={{
+                        background: ci === 2 && ri === 0 ? "rgba(239,68,68,0.08)" :
+                                    ci === 2 && ri === 2 ? "rgba(255,107,53,0.08)" : undefined,
+                        color: ci === 2 && ri === 0 ? "#dc2626" :
+                               ci === 2 && ri === 2 ? "#FF6B35" : undefined,
+                        fontWeight: (ci === 2 && (ri === 0 || ri === 2)) ? 700 : undefined,
+                      }}>
+                        {cell}
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
+
+              {/* Right — copy */}
               <div className="rv d2">
-                <div className="card" style={{ borderColor: "rgba(255,107,53,0.2)", padding: 32 }}>
-                  <div style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>With Mealiez</div>
-                  {["Invoices auto-generated at cycle end", "Mid-month changes tracked to the rupee", "UPI / online payment with instant confirmation", "Automated dues reminders on configurable schedules", "Full audit trail with timestamped billing history"].map((f, i) => (
-                    <div key={i} className="check-item">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      <span style={{ fontSize: 14, color: "#333" }}>{f}</span>
+                <h2 style={{
+                  fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 900,
+                  color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 16,
+                  fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+                }}>
+                  Spreadsheet <span style={{ color: "#FF6B35" }}>Hell.</span>
+                </h2>
+                <p style={{ fontSize: 15, color: "#555", lineHeight: 1.78, marginBottom: 28 }}>
+                  Static grids were not built for dynamic culinary operations. A single broken formula
+                  can cascade into massive procurement shortages or financial discrepancies.
+                </p>
+
+                {[
+                  {
+                    label: "Zero Real-Time Visibility",
+                    body: "By the time data is entered, it's already obsolete.",
+                  },
+                  {
+                    label: "Version Control Nightmares",
+                    body: '"Inventory_Final_v3_Actual.xlsx" is a liability, not a system.',
+                  },
+                ].map((w, i) => (
+                  <div key={i} className="warn-pill">
+                    <span style={{ fontSize: 16, flexShrink: 0, marginTop: 1 }}>⚠️</span>
+                    <div>
+                      <p style={{ fontSize: 13.5, fontWeight: 700, color: "#1a1a1a", marginBottom: 3 }}>{w.label}</p>
+                      <p style={{ fontSize: 13, color: "#777", lineHeight: 1.6 }}>{w.body}</p>
                     </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════
+            THE REVENUE LEAKAGE POINTS
+        ════════════════════════════════════════ */}
+        <section className="sec-white">
+          <div className="w">
+            <div className="rv" style={{ textAlign: "center", marginBottom: 52 }}>
+              <h2 style={{
+                fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: "#1a1a1a",
+                letterSpacing: "-0.025em",
+                fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+              }}>
+                The Revenue Leakage Points
+              </h2>
+              <div style={{ width: 48, height: 3, background: "#FF6B35", borderRadius: 2, margin: "14px auto 0" }} />
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+              {[
+                {
+                  num: "5",
+                  title: "Proxy Attendance",
+                  body: "Manual headcounts are notoriously inaccurate. Proxy check-ins and unverified dining lead to inflated meal counts, causing kitchen overproduction and diner frustration.",
+                  metric: "Up to 15% discrepancy in manual counts",
+                },
+                {
+                  num: "5",
+                  title: "Ledger Disputes",
+                  body: "Transcribing paper chits to monthly invoices guarantees human error. This results in delayed payment cycles, vendor disputes, and unrecoverable revenue.",
+                  metric: "Average 7-day delay in billing reconciliation",
+                },
+              ].map((c, i) => (
+                <div key={i} className={`leak-card rv d${i+1}`} style={{ position: "relative", overflow: "hidden" }}>
+                  {/* Big background number */}
+                  <div style={{
+                    position: "absolute", top: -10, right: 16, fontSize: 120,
+                    fontWeight: 900, color: "rgba(255,107,53,0.05)", lineHeight: 1,
+                    fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", userSelect: "none",
+                  }}>
+                    {c.num}
+                  </div>
+                  <h3 style={{
+                    fontSize: 19, fontWeight: 700, color: "#1a1a1a", marginBottom: 14,
+                    fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+                  }}>
+                    {c.title}
+                  </h3>
+                  <p style={{ fontSize: 14, color: "#555", lineHeight: 1.75, marginBottom: 4 }}>
+                    {c.body}
+                  </p>
+                  <span className="metric-pill">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+                    </svg>
+                    {c.metric}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════
+            THE FOOD WASTAGE CRISIS
+        ════════════════════════════════════════ */}
+        <section className="sec-cream">
+          <div className="w">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+
+              {/* Left */}
+              <div className="rv">
+                <h2 style={{
+                  fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 900,
+                  color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 20,
+                  fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", lineHeight: 1.18,
+                }}>
+                  The Food Wastage Crisis
+                </h2>
+                <p style={{ fontSize: 15, color: "#555", lineHeight: 1.78, marginBottom: 24 }}>
+                  Over-production and poor inventory tracking lead to massive caloric and financial waste.
+                  Mealiez reduces wastage by up to <strong>30%</strong> through predictive analytics.
+                </p>
+                <div style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.2)",
+                  borderRadius: 100, padding: "7px 16px",
+                  fontSize: 13, fontWeight: 700, color: "#16a34a",
+                }}>
+                  🍃 Sustainable Operations by Design
+                </div>
+              </div>
+
+              {/* Right — icon */}
+              <div className="rv d2" style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{
+                  width: 180, height: 180, borderRadius: "50%",
+                  background: "linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,107,53,0.06))",
+                  border: "2px solid rgba(255,107,53,0.2)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  position: "relative",
+                }}>
+                  <div style={{
+                    width: 110, height: 110, borderRadius: "50%",
+                    background: "rgba(255,107,53,0.12)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.8" strokeLinecap="round">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                  </div>
+                  {/* Orbit dots */}
+                  {[0,72,144,216,288].map((deg, i) => (
+                    <div key={i} style={{
+                      position: "absolute",
+                      width: 10, height: 10, borderRadius: "50%",
+                      background: i % 2 === 0 ? "#FF6B35" : "rgba(255,107,53,0.3)",
+                      top: `${50 - 46 * Math.cos(deg * Math.PI/180)}%`,
+                      left: `${50 + 46 * Math.sin(deg * Math.PI/180)}%`,
+                      transform: "translate(-50%,-50%)",
+                    }} />
                   ))}
                 </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════
+            CALCULATE YOUR HIDDEN LOSSES
+        ════════════════════════════════════════ */}
+        <section className="sec-white">
+          <div className="w">
+            <div className="rv" style={{ textAlign: "center", marginBottom: 48 }}>
+              <h2 style={{
+                fontSize: "clamp(24px,3.5vw,40px)", fontWeight: 800,
+                color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 14,
+                fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+              }}>
+                Calculate Your Hidden Losses
+              </h2>
+              <p style={{ fontSize: 15, color: "#666", lineHeight: 1.72, maxWidth: 480, margin: "0 auto" }}>
+                See the mathematical impact of overproduction and manual inaccuracies on your bottom line.
+              </p>
+            </div>
+            <div className="rv d1">
+              <LossCalculator />
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════
+            THE PRECISION PIVOT — Comparison table
+        ════════════════════════════════════════ */}
+        <section className="sec-cream">
+          <div className="w">
+            <div className="rv" style={{ textAlign: "center", marginBottom: 52 }}>
+              <h2 style={{
+                fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800,
+                color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 14,
+                fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+              }}>
+                The Precision Pivot
+              </h2>
+            </div>
+
+            <div className="rv d1" style={{
+              background: "#fff", border: "1px solid rgba(0,0,0,0.07)",
+              borderRadius: 20, overflow: "hidden",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+            }}>
+              {/* Table header */}
+              <div style={{
+                display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+                borderBottom: "1px solid rgba(0,0,0,0.08)",
+              }}>
+                <div style={{ padding: "16px 20px", fontSize: 11, fontWeight: 800, color: "#999", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  Capability
+                </div>
+                <div style={{ padding: "16px 20px", fontSize: 13, fontWeight: 700, color: "#555", borderLeft: "1px solid rgba(0,0,0,0.06)" }}>
+                  Manual Operations
+                </div>
+                <div style={{
+                  padding: "16px 20px", fontSize: 13, fontWeight: 700, color: "#FF6B35",
+                  borderLeft: "1px solid rgba(255,107,53,0.15)",
+                  background: "rgba(255,107,53,0.04)",
+                  display: "flex", alignItems: "center", gap: 8,
+                }}>
+                  Mealiez OS
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FF6B35", boxShadow: "0 0 8px rgba(255,107,53,0.5)" }} />
+                </div>
+              </div>
+
+              {/* Rows */}
+              {comparisonRows.map((row, i) => (
+                <div key={i} className="cmp-row">
+                  <div className="cmp-cell" style={{ fontSize: 14, fontWeight: 600, color: "#333" }}>
+                    {row.cap}
+                  </div>
+                  <div className="cmp-cell" style={{ borderLeft: "1px solid rgba(0,0,0,0.05)", color: "#888" }}>
+                    <span style={{
+                      width: 22, height: 22, borderRadius: "50%",
+                      background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 12, color: "#dc2626", flexShrink: 0, fontWeight: 700,
+                    }}>✕</span>
+                    <span style={{ fontSize: 13.5 }}>{row.manual}</span>
+                  </div>
+                  <div className="cmp-cell" style={{ borderLeft: "1px solid rgba(255,107,53,0.1)", background: "rgba(255,107,53,0.02)" }}>
+                    <span style={{
+                      width: 22, height: 22, borderRadius: "50%",
+                      background: "rgba(255,107,53,0.12)", border: "1px solid rgba(255,107,53,0.25)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 11, color: "#FF6B35", flexShrink: 0, fontWeight: 700,
+                    }}>✓</span>
+                    <span style={{ fontSize: 13.5, color: "#1a1a1a", fontWeight: 600 }}>{row.mealiez}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════
+            ENGINEERING OUTCOMES
+        ════════════════════════════════════════ */}
+        <section className="sec-white">
+          <div className="w">
+            <div className="rv" style={{ textAlign: "center", marginBottom: 52 }}>
+              <h2 style={{
+                fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800,
+                color: "#1a1a1a", letterSpacing: "-0.025em",
+                fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
+              }}>
+                Engineering Outcomes
+              </h2>
+            </div>
+
+            {/* Stats */}
+            <div className="rv d1" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24, marginBottom: 56 }}>
+              {[
+                { value: "30", suffix: "%", label: "Reduction in Food Waste" },
+                { value: "100", suffix: "%", label: "Billing Accuracy" },
+                { value: "40", suffix: "hrs", label: "Saved per Month on Admin" },
+              ].map((s, i) => (
+                <div key={i} style={{ textAlign: "center" }}>
+                  <div className="stat-num-big">{s.value}{s.suffix}</div>
+                  <p style={{ fontSize: 11, fontWeight: 800, color: "#999", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 8 }}>
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Logo marquee */}
+            <div className="rv d2 marquee-wrap">
+              <div className="marquee-track">
+                {["Enterprise Logistics Inc.", "Global Catering", "Metro Foods", "FreshBite Co.", "NutraCorp", "CafePro", "Enterprise Logistics Inc.", "Global Catering", "Metro Foods", "FreshBite Co.", "NutraCorp", "CafePro"].map((name, i) => (
+                  <span key={i} className="logo-text">{name}</span>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Food Wastage */}
-        <section className="s-cream">
-          <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
-              Food Wastage Is a Revenue Problem
+        {/* ════════════════════════════════════════
+            CTA — Ready for Absolute Precision?
+        ════════════════════════════════════════ */}
+        <section className="cta-section">
+          <div className="rv" style={{ maxWidth: 600, margin: "0 auto" }}>
+            <h2 style={{
+              fontSize: "clamp(28px,4vw,48px)", fontWeight: 900,
+              color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 18,
+              fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", lineHeight: 1.18,
+            }}>
+              Ready for{" "}<span style={{ color: "#FF6B35" }}>Absolute<br />Precision?</span>
             </h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 500, margin: "0 auto 48px" }}>
-              Over-cooking without accurate demand data is the single largest controllable cost in mess operations.
+            <p style={{ fontSize: 15.5, color: "#555", lineHeight: 1.75, marginBottom: 36 }}>
+              Stop managing chaos. Start engineering your food operations. Book a technical demonstration of the Mealiez OS today.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22, marginBottom: 40 }}>
-              {wastageStats.map((w, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 36, fontWeight: 900, color: "#FF6B35", marginBottom: 8 }}>{w.stat}</div>
-                  <p style={{ fontSize: 14, color: "#555", lineHeight: 1.65 }}>{w.label}</p>
-                </div>
-              ))}
-            </div>
+            <Link href="/book-demo" style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: "linear-gradient(135deg,#FF6B35,#FF875C)",
+              color: "#fff", borderRadius: 12, padding: "16px 36px",
+              fontSize: 15, fontWeight: 700, textDecoration: "none",
+              boxShadow: "0 8px 28px rgba(255,107,53,0.4)",
+              letterSpacing: "-0.01em",
+            }}>
+              Book a Technical Demo
+            </Link>
           </div>
-        </section>
-
-        {/* Cost Leakage Calculator */}
-        <section className="s-white">
-          <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
-              Calculate Your Cost Leakage
-            </h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 480, margin: "0 auto 40px" }}>
-              Enter your operation numbers to see exactly how much revenue you're losing to attendance mismatch right now.
-            </p>
-            <div className="rv d2" style={{ maxWidth: 680, margin: "0 auto" }}>
-              <LeakageCalculator />
-            </div>
-          </div>
-        </section>
-
-        {/* Mealiez Comparison Table */}
-        <section className="s-cream">
-          <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
-              Mealiez vs. Everything Else
-            </h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 480, margin: "0 auto 48px" }}>
-              A direct comparison across every dimension that matters.
-            </p>
-            <div className="rv" style={{ background: "#fff", borderRadius: 20, border: "1px solid rgba(0,0,0,0.08)", overflow: "hidden" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
-                <thead>
-                  <tr style={{ background: "#fef6f0" }}>
-                    <th style={{ padding: "16px 24px", textAlign: "left", fontWeight: 700, color: "#333", fontSize: 13 }}>Capability</th>
-                    <th style={{ padding: "16px 24px", textAlign: "center", fontWeight: 700, color: "#888", fontSize: 13 }}>Paper</th>
-                    <th style={{ padding: "16px 24px", textAlign: "center", fontWeight: 700, color: "#888", fontSize: 13 }}>Excel</th>
-                    <th style={{ padding: "16px 24px", textAlign: "center", fontWeight: 700, color: "#8b5cf6", fontSize: 13 }}>Traditional ERP</th>
-                    <th style={{ padding: "16px 24px", textAlign: "center", fontWeight: 800, color: "#FF6B35", fontSize: 13 }}>Mealiez ✓</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparison.map((row, i) => (
-                    <tr key={i} style={{ borderTop: "1px solid rgba(0,0,0,0.05)", background: i % 2 === 1 ? "#fafafa" : "#fff" }}>
-                      <td style={{ padding: "14px 24px", fontWeight: 500, color: "#333" }}>{row.feature}</td>
-                      {[row.paper, row.excel, row.erp, row.mealiez].map((val, j) => (
-                        <td key={j} style={{ padding: "14px 24px", textAlign: "center" }}>
-                          {val === true ? (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={j === 3 ? "#FF6B35" : "#22c55e"} strokeWidth="2.5" strokeLinecap="round" style={{ margin: "0 auto" }}><polyline points="20 6 9 17 4 12"/></svg>
-                          ) : val === false ? (
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" style={{ margin: "0 auto" }}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                          ) : (
-                            <span style={{ fontSize: 12, fontWeight: 600, color: j === 3 ? "#FF6B35" : "#888" }}>{val}</span>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* Customer Results */}
-        <section className="s-white">
-          <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
-              Operators Switching to Mealiez See Results Fast
-            </h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 480, margin: "0 auto 48px" }}>
-              These aren't projections — they're averages from our active operator base.
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
-              {results.map((r, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 40, fontWeight: 900, color: "#FF6B35", letterSpacing: "-0.02em", marginBottom: 6 }}>{r.stat}</div>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: "#1a1a1a", marginBottom: 4 }}>{r.label}</p>
-                  <p style={{ fontSize: 12, color: "#888" }}>{r.sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section style={{ background: "#1a1a1a", padding: "80px 40px", textAlign: "center" }}>
-          <h2 className="rv" style={{ fontSize: 40, fontWeight: 900, color: "#fff", marginBottom: 16, letterSpacing: "-.025em" }}>
-            Ready to switch from manual to modern?
-          </h2>
-          <p className="rv d1" style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 36px" }}>
-            Join hundreds of operators who've made the move. See Mealiez live in 30 minutes.
-          </p>
-          <Link href="/book-demo" className="btn-ora rv d2">Book a Free Demo</Link>
         </section>
 
       </div>

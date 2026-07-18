@@ -1,10 +1,3 @@
 {
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/book-demo/page": "app/book-demo/page.js",
-  "/customers/page": "app/customers/page.js",
-  "/page": "app/page.js",
-  "/pricing/page": "app/pricing/page.js",
-  "/product/meal-booking/page": "app/product/meal-booking/page.js",
-  "/product/page": "app/product/page.js",
-  "/why-mealiez/page": "app/why-mealiez/page.js"
+  "/resources/page": "app/resources/page.js"
 }
