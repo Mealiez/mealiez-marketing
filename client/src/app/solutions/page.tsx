@@ -1,47 +1,102 @@
 "use client";
 
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { solutions } from "@/lib/site-data";
-import { Card } from "@/components/ui/card";
-import { Section } from "@/components/ui/section";
-import { AnimatedSection, AnimatedItem } from "@/components/ui/animated-section";
 
-export default function SolutionsPage() {
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".rv");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
+      { threshold: 0.1 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
+export default function SolutionsOverviewPage() {
+  useReveal();
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-6 px-6 py-12">
-      <AnimatedSection>
-        <AnimatedItem>
-          <Section className="brand-gradient px-8 py-14 text-white">
-            <div className="noise-overlay" />
-            <p className="text-sm uppercase tracking-[0.15em] text-white/80">Solutions</p>
-            <h1 className="mt-3 text-4xl font-bold">Industry-Specific Playbooks</h1>
-            <p className="mt-3 max-w-3xl text-white/80">
-              Tailored workflows for hostels, institutions, canteens, kitchens, and subscription operations.
-            </p>
-          </Section>
-        </AnimatedItem>
-      </AnimatedSection>
+    <>
+      <style>{`
+        .rv   { opacity:0; transform:translateY(26px); transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1); }
+        .rv.in { opacity:1; transform:none; }
+        .d1{transition-delay:.1s!important} .d2{transition-delay:.2s!important}
+        .d3{transition-delay:.3s!important} .d4{transition-delay:.4s!important}
+        .so { font-family:'Inter',system-ui,sans-serif; color:#1a1a1a; }
+        .w  { max-width:1080px; margin:0 auto; padding:0 40px; }
+        .sol-card{background:#fff;border:1.5px solid rgba(0,0,0,.07);border-radius:20px;padding:32px;text-decoration:none;display:block;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,border-color .25s;}
+        .sol-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(255,107,53,.12);border-color:rgba(255,107,53,.25);}
+        .btn-ora{background:linear-gradient(135deg,#FF6B35,#FF875C);color:#fff;border:none;border-radius:10px;padding:15px 32px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(255,107,53,.36);transition:transform .2s,opacity .2s;}
+        .btn-ora:hover{transform:translateY(-2px);opacity:.92;}
+        .btn-out{background:#fff;color:#1a1a1a;border:1.5px solid rgba(0,0,0,.12);border-radius:10px;padding:14px 32px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,background .2s,transform .2s;}
+        .btn-out:hover{border-color:rgba(255,107,53,.35);background:#fff3ee;transform:translateY(-2px);}
+      `}</style>
 
-      <AnimatedSection>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {solutions.map((item, index) => (
-            <AnimatedItem key={item.slug} y={16 + index * 8}>
-              <Link href={`/solutions/${item.slug}`} className="block">
-                <Card className="p-5">
-                  <h2 className="font-semibold text-slate-900">{item.title}</h2>
-                  <p className="mt-2 text-sm text-slate-600">{item.challenge}</p>
-                  <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#FF6B35] transition">
-                    Explore Solution
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+      <div className="so">
+
+        {/* Hero */}
+        <section style={{ background: "#fef6f0", padding: "80px 0 72px", textAlign: "center" }}>
+          <div className="w">
+            <div className="rv" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.15)", borderRadius: 100, padding: "6px 16px", fontSize: 12, fontWeight: 700, color: "#FF6B35", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 24 }}>
+              Industry Solutions
+            </div>
+            <h1 className="rv d1" style={{ fontSize: 54, fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#1a1a1a", marginBottom: 20 }}>
+              Built for{" "}
+              <span style={{ color: "#FF6B35" }}>Your Industry</span>
+            </h1>
+            <p className="rv d2" style={{ fontSize: 17, color: "#555", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 38px" }}>
+              Mealiez is purpose-configured for six different food service operations — each with unique workflows, challenges, and ROI goals.
+            </p>
+            <div className="rv d3" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/book-demo" className="btn-ora">Book a Demo</Link>
+              <Link href="/why-mealiez" className="btn-out">Why Mealiez?</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Solutions Grid */}
+        <section style={{ background: "#fff", padding: "88px 0" }}>
+          <div className="w">
+            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>
+              Choose Your Industry
+            </h2>
+            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 500, margin: "0 auto 56px" }}>
+              Click your segment to see a tailored breakdown of how Mealiez works for you.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
+              {solutions.map((sol, i) => (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`} className={`sol-card rv d${(i % 4) + 1}`}>
+                  <div style={{ fontSize: 36, marginBottom: 16 }}>{sol.icon}</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", marginBottom: 10 }}>{sol.title}</h3>
+                  <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7, marginBottom: 20 }}>{sol.tagline}</p>
+                  <div style={{ background: "rgba(255,107,53,0.06)", borderRadius: 10, padding: "10px 14px", fontSize: 12.5, color: "#555", lineHeight: 1.6, marginBottom: 20 }}>
+                    <strong style={{ color: "#FF6B35" }}>ROI:</strong> {sol.roiImpact.split("within")[0].trim()}
+                  </div>
+                  <span style={{ fontSize: 13.5, fontWeight: 700, color: "#FF6B35", display: "flex", alignItems: "center", gap: 6 }}>
+                    View {sol.title} Solution
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                   </span>
-                </Card>
-              </Link>
-            </AnimatedItem>
-          ))}
-        </div>
-      </AnimatedSection>
-    </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section style={{ background: "#1a1a1a", padding: "80px 40px", textAlign: "center" }}>
+          <h2 className="rv" style={{ fontSize: 40, fontWeight: 900, color: "#fff", marginBottom: 16, letterSpacing: "-.025em" }}>
+            Not sure which fits best?
+          </h2>
+          <p className="rv d1" style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 440, margin: "0 auto 36px" }}>
+            Book a 20-minute call and our team will map the right solution to your operation.
+          </p>
+          <Link href="/book-demo" className="btn-ora rv d2">Talk to an Expert</Link>
+        </section>
+
+      </div>
+    </>
   );
 }

@@ -362,6 +362,10 @@
     pointer-events: none;
   }
 
+  .collapse {
+    visibility: collapse;
+  }
+
   .visible {
     visibility: visible;
   }
@@ -456,6 +460,10 @@
     display: none;
   }
 
+  .inline-block {
+    display: inline-block;
+  }
+
   .inline-flex {
     display: inline-flex;
   }
@@ -498,6 +506,10 @@
 
   .flex-shrink {
     flex-shrink: 1;
+  }
+
+  .grow {
+    flex-grow: 1;
   }
 
   .transform {

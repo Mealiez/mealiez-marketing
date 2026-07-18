@@ -14,127 +14,325 @@ const products = [
     {
         slug: "meal-booking",
         title: "Meal Booking",
+        icon: "🍽️",
         summary: "Smart meal booking with attendance-aware auto planning.",
         painPoints: [
-            "Last-minute meal plan changes",
-            "Manual booking errors",
-            "Uncertain demand forecasting"
+            "Last-minute cancellations cause over-cooking and wasted food budgets",
+            "Manual booking records create errors and double-entries every day",
+            "Kitchen teams have no reliable demand forecast to plan efficiently"
         ],
         features: [
             "Pre-book and recurring meal schedules",
-            "Cutoff windows and waitlists",
-            "Role-wise approvals",
-            "Real-time booking dashboards"
+            "Cutoff windows and automated waitlists",
+            "Role-wise approvals and plan overrides",
+            "Real-time booking dashboards for kitchen teams"
+        ],
+        workflowSteps: [
+            {
+                label: "Member Books",
+                sub: "Via app or web"
+            },
+            {
+                label: "System Confirms",
+                sub: "Auto-validates plan"
+            },
+            {
+                label: "Kitchen Plans",
+                sub: "Demand-aware prep"
+            },
+            {
+                label: "Meal Served",
+                sub: "Tracked & logged"
+            }
         ],
         benefits: [
-            "Lower food wastage",
-            "Higher student and staff satisfaction",
-            "Smoother kitchen operations"
+            "Up to 30% lower food wastage through accurate demand forecasting",
+            "Higher member satisfaction with self-service booking control",
+            "Smoother kitchen operations with real-time prep counts"
+        ],
+        faqs: [
+            {
+                q: "Can members book meals in advance for the whole week?",
+                a: "Yes. Members can pre-schedule meals up to 7 days ahead with daily cutoff windows configured by the admin."
+            },
+            {
+                q: "What happens when a booked meal is cancelled?",
+                a: "The system automatically updates kitchen prep counts in real time and can trigger waitlist promotions if enabled."
+            },
+            {
+                q: "Can Meal Booking integrate with the Billing module?",
+                a: "Yes. Every confirmed booking is tied directly to the member's billing ledger for precise, automated invoicing."
+            }
         ]
     },
     {
         slug: "attendance",
         title: "Attendance Management",
+        icon: "✅",
         summary: "Track who actually consumed meals, across shifts and locations.",
         painPoints: [
-            "Proxy attendance",
-            "Mismatch with billing",
-            "No live meal counts"
+            "Proxy attendance allows unauthorised diners to consume at the mess's cost",
+            "Attendance counts rarely match billing records, creating revenue leakage",
+            "No live meal count visibility means kitchens prep based on guesswork"
         ],
         features: [
-            "QR and PIN-based attendance",
-            "Shift and dining hall mapping",
-            "Live attendance heatmaps",
-            "Exception reporting"
+            "QR code and PIN-based meal-time attendance",
+            "Shift and dining hall mapping per location",
+            "Live attendance heatmaps for operators",
+            "Automated exception and discrepancy reporting"
+        ],
+        workflowSteps: [
+            {
+                label: "Member Scans",
+                sub: "QR or PIN entry"
+            },
+            {
+                label: "System Validates",
+                sub: "Plan & eligibility check"
+            },
+            {
+                label: "Count Updated",
+                sub: "Real-time dashboard"
+            },
+            {
+                label: "Report Generated",
+                sub: "Daily reconciliation"
+            }
         ],
         benefits: [
-            "Better accountability",
-            "Leakage control",
-            "Data-backed planning"
+            "Eliminate proxy dining and attendance fraud",
+            "Plug revenue leakage with attendance-linked billing",
+            "Data-backed planning with live consumption analytics"
+        ],
+        faqs: [
+            {
+                q: "What hardware is required for QR attendance?",
+                a: "Any Android tablet or smartphone with our app works as a scanning terminal. No proprietary hardware required."
+            },
+            {
+                q: "Can attendance be tracked across multiple dining halls?",
+                a: "Yes. You can map multiple halls, shifts, and locations with separate dashboards for each."
+            },
+            {
+                q: "How does this connect to billing?",
+                a: "Every attendance event is linked to the member's account and automatically adjusts their billable meal count."
+            }
         ]
     },
     {
         slug: "billing",
         title: "Billing & Payments",
+        icon: "💳",
         summary: "Automate invoices, plans, due tracking, and digital collections.",
         painPoints: [
-            "Manual invoicing",
-            "Delayed collections",
-            "Pricing complexity"
+            "Manual invoicing takes hours each month and is riddled with entry errors",
+            "Delayed collections create cash-flow gaps for mess operators",
+            "Complex pricing plans (monthly, half-yearly, custom) are hard to manage manually"
         ],
         features: [
-            "Flexible plan configuration",
-            "Auto-generated invoices",
-            "UPI and online payment support",
-            "Collection and dues tracking"
+            "Flexible plan configuration (daily, monthly, custom cycles)",
+            "Auto-generated invoices per billing cycle",
+            "UPI, card, and online payment gateway support",
+            "Dues tracking, reminders, and collection dashboards"
+        ],
+        workflowSteps: [
+            {
+                label: "Plan Assigned",
+                sub: "Per member setup"
+            },
+            {
+                label: "Invoice Generated",
+                sub: "Auto at cycle end"
+            },
+            {
+                label: "Payment Received",
+                sub: "UPI / online / cash"
+            },
+            {
+                label: "Ledger Updated",
+                sub: "Zero manual entry"
+            }
         ],
         benefits: [
-            "Improved cash flow",
-            "Fewer disputes",
-            "Less admin effort"
+            "Improved monthly cash flow with automated collection reminders",
+            "Fewer billing disputes with transparent digital ledgers",
+            "90% reduction in admin time spent on invoicing and dues tracking"
+        ],
+        faqs: [
+            {
+                q: "Does Mealiez support partial payments?",
+                a: "Yes. Partial payment recording and outstanding balance tracking are both supported out of the box."
+            },
+            {
+                q: "Can we set different meal plans for different member groups?",
+                a: "Absolutely. You can create unlimited plan types and assign them to individuals or groups."
+            },
+            {
+                q: "Is GST support included?",
+                a: "Yes. Tax configurations are fully customisable per plan and auto-applied to generated invoices."
+            }
         ]
     },
     {
         slug: "inventory",
         title: "Inventory Management",
+        icon: "📦",
         summary: "Control stock movement and procurement with demand intelligence.",
         painPoints: [
-            "Stockouts",
-            "Over-procurement",
-            "No wastage visibility"
+            "Stockouts during peak meal times disrupt service and harm reputation",
+            "Over-procurement due to guesswork inflates ingredient costs significantly",
+            "No visibility into daily wastage makes cost optimisation impossible"
         ],
         features: [
-            "Ingredient-wise stock tracking",
-            "Low-stock alerts",
-            "Vendor and purchase logging",
-            "Wastage trend analysis"
+            "Ingredient-wise stock tracking with opening and closing balances",
+            "Low-stock alerts and automatic reorder triggers",
+            "Vendor and purchase order logging",
+            "Wastage trend analysis by ingredient and time period"
+        ],
+        workflowSteps: [
+            {
+                label: "Stock Received",
+                sub: "Vendor logged in"
+            },
+            {
+                label: "Consumption Tracked",
+                sub: "Per meal usage"
+            },
+            {
+                label: "Wastage Recorded",
+                sub: "Daily close entry"
+            },
+            {
+                label: "Insights Generated",
+                sub: "Trend dashboards"
+            }
         ],
         benefits: [
-            "Lower procurement cost",
-            "Controlled wastage",
-            "Better margins"
+            "Lower procurement cost by 15–20% through demand-aligned purchasing",
+            "Eliminate surprise stockouts with proactive low-stock alerts",
+            "Better margins through daily wastage visibility and control"
+        ],
+        faqs: [
+            {
+                q: "Can I track multiple stores or cold storage units?",
+                a: "Yes. Multiple inventory locations can be configured and tracked independently from a single dashboard."
+            },
+            {
+                q: "Does inventory link to menu planning?",
+                a: "Yes. Ingredient requirements can be mapped to menu items so stock consumption is automatically calculated based on meals served."
+            },
+            {
+                q: "Can vendors submit invoices through the system?",
+                a: "Vendor purchase logs can be entered by your team. Direct vendor portal access is on the product roadmap."
+            }
         ]
     },
     {
         slug: "analytics",
         title: "Analytics & Reports",
+        icon: "📊",
         summary: "Unified operational intelligence for founders and operations teams.",
         painPoints: [
-            "Scattered reports",
-            "No benchmark data",
-            "Slow decisions"
+            "Reports are scattered across spreadsheets, WhatsApp groups, and registers",
+            "No benchmark data makes it impossible to know if performance is improving",
+            "Slow, manual report preparation delays critical operational decisions"
         ],
         features: [
-            "Executive KPI dashboards",
-            "Meal trend and churn insights",
-            "Revenue vs consumption reports",
-            "Export-ready board reports"
+            "Executive KPI dashboards with daily, weekly, monthly views",
+            "Meal trend, churn, and member retention insights",
+            "Revenue vs. consumption variance reports",
+            "Export-ready board-level reports (PDF/Excel)"
+        ],
+        workflowSteps: [
+            {
+                label: "Data Captured",
+                sub: "Every module feeds in"
+            },
+            {
+                label: "Unified & Clean",
+                sub: "Auto-reconciled"
+            },
+            {
+                label: "Dashboard Updated",
+                sub: "Real-time KPIs"
+            },
+            {
+                label: "Export & Share",
+                sub: "PDF / Excel reports"
+            }
         ],
         benefits: [
-            "Faster decisions",
-            "Clear operational transparency",
-            "Enterprise-ready reporting"
+            "Faster operational decisions backed by live data",
+            "Clear transparency across all food operations in one view",
+            "Enterprise-ready reporting for board reviews and audits"
+        ],
+        faqs: [
+            {
+                q: "Can I customise which KPIs appear on my dashboard?",
+                a: "Yes. Dashboard widgets are configurable per role — operators, managers, and owners each get a tailored view."
+            },
+            {
+                q: "How far back does historical data go?",
+                a: "From the moment you onboard. All historical data is retained for the full life of your account."
+            },
+            {
+                q: "Can I schedule automatic report delivery to email?",
+                a: "Yes. Scheduled email reports can be configured for daily, weekly, or monthly delivery to any recipient list."
+            }
         ]
     },
     {
         slug: "mobile-app",
         title: "Mobile App",
+        icon: "📱",
         summary: "A fast mobile experience for diners, admins, and field teams.",
         painPoints: [
-            "Low digital adoption",
-            "No real-time updates",
-            "Poor UX"
+            "Low digital adoption due to poor or non-existent mobile interfaces",
+            "Members have no real-time updates on meals, schedules, or billing",
+            "Admins have no way to monitor or act on issues when away from their desk"
         ],
         features: [
-            "Meal booking and attendance in one app",
-            "Push reminders and plan updates",
-            "Admin controls on the go",
-            "Usage analytics"
+            "Member app: meal booking, attendance, and payment in one place",
+            "Push reminders for meal windows, plan renewals, and due dates",
+            "Admin controls — approve, pause, and manage members on the go",
+            "Usage analytics to track engagement and drop-off"
+        ],
+        workflowSteps: [
+            {
+                label: "Install App",
+                sub: "Android & iOS"
+            },
+            {
+                label: "Member Onboards",
+                sub: "Self-registration"
+            },
+            {
+                label: "Daily Usage",
+                sub: "Book, pay, track"
+            },
+            {
+                label: "Admin Monitors",
+                sub: "Live dashboard"
+            }
         ],
         benefits: [
-            "Higher engagement",
-            "Operational agility",
-            "Always-on experience"
+            "Higher member engagement and digital adoption rates",
+            "Operational agility — manage your mess from anywhere",
+            "Always-on experience keeps members informed and satisfied"
+        ],
+        faqs: [
+            {
+                q: "Is the app available on both Android and iOS?",
+                a: "Yes. The Mealiez member and admin apps are available on both Android (Play Store) and iOS (App Store)."
+            },
+            {
+                q: "Can members make payments through the app?",
+                a: "Yes. Members can pay dues directly through the app via UPI, cards, or net banking."
+            },
+            {
+                q: "What permissions does the admin app require?",
+                a: "Camera (for QR scanning), notifications, and internet. No sensitive device permissions are required."
+            }
         ]
     }
 ];
@@ -142,74 +340,213 @@ const solutions = [
     {
         slug: "hostel-mess",
         title: "Hostel Mess Management",
-        challenge: "Student attendance shifts daily, making planning difficult.",
-        currentProcess: "Manual registers and spreadsheets cause overcooking and leakage.",
+        icon: "🏠",
+        tagline: "Automate your hostel food operations from booking to billing.",
+        challenge: "Student attendance shifts daily, making meal planning and cost control extremely difficult for hostel mess operators.",
+        currentProcess: "Manual registers, paper-based meal opting, and spreadsheet billing create chronic overcooking, financial leakage, and warden headaches.",
         mealiezApproach: [
-            "Attendance-backed meal forecasting",
-            "Automated billing by plan",
-            "Hostel-wise dashboard visibility"
+            "Attendance-backed meal forecasting eliminates overcooking",
+            "Automated billing by plan reduces collection friction",
+            "Hostel-wise dashboard gives wardens full visibility",
+            "Student app for self-service booking and payment"
         ],
-        roiImpact: "Reduce wastage by up to 18% and improve collection cycles by 25%."
+        relevantFeatures: [
+            "Meal Booking",
+            "Attendance Management",
+            "Billing & Payments",
+            "Analytics & Reports",
+            "Mobile App"
+        ],
+        roiImpact: "Reduce food wastage by up to 18% and improve collection cycles by 25% within the first 60 days.",
+        faqItems: [
+            {
+                q: "Can Mealiez handle multiple hostel blocks under one account?",
+                a: "Yes. Multi-block and multi-floor configurations are fully supported under a single operator dashboard."
+            },
+            {
+                q: "What if students leave mid-month?",
+                a: "Pro-rated billing on plan termination is handled automatically with configurable refund policies."
+            },
+            {
+                q: "Can wardens get daily meal count reports on WhatsApp?",
+                a: "Automated daily summary reports can be configured to deliver via email; WhatsApp integration is on the roadmap."
+            }
+        ]
     },
     {
         slug: "college-canteen",
         title: "College Canteens",
-        challenge: "High rush-hour demand with low predictability.",
-        currentProcess: "Token and cash-based ops lead to delays and poor reporting.",
+        icon: "🎓",
+        tagline: "Serve thousands of students efficiently with zero-queue digital ops.",
+        challenge: "High rush-hour demand with completely unpredictable daily headcounts makes college canteens the hardest food service to manage manually.",
+        currentProcess: "Token and cash-based operations cause long queues, revenue leakage, no demand insight, and chaotic kitchen preparation.",
         mealiezApproach: [
-            "Pre-booking with queue smoothing",
-            "Digital attendance and payments",
-            "Faculty/student segmentation"
+            "Pre-booking with queue smoothing reduces peak-hour congestion",
+            "Digital attendance and payments eliminate cash handling",
+            "Faculty and student plan segmentation for precision billing",
+            "Live dashboards show real-time counter and prep demand"
         ],
-        roiImpact: "Serve peak demand faster while cutting queue friction and food waste."
+        relevantFeatures: [
+            "Meal Booking",
+            "Attendance Management",
+            "Billing & Payments",
+            "Mobile App"
+        ],
+        roiImpact: "Serve peak demand 40% faster while eliminating queue friction and reducing daily food waste by 20%.",
+        faqItems: [
+            {
+                q: "Can the system handle subsidised faculty meal rates separately?",
+                a: "Yes. Multiple pricing tiers, including subsidised rates for different user groups, are fully configurable."
+            },
+            {
+                q: "Does the canteen need to be fully digital to start?",
+                a: "No. You can run a hybrid model — digital for pre-booked members, manual counter for walk-ins — and scale up gradually."
+            },
+            {
+                q: "Can we link the system to the college ERP?",
+                a: "Yes. API integrations with common college ERP and attendance systems are available on request for Enterprise accounts."
+            }
+        ]
     },
     {
         slug: "industrial-canteen",
         title: "Industrial Canteens",
-        challenge: "Shift-based meal counts and compliance needs are complex.",
-        currentProcess: "Manual rosters and delayed reconciliation increase errors.",
+        icon: "🏭",
+        tagline: "Shift-accurate, audit-ready meal management for industrial scale.",
+        challenge: "Shift-based meal counts, contractor workforce mixing, and compliance reporting requirements make industrial canteens uniquely complex to manage.",
+        currentProcess: "Manual rosters, delayed reconciliation between HR and canteen systems, and paper-based audit trails increase errors and compliance risk.",
         mealiezApproach: [
-            "Shift-aware attendance automation",
-            "Meal-wise cost controls",
-            "Audit-friendly reports"
+            "Shift-aware attendance automation maps meals to work shifts",
+            "Contractor and employee meal cost separation for accurate billing",
+            "Audit-friendly digital reports replace paper trails",
+            "Inventory controls tuned for high-volume batch cooking"
         ],
-        roiImpact: "Improve cost predictability and reduce attendance mismatch losses."
+        relevantFeatures: [
+            "Attendance Management",
+            "Billing & Payments",
+            "Inventory Management",
+            "Analytics & Reports"
+        ],
+        roiImpact: "Improve cost predictability and reduce attendance mismatch losses by up to 22% within the first quarter.",
+        faqItems: [
+            {
+                q: "Can meals be tracked per contractor company separately?",
+                a: "Yes. Contractor-wise meal segregation and cost allocation reporting are fully supported."
+            },
+            {
+                q: "How does the system handle 3-shift operations?",
+                a: "Shift windows are fully configurable. The system auto-assigns the correct meal type and cost rate based on check-in time."
+            },
+            {
+                q: "Is the data exportable for government compliance reports?",
+                a: "Yes. All attendance and consumption data can be exported in standard formats for statutory compliance requirements."
+            }
+        ]
     },
     {
         slug: "corporate-cafeteria",
         title: "Corporate Cafeterias",
-        challenge: "Hybrid work creates fluctuating meal demand.",
-        currentProcess: "No reliable way to link attendance with food planning.",
+        icon: "🏢",
+        tagline: "Smart cafeteria management for the hybrid work era.",
+        challenge: "Hybrid and remote work creates wildly fluctuating daily cafeteria demand, making meal prep planning and cost control nearly impossible.",
+        currentProcess: "Without reliable attendance-linked demand data, corporate kitchens either over-produce and waste, or under-produce and disappoint employees.",
         mealiezApproach: [
-            "Employee pre-booking",
-            "Department-level analytics",
-            "Smart demand insights"
+            "Employee meal pre-booking links to attendance data for precise planning",
+            "Department-level meal analytics for cost allocation and HR reporting",
+            "Smart demand insights reduce idle production and procurement costs",
+            "Integrated employee subsidy and wallet management"
         ],
-        roiImpact: "Increase cafeteria efficiency and reduce idle production."
+        relevantFeatures: [
+            "Meal Booking",
+            "Analytics & Reports",
+            "Billing & Payments",
+            "Mobile App"
+        ],
+        roiImpact: "Increase cafeteria efficiency by 35% and reduce idle food production costs by up to 28%.",
+        faqItems: [
+            {
+                q: "Can different departments have different meal subsidy levels?",
+                a: "Yes. Department-wise subsidy configurations and wallet top-ups are fully supported."
+            },
+            {
+                q: "Does the system work for multi-city office footprints?",
+                a: "Yes. Multi-location configurations under a single corporate account are available in the Enterprise plan."
+            },
+            {
+                q: "Can we integrate with our existing HR / HRMS system?",
+                a: "Yes. HRMS and access control integrations are supported via API for Enterprise customers."
+            }
+        ]
     },
     {
         slug: "cloud-kitchen",
         title: "Cloud Kitchens",
-        challenge: "Multi-channel order and prep planning can become chaotic.",
-        currentProcess: "Disconnected systems block accurate demand planning.",
+        icon: "☁️",
+        tagline: "Centralised production planning for high-throughput cloud operations.",
+        challenge: "Multi-channel order aggregation, subscription management, and production planning can become chaotic without a unified operations platform.",
+        currentProcess: "Disconnected systems across aggregators, WhatsApp orders, and manual prep sheets block accurate demand planning and inflate ingredient costs.",
         mealiezApproach: [
-            "Centralized booking and production planning",
-            "Inventory-led menu decisions",
-            "Performance dashboards"
+            "Centralised booking and production planning for all channels",
+            "Inventory-led menu decisions reduce ingredient waste",
+            "Subscription billing and renewal automation for meal plan customers",
+            "Performance dashboards track per-SKU profitability"
         ],
-        roiImpact: "Support predictable throughput with lower ingredient loss."
+        relevantFeatures: [
+            "Meal Booking",
+            "Inventory Management",
+            "Billing & Payments",
+            "Analytics & Reports"
+        ],
+        roiImpact: "Support predictable throughput with 25% lower ingredient loss and improved subscription renewal rates.",
+        faqItems: [
+            {
+                q: "Can we manage multiple kitchen locations from one dashboard?",
+                a: "Yes. Multi-kitchen management under one operator account is fully supported in the Enterprise plan."
+            },
+            {
+                q: "Does Mealiez integrate with Swiggy or Zomato?",
+                a: "Direct aggregator integrations are on the roadmap. Currently, subscription and direct-to-customer orders are the primary use case."
+            },
+            {
+                q: "How does subscription billing work for meal plan customers?",
+                a: "Recurring billing cycles are configured per plan. Automated reminders and payment links are sent before each renewal date."
+            }
+        ]
     },
     {
         slug: "subscription-mess-business",
         title: "Subscription Mess Businesses",
-        challenge: "Managing recurring meal plans and churn is hard at scale.",
-        currentProcess: "Manual renewals and collections reduce retention.",
+        icon: "🔁",
+        tagline: "Grow your tiffin or meal subscription business on autopilot.",
+        challenge: "Managing hundreds of recurring meal plan customers, churn prevention, and manual collection cycles is unscalable without the right system.",
+        currentProcess: "Manual renewals via WhatsApp, cash collection rounds, and Excel subscriber tracking reduce retention and burn operator time every month.",
         mealiezApproach: [
-            "Recurring subscription billing",
-            "Smart reminders and renewals",
-            "Retention and churn analytics"
+            "Recurring subscription billing with automated payment reminders",
+            "Smart renewal alerts sent before plan expiry",
+            "Churn tracking and retention analytics to identify at-risk customers",
+            "Delivery route and customer management for tiffin operations"
         ],
-        roiImpact: "Increase renewals and lifetime value through automated workflows."
+        relevantFeatures: [
+            "Billing & Payments",
+            "Analytics & Reports",
+            "Mobile App",
+            "Meal Booking"
+        ],
+        roiImpact: "Increase monthly renewal rates by 30% and eliminate manual collection cycles entirely.",
+        faqItems: [
+            {
+                q: "Can customers pause their meal plan for holidays?",
+                a: "Yes. Plan pause, skip, and resume functionality is configurable by the operator and can be self-served by the customer."
+            },
+            {
+                q: "How are delivery routes managed?",
+                a: "Delivery zone and route configuration with customer location tagging is available. Turn-by-turn routing integrations are on the roadmap."
+            },
+            {
+                q: "Can we offer trial plans to new customers?",
+                a: "Yes. Trial plan durations and conversion flows are fully configurable within the billing module."
+            }
+        ]
     }
 ];
 const navMenus = {
@@ -239,6 +576,10 @@ var _s = __turbopack_context__.k.signature();
 ;
 const topLinks = [
     {
+        href: "/why-mealiez",
+        label: "Why Mealiez"
+    },
+    {
         href: "/pricing",
         label: "Pricing"
     },
@@ -249,6 +590,10 @@ const topLinks = [
     {
         href: "/resources",
         label: "Resources"
+    },
+    {
+        href: "/company",
+        label: "Company"
     }
 ];
 function SiteHeader() {
@@ -260,7 +605,7 @@ function SiteHeader() {
             position: "sticky",
             top: 0,
             zIndex: 50,
-            background: "rgba(255,252,249,0.88)",
+            background: "rgba(255,252,249,0.92)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             borderBottom: "1px solid rgba(255,107,53,0.08)",
@@ -270,9 +615,9 @@ function SiteHeader() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `
         .nav-link {
-          font-size: 14px; font-weight: 500; color: #333;
+          font-size: 13.5px; font-weight: 500; color: #333;
           text-decoration: none; padding: 8px 0;
-          transition: color 0.15s; position: relative;
+          transition: color 0.15s; position: relative; white-space: nowrap;
         }
         .nav-link:hover { color: #FF6B35; }
         .nav-link.active { color: #FF6B35; font-weight: 600; }
@@ -303,22 +648,23 @@ function SiteHeader() {
           display: block; padding: 8px 12px; border-radius: 8px;
           transition: background 0.15s, color 0.15s;
         }
+        .dropdown-item span.di-icon { font-size: 16px; margin-right: 8px; }
         .dropdown-item:hover { background: #fff3ee; color: #FF6B35; }
         .dropdown-item.active-item { color: #FF6B35; background: rgba(255,107,53,0.05); }
         .header-book-btn {
-          background: #FF6B35; color: #fff; border-radius: 8px;
-          padding: 9px 20px; font-weight: 600; font-size: 14px;
+          background: linear-gradient(135deg, #FF6B35, #FF875C); color: #fff; border-radius: 8px;
+          padding: 9px 20px; font-weight: 600; font-size: 13.5px;
           text-decoration: none; display: inline-block;
-          transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+          transition: opacity 0.15s, box-shadow 0.15s, transform 0.15s;
           box-shadow: 0 4px 14px rgba(255,107,53,0.28);
         }
         .header-book-btn:hover {
-          background: #e55e28;
+          opacity: 0.9;
           box-shadow: 0 6px 22px rgba(255,107,53,0.38);
           transform: translateY(-1px);
         }
         .header-login {
-          font-size: 14px; font-weight: 500; color: #333;
+          font-size: 13.5px; font-weight: 500; color: #333;
           text-decoration: none; padding: 8px 12px; border-radius: 8px;
           transition: color 0.15s, background 0.15s;
         }
@@ -326,7 +672,7 @@ function SiteHeader() {
       `
             }, void 0, false, {
                 fileName: "[project]/src/components/site-header.tsx",
-                lineNumber: 26,
+                lineNumber: 28,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -336,7 +682,7 @@ function SiteHeader() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    padding: "0 40px",
+                    padding: "0 32px",
                     height: 64
                 },
                 children: [
@@ -346,7 +692,8 @@ function SiteHeader() {
                             textDecoration: "none",
                             display: "flex",
                             alignItems: "center",
-                            gap: 8
+                            gap: 8,
+                            flexShrink: 0
                         },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -373,17 +720,17 @@ function SiteHeader() {
                                         d: "M3 11l19-9-9 19-2-8-8-2z"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 100,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/site-header.tsx",
-                                    lineNumber: 96,
+                                    lineNumber: 99,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 90,
+                                lineNumber: 93,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -396,20 +743,22 @@ function SiteHeader() {
                                 children: "Mealiez"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 100,
+                                lineNumber: 103,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-header.tsx",
-                        lineNumber: 89,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
                         style: {
                             display: "flex",
                             alignItems: "center",
-                            gap: 28
+                            gap: 22,
+                            flex: 1,
+                            justifyContent: "center"
                         },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -421,7 +770,7 @@ function SiteHeader() {
                                         children: "Product"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 110,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -436,10 +785,10 @@ function SiteHeader() {
                                                     color: "#555",
                                                     marginBottom: 12
                                                 },
-                                                children: "Explore automation modules that power bookings, attendance, billing, and growth."
+                                                children: "Automation modules for bookings, attendance, billing, inventory and growth."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 112,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -451,27 +800,37 @@ function SiteHeader() {
                                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$site$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["navMenus"].product.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: `/product/${item.slug}`,
                                                         className: `dropdown-item${path === `/product/${item.slug}` ? " active-item" : ""}`,
-                                                        children: item.title
-                                                    }, item.slug, false, {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "di-icon",
+                                                                children: item.icon
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/site-header.tsx",
+                                                                lineNumber: 122,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            item.title
+                                                        ]
+                                                    }, item.slug, true, {
                                                         fileName: "[project]/src/components/site-header.tsx",
-                                                        lineNumber: 113,
+                                                        lineNumber: 117,
                                                         columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 111,
+                                                lineNumber: 115,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 111,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 105,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -483,7 +842,7 @@ function SiteHeader() {
                                         children: "Solutions"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 131,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -498,10 +857,10 @@ function SiteHeader() {
                                                     color: "#555",
                                                     marginBottom: 12
                                                 },
-                                                children: "Pick your industry journey and see tailored workflows designed for scale and control."
+                                                children: "Industry-specific workflows designed for operational scale and control."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 133,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -513,27 +872,37 @@ function SiteHeader() {
                                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$site$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["navMenus"].solutions.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: `/solutions/${item.slug}`,
                                                         className: `dropdown-item${path === `/solutions/${item.slug}` ? " active-item" : ""}`,
-                                                        children: item.title
-                                                    }, item.slug, false, {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "di-icon",
+                                                                children: item.icon
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/site-header.tsx",
+                                                                lineNumber: 143,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            item.title
+                                                        ]
+                                                    }, item.slug, true, {
                                                         fileName: "[project]/src/components/site-header.tsx",
-                                                        lineNumber: 133,
+                                                        lineNumber: 138,
                                                         columnNumber: 19
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-header.tsx",
-                                                lineNumber: 131,
+                                                lineNumber: 136,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/site-header.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 125,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this),
                             topLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -542,29 +911,30 @@ function SiteHeader() {
                                     children: link.label
                                 }, link.href, false, {
                                     fileName: "[project]/src/components/site-header.tsx",
-                                    lineNumber: 146,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-header.tsx",
-                        lineNumber: 104,
+                        lineNumber: 107,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
                             display: "flex",
                             alignItems: "center",
-                            gap: 8
+                            gap: 8,
+                            flexShrink: 0
                         },
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/company",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: "#",
                                 className: "header-login",
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 158,
+                                lineNumber: 163,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -573,25 +943,25 @@ function SiteHeader() {
                                 children: "Book Demo"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-header.tsx",
-                                lineNumber: 159,
+                                lineNumber: 164,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-header.tsx",
-                        lineNumber: 157,
+                        lineNumber: 162,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/site-header.tsx",
-                lineNumber: 83,
+                lineNumber: 86,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/site-header.tsx",
-        lineNumber: 18,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -632,7 +1002,7 @@ const footerColumns = [
                 "/product/attendance"
             ],
             [
-                "Billing",
+                "Billing & Payments",
                 "/product/billing"
             ],
             [
@@ -661,16 +1031,20 @@ const footerColumns = [
                 "/solutions/college-canteen"
             ],
             [
-                "Corporate Cafeteria",
-                "/solutions/corporate-cafeteria"
-            ],
-            [
                 "Industrial Canteen",
                 "/solutions/industrial-canteen"
             ],
             [
+                "Corporate Cafeteria",
+                "/solutions/corporate-cafeteria"
+            ],
+            [
                 "Cloud Kitchen",
                 "/solutions/cloud-kitchen"
+            ],
+            [
+                "Subscription Mess",
+                "/solutions/subscription-mess-business"
             ]
         ]
     },
@@ -679,19 +1053,27 @@ const footerColumns = [
         links: [
             [
                 "Blog",
-                "/resources"
+                "/blog"
             ],
             [
                 "Guides",
-                "/resources"
+                "/guides"
             ],
             [
                 "Reports",
-                "/resources"
+                "/reports"
             ],
             [
                 "Case Studies",
                 "/customers"
+            ],
+            [
+                "ROI Calculator",
+                "/resources/roi-calculator"
+            ],
+            [
+                "Cost Leakage Calc",
+                "/resources/cost-leakage-calculator"
             ]
         ]
     },
@@ -703,8 +1085,20 @@ const footerColumns = [
                 "/company"
             ],
             [
+                "Founder Story",
+                "/company#founder-story"
+            ],
+            [
+                "Mission & Vision",
+                "/company#mission-vision"
+            ],
+            [
+                "Why Mealiez",
+                "/why-mealiez"
+            ],
+            [
                 "Contact",
-                "/company"
+                "/company#contact"
             ],
             [
                 "Book Demo",
@@ -713,38 +1107,156 @@ const footerColumns = [
         ]
     },
     {
-        title: "LEGAL",
+        title: "Legal",
         links: [
             [
                 "Privacy Policy",
                 "/security"
             ],
             [
-                "Terms",
+                "Terms of Service",
                 "/security"
             ],
             [
                 "Security",
                 "/security"
+            ],
+            [
+                "Data Infrastructure",
+                "/security"
             ]
         ]
+    }
+];
+const socials = [
+    {
+        label: "LinkedIn",
+        href: "#",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+            width: "18",
+            height: "18",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 67,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                    x: "2",
+                    y: "9",
+                    width: "4",
+                    height: "12"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 67,
+                    columnNumber: 99
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                    cx: "4",
+                    cy: "4",
+                    r: "2"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 67,
+                    columnNumber: 140
+                }, ("TURBOPACK compile-time value", void 0))
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/site-footer.tsx",
+            lineNumber: 66,
+            columnNumber: 7
+        }, ("TURBOPACK compile-time value", void 0))
     },
     {
-        title: "SOCIALS",
-        links: [
-            [
-                "LinkedIn",
-                "#"
-            ],
-            [
-                "Instagram",
-                "#"
-            ],
-            [
-                "YouTube",
-                "#"
+        label: "Instagram",
+        href: "#",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+            width: "18",
+            height: "18",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                    x: "2",
+                    y: "2",
+                    width: "20",
+                    height: "20",
+                    rx: "5",
+                    ry: "5"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 76,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 76,
+                    columnNumber: 65
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                    x1: "17.5",
+                    y1: "6.5",
+                    x2: "17.51",
+                    y2: "6.5"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 76,
+                    columnNumber: 124
+                }, ("TURBOPACK compile-time value", void 0))
             ]
-        ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/site-footer.tsx",
+            lineNumber: 75,
+            columnNumber: 7
+        }, ("TURBOPACK compile-time value", void 0))
+    },
+    {
+        label: "YouTube",
+        href: "#",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+            width: "18",
+            height: "18",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 85,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+                    points: "9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/site-footer.tsx",
+                    lineNumber: 85,
+                    columnNumber: 283
+                }, ("TURBOPACK compile-time value", void 0))
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/site-footer.tsx",
+            lineNumber: 84,
+            columnNumber: 7
+        }, ("TURBOPACK compile-time value", void 0))
     }
 ];
 function SiteFooter() {
@@ -757,21 +1269,21 @@ function SiteFooter() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `
-        .footer-link { font-size: 13px; color: #666; text-decoration: none; transition: color 0.15s; display: inline-block; }
+        .footer-link { font-size: 13px; color: #666; text-decoration: none; transition: color 0.15s; display: inline-block; line-height: 1; }
         .footer-link:hover { color: #FF6B35; }
-        .footer-social-btn { color: #555; display: inline-flex; padding: 6px; border-radius: 8px; transition: background 0.15s, color 0.15s; text-decoration: none; }
-        .footer-social-btn:hover { background: #fff3ee; color: #FF6B35; }
+        .footer-social-btn { color: #555; display: inline-flex; padding: 7px; border-radius: 9px; transition: background 0.15s, color 0.15s; text-decoration: none; border: 1px solid rgba(0,0,0,0.07); }
+        .footer-social-btn:hover { background: #fff3ee; color: #FF6B35; border-color: rgba(255,107,53,0.2); }
       `
             }, void 0, false, {
                 fileName: "[project]/src/components/site-footer.tsx",
-                lineNumber: 69,
+                lineNumber: 98,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
                     maxWidth: 1200,
                     margin: "0 auto",
-                    padding: "52px 40px 44px",
+                    padding: "56px 32px 44px",
                     display: "flex",
                     gap: 48,
                     alignItems: "flex-start"
@@ -782,19 +1294,21 @@ function SiteFooter() {
                             flex: "0 0 180px"
                         },
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                href: "/",
                                 style: {
+                                    textDecoration: "none",
                                     display: "flex",
                                     alignItems: "center",
                                     gap: 8,
-                                    marginBottom: 16
+                                    marginBottom: 14
                                 },
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         style: {
                                             width: 30,
                                             height: 30,
-                                            background: "#FF6B35",
+                                            background: "linear-gradient(135deg, #FF6B35, #FF875C)",
                                             borderRadius: 8,
                                             display: "flex",
                                             alignItems: "center",
@@ -810,30 +1324,21 @@ function SiteFooter() {
                                             strokeWidth: "2.5",
                                             strokeLinecap: "round",
                                             strokeLinejoin: "round",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 88,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M12 8v4l3 3"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 89,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M3 11l19-9-9 19-2-8-8-2z"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/site-footer.tsx",
+                                                lineNumber: 119,
+                                                columnNumber: 17
+                                            }, this)
+                                        }, void 0, false, {
                                             fileName: "[project]/src/components/site-footer.tsx",
-                                            lineNumber: 87,
+                                            lineNumber: 118,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 83,
+                                        lineNumber: 113,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -846,235 +1351,91 @@ function SiteFooter() {
                                         children: "Mealiez"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 122,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 82,
+                                lineNumber: 112,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 style: {
                                     fontSize: 12,
-                                    color: "#888",
-                                    lineHeight: 1.6,
-                                    marginBottom: 20,
-                                    maxWidth: 160
+                                    color: "#999",
+                                    lineHeight: 1.65,
+                                    marginBottom: 6,
+                                    maxWidth: 164
                                 },
-                                children: "© 2024 Mealiez Culinary OS. All rights reserved."
+                                children: "The operating system for modern messes and food service businesses."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 95,
+                                lineNumber: 125,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                style: {
+                                    fontSize: 11,
+                                    color: "#bbb",
+                                    lineHeight: 1.6,
+                                    marginBottom: 20
+                                },
+                                children: "© 2026 Mealiez. All rights reserved."
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/site-footer.tsx",
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
                                     display: "flex",
-                                    gap: 4,
+                                    gap: 6,
                                     alignItems: "center"
                                 },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        href: "#",
+                                children: socials.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                        href: s.href,
                                         className: "footer-social-btn",
-                                        "aria-label": "Share",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            width: "18",
-                                            height: "18",
-                                            viewBox: "0 0 24 24",
-                                            fill: "none",
-                                            stroke: "currentColor",
-                                            strokeWidth: "2",
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                    cx: "18",
-                                                    cy: "5",
-                                                    r: "3"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 102,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                    cx: "6",
-                                                    cy: "12",
-                                                    r: "3"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 102,
-                                                    columnNumber: 47
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                    cx: "18",
-                                                    cy: "19",
-                                                    r: "3"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 102,
-                                                    columnNumber: 77
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
-                                                    x1: "8.59",
-                                                    y1: "13.51",
-                                                    x2: "15.42",
-                                                    y2: "17.49"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 103,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
-                                                    x1: "15.41",
-                                                    y1: "6.51",
-                                                    x2: "8.59",
-                                                    y2: "10.49"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 103,
-                                                    columnNumber: 67
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/site-footer.tsx",
-                                            lineNumber: 101,
-                                            columnNumber: 15
-                                        }, this)
-                                    }, void 0, false, {
+                                        "aria-label": s.label,
+                                        children: s.icon
+                                    }, s.label, false, {
                                         fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 100,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        href: "#",
-                                        className: "footer-social-btn",
-                                        "aria-label": "Website",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            width: "18",
-                                            height: "18",
-                                            viewBox: "0 0 24 24",
-                                            fill: "none",
-                                            stroke: "currentColor",
-                                            strokeWidth: "2",
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                    cx: "12",
-                                                    cy: "12",
-                                                    r: "10"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 108,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
-                                                    x1: "2",
-                                                    y1: "12",
-                                                    x2: "22",
-                                                    y2: "12"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 109,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 110,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/site-footer.tsx",
-                                            lineNumber: 107,
-                                            columnNumber: 15
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 106,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        href: "#",
-                                        className: "footer-social-btn",
-                                        "aria-label": "Copy",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            width: "18",
-                                            height: "18",
-                                            viewBox: "0 0 24 24",
-                                            fill: "none",
-                                            stroke: "currentColor",
-                                            strokeWidth: "2",
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
-                                                    x: "9",
-                                                    y: "9",
-                                                    width: "13",
-                                                    height: "13",
-                                                    rx: "2",
-                                                    ry: "2"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 115,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 116,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/site-footer.tsx",
-                                            lineNumber: 114,
-                                            columnNumber: 15
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 113,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                        lineNumber: 134,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
                                 fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 99,
+                                lineNumber: 132,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-footer.tsx",
-                        lineNumber: 81,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
                             flex: 1,
                             display: "grid",
-                            gridTemplateColumns: "repeat(6, 1fr)",
-                            gap: 12
+                            gridTemplateColumns: "repeat(5, 1fr)",
+                            gap: 8
                         },
                         children: footerColumns.map((col)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                         style: {
-                                            fontSize: 13,
-                                            fontWeight: 700,
+                                            fontSize: 11,
+                                            fontWeight: 800,
                                             color: "#1a1a1a",
-                                            marginBottom: 14
+                                            marginBottom: 16,
+                                            textTransform: "uppercase",
+                                            letterSpacing: "0.06em"
                                         },
                                         children: col.title
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 150,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1085,7 +1446,7 @@ function SiteFooter() {
                                         },
                                         children: col.links.map(([label, href])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                 style: {
-                                                    marginBottom: 10
+                                                    marginBottom: 11
                                                 },
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                     href: href,
@@ -1093,40 +1454,103 @@ function SiteFooter() {
                                                     children: label
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 140,
+                                                    lineNumber: 159,
                                                     columnNumber: 21
                                                 }, this)
                                             }, label, false, {
                                                 fileName: "[project]/src/components/site-footer.tsx",
-                                                lineNumber: 139,
+                                                lineNumber: 158,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 137,
+                                        lineNumber: 156,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, col.title, true, {
                                 fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 130,
+                                lineNumber: 149,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/site-footer.tsx",
-                        lineNumber: 123,
+                        lineNumber: 142,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/site-footer.tsx",
-                lineNumber: 75,
+                lineNumber: 105,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    borderTop: "1px solid rgba(0,0,0,0.05)",
+                    maxWidth: 1200,
+                    margin: "0 auto",
+                    padding: "16px 32px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between"
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: {
+                            fontSize: 12,
+                            color: "#bbb"
+                        },
+                        children: "Made with ❤️ for mess operators across India."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 175,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            display: "flex",
+                            gap: 20
+                        },
+                        children: [
+                            [
+                                "Privacy",
+                                "/security"
+                            ],
+                            [
+                                "Terms",
+                                "/security"
+                            ],
+                            [
+                                "Security",
+                                "/security"
+                            ]
+                        ].map(([label, href])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                href: href,
+                                className: "footer-link",
+                                style: {
+                                    fontSize: 12
+                                },
+                                children: label
+                            }, label, false, {
+                                fileName: "[project]/src/components/site-footer.tsx",
+                                lineNumber: 178,
+                                columnNumber: 13
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 176,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/site-footer.tsx",
+                lineNumber: 169,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/site-footer.tsx",
-        lineNumber: 64,
+        lineNumber: 93,
         columnNumber: 5
     }, this);
 }
