@@ -912,6 +912,26 @@ body {
 h1, h2, h3 {
   font-family: var(--font-body);
   letter-spacing: -.025em;
+  margin: 0;
+}
+
+.pp, .co, .sec, .clc, .rp, .gp, .rpts, .bp, .rc {
+  font-family: var(--font-body);
+}
+
+button, input, textarea, select {
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  -webkit-font-smoothing: antialiased;
+}
+
+.stat-num {
+  font-family: var(--font-body);
+  font-feature-settings: "tnum" on, "lnum" on;
+  font-variant-numeric: tabular-nums;
 }
 
 .container-md {

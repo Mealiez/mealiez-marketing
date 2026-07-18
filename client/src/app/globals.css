@@ -19,10 +19,10 @@
   --shadow-lg: 0 16px 56px rgba(31,38,135,0.10);
   --shadow-orange: 0 8px 32px rgba(255,107,53,0.25);
 
-  /* Typography */
-  --font-body:    'Inter', 'DM Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-ui:      'Inter', system-ui, sans-serif;
+  /* Typography — Bricolage Grotesque (headings) + Plus Jakarta Sans (body/UI) */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-ui:      'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -35,33 +35,63 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'ss01' on, 'cv03' on, 'cv04' on, 'liga' on;
+  font-feature-settings: 'liga' on, 'kern' on;
   font-optical-sizing: auto;
+  font-size: 16px;
   width: 100%;
 }
 
-/* Display / editorial headings */
+/* Bricolage Grotesque utility — add to any element for display treatment */
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
 }
 
-h1, h2, h3 {
-  font-family: var(--font-body);
+/*
+  ALL headings use Bricolage Grotesque:
+  – distinctive, geometric, premium SaaS feel
+  – optical sizing auto for crisp rendering at every scale
+*/
+h1 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.1;
+}
+h2 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 700;
   letter-spacing: -0.025em;
   margin: 0;
+  line-height: 1.18;
+}
+h3, h4 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.25;
 }
 
-/* ── Page-scoped font classes (used in inline-style pages) ── */
-/* All inline page containers inherit the global font stack */
-.pp, .co, .sec, .clc, .rp, .gp, .rpts, .bp, .rc {
+/* ── Page-scoped containers: all use Plus Jakarta Sans ── */
+.pp, .co, .sec, .clc, .rp, .gp, .rpts, .bp, .rc, .bd, .lp {
   font-family: var(--font-body);
 }
 
-/* Buttons and inputs always use Inter */
+/* Form controls: Plus Jakarta Sans for consistent UI */
 button, input, textarea, select {
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Nav, labels, badges: Plus Jakarta Sans — crisp at small sizes */
+nav, label, .nav-link, .badge, .tag {
+  font-family: var(--font-ui);
 }
 
 /* Better link defaults */

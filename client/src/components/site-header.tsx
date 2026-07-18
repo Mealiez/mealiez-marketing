@@ -28,6 +28,7 @@ export function SiteHeader() {
       <style>{`
         .nav-link {
           font-size: 13.5px; font-weight: 500; color: #333;
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
           text-decoration: none; padding: 8px 0;
           transition: color 0.15s; position: relative; white-space: nowrap;
         }
@@ -65,7 +66,8 @@ export function SiteHeader() {
         .dropdown-item.active-item { color: #FF6B35; background: rgba(255,107,53,0.05); }
         .header-book-btn {
           background: linear-gradient(135deg, #FF6B35, #FF875C); color: #fff; border-radius: 8px;
-          padding: 9px 20px; font-weight: 600; font-size: 13.5px;
+          padding: 9px 20px; font-weight: 700; font-size: 13.5px;
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
           text-decoration: none; display: inline-block;
           transition: opacity 0.15s, box-shadow 0.15s, transform 0.15s;
           box-shadow: 0 4px 14px rgba(255,107,53,0.28);
@@ -77,6 +79,7 @@ export function SiteHeader() {
         }
         .header-login {
           font-size: 13.5px; font-weight: 500; color: #333;
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
           text-decoration: none; padding: 8px 12px; border-radius: 8px;
           transition: color 0.15s, background 0.15s;
         }
@@ -100,7 +103,7 @@ export function SiteHeader() {
               <path d="M3 11l19-9-9 19-2-8-8-2z"/>
             </svg>
           </div>
-          <span style={{ fontSize: 20, fontWeight: 800, color: "#FF6B35", letterSpacing: "-0.02em" }}>Mealiez</span>
+          <span style={{ fontSize: 20, fontWeight: 800, color: "#FF6B35", letterSpacing: "-0.03em", fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>Mealiez</span>
         </Link>
 
         {/* Nav */}
