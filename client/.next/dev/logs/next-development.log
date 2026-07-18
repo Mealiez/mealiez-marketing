@@ -22,3 +22,7 @@
 {"timestamp":"12:48:01.587","source":"Server","level":"LOG","message":"✓ Compiled in 517ms"}
 {"timestamp":"12:49:47.025","source":"Server","level":"LOG","message":"✓ Compiled in 377ms"}
 {"timestamp":"12:57:04.689","source":"Server","level":"LOG","message":"✓ Compiled in 1205ms"}
+{"timestamp":"12:59:18.436","source":"Server","level":"LOG","message":"○ Compiling /why-mealiez ..."}
+{"timestamp":"12:59:32.348","source":"Browser","level":"WARN","message":"Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior=\"smooth\"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior"}
+{"timestamp":"12:59:33.147","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mDetected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior=\\\"smooth\\\"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior\\u001b[39m\" \"\\u001b[2m(file://C:/Users/JAYDEEP SARDAR/mealiez-marketing/client/.next/dev/static/chunks/node_modules_next_dist_1ybzpk2._.js:2477:13)\\u001b[22m\""}
+{"timestamp":"12:59:33.156","source":"Browser","level":"WARN","message":"\u001b[33mDetected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior=\"smooth\"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior\u001b[39m"}
