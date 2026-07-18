@@ -1133,8 +1133,8 @@ const socials = [
         label: "LinkedIn",
         href: "#",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "18",
-            height: "18",
+            width: "16",
+            height: "16",
             viewBox: "0 0 24 24",
             fill: "none",
             stroke: "currentColor",
@@ -1156,8 +1156,8 @@ const socials = [
                     height: "12"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 67,
-                    columnNumber: 99
+                    lineNumber: 68,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
                     cx: "4",
@@ -1165,8 +1165,8 @@ const socials = [
                     r: "2"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 67,
-                    columnNumber: 140
+                    lineNumber: 69,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
@@ -1179,8 +1179,8 @@ const socials = [
         label: "Instagram",
         href: "#",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "18",
-            height: "18",
+            width: "16",
+            height: "16",
             viewBox: "0 0 24 24",
             fill: "none",
             stroke: "currentColor",
@@ -1197,15 +1197,15 @@ const socials = [
                     ry: "5"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 76,
+                    lineNumber: 78,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 76,
-                    columnNumber: 65
+                    lineNumber: 79,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                     x1: "17.5",
@@ -1214,13 +1214,13 @@ const socials = [
                     y2: "6.5"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 76,
-                    columnNumber: 124
+                    lineNumber: 80,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/site-footer.tsx",
-            lineNumber: 75,
+            lineNumber: 77,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     },
@@ -1228,8 +1228,8 @@ const socials = [
         label: "YouTube",
         href: "#",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "18",
-            height: "18",
+            width: "16",
+            height: "16",
             viewBox: "0 0 24 24",
             fill: "none",
             stroke: "currentColor",
@@ -1241,316 +1241,608 @@ const socials = [
                     d: "M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 85,
+                    lineNumber: 89,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
                     points: "9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
                 }, void 0, false, {
                     fileName: "[project]/src/components/site-footer.tsx",
-                    lineNumber: 85,
-                    columnNumber: 283
+                    lineNumber: 90,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/site-footer.tsx",
-            lineNumber: 84,
+            lineNumber: 88,
+            columnNumber: 7
+        }, ("TURBOPACK compile-time value", void 0))
+    },
+    {
+        label: "Twitter / X",
+        href: "#",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+            width: "16",
+            height: "16",
+            viewBox: "0 0 24 24",
+            fill: "currentColor",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+            }, void 0, false, {
+                fileName: "[project]/src/components/site-footer.tsx",
+                lineNumber: 99,
+                columnNumber: 9
+            }, ("TURBOPACK compile-time value", void 0))
+        }, void 0, false, {
+            fileName: "[project]/src/components/site-footer.tsx",
+            lineNumber: 98,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }
 ];
 function SiteFooter() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
+    return /* ── Warm background that the glass floats over ── */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
         style: {
-            background: "#fff",
-            borderTop: "1px solid rgba(255,107,53,0.1)",
-            fontFamily: "'Inter', system-ui, sans-serif"
+            position: "relative",
+            width: "100%",
+            background: "radial-gradient(ellipse 120% 80% at 0% 0%, rgba(255,107,53,0.13) 0%, transparent 55%)," + "radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255,162,127,0.11) 0%, transparent 50%)," + "radial-gradient(ellipse 100% 70% at 50% 100%, rgba(255,135,92,0.09) 0%, transparent 55%)," + "#fef6f0",
+            overflow: "hidden"
         },
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
-                children: `
-        .footer-link { font-size: 13px; color: #666; text-decoration: none; transition: color 0.15s; display: inline-block; line-height: 1; }
-        .footer-link:hover { color: #FF6B35; }
-        .footer-social-btn { color: #555; display: inline-flex; padding: 7px; border-radius: 9px; transition: background 0.15s, color 0.15s; text-decoration: none; border: 1px solid rgba(0,0,0,0.07); }
-        .footer-social-btn:hover { background: #fff3ee; color: #FF6B35; border-color: rgba(255,107,53,0.2); }
-      `
-            }, void 0, false, {
-                fileName: "[project]/src/components/site-footer.tsx",
-                lineNumber: 98,
-                columnNumber: 7
-            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                "aria-hidden": true,
                 style: {
-                    maxWidth: 1200,
-                    margin: "0 auto",
-                    padding: "56px 32px 44px",
-                    display: "flex",
-                    gap: 48,
-                    alignItems: "flex-start"
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none"
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
-                            flex: "0 0 180px"
+                            position: "absolute",
+                            top: -80,
+                            left: "10%",
+                            width: 520,
+                            height: 520,
+                            borderRadius: "50%",
+                            background: "radial-gradient(circle, rgba(255,107,53,0.10) 0%, transparent 65%)",
+                            filter: "blur(48px)"
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 121,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            position: "absolute",
+                            bottom: -60,
+                            right: "8%",
+                            width: 440,
+                            height: 440,
+                            borderRadius: "50%",
+                            background: "radial-gradient(circle, rgba(255,162,127,0.09) 0%, transparent 65%)",
+                            filter: "blur(56px)"
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 127,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            position: "absolute",
+                            top: "30%",
+                            left: "55%",
+                            width: 320,
+                            height: 320,
+                            borderRadius: "50%",
+                            background: "radial-gradient(circle, rgba(255,107,53,0.06) 0%, transparent 70%)",
+                            filter: "blur(40px)"
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 133,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/site-footer.tsx",
+                lineNumber: 120,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: "relative",
+                    width: "100%",
+                    background: "rgba(255,255,255,0.55)",
+                    backdropFilter: "blur(28px) saturate(1.8) brightness(1.04)",
+                    WebkitBackdropFilter: "blur(28px) saturate(1.8) brightness(1.04)",
+                    borderTop: "1px solid rgba(255,255,255,0.85)",
+                    /* Subtle inner-top highlight */ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.92), 0 -4px 32px rgba(255,107,53,0.04)"
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            borderBottom: "1px solid rgba(255,107,53,0.08)",
+                            padding: "32px 0"
                         },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/",
-                                style: {
-                                    textDecoration: "none",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 8,
-                                    marginBottom: 14
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            width: 30,
-                                            height: 30,
-                                            background: "linear-gradient(135deg, #FF6B35, #FF875C)",
-                                            borderRadius: 8,
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            flexShrink: 0
-                                        },
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            width: "16",
-                                            height: "16",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                maxWidth: 1200,
+                                margin: "0 auto",
+                                padding: "0 40px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                flexWrap: "wrap",
+                                gap: 20
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                fontSize: 11,
+                                                fontWeight: 800,
+                                                color: "#FF6B35",
+                                                letterSpacing: "0.1em",
+                                                textTransform: "uppercase",
+                                                marginBottom: 6
+                                            },
+                                            children: "Ready to modernise your mess?"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 164,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                fontSize: 20,
+                                                fontWeight: 800,
+                                                color: "#1a1a1a",
+                                                letterSpacing: "-0.02em",
+                                                lineHeight: 1.3
+                                            },
+                                            children: "Join 500+ operators already running on Mealiez."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 170,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/site-footer.tsx",
+                                    lineNumber: 163,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    href: "/book-demo",
+                                    style: {
+                                        background: "linear-gradient(135deg, #FF6B35, #FF875C)",
+                                        color: "#fff",
+                                        borderRadius: 12,
+                                        padding: "13px 26px",
+                                        fontWeight: 700,
+                                        fontSize: 14,
+                                        textDecoration: "none",
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        gap: 8,
+                                        boxShadow: "0 6px 22px rgba(255,107,53,0.32), inset 0 1px 0 rgba(255,255,255,0.2)",
+                                        flexShrink: 0,
+                                        fontFamily: "inherit"
+                                    },
+                                    children: [
+                                        "Book a Free Demo",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            width: "14",
+                                            height: "14",
                                             viewBox: "0 0 24 24",
                                             fill: "none",
-                                            stroke: "#fff",
+                                            stroke: "currentColor",
                                             strokeWidth: "2.5",
                                             strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                d: "M3 11l19-9-9 19-2-8-8-2z"
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
+                                                points: "9 18 15 12 9 6"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/site-footer.tsx",
-                                                lineNumber: 119,
-                                                columnNumber: 17
+                                                lineNumber: 193,
+                                                columnNumber: 137
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/site-footer.tsx",
-                                            lineNumber: 118,
+                                            lineNumber: 193,
                                             columnNumber: 15
                                         }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 113,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        style: {
-                                            fontSize: 18,
-                                            fontWeight: 800,
-                                            color: "#FF6B35",
-                                            letterSpacing: "-0.02em"
-                                        },
-                                        children: "Mealiez"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 122,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 112,
-                                columnNumber: 11
-                            }, this),
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/site-footer.tsx",
+                                    lineNumber: 177,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/site-footer.tsx",
+                            lineNumber: 158,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 154,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            maxWidth: 1200,
+                            margin: "0 auto",
+                            padding: "48px 40px 40px"
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                display: "flex",
+                                gap: 48,
+                                alignItems: "flex-start"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        flex: "0 0 196px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                            href: "/",
+                                            style: {
+                                                textDecoration: "none",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: 8,
+                                                marginBottom: 14
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        width: 30,
+                                                        height: 30,
+                                                        background: "linear-gradient(135deg, #FF6B35, #FF875C)",
+                                                        borderRadius: 8,
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        boxShadow: "0 4px 12px rgba(255,107,53,0.35)",
+                                                        flexShrink: 0
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        width: "15",
+                                                        height: "15",
+                                                        viewBox: "0 0 24 24",
+                                                        fill: "none",
+                                                        stroke: "#fff",
+                                                        strokeWidth: "2.5",
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            d: "M3 11l19-9-9 19-2-8-8-2z"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/site-footer.tsx",
+                                                            lineNumber: 214,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/site-footer.tsx",
+                                                        lineNumber: 213,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 205,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        fontSize: 19,
+                                                        fontWeight: 800,
+                                                        color: "#FF6B35",
+                                                        letterSpacing: "-0.025em"
+                                                    },
+                                                    children: "Mealiez"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 217,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 204,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            style: {
+                                                fontSize: 12.5,
+                                                color: "#888",
+                                                lineHeight: 1.7,
+                                                maxWidth: 178,
+                                                marginBottom: 20
+                                            },
+                                            children: "The operating system for modern messes and food service businesses across India."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 220,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                display: "flex",
+                                                gap: 6
+                                            },
+                                            children: socials.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                    href: s.href,
+                                                    "aria-label": s.label,
+                                                    style: {
+                                                        color: "#aaa",
+                                                        display: "inline-flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        width: 30,
+                                                        height: 30,
+                                                        borderRadius: 8,
+                                                        border: "1px solid rgba(0,0,0,0.08)",
+                                                        background: "rgba(255,255,255,0.7)",
+                                                        textDecoration: "none",
+                                                        backdropFilter: "blur(8px)",
+                                                        WebkitBackdropFilter: "blur(8px)",
+                                                        transition: "color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s"
+                                                    },
+                                                    onMouseEnter: (e)=>{
+                                                        const el = e.currentTarget;
+                                                        el.style.color = "#FF6B35";
+                                                        el.style.background = "rgba(255,107,53,0.08)";
+                                                        el.style.borderColor = "rgba(255,107,53,0.22)";
+                                                        el.style.transform = "translateY(-2px)";
+                                                    },
+                                                    onMouseLeave: (e)=>{
+                                                        const el = e.currentTarget;
+                                                        el.style.color = "#aaa";
+                                                        el.style.background = "rgba(255,255,255,0.7)";
+                                                        el.style.borderColor = "rgba(0,0,0,0.08)";
+                                                        el.style.transform = "translateY(0)";
+                                                    },
+                                                    children: s.icon
+                                                }, s.label, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 227,
+                                                    columnNumber: 19
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 225,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                marginTop: 24,
+                                                display: "inline-flex",
+                                                alignItems: "center",
+                                                gap: 6,
+                                                background: "rgba(255,107,53,0.06)",
+                                                border: "1px solid rgba(255,107,53,0.14)",
+                                                borderRadius: 100,
+                                                padding: "5px 12px",
+                                                backdropFilter: "blur(8px)",
+                                                WebkitBackdropFilter: "blur(8px)"
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    style: {
+                                                        width: 6,
+                                                        height: 6,
+                                                        borderRadius: "50%",
+                                                        background: "#22c55e"
+                                                    }
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 278,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        fontSize: 11,
+                                                        fontWeight: 700,
+                                                        color: "#555",
+                                                        letterSpacing: "0.04em"
+                                                    },
+                                                    children: "500+ operators live"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 279,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 266,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/site-footer.tsx",
+                                    lineNumber: 203,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        flex: 1,
+                                        display: "grid",
+                                        gridTemplateColumns: "repeat(5, 1fr)",
+                                        gap: 8
+                                    },
+                                    children: footerColumns.map((col)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    style: {
+                                                        fontSize: 10,
+                                                        fontWeight: 800,
+                                                        color: "#999",
+                                                        marginBottom: 14,
+                                                        textTransform: "uppercase",
+                                                        letterSpacing: "0.1em"
+                                                    },
+                                                    children: col.title
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 294,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                    style: {
+                                                        listStyle: "none",
+                                                        padding: 0,
+                                                        margin: 0
+                                                    },
+                                                    children: col.links.map(([label, href])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                            style: {
+                                                                marginBottom: 10
+                                                            },
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                                href: href,
+                                                                style: {
+                                                                    fontSize: 12.5,
+                                                                    color: "#666",
+                                                                    textDecoration: "none",
+                                                                    transition: "color 0.15s",
+                                                                    display: "inline-block",
+                                                                    lineHeight: 1
+                                                                },
+                                                                onMouseEnter: (e)=>{
+                                                                    e.currentTarget.style.color = "#FF6B35";
+                                                                },
+                                                                onMouseLeave: (e)=>{
+                                                                    e.currentTarget.style.color = "#666";
+                                                                },
+                                                                children: label
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/site-footer.tsx",
+                                                                lineNumber: 307,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        }, label, false, {
+                                                            fileName: "[project]/src/components/site-footer.tsx",
+                                                            lineNumber: 306,
+                                                            columnNumber: 23
+                                                        }, this))
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/site-footer.tsx",
+                                                    lineNumber: 304,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, col.title, true, {
+                                            fileName: "[project]/src/components/site-footer.tsx",
+                                            lineNumber: 293,
+                                            columnNumber: 17
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/site-footer.tsx",
+                                    lineNumber: 286,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/site-footer.tsx",
+                            lineNumber: 200,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/site-footer.tsx",
+                        lineNumber: 199,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            borderTop: "1px solid rgba(255,107,53,0.07)",
+                            maxWidth: 1200,
+                            margin: "0 auto",
+                            padding: "16px 40px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            flexWrap: "wrap",
+                            gap: 10
+                        },
+                        children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 style: {
                                     fontSize: 12,
-                                    color: "#999",
-                                    lineHeight: 1.65,
-                                    marginBottom: 6,
-                                    maxWidth: 164
-                                },
-                                children: "The operating system for modern messes and food service businesses."
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 125,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: {
-                                    fontSize: 11,
                                     color: "#bbb",
-                                    lineHeight: 1.6,
-                                    marginBottom: 20
+                                    margin: 0,
+                                    fontFamily: "inherit"
                                 },
-                                children: "© 2026 Mealiez. All rights reserved."
+                                children: "© 2026 Mealiez. All rights reserved. Made with ❤️ for mess operators across India."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 128,
+                                lineNumber: 340,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
                                     display: "flex",
-                                    gap: 6,
-                                    alignItems: "center"
+                                    gap: 20
                                 },
-                                children: socials.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        href: s.href,
-                                        className: "footer-social-btn",
-                                        "aria-label": s.label,
-                                        children: s.icon
-                                    }, s.label, false, {
+                                children: [
+                                    [
+                                        "Privacy",
+                                        "/security"
+                                    ],
+                                    [
+                                        "Terms",
+                                        "/security"
+                                    ],
+                                    [
+                                        "Security",
+                                        "/security"
+                                    ]
+                                ].map(([label, href])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: href,
+                                        style: {
+                                            fontSize: 12,
+                                            color: "#bbb",
+                                            textDecoration: "none",
+                                            transition: "color 0.15s"
+                                        },
+                                        onMouseEnter: (e)=>{
+                                            e.currentTarget.style.color = "#FF6B35";
+                                        },
+                                        onMouseLeave: (e)=>{
+                                            e.currentTarget.style.color = "#bbb";
+                                        },
+                                        children: label
+                                    }, label, false, {
                                         fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 345,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 132,
+                                lineNumber: 343,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/site-footer.tsx",
-                        lineNumber: 111,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            flex: 1,
-                            display: "grid",
-                            gridTemplateColumns: "repeat(5, 1fr)",
-                            gap: 8
-                        },
-                        children: footerColumns.map((col)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                        style: {
-                                            fontSize: 11,
-                                            fontWeight: 800,
-                                            color: "#1a1a1a",
-                                            marginBottom: 16,
-                                            textTransform: "uppercase",
-                                            letterSpacing: "0.06em"
-                                        },
-                                        children: col.title
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 150,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                        style: {
-                                            listStyle: "none",
-                                            padding: 0,
-                                            margin: 0
-                                        },
-                                        children: col.links.map(([label, href])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                style: {
-                                                    marginBottom: 11
-                                                },
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                    href: href,
-                                                    className: "footer-link",
-                                                    children: label
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/site-footer.tsx",
-                                                    lineNumber: 159,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, label, false, {
-                                                fileName: "[project]/src/components/site-footer.tsx",
-                                                lineNumber: 158,
-                                                columnNumber: 19
-                                            }, this))
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/site-footer.tsx",
-                                        lineNumber: 156,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, col.title, true, {
-                                fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 149,
-                                columnNumber: 13
-                            }, this))
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/site-footer.tsx",
-                        lineNumber: 142,
+                        lineNumber: 333,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/site-footer.tsx",
-                lineNumber: 105,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    borderTop: "1px solid rgba(0,0,0,0.05)",
-                    maxWidth: 1200,
-                    margin: "0 auto",
-                    padding: "16px 32px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between"
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: {
-                            fontSize: 12,
-                            color: "#bbb"
-                        },
-                        children: "Made with ❤️ for mess operators across India."
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/site-footer.tsx",
-                        lineNumber: 175,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            display: "flex",
-                            gap: 20
-                        },
-                        children: [
-                            [
-                                "Privacy",
-                                "/security"
-                            ],
-                            [
-                                "Terms",
-                                "/security"
-                            ],
-                            [
-                                "Security",
-                                "/security"
-                            ]
-                        ].map(([label, href])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: href,
-                                className: "footer-link",
-                                style: {
-                                    fontSize: 12
-                                },
-                                children: label
-                            }, label, false, {
-                                fileName: "[project]/src/components/site-footer.tsx",
-                                lineNumber: 178,
-                                columnNumber: 13
-                            }, this))
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/site-footer.tsx",
-                        lineNumber: 176,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/site-footer.tsx",
-                lineNumber: 169,
+                lineNumber: 142,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/site-footer.tsx",
-        lineNumber: 93,
+        lineNumber: 108,
         columnNumber: 5
     }, this);
 }

@@ -2,28 +2,76 @@
 
 
 :root {
+  /* Brand colours */
   --orange: #FF6B35;
   --orange-light: #FF875C;
   --orange-pale: #FFA27F;
   --bg: #fef6f0;
   --bg-warm: #fdf0e8;
+
+  /* Glass */
   --glass: rgba(255,255,255,0.68);
   --glass-border: rgba(255,255,255,0.9);
+
+  /* Shadows */
   --shadow-sm: 0 4px 16px rgba(31,38,135,0.06);
   --shadow-md: 0 8px 32px rgba(31,38,135,0.08);
   --shadow-lg: 0 16px 56px rgba(31,38,135,0.10);
   --shadow-orange: 0 8px 32px rgba(255,107,53,0.25);
+
+  /* Typography */
+  --font-body:    'Inter', 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-ui:      'Inter', system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: #1a1a1a;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01' on, 'cv03' on, 'cv04' on, 'liga' on;
+  font-optical-sizing: auto;
   width: 100%;
+}
+
+/* Display / editorial headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-body);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+/* ── Page-scoped font classes (used in inline-style pages) ── */
+/* All inline page containers inherit the global font stack */
+.pp, .co, .sec, .clc, .rp, .gp, .rpts, .bp, .rc {
+  font-family: var(--font-body);
+}
+
+/* Buttons and inputs always use Inter */
+button, input, textarea, select {
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Better link defaults */
+a { -webkit-font-smoothing: antialiased; }
+
+/* Number / stat callouts */
+.stat-num {
+  font-family: var(--font-body);
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Global full-width containers ── */
