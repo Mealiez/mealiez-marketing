@@ -14,3 +14,5 @@
 {"timestamp":"12:30:42.262","source":"Server","level":"LOG","message":"✓ Compiled in 897ms"}
 {"timestamp":"12:30:52.895","source":"Server","level":"LOG","message":"○ Compiling /customers ..."}
 {"timestamp":"12:33:03.287","source":"Server","level":"LOG","message":"✓ Compiled in 1538ms"}
+{"timestamp":"12:35:45.588","source":"Server","level":"LOG","message":"✓ Compiled in 1388ms"}
+{"timestamp":"12:43:30.872","source":"Server","level":"LOG","message":"✓ Compiled in 949ms"}
