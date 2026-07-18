@@ -54,10 +54,26 @@ export default function BookDemoPage() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
         *, *::before, *::after { box-sizing: border-box; }
 
+        /* Base: Inria Serif for all text on this page */
+        .bd, .bd * {
+          font-family: 'Inria Serif', Georgia, serif;
+        }
+        /* Exception: form controls stay in Plus Jakarta Sans for legibility */
+        .bd input,
+        .bd select,
+        .bd .f-label,
+        .bd .enterprise-pill,
+        .bd .privacy-note,
+        .bd .trust-item {
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+
         .bd {
-          font-family: 'Inter', 'DM Sans', system-ui, sans-serif;
+          font-family: 'Inria Serif', Georgia, serif;
           min-height: 100vh;
           width: 100%;
           display: flex;
@@ -103,18 +119,22 @@ export default function BookDemoPage() {
         }
 
         .bd-headline {
-          font-size: clamp(32px, 3.8vw, 46px);
-          font-weight: 900;
+          font-family: 'Inria Serif', Georgia, serif;
+          font-size: clamp(34px, 4.2vw, 50px);
+          font-weight: 700;
+          font-style: normal;
           color: #1a1a1a;
-          line-height: 1.15;
-          letter-spacing: -0.03em;
+          line-height: 1.18;
+          letter-spacing: -0.01em;
           margin: 0 0 20px;
         }
 
         .bd-sub {
-          font-size: 15px;
+          font-family: 'Inria Serif', Georgia, serif;
+          font-size: 16.5px;
+          font-weight: 400;
           color: #666;
-          line-height: 1.75;
+          line-height: 1.82;
           margin: 0 0 32px;
           max-width: 360px;
         }
@@ -153,16 +173,21 @@ export default function BookDemoPage() {
         }
 
         .card-title {
-          font-size: 26px;
-          font-weight: 800;
+          font-family: 'Inria Serif', Georgia, serif;
+          font-size: 28px;
+          font-weight: 700;
           color: #1a1a1a;
-          letter-spacing: -0.025em;
+          letter-spacing: -0.01em;
           margin: 0 0 8px;
+          line-height: 1.2;
         }
         .card-sub {
-          font-size: 13px;
+          font-family: 'Inria Serif', Georgia, serif;
+          font-size: 15px;
+          font-weight: 400;
+          font-style: italic;
           color: #888;
-          line-height: 1.65;
+          line-height: 1.7;
           margin: 0 0 28px;
           max-width: 320px;
         }
@@ -189,9 +214,9 @@ export default function BookDemoPage() {
           border: 1.5px solid rgba(0,0,0,0.1);
           border-radius: 10px;
           padding: 11px 14px;
-          font-size: 13.5px;
+          font-size: 14px;
           color: #1a1a1a;
-          font-family: inherit;
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
           background: #fafafa;
           outline: none;
           transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
