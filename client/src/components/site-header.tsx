@@ -160,7 +160,7 @@ export function SiteHeader() {
 
         {/* Right */}
         <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-          <a href="#" className="header-login">Login</a>
+          <Link href="/login" className="header-login">Login</Link>
           <Link href="/book-demo" className="header-book-btn">Book Demo</Link>
         </div>
       </div>
