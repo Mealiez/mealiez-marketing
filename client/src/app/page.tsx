@@ -169,27 +169,27 @@ export default function Home() {
             <div style={{ flex: "0 0 min(500px, 48%)" }}>
               <div className="hero-badge badge-pill" style={{ marginBottom:28, display:"inline-flex" }}>
                 <span className="dot-pulse" />
-                Enterprise Grade Mess Operations
+                India's #1 Mess Management Platform
               </div>
 
               <h1 className="hero-h1" style={{ fontSize: "clamp(36px, 4.5vw, 56px)", fontWeight: 900, lineHeight: 1.11, color: "#1a1a1a", marginBottom: 22, letterSpacing: "-0.03em" }}>
-                Food Operations<br/>Made{" "}
+                The Operating System<br/>for{" "}
                 <span style={{ background:"linear-gradient(135deg,#FF6B35,#FF875C)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
-                  Effortless
+                  Modern Messes
                 </span>
               </h1>
 
               <p className="hero-p" style={{ fontSize:15.5, color:"#555", lineHeight:1.75, marginBottom:36, maxWidth:420 }}>
-                Streamline hostel, cafeteria, and food service operations with intelligent automation, real-time analytics, inventory management, attendance tracking, and powerful reporting — all in one platform.
+                Mealiez helps hostel messes, college canteens, industrial canteens, and corporate cafeterias automate meal bookings, attendance, billing, inventory, and analytics — from a single platform.
               </p>
 
               <div className="hero-btns" style={{ display:"flex", gap:14 }}>
                 <Link href="/book-demo" className="btn-primary">
-                  Book Demo
+                  Book a Demo
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </Link>
                 <Link href="/why-mealiez" className="btn-outline">
-                  Explore Architecture
+                  Why Mealiez?
                 </Link>
               </div>
 
@@ -321,13 +321,13 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center" }}>
             <div className="glow-line" />
-            <h2 className="section-title">Why Legacy Methods Fail</h2>
+            <h2 className="section-title">Why Manual Methods Are Costing You</h2>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:22, marginTop:12 }}>
             {[
-              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>, title:"Unpredictable Waste", desc:"Manual headcounts lead to 15-20% daily food waste. Our data-driven forecasting eliminates overproduction at the root." },
-              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="15" r="3"/><line x1="8" y1="12" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="12"/><path d="M8 9h8"/></svg>, title:"Siloed Data", desc:"Spreadsheets don't talk to procurement. Changes in attendance never auto-adjust inventory requisitions in real-time." },
-              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, title:"Administrative Drag", desc:"Managers spend 14+ hours/week on manual reconciliation. Mealiez automates the entire operations lifecycle." },
+              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>, title:"Avoidable Food Wastage", desc:"Without advance meal opt-ins, kitchens cook blind. Most messes over-produce by 15–25% every day — a direct hit to your food cost budget." },
+              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="15" r="3"/><line x1="8" y1="12" x2="8" y2="21"/><line x1="16" y1="3" x2="16" y2="12"/><path d="M8 9h8"/></svg>, title:"Billing Leaks & Disputes", desc:"Paper chit systems and offline ledgers create reconciliation gaps. Untracked meals, manual entry errors, and delayed collections erode your monthly revenue." },
+              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, title:"Attendance Discrepancies", desc:"Proxy dining, manual registers, and unverified entry allow unauthorized meals. Without digital tracking, you're losing money on every shift." },
             ].map((item, i) => (
               <div key={i} className={`glass-card lift reveal delay-${(i+1)*100}`} style={{ padding:"30px 26px" }}>
                 <div className="icon-box" style={{ marginBottom:18 }}>{item.icon}</div>
@@ -346,8 +346,8 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center" }}>
             <div className="glow-line" />
-            <h2 className="section-title">Engineered for Scale</h2>
-            <p className="section-sub">Move beyond spreadsheets. A tactile, high-performance toolkit built for thousands of daily transactions with zero friction.</p>
+            <h2 className="section-title">One Platform. Every Module You Need.</h2>
+            <p className="section-sub">From the moment a member books a meal to the final billing reconciliation — Mealiez handles every step of your food service operation.</p>
           </div>
 
           {/* Row 1 */}
@@ -357,10 +357,10 @@ export default function Home() {
                 <div className="icon-box" style={{ marginTop:3 }}>
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
-                <h3 style={{ fontSize:28, fontWeight:800, color:"#1a1a1a", lineHeight:1.2 }}>Identity & Cohort Logistics</h3>
+                <h3 style={{ fontSize:28, fontWeight:800, color:"#1a1a1a", lineHeight:1.2 }}>Meal Booking & Member Management</h3>
               </div>
-              <p style={{ fontSize:14.5, color:"#555", lineHeight:1.75, marginBottom:22 }}>Maintain authoritative records of your dining population. Group individuals by dietary requirements, access tiers, or cohorts. Automate the full lifecycle from onboarding to offboarding.</p>
-              {["Automated credential provisioning via secure API.", "Real-time state synchronization across all terminal nodes."].map((t,i)=>(
+              <p style={{ fontSize:14.5, color:"#555", lineHeight:1.75, marginBottom:22 }}>Let members opt-in for meals in advance via app or web. Know your exact headcount before cooking starts — so your kitchen never over-produces and your food cost stays predictable.</p>
+              {["Members book meals daily, weekly, or by meal type.", "Kitchen gets real-time headcount to plan production."].map((t,i)=>(
                 <div key={i} className="check-row">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                   {t}
@@ -401,10 +401,10 @@ export default function Home() {
                 <div className="icon-box" style={{ marginTop:3 }}>
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                 </div>
-                <h3 style={{ fontSize:28, fontWeight:800, color:"#1a1a1a", lineHeight:1.2 }}>High-Velocity Access Control</h3>
+                <h3 style={{ fontSize:28, fontWeight:800, color:"#1a1a1a", lineHeight:1.2 }}>QR & Biometric Attendance</h3>
               </div>
-              <p style={{ fontSize:14.5, color:"#555", lineHeight:1.75, marginBottom:22 }}>Eliminate peak-hour queues. Sub-second authentication with our proprietary scanning protocol maintains flow while generating immutable attendance logs.</p>
-              {["Sub-100ms validation latency at the edge.","Offline resilience mode ensures continuous operation."].map((t,i)=>(
+              <p style={{ fontSize:14.5, color:"#555", lineHeight:1.75, marginBottom:22 }}>Replace paper registers with digital attendance. Members scan a QR code or tap a biometric reader at entry — every meal is logged, verified, and timestamped in real time. No proxy dining. No disputes.</p>
+              {["Works with QR code, RFID cards, and biometric hardware.","Automatically syncs attendance data with billing and inventory."].map((t,i)=>(
                 <div key={i} className="check-row">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                   {t}
@@ -422,14 +422,14 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center" }}>
             <div className="glow-line" />
-            <h2 className="section-title">Features</h2>
-            <p className="section-sub">Advanced telemetry and control mechanisms for comprehensive mess operations.</p>
+            <h2 className="section-title">Everything Your Operations Team Needs</h2>
+            <p className="section-sub">Every module in Mealiez is built for food service operators — not generic SaaS. From raw material tracking to automated fee collection.</p>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:22 }}>
             {[
-              { badge:"INVENTORY", icon:<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, title:"Smart Inventory", desc:"Real-time stock tracking with predictive depletion alerts. Automate vendor reordering based on historical consumption velocity.", checks:["Automated PO generation","Par level alerting"] },
-              { badge:"HARDWARE", icon:<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg>, title:"IoT Attendance", desc:"Seamless integration with biometric and RFID endpoints. Deploy remote node management from a central operations dashboard.", checks:["Hardware agnostic","Remote diagnostics"] },
-              { badge:"INTELLIGENCE", icon:<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>, title:"Real-time Analytics", desc:"Granular insights into dining patterns, peak loads, and cost per meal. Export compliance reports via standard API pipelines.", checks:["Custom metric dashboards","API data pipelines"] },
+              { badge:"INVENTORY", icon:<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, title:"Inventory & Vendor Management", desc:"Track raw material stock in real time. Set low-stock alerts, log vendor purchases, and monitor daily ingredient consumption against actual meals produced.", checks:["Low-stock alerts & reorder prompts","Vendor invoice & purchase tracking"] },
+              { badge:"BILLING", icon:<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg>, title:"Automated Billing & Payments", desc:"Mealiez auto-generates member fee statements based on meals consumed. Send payment reminders, collect online, and maintain clean ledgers — with zero manual entry.", checks:["Auto-generated monthly statements","Online payment collection & receipts"] },
+              { badge:"ANALYTICS", icon:<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>, title:"Operations Analytics & Reports", desc:"Get daily food wastage reports, meal-wise attendance charts, revenue summaries, and cost-per-meal analysis — all exportable for management review.", checks:["Food waste & cost-per-meal reports","Revenue & collection dashboards"] },
             ].map((item,i)=>(
               <div key={i} className={`glass-card lift reveal delay-${(i+1)*150}`} style={{ padding:"28px 24px" }}>
                 <span className="badge-tag">{item.badge}</span>
@@ -457,7 +457,7 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center", marginBottom:52 }}>
             <div className="glow-line" />
-            <h2 className="section-title">Connect supply with precise demand.</h2>
+            <h2 className="section-title">How Mealiez Connects Your Entire Operation</h2>
           </div>
           <div style={{ display:"flex", gap:24 }}>
             <div className="reveal-left" style={{ flex:"0 0 500px" }}>
@@ -475,14 +475,14 @@ export default function Home() {
                 </svg>
               </div>
               <div style={{ marginTop:24 }}>
-                <h3 style={{ fontSize:21, fontWeight:700, color:"#1a1a1a", marginBottom:9 }}>Intelligent Indexing</h3>
-                <p style={{ fontSize:14, color:"#666", lineHeight:1.72 }}>List your facility in the centralized directory. Allow patrons to query your location, capacity, and menu specs using advanced parametric search.</p>
+                <h3 style={{ fontSize:21, fontWeight:700, color:"#1a1a1a", marginBottom:9 }}>Member → Kitchen → Billing. Fully Automated.</h3>
+                <p style={{ fontSize:14, color:"#666", lineHeight:1.72 }}>A member books a meal → the kitchen sees the headcount → ingredients are deducted from inventory → the bill is auto-generated. Every step connected, every record clean.</p>
               </div>
             </div>
             <div className="reveal-right" style={{ flex:1, display:"flex", flexDirection:"column", gap:20 }}>
               {[
-                { icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>, title:"Reputation Engine", desc:"Aggregated trust metrics and verified reviews drive organic acquisition and long-term retention." },
-                { icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, title:"Demand Forecasting", desc:"Predictive analytics based on search velocity and historical patterns in your geographic sector." },
+                { icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>, title:"Multi-Location Management", desc:"Run one dashboard for multiple mess locations, canteens, or hostel blocks. Centralised control with location-level reporting for each unit." },
+                { icon:<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, title:"Mobile App for Members & Operators", desc:"Members book meals, check menus, and view bills on their phone. Operators manage everything — headcount, attendance, payments — from the admin app." },
               ].map((item,i)=>(
                 <div key={i} className="glass-card lift" style={{ padding:"26px 22px", flex:1 }}>
                   <div style={{ marginBottom:10 }}>{item.icon}</div>
@@ -502,14 +502,14 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center" }}>
             <div className="glow-line" />
-            <h2 className="section-title">Solutions</h2>
-            <p className="section-sub">Specialized configurations for distinct institutional environments.</p>
+            <h2 className="section-title">Built for Every Type of Food Operation</h2>
+            <p className="section-sub">Whether you run a 50-member hostel mess or a 5,000-worker industrial canteen, Mealiez has a configuration built for your scale.</p>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:22 }}>
             {[
-              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>, title:"Higher Education", desc:"Handle massive concurrent loads during class changeovers with student ID integration and meal plan ledger management." },
-              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M12 8v8M8 12h8"/></svg>, title:"Healthcare", desc:"Strict dietary compliance tracking, 24/7 operational resilience, and visitor access provisioning protocols." },
-              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>, title:"Corporate Dining", desc:"Frictionless payroll deduction integration, subsidized meal tracking, and premium guest hospitality workflows." },
+              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>, title:"Colleges & Hostels", desc:"Manage student meal plans, hostel mess bookings, dietary preferences, and automated monthly billing across all hostel blocks from one admin panel." },
+              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M12 8v8M8 12h8"/></svg>, title:"Industrial Canteens", desc:"Track shift-wise meals for factory workers, integrate with access control systems, and manage subsidised meal programmes for large-volume operations." },
+              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>, title:"Corporate Cafeterias", desc:"Run multi-vendor office dining with smart wallets, payroll deductions, guest meal tracking, and daily spend reports for HR and finance teams." },
             ].map((item,i)=>(
               <div key={i} className={`glass-card lift reveal delay-${(i+1)*150}`} style={{ padding:"34px 26px", textAlign:"center" }}>
                 <div style={{ display:"flex", justifyContent:"center", marginBottom:18 }}>
@@ -590,13 +590,13 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center" }}>
             <div className="glow-line" />
-            <h2 className="section-title">Customers</h2>
-            <p className="section-sub">Deploying operational excellence across hundreds of enterprise campuses globally.</p>
+            <h2 className="section-title">What Operators Are Saying</h2>
+            <p className="section-sub">Trusted by hostel wardens, college administrators, and canteen managers across India.</p>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:22 }}>
             {[
-              { quote:'"Mealiez fundamentally re-architected our dining logistics. The real-time telemetry allowed us to identify inefficiencies instantly. We saw a 40% waste reduction in the first quarter."', name:"Sarah Jenkins", role:"Director of Operations, Apex University", org:"APEX" },
-              { quote:'"The frictionless access control eliminated our peak-hour queues entirely. Our employees report a significantly improved dining experience, and our administrative overhead is virtually zero."', name:"Marcus Thorne", role:"Facilities Lead, Nexus Tech", org:"NEXUS" },
+              { quote:'"Before Mealiez, we were running our hostel mess on WhatsApp groups and Excel sheets. We had no idea how much food was being wasted. Now we know the exact headcount before cooking even starts. Food wastage is down by nearly 30%."', name:"Rajesh Nair", role:"Hostel Warden, Engineering College, Pune", org:"HOSTEL" },
+              { quote:'"The billing used to be a nightmare every month — collecting fees manually, following up with students. Mealiez automated the entire process. Parents pay online, we get instant confirmation, and the ledger is always clean."', name:"Priya Sharma", role:"Administrator, Student Housing Mess, Bengaluru", org:"MESS" },
             ].map((t,i)=>(
               <div key={i} className={`glass-card lift reveal delay-${(i+1)*150}`} style={{ padding:"30px 28px" }}>
                 <div style={{ fontSize:28, color:"#FF6B35", lineHeight:1, marginBottom:14, fontFamily:"Georgia,serif" }}>"</div>
@@ -621,14 +621,14 @@ export default function Home() {
         <div className="container">
           <div className="reveal" style={{ textAlign:"center" }}>
             <div className="glow-line" />
-            <h2 className="section-title">Resources</h2>
-            <p className="section-sub">Technical documentation, guides, and implementation case studies.</p>
+            <h2 className="section-title">Resources for Operators</h2>
+            <p className="section-sub">Practical guides, operational benchmarks, and real customer stories to help you run a tighter food service business.</p>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:22 }}>
             {[
-              { icon:<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>, badge:"WHITEPAPER", title:"Optimizing RFID Throughput in High-Density Environments" },
-              { icon:<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, badge:"CASE STUDY", title:"Achieving Sub-Second Latency: The State University Migration" },
-              { icon:<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>, badge:"DOCUMENTATION", title:"Mealiez API v2: Integrating Payroll Deductions" },
+              { icon:<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>, badge:"REPORT", title:"Indian Mess Wastage Report 2026 — How Much Food Service Operations Are Losing" },
+              { icon:<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, badge:"CASE STUDY", title:"How a 1,200-Member Hostel Mess Cut Food Wastage by 28% in 3 Months" },
+              { icon:<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>, badge:"GUIDE", title:"The Complete Checklist for Digitising Your Hostel Mess Operations" },
             ].map((r,i)=>(
               <div key={i} className={`glass-card resource-card reveal delay-${(i+1)*150}`} style={{ overflow:"hidden", cursor:"pointer" }}>
                 <div className="res-icon-area">{r.icon}</div>
@@ -648,21 +648,20 @@ export default function Home() {
       <section style={{ width:"100%", background:"#fdf0e8", padding:"96px 0" }}>
         <div className="container">
           <div className="cta-section reveal" style={{ padding:"80px 56px", textAlign:"center" }}>
-            {/* glow orb behind */}
             <div style={{ position:"absolute", width:400, height:400, borderRadius:"50%", background:"rgba(255,107,53,0.07)", filter:"blur(80px)", top:"50%", left:"50%", transform:"translate(-50%,-50%)", pointerEvents:"none" }} />
             <h2 className="reveal" style={{ fontSize:52, fontWeight:900, color:"#FF6B35", lineHeight:1.15, marginBottom:22, letterSpacing:"-0.025em", position:"relative" }}>
-              Ready to bring precision<br/>to your mess hall?
+              Stop running your mess<br/>on WhatsApp and Excel.
             </h2>
             <p className="reveal delay-100" style={{ fontSize:16, color:"#555", lineHeight:1.75, maxWidth:620, margin:"0 auto 44px", position:"relative" }}>
-              Schedule a specialized demo to see exactly how Mealiez can transform your hostel catering operations, reduce waste, and improve student satisfaction.
+              Book a 30-minute demo and see how Mealiez eliminates food wastage, automates billing, and gives you full operational visibility — for hostels, colleges, canteens, and cafeterias.
             </p>
             <div className="reveal delay-200" style={{ display:"flex", gap:16, justifyContent:"center", flexWrap:"wrap", position:"relative" }}>
               <Link href="/book-demo" className="btn-primary" style={{ padding:"16px 36px", fontSize:16 }}>
-                Book a Specialized Demo
+                Book a Free Demo
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </Link>
-              <Link href="/resources" className="btn-outline" style={{ padding:"16px 36px", fontSize:16 }}>
-                Calculate Your Savings ROI
+              <Link href="/why-mealiez" className="btn-outline" style={{ padding:"16px 36px", fontSize:16 }}>
+                Calculate Your ROI
               </Link>
             </div>
           </div>

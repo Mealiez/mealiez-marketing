@@ -24,10 +24,10 @@ __turbopack_context__.s([
     "default",
     ()=>__TURBOPACK__default__export__
 ]);
-const config = {
-    plugins: {
-        "@tailwindcss/postcss": {}
-    }
+/* No PostCSS plugins needed.
+   Turbopack processes CSS natively — PostCSS is only required for Tailwind,
+   which has been removed from this project. */ const config = {
+    plugins: {}
 };
 const __TURBOPACK__default__export__ = config;
 }),

@@ -17,13 +17,13 @@ function useReveal() {
 
 /* ── Data ── */
 const disciplines = [
-  { icon: "🏭", tag: "Logistics",   title: "Mess Management",   desc: "Precision logistics and workflow optimization for large-scale enterprise dining facilities." },
-  { icon: "🏫", tag: "Operations",  title: "Hostel Operations",  desc: "Streamlining daily food services and dietary tracking for students." },
-  { icon: "♻️", tag: "Sustainability", title: "Waste Reduction", desc: "Predictive modeling algorithms for achieving a zero-waste culinary floor." },
-  { icon: "💳", tag: "Finance",     title: "Billing & Payments",  desc: "Automating the complex financial layer of corporate food services." },
-  { icon: "👁️", tag: "Technology",  title: "Attendance",         desc: "Biometric and secure QR-based diner authentication protocols." },
-  { icon: "📈", tag: "Trends",      title: "Industry Insights",  desc: "Macro trends shaping global catering networks and dark kitchen models." },
-  { icon: "🛠️", tag: "Product",    title: "Product Updates",    desc: "Latest technical features and engineering logs from the Mealiez OS team." },
+  { icon: "🍽️", tag: "Operations",     title: "Mess Management",   desc: "Standard operating procedures, staffing guides, and daily workflow checklists for running a tight hostel mess." },
+  { icon: "🏫", tag: "Hostel Ops",     title: "Hostel Operations",  desc: "Modern hostel management: meal plans, student engagement, dietary tracking, and warden resources." },
+  { icon: "♻️", tag: "Sustainability", title: "Waste Reduction",   desc: "Practical batch-cooking formulas, advance booking strategies, and wastage measurement guides for operators." },
+  { icon: "💳", tag: "Finance",        title: "Billing & Payments", desc: "Fee structure models, online collection strategies, and reconciliation guides for mess billing." },
+  { icon: "📱", tag: "Technology",     title: "Attendance Systems", desc: "Comparing QR codes, biometrics, RFID cards — what works best for different mess sizes and contexts." },
+  { icon: "📈", tag: "Insights",       title: "Industry Insights",  desc: "B2B food service statistics, market trends, and policy shifts shaping hostel and canteen operations in India." },
+  { icon: "🛠️", tag: "Product",       title: "Product Updates",    desc: "New feature releases, platform updates, and how-to guides from the Mealiez engineering team." },
 ];
 
 const tagColors: Record<string, string> = {
@@ -41,47 +41,47 @@ const posts = [
     category: "Food Waste",
     discipline: "Waste Reduction",
     title: "How Indian Hostels Are Losing ₹12 Lakh a Year to Food Wastage",
-    excerpt: "A data-backed breakdown of where food wastage happens in hostel messes and the operational changes that cut it by 25–30%.",
+    excerpt: "A data-backed breakdown of where food wastage happens in hostel messes, the real financial impact, and the operational changes that cut it by 25–30%.",
     readTime: "7 min read", date: "July 14, 2026", icon: "♻️",
     tag: "Most Read", tagColor: "#FF6B35",
   },
   {
     category: "Mess Management",
     discipline: "Mess Management",
-    title: "The 5 Operational Failures That Plague Institutional Messes",
-    excerpt: "From phantom attendance to manual indents — a systematic breakdown of why most messes operate at 60% efficiency.",
-    readTime: "9 min read", date: "July 10, 2026", icon: "📋",
+    title: "5 Reasons Your Mess Is Still Losing Money Even After Going Digital",
+    excerpt: "From unverified attendance to disconnected billing — the hidden operational gaps that even messes with 'some software' still face.",
+    readTime: "8 min read", date: "July 10, 2026", icon: "📋",
     tag: "Editor's Pick", tagColor: "#8b5cf6",
   },
   {
     category: "Technology",
-    discipline: "Technology",
-    title: "QR vs Biometric: Which Diner Authentication Works Best?",
-    excerpt: "We tested both methods across 8 enterprise campuses. Here's what the data actually says about accuracy, speed, and cost.",
-    readTime: "5 min read", date: "July 7, 2026", icon: "🔐",
-    tag: "Data Study", tagColor: "#06b6d4",
+    discipline: "Attendance Systems",
+    title: "QR Code vs. Biometric vs. RFID Card: What Works Best for Your Mess?",
+    excerpt: "We break down the cost, accuracy, and setup requirements of the three most common digital attendance methods for hostel and canteen operators.",
+    readTime: "5 min read", date: "July 7, 2026", icon: "📱",
+    tag: "Comparison", tagColor: "#06b6d4",
   },
   {
     category: "Billing & Finance",
     discipline: "Billing & Payments",
-    title: "Why Paper Chit Billing is a Revenue Liability, Not a System",
-    excerpt: "The average reconciliation delay with paper chit billing is 7 days. Here's the full cost breakdown and what Mealiez replaces it with.",
+    title: "Why Paper Chit Billing Is a Revenue Leak, Not a System",
+    excerpt: "The average reconciliation delay with paper chit billing is 7+ days. Here's the true cost for mess operators and what automated billing replaces it with.",
     readTime: "6 min read", date: "July 3, 2026", icon: "💳",
     tag: "Finance", tagColor: "#f59e0b",
   },
   {
-    category: "Industry News",
+    category: "Industry Insights",
     discipline: "Industry Insights",
-    title: "India's Corporate Cafeteria Market: A ₹28,000 Cr Opportunity",
-    excerpt: "Deep-dive into why enterprise food services are the next frontier for SaaS-enabled automation in India.",
+    title: "India's Hostel & Canteen Market: A ₹28,000 Cr Opportunity Being Digitised",
+    excerpt: "Deep-dive into why institutional food service is the next frontier for SaaS-enabled automation — and who is leading the adoption.",
     readTime: "8 min read", date: "June 28, 2026", icon: "📊",
     tag: "Market Report", tagColor: "#ec4899",
   },
   {
     category: "Hostel Ops",
     discipline: "Hostel Operations",
-    title: "How to Run a 1,200-Member Hostel Mess with 3 Staff",
-    excerpt: "A real operational blueprint from Mealiez's deployment at a Tier-2 engineering college — every process, every automation.",
+    title: "How to Run a 1,200-Member Hostel Mess with Just 3 Staff Members",
+    excerpt: "A real operational blueprint from a Mealiez deployment at a Tier-2 engineering college — every automated process, every time saved.",
     readTime: "10 min read", date: "June 22, 2026", icon: "🏫",
     tag: "Case Study", tagColor: "#3b82f6",
   },
@@ -89,13 +89,13 @@ const posts = [
 
 const featuredPost = {
   tag: "Featured Report",
-  title: "Engineering Culinary Intelligence",
-  desc: "Discover how predictive analytics and strict 8px operational rhythms are eliminating waste and maximising output across enterprise mess halls.",
-  cta: "Read Full Analysis",
-  href: "/blog/engineering-culinary-intelligence",
+  title: "Indian Mess Wastage Report 2026",
+  desc: "A data-backed analysis of how hostel messes, college canteens, and industrial cafeterias are losing 15–25% of food cost every day — and the operational changes that reverse it.",
+  cta: "Read the Full Report",
+  href: "/blog/indian-mess-wastage-report-2026",
 };
 
-const categories = ["All", "Mess Management", "Hostel Ops", "Food Waste", "Billing & Finance", "Technology", "Industry News"];
+const categories = ["All", "Mess Management", "Hostel Ops", "Food Waste", "Billing & Finance", "Technology", "Industry Insights"];
 
 export default function BlogPage() {
   useReveal();
