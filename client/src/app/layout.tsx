@@ -4,9 +4,9 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Mealiez | Modern Mess Management Platform",
+  title: "Mealiez | Mess Management Software for Hostels, Colleges & Industrial Canteens in India",
   description:
-    "Mealiez helps institutions and food operators automate meal booking, attendance, billing, inventory, and analytics from one platform.",
+    "Mealiez is India's mess management software. Automate meal bookings, QR attendance, billing, inventory, and analytics for hostel messes, college canteens, and industrial cafeterias. Cut food wastage by up to 30%.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

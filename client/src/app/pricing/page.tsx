@@ -106,11 +106,11 @@ export default function PricingPage() {
               Pricing
             </div>
             <h1 className="rv d1" style={{ fontSize: 54, fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#1a1a1a", marginBottom: 20 }}>
-              Transparent pricing.<br />
-              <span style={{ color: "#FF6B35" }}>No surprises.</span>
+              Honest pricing.<br />
+              <span style={{ color: "#FF6B35" }}>No hidden fees.</span>
             </h1>
             <p className="rv d2" style={{ fontSize: 17, color: "#555", lineHeight: 1.75, maxWidth: 500, margin: "0 auto 36px" }}>
-              Start with a plan that fits your scale today, and grow into enterprise capabilities as you expand.
+              Pick the plan that fits your mess size today. Upgrade to Enterprise when you're ready to scale across multiple locations.
             </p>
 
             {/* Billing Toggle */}
@@ -138,7 +138,7 @@ export default function PricingPage() {
                 </h2>
                 {billing === "annual" && <p style={{ fontSize: 12, color: "#16a34a", fontWeight: 600, marginBottom: 12 }}>₹23,988 saved annually</p>}
                 <p style={{ fontSize: 14, color: "#666", lineHeight: 1.65, marginBottom: 28 }}>
-                  For small and medium mess businesses, hostels, and independent food service operators.
+                  For small and medium mess businesses, independent hostels, tiffin services, and food operators getting started with digital management.
                 </p>
                 <div style={{ borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 24, marginBottom: 28 }}>
                   {["Meal Booking", "Attendance Management", "Billing & Payments", "Inventory Management", "Basic Analytics", "Mobile App (Member + Admin)", "Up to 500 members", "Email Support"].map((f) => (
@@ -164,7 +164,7 @@ export default function PricingPage() {
                   <span style={{ fontSize: 14, fontWeight: 500, color: "#888" }}> pricing</span>
                 </h2>
                 <p style={{ fontSize: 14, color: "#666", lineHeight: 1.65, marginBottom: 28 }}>
-                  For universities, multi-location operations, industrial canteens, and large food service enterprises.
+                  For universities, multi-location operations, factory canteens, and large food service businesses managing hundreds or thousands of members.
                 </p>
                 <div style={{ borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 24, marginBottom: 28 }}>
                   {["Everything in Standard", "Unlimited members", "Multi-Location Management", "Advanced Analytics & Reports", "Custom ERP/HRMS Integrations", "Dedicated Success Manager", "Custom Onboarding & Training", "Priority Support SLA", "Audit-Ready Compliance Reports", "White-Label Options"].map((f) => (
@@ -190,7 +190,7 @@ export default function PricingPage() {
               Full Feature Comparison
             </h2>
             <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 460, margin: "0 auto 48px" }}>
-              Everything side by side so you can pick with confidence.
+              Every feature side-by-side so you can choose with confidence.
             </p>
             <div className="rv" style={{ background: "#fff", borderRadius: 20, border: "1px solid rgba(0,0,0,0.08)", overflow: "hidden" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
@@ -238,7 +238,7 @@ export default function PricingPage() {
               Mealiez Pays for Itself
             </h2>
             <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 480, margin: "0 auto 40px" }}>
-              Calculate how much you'll save on food wastage alone — most operators recover the subscription cost in the first month.
+              Most mess operators recover their entire subscription cost within the first month — just from the food they stop wasting.
             </p>
             <div className="rv d2" style={{ maxWidth: 680, margin: "0 auto" }}>
               <RoiCalculator />
@@ -261,10 +261,10 @@ export default function PricingPage() {
         {/* CTA */}
         <section style={{ background: "#1a1a1a", padding: "80px 40px", textAlign: "center" }}>
           <h2 className="rv" style={{ fontSize: 40, fontWeight: 900, color: "#fff", marginBottom: 16, letterSpacing: "-.025em" }}>
-            Start Your Free Demo Today
+            See Mealiez in Action
           </h2>
           <p className="rv d1" style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 36px" }}>
-            30-minute live walkthrough tailored to your operation type. No credit card required.
+            30-minute live walkthrough tailored to your mess type. No credit card required. No sales pressure.
           </p>
           <div className="rv d2" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/book-demo" className="btn-ora">Book Free Demo</Link>

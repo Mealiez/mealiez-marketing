@@ -44,11 +44,11 @@ export default function SolutionsOverviewPage() {
               Industry Solutions
             </div>
             <h1 className="rv d1" style={{ fontSize: 54, fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#1a1a1a", marginBottom: 20 }}>
-              Built for{" "}
-              <span style={{ color: "#FF6B35" }}>Your Industry</span>
+              Mealiez for{" "}
+              <span style={{ color: "#FF6B35" }}>Your Type of Operation</span>
             </h1>
             <p className="rv d2" style={{ fontSize: 17, color: "#555", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 38px" }}>
-              Mealiez is purpose-configured for six different food service operations — each with unique workflows, challenges, and ROI goals.
+              Whether you manage a hostel mess, college canteen, factory cafeteria, or corporate dining — Mealiez is built with the specific workflows, challenges, and integrations your operation actually needs.
             </p>
             <div className="rv d3" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/book-demo" className="btn-ora">Book a Demo</Link>
@@ -64,7 +64,7 @@ export default function SolutionsOverviewPage() {
               Choose Your Industry
             </h2>
             <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 500, margin: "0 auto 56px" }}>
-              Click your segment to see a tailored breakdown of how Mealiez works for you.
+              Select your operation type to see exactly how Mealiez works for your specific setup.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {solutions.map((sol, i) => (
@@ -91,7 +91,7 @@ export default function SolutionsOverviewPage() {
             Not sure which fits best?
           </h2>
           <p className="rv d1" style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 440, margin: "0 auto 36px" }}>
-            Book a 20-minute call and our team will map the right solution to your operation.
+            Tell us about your operation and our team will show you exactly how Mealiez fits your setup in a 20-minute call.
           </p>
           <Link href="/book-demo" className="btn-ora rv d2">Talk to an Expert</Link>
         </section>

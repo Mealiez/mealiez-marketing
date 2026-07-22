@@ -44,9 +44,9 @@ function LossCalculator() {
   const [waste, setWaste] = useState(12);
   const costPerMeal = 55; // ₹ average
   const annual = Math.round(meals * (waste / 100) * costPerMeal * 365);
-  const fmt = (n: number) => "$" + Math.round(n / 1000).toLocaleString() + ",000";
+  const fmt = (n: number) => "₹" + Math.round(n / 1000).toLocaleString("en-IN") + ",000";
   const displayLoss = fmt(annual / 1000);
-  const lossNum = new Intl.NumberFormat("en-US").format(annual);
+  const lossNum = new Intl.NumberFormat("en-IN").format(annual);
 
   return (
     <div style={{
@@ -93,10 +93,10 @@ function LossCalculator() {
           color: "#FF6B35", lineHeight: 1.1, letterSpacing: "-0.02em",
           marginBottom: 12, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
         }}>
-          ${lossNum}
+          ₹{lossNum}
         </div>
         <p style={{ fontSize: 13, color: "#888", lineHeight: 1.65, maxWidth: 220, margin: "0 auto 20px" }}>
-          Capital that should be driving growth, currently sitting in the trash.
+          Money your mess is losing every year that could go directly to improving food quality or cutting member fees.
         </p>
         <Link href="/book-demo" style={{
           display: "inline-flex", alignItems: "center", gap: 7,
@@ -105,7 +105,7 @@ function LossCalculator() {
           fontSize: 13.5, fontWeight: 700, textDecoration: "none",
           boxShadow: "0 6px 18px rgba(255,107,53,0.32)",
         }}>
-          Eliminate This Waste →
+          Stop This Waste with Mealiez →
         </Link>
       </div>
     </div>
@@ -426,21 +426,20 @@ export default function WhyMealiezPage() {
                   color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 16,
                   fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
                 }}>
-                  Spreadsheet <span style={{ color: "#FF6B35" }}>Hell.</span>
+                  Excel Was Never Built<br /><span style={{ color: "#FF6B35" }}>for a Mess.</span>
                 </h2>
                 <p style={{ fontSize: 15, color: "#555", lineHeight: 1.78, marginBottom: 28 }}>
-                  Static grids were not built for dynamic culinary operations. A single broken formula
-                  can cascade into massive procurement shortages or financial discrepancies.
+                  Excel sheets work fine for small lists. But when you're tracking 200+ students, daily meal counts, vendor purchases, and monthly billing — a single broken formula or a forgotten update wipes out days of data.
                 </p>
 
                 {[
                   {
-                    label: "Zero Real-Time Visibility",
-                    body: "By the time data is entered, it's already obsolete.",
+                    label: "No Real-Time Updates",
+                    body: "By the time your staff enters today's meal count, it's already yesterday's data.",
                   },
                   {
-                    label: "Version Control Nightmares",
-                    body: '"Inventory_Final_v3_Actual.xlsx" is a liability, not a system.',
+                    label: 'The "Which Version?" Problem',
+                    body: '"Inventory_Final_v3_Actual_NEW.xlsx" is not a system. It\'s a liability.',
                   },
                 ].map((w, i) => (
                   <div key={i} className="warn-pill">
@@ -468,7 +467,7 @@ export default function WhyMealiezPage() {
                 letterSpacing: "-0.025em",
                 fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
               }}>
-                The Revenue Leakage Points
+                Where Your Mess Revenue is Leaking
               </h2>
               <div style={{ width: 48, height: 3, background: "#FF6B35", borderRadius: 2, margin: "14px auto 0" }} />
             </div>
@@ -532,11 +531,11 @@ export default function WhyMealiezPage() {
                   color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 20,
                   fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", lineHeight: 1.18,
                 }}>
-                  The Food Wastage Crisis
+                  Food Wastage Is a Billing Problem in Disguise
                 </h2>
                 <p style={{ fontSize: 15, color: "#555", lineHeight: 1.78, marginBottom: 24 }}>
-                  Over-production and poor inventory tracking lead to massive caloric and financial waste.
-                  Mealiez reduces wastage by up to <strong>30%</strong> through predictive analytics.
+                  When your kitchen doesn't know how many people are eating tomorrow, they cook for more than needed. That extra food becomes waste — and that waste is money directly out of your margin.
+                  Mealiez cuts overproduction by up to <strong>30%</strong> because members book in advance and your kitchen always knows the exact count.
                 </p>
                 <div style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
@@ -595,10 +594,10 @@ export default function WhyMealiezPage() {
                 color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 14,
                 fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
               }}>
-                Calculate Your Hidden Losses
+                How Much Is Your Mess Losing Right Now?
               </h2>
               <p style={{ fontSize: 15, color: "#666", lineHeight: 1.72, maxWidth: 480, margin: "0 auto" }}>
-                See the mathematical impact of overproduction and manual inaccuracies on your bottom line.
+                Enter your daily meal count and estimated overproduction below. See your annual food wastage cost instantly.
               </p>
             </div>
             <div className="rv d1">
@@ -618,7 +617,7 @@ export default function WhyMealiezPage() {
                 color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 14,
                 fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
               }}>
-                The Precision Pivot
+                Mealiez vs. Manual Operations
               </h2>
             </div>
 
@@ -690,7 +689,7 @@ export default function WhyMealiezPage() {
                 color: "#1a1a1a", letterSpacing: "-0.025em",
                 fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
               }}>
-                Engineering Outcomes
+                What Operators Are Seeing After Switching to Mealiez
               </h2>
             </div>
 
@@ -713,7 +712,7 @@ export default function WhyMealiezPage() {
             {/* Logo marquee */}
             <div className="rv d2 marquee-wrap">
               <div className="marquee-track">
-                {["Enterprise Logistics Inc.", "Global Catering", "Metro Foods", "FreshBite Co.", "NutraCorp", "CafePro", "Enterprise Logistics Inc.", "Global Catering", "Metro Foods", "FreshBite Co.", "NutraCorp", "CafePro"].map((name, i) => (
+                {["Sai Hostel, Pune", "GVK Industrial Canteen", "NIT Campus Mess", "Sri Venkateshwara College", "TCS Campus Cafeteria", "Zolo Student Housing", "Sai Hostel, Pune", "GVK Industrial Canteen", "NIT Campus Mess", "Sri Venkateshwara College", "TCS Campus Cafeteria", "Zolo Student Housing"].map((name, i) => (
                   <span key={i} className="logo-text">{name}</span>
                 ))}
               </div>

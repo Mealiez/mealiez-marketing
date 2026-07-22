@@ -283,7 +283,7 @@ function Home() {
                                                     lineNumber: 171,
                                                     columnNumber: 17
                                                 }, this),
-                                                "Enterprise Grade Mess Operations"
+                                                "Trusted by 500+ Messes Across India"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/page.tsx",
@@ -301,13 +301,13 @@ function Home() {
                                                 letterSpacing: "-0.03em"
                                             },
                                             children: [
-                                                "Food Operations",
+                                                "Run Your Mess Smarter.",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 176,
-                                                    columnNumber: 32
+                                                    columnNumber: 39
                                                 }, this),
-                                                "Made",
+                                                "Not on",
                                                 " ",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     style: {
@@ -316,7 +316,7 @@ function Home() {
                                                         WebkitTextFillColor: "transparent",
                                                         backgroundClip: "text"
                                                     },
-                                                    children: "Effortless"
+                                                    children: "WhatsApp & Excel."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 177,
@@ -337,7 +337,7 @@ function Home() {
                                                 marginBottom: 36,
                                                 maxWidth: 420
                                             },
-                                            children: "Streamline hostel, cafeteria, and food service operations with intelligent automation, real-time analytics, inventory management, attendance tracking, and powerful reporting — all in one platform."
+                                            children: "Mealiez is India's mess management software for hostels, college canteens, industrial canteens, and corporate cafeterias. Automate meal bookings, attendance, billing, inventory, and reports — all from one platform."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.tsx",
                                             lineNumber: 182,
@@ -354,7 +354,7 @@ function Home() {
                                                     href: "/book-demo",
                                                     className: "btn-primary",
                                                     children: [
-                                                        "Book Demo",
+                                                        "Book a Demo",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                             width: "14",
                                                             height: "14",
@@ -397,7 +397,7 @@ function Home() {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                     href: "/why-mealiez",
                                                     className: "btn-outline",
-                                                    children: "Explore Architecture"
+                                                    children: "Why Mealiez?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 191,
@@ -1398,7 +1398,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Why Legacy Methods Fail"
+                                    children: "The Hidden Costs of Running a Mess Manually"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 324,
@@ -1456,8 +1456,8 @@ function Home() {
                                         lineNumber: 328,
                                         columnNumber: 22
                                     }, this),
-                                    title: "Unpredictable Waste",
-                                    desc: "Manual headcounts lead to 15-20% daily food waste. Our data-driven forecasting eliminates overproduction at the root."
+                                    title: "Food Wastage Eats Your Margin",
+                                    desc: "When your kitchen cooks without knowing tomorrow's headcount, you over-produce every day. Most hostels waste 15–25% of food daily — that's thousands of rupees straight to the bin."
                                 },
                                 {
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1521,8 +1521,8 @@ function Home() {
                                         lineNumber: 329,
                                         columnNumber: 22
                                     }, this),
-                                    title: "Siloed Data",
-                                    desc: "Spreadsheets don't talk to procurement. Changes in attendance never auto-adjust inventory requisitions in real-time."
+                                    title: "Billing Errors & Monthly Fights",
+                                    desc: "Paper chits, WhatsApp messages, and manual ledgers mean someone always disputes the bill. Missed meals, wrong deductions, and late collections are costing you real money every month."
                                 },
                                 {
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1557,8 +1557,8 @@ function Home() {
                                         lineNumber: 330,
                                         columnNumber: 22
                                     }, this),
-                                    title: "Administrative Drag",
-                                    desc: "Managers spend 14+ hours/week on manual reconciliation. Mealiez automates the entire operations lifecycle."
+                                    title: "Proxy Dining & Unauthorized Entry",
+                                    desc: "Without a digital check-in system, you have no way to know who actually ate. Proxy dining, register manipulation, and unauthorized meals go completely undetected."
                                 }
                             ].map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `glass-card lift reveal delay-${(i + 1) * 100}`,
@@ -1644,7 +1644,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Engineered for Scale"
+                                    children: "Everything You Need to Run a Profitable Mess"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 349,
@@ -1652,7 +1652,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "section-sub",
-                                    children: "Move beyond spreadsheets. A tactile, high-performance toolkit built for thousands of daily transactions with zero friction."
+                                    children: "From meal bookings to billing and inventory — Mealiez handles every part of your daily food service operation so you can focus on running a great mess."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 350,
@@ -1749,7 +1749,7 @@ function Home() {
                                                         color: "#1a1a1a",
                                                         lineHeight: 1.2
                                                     },
-                                                    children: "Identity & Cohort Logistics"
+                                                    children: "Meal Booking & Member Management"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 360,
@@ -1768,15 +1768,15 @@ function Home() {
                                                 lineHeight: 1.75,
                                                 marginBottom: 22
                                             },
-                                            children: "Maintain authoritative records of your dining population. Group individuals by dietary requirements, access tiers, or cohorts. Automate the full lifecycle from onboarding to offboarding."
+                                            children: "Members can opt-in for breakfast, lunch, or dinner in advance from their phone or web app. Your kitchen gets the exact headcount before cooking starts — so you cook only what you need, and your food cost becomes predictable."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.tsx",
                                             lineNumber: 362,
                                             columnNumber: 15
                                         }, this),
                                         [
-                                            "Automated credential provisioning via secure API.",
-                                            "Real-time state synchronization across all terminal nodes."
+                                            "Members opt-in for meals daily, weekly, or by meal type.",
+                                            "Kitchen sees real-time headcount before cooking starts — no guessing."
                                         ].map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "check-row",
                                                 children: [
@@ -1833,12 +1833,12 @@ function Home() {
                                             padding: "20px 24px"
                                         },
                                         children: [
-                                            "Normansland Hotday",
-                                            "Colenso Assistercns",
-                                            "Captives Quickdowns",
-                                            "Mabooms 1st Class",
-                                            "Porcine Pitoras",
-                                            "Soras Words"
+                                            "Arjun Mehta",
+                                            "Priya Sharma",
+                                            "Rohit Verma",
+                                            "Sneha Pillai",
+                                            "Karthik Nair",
+                                            "Divya Rao"
                                         ].map((name, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
                                                     display: "flex",
@@ -2146,7 +2146,7 @@ function Home() {
                                                         color: "#1a1a1a",
                                                         lineHeight: 1.2
                                                     },
-                                                    children: "High-Velocity Access Control"
+                                                    children: "QR & Biometric Attendance"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 404,
@@ -2165,15 +2165,15 @@ function Home() {
                                                 lineHeight: 1.75,
                                                 marginBottom: 22
                                             },
-                                            children: "Eliminate peak-hour queues. Sub-second authentication with our proprietary scanning protocol maintains flow while generating immutable attendance logs."
+                                            children: "Ditch the paper register. Members scan their personal QR code or biometric at the dining counter — every meal entry is logged, verified, and timestamped instantly. No proxy dining. No manual errors. No end-of-day reconciliation headache."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.tsx",
                                             lineNumber: 406,
                                             columnNumber: 15
                                         }, this),
                                         [
-                                            "Sub-100ms validation latency at the edge.",
-                                            "Offline resilience mode ensures continuous operation."
+                                            "Supports QR code, RFID card, and biometric fingerprint entry.",
+                                            "Attendance auto-syncs with billing so your monthly statement is always accurate."
                                         ].map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "check-row",
                                                 children: [
@@ -2256,7 +2256,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Features"
+                                    children: "Built for Mess Operators. Not Generic Software."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 425,
@@ -2264,7 +2264,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "section-sub",
-                                    children: "Advanced telemetry and control mechanisms for comprehensive mess operations."
+                                    children: "Every feature in Mealiez is designed specifically for food service operations — from raw material tracking and vendor management to automated monthly billing."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 426,
@@ -2332,15 +2332,15 @@ function Home() {
                                         lineNumber: 430,
                                         columnNumber: 41
                                     }, this),
-                                    title: "Smart Inventory",
-                                    desc: "Real-time stock tracking with predictive depletion alerts. Automate vendor reordering based on historical consumption velocity.",
+                                    title: "Inventory & Vendor Management",
+                                    desc: "Know exactly what raw materials you have in stock. Mealiez tracks daily ingredient consumption, flags low stock before you run out, and logs every vendor purchase against actual meals served.",
                                     checks: [
-                                        "Automated PO generation",
-                                        "Par level alerting"
+                                        "Low-stock alerts with automatic reorder prompts",
+                                        "Vendor invoices tracked against daily purchase history"
                                     ]
                                 },
                                 {
-                                    badge: "HARDWARE",
+                                    badge: "BILLING",
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                         width: "22",
                                         height: "22",
@@ -2360,7 +2360,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 178
+                                                columnNumber: 177
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
                                                 x: "9",
@@ -2370,7 +2370,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 227
+                                                columnNumber: 226
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "9",
@@ -2380,7 +2380,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 267
+                                                columnNumber: 266
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "15",
@@ -2390,7 +2390,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 302
+                                                columnNumber: 301
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "9",
@@ -2400,7 +2400,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 339
+                                                columnNumber: 338
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "15",
@@ -2410,7 +2410,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 376
+                                                columnNumber: 375
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "20",
@@ -2420,7 +2420,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 415
+                                                columnNumber: 414
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "20",
@@ -2430,7 +2430,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 452
+                                                columnNumber: 451
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "2",
@@ -2440,7 +2440,7 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 491
+                                                columnNumber: 490
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
                                                 x1: "2",
@@ -2450,23 +2450,23 @@ function Home() {
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.tsx",
                                                 lineNumber: 431,
-                                                columnNumber: 526
+                                                columnNumber: 525
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.tsx",
                                         lineNumber: 431,
-                                        columnNumber: 40
+                                        columnNumber: 39
                                     }, this),
-                                    title: "IoT Attendance",
-                                    desc: "Seamless integration with biometric and RFID endpoints. Deploy remote node management from a central operations dashboard.",
+                                    title: "Automated Billing & Fee Collection",
+                                    desc: "Monthly fee statements are generated automatically based on meals attended. Members pay online, you get instant confirmation, and your ledger stays clean — no manual entries, no end-of-month chaos.",
                                     checks: [
-                                        "Hardware agnostic",
-                                        "Remote diagnostics"
+                                        "Auto-generated monthly fee statements per member",
+                                        "Online payment collection with instant digital receipts"
                                     ]
                                 },
                                 {
-                                    badge: "INTELLIGENCE",
+                                    badge: "ANALYTICS",
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                         width: "22",
                                         height: "22",
@@ -2481,18 +2481,18 @@ function Home() {
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.tsx",
                                             lineNumber: 432,
-                                            columnNumber: 182
+                                            columnNumber: 179
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
                                         lineNumber: 432,
-                                        columnNumber: 44
+                                        columnNumber: 41
                                     }, this),
-                                    title: "Real-time Analytics",
-                                    desc: "Granular insights into dining patterns, peak loads, and cost per meal. Export compliance reports via standard API pipelines.",
+                                    title: "Operations Reports & Analytics",
+                                    desc: "Get clear daily reports on food wastage, meal attendance, collection status, and cost-per-meal — all in one dashboard. Export any report in seconds for management review or audits.",
                                     checks: [
-                                        "Custom metric dashboards",
-                                        "API data pipelines"
+                                        "Daily food wastage & cost-per-meal breakdown",
+                                        "Revenue, collection, and outstanding dues dashboard"
                                     ]
                                 }
                             ].map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2629,7 +2629,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Connect supply with precise demand."
+                                    children: "One Booking Triggers Your Entire Operation"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 460,
@@ -2795,7 +2795,7 @@ function Home() {
                                                         color: "#1a1a1a",
                                                         marginBottom: 9
                                                     },
-                                                    children: "Intelligent Indexing"
+                                                    children: "Member Books → Kitchen Prepares → Bill Generated. Automatically."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 478,
@@ -2807,7 +2807,7 @@ function Home() {
                                                         color: "#666",
                                                         lineHeight: 1.72
                                                     },
-                                                    children: "List your facility in the centralized directory. Allow patrons to query your location, capacity, and menu specs using advanced parametric search."
+                                                    children: "When a member books a meal, the kitchen gets the headcount, inventory is updated, and the monthly bill is calculated — all without a single manual step. That's how Mealiez eliminates the daily back-and-forth."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
                                                     lineNumber: 479,
@@ -2882,8 +2882,8 @@ function Home() {
                                                 lineNumber: 484,
                                                 columnNumber: 24
                                             }, this),
-                                            title: "Reputation Engine",
-                                            desc: "Aggregated trust metrics and verified reviews drive organic acquisition and long-term retention."
+                                            title: "Multi-Location Management",
+                                            desc: "Managing multiple hostel blocks, mess counters, or campus canteens? Run them all from a single admin panel with separate headcounts, menus, and reports for each location."
                                         },
                                         {
                                             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2916,8 +2916,8 @@ function Home() {
                                                 lineNumber: 485,
                                                 columnNumber: 24
                                             }, this),
-                                            title: "Demand Forecasting",
-                                            desc: "Predictive analytics based on search velocity and historical patterns in your geographic sector."
+                                            title: "Mobile App for Members & Admins",
+                                            desc: "Members book meals, check today's menu, and view their monthly bill from the Mealiez app. Admins track attendance, approve bookings, and manage payments from the same platform."
                                         }
                                     ].map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "glass-card lift",
@@ -3009,7 +3009,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Solutions"
+                                    children: "Designed for Every Food Service Operation in India"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 505,
@@ -3017,7 +3017,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "section-sub",
-                                    children: "Specialized configurations for distinct institutional environments."
+                                    children: "Whether you manage a 50-member hostel mess or a 5,000-worker factory canteen, Mealiez has the right setup for your scale and operation type."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 506,
@@ -3067,8 +3067,8 @@ function Home() {
                                         lineNumber: 510,
                                         columnNumber: 22
                                     }, this),
-                                    title: "Higher Education",
-                                    desc: "Handle massive concurrent loads during class changeovers with student ID integration and meal plan ledger management."
+                                    title: "Hostel & College Mess Management",
+                                    desc: "Manage student meal plans, opt-in bookings, dietary preferences, and automated monthly fee collection across all hostel blocks — from a single admin dashboard. Built for wardens, administrators, and hostel facility managers."
                                 },
                                 {
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -3101,8 +3101,8 @@ function Home() {
                                         lineNumber: 511,
                                         columnNumber: 22
                                     }, this),
-                                    title: "Healthcare",
-                                    desc: "Strict dietary compliance tracking, 24/7 operational resilience, and visitor access provisioning protocols."
+                                    title: "Factory & Industrial Canteen Software",
+                                    desc: "Track shift-wise meals for hundreds of workers, manage subsidised meal programs, and integrate with factory access control systems for accurate attendance — built for high-volume industrial operations."
                                 },
                                 {
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -3139,8 +3139,8 @@ function Home() {
                                         lineNumber: 512,
                                         columnNumber: 22
                                     }, this),
-                                    title: "Corporate Dining",
-                                    desc: "Frictionless payroll deduction integration, subsidized meal tracking, and premium guest hospitality workflows."
+                                    title: "Corporate Cafeteria Management",
+                                    desc: "Run multi-vendor office dining with digital meal wallets, payroll deduction integration, guest meal tracking, and daily spend reports for HR and finance — built for modern corporate workplaces."
                                 }
                             ].map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `glass-card lift reveal delay-${(i + 1) * 150}`,
@@ -3235,7 +3235,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Simple Pricing"
+                                    children: "Simple, Honest Pricing"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 533,
@@ -3243,7 +3243,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "section-sub",
-                                    children: "No hidden fees. Scale as you grow."
+                                    children: "No hidden fees. No setup surprises. Pick a plan that matches your mess size and scale up when you're ready."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 534,
@@ -3743,7 +3743,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Customers"
+                                    children: "Real Results from Real Mess Operators"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 593,
@@ -3751,7 +3751,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "section-sub",
-                                    children: "Deploying operational excellence across hundreds of enterprise campuses globally."
+                                    children: "Hostel wardens, college administrators, and canteen managers across India share how Mealiez changed the way they run their operations."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 594,
@@ -3771,16 +3771,16 @@ function Home() {
                             },
                             children: [
                                 {
-                                    quote: '"Mealiez fundamentally re-architected our dining logistics. The real-time telemetry allowed us to identify inefficiencies instantly. We saw a 40% waste reduction in the first quarter."',
-                                    name: "Sarah Jenkins",
-                                    role: "Director of Operations, Apex University",
-                                    org: "APEX"
+                                    quote: '"We were managing our hostel mess on WhatsApp and a shared Excel file. Every week there was a fight about the food bill. Since we switched to Mealiez, our food wastage has come down by almost 30% and the monthly billing just happens automatically. I wish we had done this sooner."',
+                                    name: "Rajesh Nair",
+                                    role: "Hostel Warden, Engineering College, Pune",
+                                    org: "HOSTEL"
                                 },
                                 {
-                                    quote: '"The frictionless access control eliminated our peak-hour queues entirely. Our employees report a significantly improved dining experience, and our administrative overhead is virtually zero."',
-                                    name: "Marcus Thorne",
-                                    role: "Facilities Lead, Nexus Tech",
-                                    org: "NEXUS"
+                                    quote: '"Collecting monthly mess fees was the most stressful part of my job — chasing students, cross-checking Excel entries, handling disputes. Now parents pay online through Mealiez, I get instant confirmation, and the ledger is always accurate. It\'s saved me at least 10 hours every month."',
+                                    name: "Priya Sharma",
+                                    role: "Mess Administrator, Student Housing Facility, Bengaluru",
+                                    org: "MESS"
                                 }
                             ].map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `glass-card lift reveal delay-${(i + 1) * 150}`,
@@ -3918,7 +3918,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "section-title",
-                                    children: "Resources"
+                                    children: "Practical Resources for Mess Operators"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 624,
@@ -3926,7 +3926,7 @@ function Home() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "section-sub",
-                                    children: "Technical documentation, guides, and implementation case studies."
+                                    children: "Guides, benchmarks, and real customer stories to help you cut food costs, fix billing, and run a more profitable mess business."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 625,
@@ -3996,8 +3996,8 @@ function Home() {
                                         lineNumber: 629,
                                         columnNumber: 22
                                     }, this),
-                                    badge: "WHITEPAPER",
-                                    title: "Optimizing RFID Throughput in High-Density Environments"
+                                    badge: "REPORT",
+                                    title: "Indian Hostel Mess Food Wastage Report 2026 — What's Actually Being Lost and How to Fix It"
                                 },
                                 {
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -4031,7 +4031,7 @@ function Home() {
                                         columnNumber: 22
                                     }, this),
                                     badge: "CASE STUDY",
-                                    title: "Achieving Sub-Second Latency: The State University Migration"
+                                    title: "How a 1,200-Member Hostel Mess Reduced Food Wastage by 28% and Fixed Billing in 3 Months"
                                 },
                                 {
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -4064,8 +4064,8 @@ function Home() {
                                         lineNumber: 631,
                                         columnNumber: 22
                                     }, this),
-                                    badge: "DOCUMENTATION",
-                                    title: "Mealiez API v2: Integrating Payroll Deductions"
+                                    badge: "GUIDE",
+                                    title: "The Step-by-Step Guide to Digitising Your Hostel Mess — From Booking to Billing"
                                 }
                             ].map((r, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `glass-card resource-card reveal delay-${(i + 1) * 150}`,
@@ -4166,7 +4166,7 @@ function Home() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 652,
+                                lineNumber: 651,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -4181,17 +4181,17 @@ function Home() {
                                     position: "relative"
                                 },
                                 children: [
-                                    "Ready to bring precision",
+                                    "Your mess deserves better",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 654,
-                                        columnNumber: 39
+                                        lineNumber: 653,
+                                        columnNumber: 40
                                     }, this),
-                                    "to your mess hall?"
+                                    "than WhatsApp and Excel."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 653,
+                                lineNumber: 652,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4204,10 +4204,10 @@ function Home() {
                                     margin: "0 auto 44px",
                                     position: "relative"
                                 },
-                                children: "Schedule a specialized demo to see exactly how Mealiez can transform your hostel catering operations, reduce waste, and improve student satisfaction."
+                                children: "Book a free 30-minute demo and see exactly how Mealiez cuts food wastage, automates monthly billing, and gives you complete visibility over your operations — whether you run a hostel mess, college canteen, or industrial cafeteria."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 656,
+                                lineNumber: 655,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4228,7 +4228,7 @@ function Home() {
                                             fontSize: 16
                                         },
                                         children: [
-                                            "Book a Specialized Demo",
+                                            "Book a Free Demo",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                 width: "14",
                                                 height: "14",
@@ -4246,45 +4246,45 @@ function Home() {
                                                         y2: "12"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.tsx",
-                                                        lineNumber: 662,
+                                                        lineNumber: 661,
                                                         columnNumber: 162
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polyline", {
                                                         points: "12 5 19 12 12 19"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.tsx",
-                                                        lineNumber: 662,
+                                                        lineNumber: 661,
                                                         columnNumber: 200
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.tsx",
-                                                lineNumber: 662,
+                                                lineNumber: 661,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 660,
+                                        lineNumber: 659,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        href: "/resources",
+                                        href: "/why-mealiez",
                                         className: "btn-outline",
                                         style: {
                                             padding: "16px 36px",
                                             fontSize: 16
                                         },
-                                        children: "Calculate Your Savings ROI"
+                                        children: "Calculate Your ROI"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 664,
+                                        lineNumber: 663,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 659,
+                                lineNumber: 658,
                                 columnNumber: 13
                             }, this)
                         ]
