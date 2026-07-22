@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { LenisProvider } from "@/lib/lenis";
 
 export const metadata: Metadata = {
   title: "Mealiez | Mess Management Software for Hostels, Colleges & Industrial Canteens in India",
@@ -13,22 +15,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* Pre-connect for Google Fonts performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
         {/*
-          Font pairing:
-          • Bricolage Grotesque — distinctive geometric display font for all headings
-          • Plus Jakarta Sans   — clean, modern humanist sans for body / UI
+          Font stack:
+          • Barlow Condensed — hero titles, section headings, statistics (display)
+          • Barlow            — body text, nav, buttons, cards, footer
+          • Edu VIC WA NT Hand — decorative accents, handwritten highlights
         */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Edu+VIC+WA+NT+Hand:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body style={{ margin: 0, padding: 0, background: "#fef6f0" }} className="antialiased">
-        <SiteHeader />
-        <main style={{ width: "100%" }}>{children}</main>
-        <SiteFooter />
+        {/* Scroll progress indicator */}
+        <ScrollProgress />
+
+        {/* Lenis smooth scroll provider */}
+        <LenisProvider>
+          <SiteHeader />
+          <main style={{ width: "100%" }}>{children}</main>
+          <SiteFooter />
+        </LenisProvider>
       </body>
     </html>
   );
