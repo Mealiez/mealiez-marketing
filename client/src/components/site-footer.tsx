@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 const footerColumns = [
@@ -50,10 +48,10 @@ const footerColumns = [
   {
     title: "Legal",
     links: [
-      ["Privacy Policy", "/security"],
-      ["Terms of Service", "/security"],
+      ["Privacy Policy", "/legal/privacy"],
+      ["Terms of Service", "/legal/terms"],
       ["Security", "/security"],
-      ["Data Infrastructure", "/security"],
+      ["Data Infrastructure", "/legal/data-infrastructure"],
     ],
   },
 ];
@@ -116,6 +114,18 @@ export function SiteFooter() {
       overflow: "hidden",
     }}>
 
+      {/* CSS for hover states — avoids JS event handlers and hydration mismatch */}
+      <style>{`
+        .ft-nav-link { font-size:12.5px; color:#666; text-decoration:none; transition:color 0.15s; display:inline-block; line-height:1; }
+        .ft-nav-link:hover { color:#FF6B35; }
+        .ft-bottom-link { font-size:12px; color:#bbb; text-decoration:none; transition:color 0.15s; }
+        .ft-bottom-link:hover { color:#FF6B35; }
+        .ft-social { color:#aaa; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:rgba(255,255,255,0.7); text-decoration:none; transition:color 0.15s,background 0.15s,border-color 0.15s,transform 0.15s; }
+        .ft-social:hover { color:#FF6B35; background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.22); transform:translateY(-2px); }
+        .ft-demo-btn { background:linear-gradient(135deg,#FF6B35,#FF875C); color:#fff; border-radius:12px; padding:13px 26px; font-weight:700; font-size:14px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; box-shadow:0 6px 22px rgba(255,107,53,0.32),inset 0 1px 0 rgba(255,255,255,0.2); flex-shrink:0; font-family:inherit; transition:opacity 0.15s,transform 0.15s; }
+        .ft-demo-btn:hover { opacity:0.92; transform:translateY(-1px); }
+      `}</style>
+
       {/* ── Decorative soft orbs (behind the glass) ── */}
       <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
         <div style={{
@@ -146,7 +156,6 @@ export function SiteFooter() {
         backdropFilter: "blur(28px) saturate(1.8) brightness(1.04)",
         WebkitBackdropFilter: "blur(28px) saturate(1.8) brightness(1.04)",
         borderTop: "1px solid rgba(255,255,255,0.85)",
-        /* Subtle inner-top highlight */
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.92), 0 -4px 32px rgba(255,107,53,0.04)",
       }}>
 
@@ -174,21 +183,7 @@ export function SiteFooter() {
                 Join 500+ operators already running on Mealiez.
               </p>
             </div>
-            <Link href="/book-demo" style={{
-              background: "linear-gradient(135deg, #FF6B35, #FF875C)",
-              color: "#fff",
-              borderRadius: 12,
-              padding: "13px 26px",
-              fontWeight: 700,
-              fontSize: 14,
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              boxShadow: "0 6px 22px rgba(255,107,53,0.32), inset 0 1px 0 rgba(255,255,255,0.2)",
-              flexShrink: 0,
-              fontFamily: "inherit",
-            }}>
+            <Link href="/book-demo" className="ft-demo-btn">
               Book a Free Demo
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
             </Link>
@@ -221,41 +216,14 @@ export function SiteFooter() {
                 The operating system for modern messes and food service businesses across India.
               </p>
 
-              {/* Social icons */}
+              {/* Social icons — hover via CSS class */}
               <div style={{ display: "flex", gap: 6 }}>
                 {socials.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    style={{
-                      color: "#aaa",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 30, height: 30,
-                      borderRadius: 8,
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      background: "rgba(255,255,255,0.7)",
-                      textDecoration: "none",
-                      backdropFilter: "blur(8px)",
-                      WebkitBackdropFilter: "blur(8px)",
-                      transition: "color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s",
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget;
-                      el.style.color = "#FF6B35";
-                      el.style.background = "rgba(255,107,53,0.08)";
-                      el.style.borderColor = "rgba(255,107,53,0.22)";
-                      el.style.transform = "translateY(-2px)";
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget;
-                      el.style.color = "#aaa";
-                      el.style.background = "rgba(255,255,255,0.7)";
-                      el.style.borderColor = "rgba(0,0,0,0.08)";
-                      el.style.transform = "translateY(0)";
-                    }}
+                    className="ft-social"
                   >
                     {s.icon}
                   </a>
@@ -306,16 +274,7 @@ export function SiteFooter() {
                       <li key={label} style={{ marginBottom: 10 }}>
                         <Link
                           href={href}
-                          style={{
-                            fontSize: 12.5,
-                            color: "#666",
-                            textDecoration: "none",
-                            transition: "color 0.15s",
-                            display: "inline-block",
-                            lineHeight: 1,
-                          }}
-                          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#FF6B35"; }}
-                          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#666"; }}
+                          className="ft-nav-link"
                         >
                           {label}
                         </Link>
@@ -341,13 +300,11 @@ export function SiteFooter() {
             © 2026 Mealiez. All rights reserved. Made with ❤️ for mess operators across India.
           </p>
           <div style={{ display: "flex", gap: 20 }}>
-            {[["Privacy", "/security"], ["Terms", "/security"], ["Security", "/security"]].map(([label, href]) => (
+            {[["Privacy", "/legal/privacy"], ["Terms", "/legal/terms"], ["Security", "/security"]].map(([label, href]) => (
               <Link
                 key={label}
                 href={href}
-                style={{ fontSize: 12, color: "#bbb", textDecoration: "none", transition: "color 0.15s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#FF6B35"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#bbb"; }}
+                className="ft-bottom-link"
               >
                 {label}
               </Link>
