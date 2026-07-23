@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Lenis smooth scroll provider */}
           <LenisProvider>
             <SiteHeader />
-            <main style={{ width: "100%" }}>
+            <main style={{ width: "100%", paddingTop: 0 }}>
               {/* Page transition animation between routes */}
               <PageTransition>
                 {children}
