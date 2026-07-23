@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navMenus } from "@/lib/site-data";
+import { Icon } from "@/components/ui/icon";
 
 const topLinks = [
   { href: "/why-mealiez", label: "Why Mealiez" },
@@ -14,23 +15,7 @@ const topLinks = [
   { href: "/company",     label: "Company" },
 ];
 
-/* ─── Magnetic effect hook ─── */
-function useMagnetic(ref: React.RefObject<HTMLElement | null>, strength = 0.2) {
-  const handleMove = useCallback((e: MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * strength;
-    const y = (e.clientY - rect.top - rect.height / 2) * strength;
-    ref.current.style.transform = `translate(${x}px, ${y}px)`;
-  }, [ref, strength]);
-
-  const handleLeave = useCallback(() => {
-    if (!ref.current) return;
-    ref.current.style.transform = "translate(0, 0)";
-  }, [ref]);
-
-  return { handleMove, handleLeave };
-}
+const easeNav = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function SiteHeader() {
   const path = usePathname();
@@ -41,9 +26,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
-  const logoRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
-  const magneticCta = useMagnetic(ctaRef, 0.15);
 
   // Detect scroll direction + distance
   useEffect(() => {
@@ -68,67 +51,53 @@ export function SiteHeader() {
     setMobileSolutions(false);
   }, [path]);
 
-  // Magnetic listeners for CTA
-  useEffect(() => {
-    const el = ctaRef.current;
-    if (!el) return;
-    el.addEventListener("mousemove", magneticCta.handleMove);
-    el.addEventListener("mouseleave", magneticCta.handleLeave);
-    return () => {
-      el.removeEventListener("mousemove", magneticCta.handleMove);
-      el.removeEventListener("mouseleave", magneticCta.handleLeave);
-    };
-  }, [magneticCta]);
-
   return (
     <>
       <style>{`
         .nav-link {
-          font-size: 13px;
+          font-size: 12.5px;
           font-weight: 500;
-          color: rgba(0,0,0,0.75);
+          color: rgba(0,0,0,0.7);
           font-family: 'Barlow Condensed', system-ui, sans-serif;
           text-decoration: none;
-          padding: 6px 2px;
+          padding: 7px 12px;
           position: relative;
           white-space: nowrap;
           letter-spacing: 0.04em;
           text-transform: uppercase;
-          transition: color 0.25s ease, letter-spacing 0.3s ease;
+          border-radius: 8px;
+          transition: color 0.25s ease, background 0.25s ease, letter-spacing 0.3s ease;
         }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0; left: 0; right: 0;
-          height: 1.5px;
-          background: linear-gradient(90deg, #FF6B35, #FF875C, #FFA27F);
-          border-radius: 2px;
-          transform: scaleX(0);
-          transform-origin: left center;
-          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        .nav-link:hover {
+          color: #FF6B35;
+          background: rgba(255,107,53,0.06);
+          letter-spacing: 0.06em;
         }
-        .nav-link:hover { color: #FF6B35; letter-spacing: 0.06em; }
-        .nav-link:hover::after { transform: scaleX(1); }
-        .nav-link.active { color: #FF6B35; font-weight: 600; letter-spacing: 0.06em; }
-        .nav-link.active::after { transform: scaleX(1); }
+        .nav-link.active {
+          color: #FF6B35;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          background: rgba(255,107,53,0.08);
+          box-shadow: 0 0 12px rgba(255,107,53,0.08);
+        }
 
         .nav-group { position: relative; }
         .nav-group .nav-dropdown {
-          position: absolute; top: calc(100% + 16px); left: -20px;
+          position: absolute; top: calc(100% + 12px); left: -20px;
           width: 520px;
-          background: rgba(255,252,249,0.92);
-          backdrop-filter: blur(32px) saturate(1.8);
-          -webkit-backdrop-filter: blur(32px) saturate(1.8);
+          background: rgba(255,255,255,0.75);
+          backdrop-filter: blur(40px) saturate(1.8);
+          -webkit-backdrop-filter: blur(40px) saturate(1.8);
           border-radius: 20px;
-          border: 1px solid rgba(255,255,255,0.9);
-          box-shadow: 0 24px 64px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1);
-          padding: 18px; z-index: 100;
+          border: 1px solid rgba(255,255,255,0.85);
+          box-shadow: 0 24px 64px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,1);
+          padding: 16px; z-index: 100;
           opacity: 0; visibility: hidden;
-          transform: translateY(16px) scale(0.97);
-          transform-origin: top left;
-          transition: opacity 0.28s cubic-bezier(0.22,1,0.36,1),
-                      visibility 0.28s,
-                      transform 0.28s cubic-bezier(0.22,1,0.36,1);
+          transform: translateY(12px) scale(0.96);
+          transform-origin: top center;
+          transition: opacity 0.25s cubic-bezier(0.22,1,0.36,1),
+                      visibility 0.25s,
+                      transform 0.25s cubic-bezier(0.22,1,0.36,1);
           pointer-events: none;
         }
         .nav-group:hover .nav-dropdown {
@@ -139,29 +108,29 @@ export function SiteHeader() {
         .dropdown-item {
           font-size: 13px; color: #444; text-decoration: none;
           display: flex; align-items: center;
-          padding: 10px 14px; border-radius: 12px;
+          padding: 9px 12px; border-radius: 10px;
           transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
           font-family: 'Barlow', system-ui, sans-serif;
-          line-height: 1.4; gap: 12px;
+          line-height: 1.4; gap: 10px;
         }
-        .dropdown-item .di-icon { font-size: 17px; flex-shrink: 0; }
+        .dropdown-item .di-icon { flex-shrink: 0; }
         .dropdown-item:hover {
           background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,135,92,0.04));
           color: #FF6B35;
-          transform: translateX(4px);
+          transform: translateX(3px);
         }
         .dropdown-item.active-item { color: #FF6B35; background: rgba(255,107,53,0.06); }
 
         .header-book-btn {
           background: linear-gradient(135deg, #FF6B35, #FF875C, #FFA27F);
           background-size: 200% 200%;
-          color: #fff; border-radius: 10px; padding: 10px 22px;
-          font-weight: 600; font-size: 13px;
+          color: #fff; border-radius: 8px; padding: 8px 18px;
+          font-weight: 600; font-size: 12px;
           font-family: 'Barlow Condensed', system-ui, sans-serif;
           text-decoration: none; display: inline-flex; align-items: center;
-          gap: 7px; letter-spacing: 0.04em; text-transform: uppercase;
+          gap: 6px; letter-spacing: 0.04em; text-transform: uppercase;
           transition: box-shadow 0.3s ease, background-position 0.4s ease;
-          box-shadow: 0 4px 20px rgba(255,107,53,0.30), inset 0 1px 0 rgba(255,255,255,0.25);
+          box-shadow: 0 4px 16px rgba(255,107,53,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
           white-space: nowrap;
           will-change: transform;
           position: relative;
@@ -178,14 +147,14 @@ export function SiteHeader() {
         .header-book-btn:hover::before { transform: translateX(100%); }
         .header-book-btn:hover {
           background-position: 100% 0;
-          box-shadow: 0 8px 28px rgba(255,107,53,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+          box-shadow: 0 6px 20px rgba(255,107,53,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
         }
-        .header-book-btn:active { transform: scale(0.97); }
+        .header-book-btn:active { transform: scale(0.96); }
 
         .header-login {
-          font-size: 13px; font-weight: 500; color: rgba(0,0,0,0.6);
+          font-size: 12px; font-weight: 500; color: rgba(0,0,0,0.55);
           font-family: 'Barlow Condensed', system-ui, sans-serif;
-          text-decoration: none; padding: 8px 16px; border-radius: 10px;
+          text-decoration: none; padding: 7px 14px; border-radius: 8px;
           transition: color 0.2s, background 0.2s; white-space: nowrap;
           display: inline-flex; align-items: center;
           letter-spacing: 0.04em; text-transform: uppercase;
@@ -194,15 +163,15 @@ export function SiteHeader() {
 
         .hamburger {
           display: none; flex-direction: column; justify-content: center;
-          gap: 5px; padding: 8px; background: none; border: none;
-          cursor: pointer; border-radius: 10px;
+          gap: 5px; padding: 6px; background: none; border: none;
+          cursor: pointer; border-radius: 8px;
           transition: background 0.2s;
           min-height: unset !important;
         }
         .hamburger:hover { background: rgba(255,107,53,0.08); }
         .hamburger .bar {
-          width: 22px; height: 2px; border-radius: 2px;
-          background: #333;
+          width: 20px; height: 2px; border-radius: 2px;
+          background: #444;
           transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
           transform-origin: center;
         }
@@ -213,7 +182,7 @@ export function SiteHeader() {
         .mobile-drawer {
           display: none;
           position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-          background: rgba(255,252,249,0.96);
+          background: rgba(255,255,255,0.7);
           backdrop-filter: blur(40px) saturate(1.8);
           -webkit-backdrop-filter: blur(40px) saturate(1.8);
           z-index: 40; overflow-y: auto;
@@ -223,8 +192,8 @@ export function SiteHeader() {
         .mobile-drawer.open { display: flex; }
 
         .mobile-nav-link {
-          font-size: 16px; font-weight: 600; color: #1a1a1a;
-          text-decoration: none; padding: 14px 18px; border-radius: 14px;
+          font-size: 15px; font-weight: 600; color: #1a1a1a;
+          text-decoration: none; padding: 12px 16px; border-radius: 12px;
           transition: background 0.2s, color 0.2s, transform 0.2s;
           display: flex; align-items: center; justify-content: space-between;
           font-family: 'Barlow Condensed', system-ui, sans-serif;
@@ -234,8 +203,8 @@ export function SiteHeader() {
         .mobile-nav-link.active { color: #FF6B35; background: rgba(255,107,53,0.06); }
 
         .mobile-section-btn {
-          font-size: 16px; font-weight: 600; color: #1a1a1a;
-          padding: 14px 18px; border-radius: 14px;
+          font-size: 15px; font-weight: 600; color: #1a1a1a;
+          padding: 12px 16px; border-radius: 12px;
           background: none; border: none; cursor: pointer; width: 100%;
           display: flex; align-items: center; justify-content: space-between;
           transition: background 0.2s, color 0.2s;
@@ -246,15 +215,15 @@ export function SiteHeader() {
         .mobile-section-btn:hover { background: rgba(255,107,53,0.07); color: #FF6B35; }
 
         .mobile-submenu {
-          padding: 4px 0 4px 18px;
+          padding: 4px 0 4px 16px;
           display: flex; flex-direction: column; gap: 2px;
           overflow: hidden;
         }
         .mobile-sub-link {
           font-size: 14px; font-weight: 500; color: #555;
-          text-decoration: none; padding: 10px 14px; border-radius: 12px;
+          text-decoration: none; padding: 9px 12px; border-radius: 10px;
           transition: background 0.2s, color 0.2s, transform 0.2s;
-          display: flex; align-items: center; gap: 12px;
+          display: flex; align-items: center; gap: 10px;
           font-family: 'Barlow', system-ui, sans-serif;
         }
         .mobile-sub-link:hover { background: rgba(255,107,53,0.07); color: #FF6B35; transform: translateX(4px); }
@@ -273,84 +242,128 @@ export function SiteHeader() {
         }
       `}</style>
 
-      {/* Sticky header — full width, centered content */}
+      {/* Floating Glass Navbar */}
       <motion.header
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -30 }}
         animate={{
           opacity: 1,
-          y: hidden ? -80 : 0,
+          y: hidden ? -90 : 0,
           transition: {
-            opacity: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-            y: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+            opacity: { duration: 0.5, ease: easeNav },
+            y: { duration: 0.35, ease: easeNav },
           },
         }}
         style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-          height: 64,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          background: scrolled
-            ? "rgba(255,252,249,0.85)"
-            : "rgba(255,252,249,0.60)",
-          backdropFilter: scrolled
-            ? "blur(36px) saturate(1.9)"
-            : "blur(24px) saturate(1.6)",
-          WebkitBackdropFilter: scrolled
-            ? "blur(36px) saturate(1.9)"
-            : "blur(24px) saturate(1.6)",
-          borderBottom: scrolled
-            ? "1px solid rgba(255,255,255,0.85)"
-            : "1px solid rgba(255,255,255,0.5)",
-          boxShadow: scrolled
-            ? "0 4px 32px rgba(0,0,0,0.06)"
-            : "none",
-          transition: "background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          display: "flex",
+          justifyContent: "center",
+          padding: scrolled ? "8px 16px 0" : "16px 16px 0",
+          pointerEvents: "none",
+          transition: "padding 0.35s ease",
         }}
       >
+        {/* Ambient glow behind the navbar */}
         <div style={{
-          width: "100%",
-          maxWidth: 1240,
-          margin: "0 auto",
-          padding: "0 20px",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          height: 56,
-        }}>
+          position: "absolute", top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "70%", height: "80%",
+          background: "radial-gradient(ellipse, rgba(255,107,53,0.06) 0%, transparent 60%)",
+          filter: "blur(40px)",
+          pointerEvents: "none",
+          opacity: scrolled ? 0.4 : 0.2,
+          transition: "opacity 0.5s ease",
+        }}/>
+
+        {/* Glowing border pseudo-element */}
+        <div style={{
+          position: "absolute",
+          top: scrolled ? 8 : 16,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "min(calc(100% - 32px), 1240px)",
+          height: 52,
+          borderRadius: 9999,
+          padding: 1,
+          background: "linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,162,127,0.1), rgba(255,107,53,0.05), rgba(255,162,127,0.1), rgba(255,107,53,0.15))",
+          backgroundSize: "300% 300%",
+          animation: scrolled ? "none" : "auroraDrift 8s ease-in-out infinite",
+          opacity: 0.5,
+          transition: "all 0.4s ease",
+          pointerEvents: "none",
+          mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          maskComposite: "exclude",
+          WebkitMaskComposite: "xor",
+        }}/>
+
+        {/* Main floating glass card */}
+        <motion.div
+          style={{
+            position: "relative",
+            pointerEvents: "auto",
+            width: "min(100%, 1240px)",
+            height: scrolled ? 48 : 52,
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "0 12px",
+            borderRadius: 9999,
+            background: scrolled
+              ? "rgba(255,255,255,0.78)"
+              : "rgba(255,255,255,0.55)",
+            backdropFilter: scrolled
+              ? "blur(32px) saturate(1.8)"
+              : "blur(24px) saturate(1.6)",
+            WebkitBackdropFilter: scrolled
+              ? "blur(32px) saturate(1.8)"
+              : "blur(24px) saturate(1.6)",
+            border: "1px solid rgba(255,255,255,0.75)",
+            boxShadow: scrolled
+              ? "0 8px 32px rgba(17,17,17,0.06), 0 2px 8px rgba(17,17,17,0.03), 0 0 0 1px rgba(255,107,53,0.03)"
+              : "0 4px 24px rgba(17,17,17,0.04), 0 1px 4px rgba(17,17,17,0.02), 0 0 0 1px rgba(255,107,53,0.02)",
+            transition: "height 0.35s ease, background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease",
+          }}
+        >
+          {/* Glass reflection layer */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: 9999, pointerEvents: "none", zIndex: 0,
+            background: "linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 50%)",
+          }}/>
+
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          <Link href="/" style={{
+            textDecoration: "none", display: "flex", alignItems: "center", gap: 8, flexShrink: 0, zIndex: 1,
+          }}>
             <motion.div
-              ref={logoRef}
               initial={{ scale: 0, rotate: -20 }}
               animate={{
                 scale: 1,
                 rotate: 0,
-                transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1], delay: 0.2 },
+                transition: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 0.1 },
               }}
-              whileHover={{ scale: 1.08, rotate: -5 }}
+              whileHover={{ scale: 1.06, rotate: -3 }}
               style={{
-                width: 34, height: 34,
+                width: 28, height: 28,
                 background: "linear-gradient(135deg, #FF6B35, #FF875C)",
-                borderRadius: 10,
+                borderRadius: 7,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 4px 16px rgba(255,107,53,0.35)",
+                boxShadow: "0 3px 10px rgba(255,107,53,0.3)",
                 transition: "box-shadow 0.3s ease",
                 position: "relative",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 6px 24px rgba(255,107,53,0.5)")}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 4px 16px rgba(255,107,53,0.35)")}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 5px 16px rgba(255,107,53,0.45)")}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 3px 10px rgba(255,107,53,0.3)")}
             >
-              <div style={{
-                position: "absolute", inset: -4, borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(255,107,53,0.2), transparent 70%)",
-                opacity: 0.6, pointerEvents: "none",
-              }} />
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M3 11l19-9-9 19-2-8-8-2z"/>
               </svg>
             </motion.div>
             <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.3 } }}
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0, transition: { duration: 0.4, delay: 0.2 } }}
               style={{
-                fontSize: 20, fontWeight: 800, color: "#FF6B35",
+                fontSize: 17, fontWeight: 800, color: "#FF6B35",
                 letterSpacing: "-0.02em",
                 fontFamily: "'Barlow Condensed', system-ui, sans-serif",
                 textTransform: "uppercase",
@@ -361,24 +374,27 @@ export function SiteHeader() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28, flex: 1, justifyContent: "center" }}>
+          <nav className="desktop-nav" style={{
+            display: "flex", alignItems: "center", gap: 4, flex: 1,
+            justifyContent: "center", zIndex: 1,
+          }}>
             <div className="nav-group">
               <Link href="/product" className={`nav-link${isActive("/product") ? " active" : ""}`}>Product</Link>
               <div className="nav-dropdown">
                 <div style={{
                   background: "linear-gradient(135deg, rgba(255,107,53,0.06), rgba(255,135,92,0.03))",
-                  borderRadius: 12, padding: "10px 14px",
-                  fontSize: 12, color: "#888", marginBottom: 12,
+                  borderRadius: 10, padding: "8px 12px",
+                  fontSize: 11, color: "#999", marginBottom: 10,
                   fontFamily: "'Barlow', system-ui, sans-serif",
                   border: "1px solid rgba(255,107,53,0.06)",
                 }}>
-                  Automation modules for bookings, attendance, billing, inventory and growth.
+                  Automated modules for booking, attendance, billing, inventory and growth.
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
                   {navMenus.product.map((item) => (
                     <Link key={item.slug} href={`/product/${item.slug}`}
                       className={`dropdown-item${path === `/product/${item.slug}` ? " active-item" : ""}`}>
-                      <span className="di-icon">{item.icon}</span>{item.title}
+                      <span className="di-icon"><Icon name={item.icon} size={16} color="#FF6B35" /></span>{item.title}
                     </Link>
                   ))}
                 </div>
@@ -390,18 +406,18 @@ export function SiteHeader() {
               <div className="nav-dropdown">
                 <div style={{
                   background: "linear-gradient(135deg, rgba(255,107,53,0.06), rgba(255,135,92,0.03))",
-                  borderRadius: 12, padding: "10px 14px",
-                  fontSize: 12, color: "#888", marginBottom: 12,
+                  borderRadius: 10, padding: "8px 12px",
+                  fontSize: 11, color: "#999", marginBottom: 10,
                   fontFamily: "'Barlow', system-ui, sans-serif",
                   border: "1px solid rgba(255,107,53,0.06)",
                 }}>
-                  Industry-specific workflows designed for operational scale and control.
+                  Industry-specific workflows for operational scale and control.
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
                   {navMenus.solutions.map((item) => (
                     <Link key={item.slug} href={`/solutions/${item.slug}`}
                       className={`dropdown-item${path === `/solutions/${item.slug}` ? " active-item" : ""}`}>
-                      <span className="di-icon">{item.icon}</span>{item.title}
+                      <span className="di-icon"><Icon name={item.icon} size={16} color="#FF6B35" /></span>{item.title}
                     </Link>
                   ))}
                 </div>
@@ -417,11 +433,11 @@ export function SiteHeader() {
           </nav>
 
           {/* Desktop right buttons */}
-          <div className="desktop-btns" style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+          <div className="desktop-btns" style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0, zIndex: 1 }}>
             <Link href="/login" className="header-login">Login</Link>
             <Link ref={ctaRef} href="/book-demo" className="header-book-btn" style={{ display: "inline-flex" }}>
               Book Demo
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
             </Link>
           </div>
 
@@ -431,12 +447,13 @@ export function SiteHeader() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            style={{ zIndex: 1 }}
           >
             <span className="bar" />
             <span className="bar" />
             <span className="bar" />
           </button>
-        </div>
+        </motion.div>
       </motion.header>
 
       {/* Mobile drawer */}
@@ -456,7 +473,7 @@ export function SiteHeader() {
               exit={{ opacity: 0 }}
               style={{
                 position: "fixed", inset: 0, zIndex: -1,
-                background: "rgba(0,0,0,0.04)",
+                background: "rgba(0,0,0,0.03)",
                 backdropFilter: "blur(4px)",
               }}
             />
@@ -464,7 +481,7 @@ export function SiteHeader() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05, duration: 0.35 }}>
               <button className="mobile-section-btn" onClick={() => setMobileProduct(!mobileProduct)}>
                 Product
-                <motion.svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
+                <motion.svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
                   animate={{ rotate: mobileProduct ? 180 : 0 }}
                   transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }} style={{ flexShrink: 0 }}>
                   <polyline points="6 9 12 15 18 9"/>
@@ -478,7 +495,8 @@ export function SiteHeader() {
                       {navMenus.product.map((item, i) => (
                         <motion.div key={item.slug} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04, duration: 0.3 }}>
                           <Link href={`/product/${item.slug}`} className="mobile-sub-link" onClick={() => setMobileOpen(false)}>
-                            <span style={{ fontSize: 18 }}>{item.icon}</span>{item.title}
+                            <Icon name={item.icon} size={18} color="#FF6B35" />
+                            {item.title}
                           </Link>
                         </motion.div>
                       ))}
@@ -491,7 +509,7 @@ export function SiteHeader() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.35 }}>
               <button className="mobile-section-btn" onClick={() => setMobileSolutions(!mobileSolutions)}>
                 Solutions
-                <motion.svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
+                <motion.svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
                   animate={{ rotate: mobileSolutions ? 180 : 0 }}
                   transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }} style={{ flexShrink: 0 }}>
                   <polyline points="6 9 12 15 18 9"/>
@@ -505,7 +523,8 @@ export function SiteHeader() {
                       {navMenus.solutions.map((item, i) => (
                         <motion.div key={item.slug} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04, duration: 0.3 }}>
                           <Link href={`/solutions/${item.slug}`} className="mobile-sub-link" onClick={() => setMobileOpen(false)}>
-                            <span style={{ fontSize: 18 }}>{item.icon}</span>{item.title}
+                            <Icon name={item.icon} size={18} color="#FF6B35" />
+                            {item.title}
                           </Link>
                         </motion.div>
                       ))}

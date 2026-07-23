@@ -105,3 +105,18 @@
 {"timestamp":"24:30:10.679","source":"Server","level":"LOG","message":"✓ Compiled in 1063ms"}
 {"timestamp":"24:33:47.946","source":"Server","level":"LOG","message":"✓ Compiled in 5.9s"}
 {"timestamp":"24:44:42.749","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"24:50:35.943","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"24:55:12.374","source":"Server","level":"LOG","message":"✓ Compiled in 6.4s"}
+{"timestamp":"24:55:12.553","source":"Server","level":"WARN","message":"⚠ Fast Refresh had to perform a full reload when ./node_modules/lenis/dist/lenis.mjs changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload"}
+{"timestamp":"24:55:19.191","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"25:02:38.611","source":"Server","level":"LOG","message":"✓ Compiled in 2.3s"}
+{"timestamp":"25:10:50.385","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"25:11:24.797","source":"Server","level":"LOG","message":"✓ Compiled in 4.5s"}
+{"timestamp":"25:11:52.304","source":"Server","level":"LOG","message":"✓ Compiled in 333ms"}
+{"timestamp":"25:21:05.303","source":"Server","level":"LOG","message":"✓ Compiled in 1511ms"}
+{"timestamp":"25:23:01.702","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"25:26:11.775","source":"Server","level":"LOG","message":"✓ Compiled in 2.1s"}
+{"timestamp":"25:26:38.823","source":"Server","level":"LOG","message":"✓ Compiled in 280ms"}
+{"timestamp":"25:32:27.655","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"25:33:29.616","source":"Server","level":"LOG","message":"○ Compiling /login ..."}
+{"timestamp":"25:34:01.659","source":"Browser","level":"WARN","message":"Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior=\"smooth\"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior"}
