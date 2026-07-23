@@ -63,3 +63,22 @@
 {"timestamp":"23:23:02.683","source":"Server","level":"LOG","message":"✓ Compiled in 1685ms"}
 {"timestamp":"23:23:20.411","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
 {"timestamp":"23:24:01.538","source":"Server","level":"LOG","message":"✓ Compiled in 1998ms"}
+{"timestamp":"23:40:12.916","source":"Server","level":"LOG","message":"✓ Compiled in 6.7s"}
+{"timestamp":"23:40:13.098","source":"Server","level":"WARN","message":"⚠ Fast Refresh had to perform a full reload when ./node_modules/lenis/dist/lenis.mjs changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload"}
+{"timestamp":"23:40:16.121","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"23:41:27.692","source":"Server","level":"LOG","message":"✓ Compiled in 1871ms"}
+{"timestamp":"23:41:54.911","source":"Server","level":"LOG","message":"✓ Compiled in 210ms"}
+{"timestamp":"23:48:31.805","source":"Server","level":"LOG","message":"✓ Compiled in 4.5s"}
+{"timestamp":"23:48:32.131","source":"Server","level":"WARN","message":"⚠ Fast Refresh had to perform a full reload when ./node_modules/lenis/dist/lenis.mjs changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload"}
+{"timestamp":"23:48:35.964","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"23:49:29.908","source":"Server","level":"LOG","message":"✓ Compiled in 747ms"}
+{"timestamp":"23:49:56.570","source":"Server","level":"LOG","message":"✓ Compiled in 361ms"}
+{"timestamp":"23:59:06.738","source":"Server","level":"LOG","message":"✓ Compiled in 4.4s"}
+{"timestamp":"23:59:06.923","source":"Server","level":"WARN","message":"⚠ Fast Refresh had to perform a full reload when ./node_modules/lenis/dist/lenis.mjs changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload"}
+{"timestamp":"23:59:11.736","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"24:01:06.173","source":"Server","level":"LOG","message":"✓ Compiled in 3.2s"}
+{"timestamp":"24:01:43.490","source":"Server","level":"LOG","message":"✓ Compiled in 1103ms"}
+{"timestamp":"24:02:02.945","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"24:10:14.736","source":"Server","level":"LOG","message":"✓ Compiled in 1082ms"}
+{"timestamp":"24:10:38.844","source":"Server","level":"LOG","message":"✓ Compiled in 853ms"}
+{"timestamp":"24:11:04.423","source":"Server","level":"LOG","message":"✓ Compiled in 268ms"}

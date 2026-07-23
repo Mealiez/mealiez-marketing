@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../components/ui/styles/animations.css";
+import "../components/ui/styles/visual-effects.css";
+import "../components/ui/styles/premium-effects.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -9,6 +12,7 @@ import { ToastProvider } from "@/components/ux/toast";
 import { ScrollToTop } from "@/components/ux/scroll-to-top";
 import { PageTransition } from "@/components/ux/page-transition";
 import { TopProgressBar } from "@/components/loaders/progress-bar";
+import { MouseCursor } from "@/components/ambient/mouse-cursor";
 
 export const metadata: Metadata = {
   title: "Mealiez | Mess Management Software for Hostels, Colleges & Industrial Canteens in India",
@@ -39,9 +43,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
-      <body style={{ margin: 0, padding: 0, background: "#fef6f0" }} className="antialiased">
+      <body style={{ margin: 0, padding: 0 }} className="antialiased bg-aurora noise-overlay noise-premium">
         {/* Global page loader — shows on first visit */}
         <PageLoader />
+
+        {/* Premium cursor-follow ambient glow (desktop only) */}
+        <MouseCursor color="rgba(255,107,53,0.06)" size={350} blur={120} opacity={0.7} />
 
         {/* Top navigation loading indicator */}
         <TopProgressBar />
