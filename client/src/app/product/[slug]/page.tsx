@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products } from "@/lib/site-data";
+import { Icon } from "@/components/ui/icon";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -152,7 +153,9 @@ export default function ProductDetailPage({ params }: Props) {
               <span style={{ color: "#888" }}>{product.title}</span>
             </div>
 
-            <div className="rv" style={{ fontSize: 52, marginBottom: 12, lineHeight: 1 }}>{product.icon}</div>
+            <div className="rv" style={{ marginBottom: 16 }}>
+              <Icon name={product.icon} size={52} color="#FF6B35" />
+            </div>
             <h1 className="rv d1" style={{
               fontSize: "clamp(36px, 4.5vw, 54px)", fontWeight: 900,
               lineHeight: 1.1, letterSpacing: "-0.03em",
@@ -313,7 +316,9 @@ export default function ProductDetailPage({ params }: Props) {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
                 {otherProducts.map((p, i) => (
                   <Link key={p.slug} href={`/product/${p.slug}`} className={`other-card rv d${i + 1}`}>
-                    <div style={{ fontSize: 28, marginBottom: 10 }}>{p.icon}</div>
+                     <div style={{ marginBottom: 10 }}>
+                       <Icon name={p.icon} size={28} color="#FF6B35" />
+                     </div>
                     <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>{p.title}</h3>
                     <p style={{ fontSize: 13, color: "#666", lineHeight: 1.65, marginBottom: 14 }}>{p.summary}</p>
                     <span style={{ fontSize: 13, fontWeight: 700, color: "#FF6B35", display: "flex", alignItems: "center", gap: 5 }}>

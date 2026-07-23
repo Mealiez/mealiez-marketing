@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { solutions } from "@/lib/site-data";
+import { Icon } from "@/components/ui/icon";
 
 function useReveal() {
   useEffect(() => {
@@ -69,7 +70,9 @@ export default function SolutionsOverviewPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {solutions.map((sol, i) => (
                 <Link key={sol.slug} href={`/solutions/${sol.slug}`} className={`sol-card rv d${(i % 4) + 1}`}>
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{sol.icon}</div>
+                   <div style={{ marginBottom: 16 }}>
+                     <Icon name={sol.icon} size={36} color="#FF6B35" />
+                   </div>
                   <h3 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", marginBottom: 10 }}>{sol.title}</h3>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7, marginBottom: 20 }}>{sol.tagline}</p>
                   <div style={{ background: "rgba(255,107,53,0.06)", borderRadius: 10, padding: "10px 14px", fontSize: 12.5, color: "#555", lineHeight: 1.6, marginBottom: 20 }}>

@@ -27,7 +27,7 @@ export const products: Product[] = [
   {
     slug: "meal-booking",
     title: "Meal Booking",
-    icon: "🍽️",
+    icon: "calendar-check",
     summary: "Smart meal booking with attendance-aware auto planning.",
     painPoints: [
       "Last-minute cancellations cause over-cooking and wasted food budgets",
@@ -60,7 +60,7 @@ export const products: Product[] = [
   {
     slug: "attendance",
     title: "Attendance Management",
-    icon: "✅",
+    icon: "check-circle",
     summary: "Track who actually consumed meals, across shifts and locations.",
     painPoints: [
       "Proxy attendance allows unauthorised diners to consume at the mess's cost",
@@ -93,7 +93,7 @@ export const products: Product[] = [
   {
     slug: "billing",
     title: "Billing & Payments",
-    icon: "💳",
+    icon: "credit-card",
     summary: "Automate invoices, plans, due tracking, and digital collections.",
     painPoints: [
       "Manual invoicing takes hours each month and is riddled with entry errors",
@@ -126,7 +126,7 @@ export const products: Product[] = [
   {
     slug: "inventory",
     title: "Inventory Management",
-    icon: "📦",
+    icon: "package",
     summary: "Control stock movement and procurement with demand intelligence.",
     painPoints: [
       "Stockouts during peak meal times disrupt service and harm reputation",
@@ -159,7 +159,7 @@ export const products: Product[] = [
   {
     slug: "analytics",
     title: "Analytics & Reports",
-    icon: "📊",
+    icon: "bar-chart",
     summary: "Unified operational intelligence for founders and operations teams.",
     painPoints: [
       "Reports are scattered across spreadsheets, WhatsApp groups, and registers",
@@ -192,7 +192,7 @@ export const products: Product[] = [
   {
     slug: "mobile-app",
     title: "Mobile App",
-    icon: "📱",
+    icon: "smartphone",
     summary: "A fast mobile experience for diners, admins, and field teams.",
     painPoints: [
       "Low digital adoption due to poor or non-existent mobile interfaces",
@@ -228,7 +228,7 @@ export const solutions: Solution[] = [
   {
     slug: "hostel-mess",
     title: "Hostel Mess Management",
-    icon: "🏠",
+    icon: "building",
     tagline: "Automate your hostel food operations from booking to billing.",
     challenge: "Student attendance shifts daily, making meal planning and cost control extremely difficult for hostel mess operators.",
     currentProcess: "Manual registers, paper-based meal opting, and spreadsheet billing create chronic overcooking, financial leakage, and warden headaches.",
@@ -249,7 +249,7 @@ export const solutions: Solution[] = [
   {
     slug: "college-canteen",
     title: "College Canteens",
-    icon: "🎓",
+    icon: "graduation-cap",
     tagline: "Serve thousands of students efficiently with zero-queue digital ops.",
     challenge: "High rush-hour demand with completely unpredictable daily headcounts makes college canteens the hardest food service to manage manually.",
     currentProcess: "Token and cash-based operations cause long queues, revenue leakage, no demand insight, and chaotic kitchen preparation.",
@@ -270,7 +270,7 @@ export const solutions: Solution[] = [
   {
     slug: "industrial-canteen",
     title: "Industrial Canteens",
-    icon: "🏭",
+    icon: "factory",
     tagline: "Shift-accurate, audit-ready meal management for industrial scale.",
     challenge: "Shift-based meal counts, contractor workforce mixing, and compliance reporting requirements make industrial canteens uniquely complex to manage.",
     currentProcess: "Manual rosters, delayed reconciliation between HR and canteen systems, and paper-based audit trails increase errors and compliance risk.",
@@ -291,7 +291,7 @@ export const solutions: Solution[] = [
   {
     slug: "corporate-cafeteria",
     title: "Corporate Cafeterias",
-    icon: "🏢",
+    icon: "office-building",
     tagline: "Smart cafeteria management for the hybrid work era.",
     challenge: "Hybrid and remote work creates wildly fluctuating daily cafeteria demand, making meal prep planning and cost control nearly impossible.",
     currentProcess: "Without reliable attendance-linked demand data, corporate kitchens either over-produce and waste, or under-produce and disappoint employees.",
@@ -312,7 +312,7 @@ export const solutions: Solution[] = [
   {
     slug: "cloud-kitchen",
     title: "Cloud Kitchens",
-    icon: "☁️",
+    icon: "cloud",
     tagline: "Centralised production planning for high-throughput cloud operations.",
     challenge: "Multi-channel order aggregation, subscription management, and production planning can become chaotic without a unified operations platform.",
     currentProcess: "Disconnected systems across aggregators, WhatsApp orders, and manual prep sheets block accurate demand planning and inflate ingredient costs.",
@@ -333,7 +333,7 @@ export const solutions: Solution[] = [
   {
     slug: "subscription-mess-business",
     title: "Subscription Mess Businesses",
-    icon: "🔁",
+    icon: "refresh-cw",
     tagline: "Grow your tiffin or meal subscription business on autopilot.",
     challenge: "Managing hundreds of recurring meal plan customers, churn prevention, and manual collection cycles is unscalable without the right system.",
     currentProcess: "Manual renewals via WhatsApp, cash collection rounds, and Excel subscriber tracking reduce retention and burn operator time every month.",

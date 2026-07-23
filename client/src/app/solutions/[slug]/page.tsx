@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { solutions, products } from "@/lib/site-data";
+import { Icon } from "@/components/ui/icon";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -105,7 +106,9 @@ export default function SolutionDetailPage({ params }: Props) {
               <span style={{ color: "#888" }}>{solution.title}</span>
             </div>
 
-            <div className="rv" style={{ fontSize: 52, marginBottom: 16 }}>{solution.icon}</div>
+            <div className="rv" style={{ marginBottom: 16 }}>
+              <Icon name={solution.icon} size={52} color="#FF6B35" />
+            </div>
             <h1 className="rv d1" style={{ fontSize: 50, fontWeight: 900, lineHeight: 1.12, letterSpacing: "-0.03em", color: "#1a1a1a", marginBottom: 20 }}>
               <span style={{ color: "#FF6B35" }}>{solution.title}</span>
             </h1>
@@ -195,7 +198,7 @@ export default function SolutionDetailPage({ params }: Props) {
                     href={product ? `/product/${product.slug}` : "/product"}
                     className="feat-pill"
                   >
-                    {product && <span style={{ fontSize: 16 }}>{product.icon}</span>}
+                    {product && <Icon name={product.icon} size={16} color="#FF6B35" />}
                     {feat}
                   </Link>
                 );
@@ -216,7 +219,9 @@ export default function SolutionDetailPage({ params }: Props) {
               borderRadius: 20, padding: "40px 48px", textAlign: "center",
               boxShadow: "0 20px 60px rgba(255,107,53,0.3)"
             }}>
-              <div style={{ fontSize: 40, marginBottom: 16 }}>📈</div>
+              <div style={{ marginBottom: 16 }}>
+                <Icon name="trending-up" size={40} color="#fff" />
+              </div>
               <p style={{ fontSize: 20, fontWeight: 700, color: "#fff", lineHeight: 1.6 }}>{solution.roiImpact}</p>
               <div style={{ marginTop: 28 }}>
                 <Link href="/resources/roi-calculator" style={{ background: "rgba(255,255,255,0.2)", color: "#fff", borderRadius: 10, padding: "12px 28px", fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1.5px solid rgba(255,255,255,0.4)", display: "inline-block", transition: "background .15s" }}>
@@ -241,8 +246,8 @@ export default function SolutionDetailPage({ params }: Props) {
                 almost zero.
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg, #FF6B35, #FF875C)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 18, fontWeight: 800 }}>
-                  {solution.icon}
+                <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg, #FF6B35, #FF875C)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>
+                  <Icon name={solution.icon} size={20} color="#fff" />
                 </div>
                 <div>
                   <p style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>Operations Head</p>
@@ -277,7 +282,9 @@ export default function SolutionDetailPage({ params }: Props) {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
                 {otherSolutions.map((s, i) => (
                   <Link key={s.slug} href={`/solutions/${s.slug}`} className={`other-card rv d${i + 1}`}>
-                    <div style={{ fontSize: 28, marginBottom: 10 }}>{s.icon}</div>
+                    <div style={{ marginBottom: 10 }}>
+                      <Icon name={s.icon} size={28} color="#FF6B35" />
+                    </div>
                     <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>{s.title}</h3>
                     <p style={{ fontSize: 13, color: "#666", lineHeight: 1.65, marginBottom: 12 }}>{s.tagline}</p>
                     <span style={{ fontSize: 13, fontWeight: 600, color: "#FF6B35", display: "flex", alignItems: "center", gap: 4 }}>

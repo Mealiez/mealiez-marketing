@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { products } from "@/lib/site-data";
+import { Icon } from "@/components/ui/icon";
 
 function useReveal() {
   useEffect(() => {
@@ -70,7 +71,9 @@ export default function ProductOverviewPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {products.map((product, i) => (
                 <Link key={product.slug} href={`/product/${product.slug}`} className={`module-card rv d${(i % 4) + 1}`}>
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{product.icon}</div>
+                   <div style={{ marginBottom: 16 }}>
+                     <Icon name={product.icon} size={36} color="#FF6B35" />
+                   </div>
                   <h3 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", marginBottom: 10 }}>{product.title}</h3>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7, marginBottom: 20 }}>{product.summary}</p>
                   <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px" }}>
