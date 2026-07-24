@@ -31,22 +31,35 @@ const barlowCondensed = Barlow_Condensed({
 
 // ── Metadata ───────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: "Mealiez | Mess Management Software for Hostels, Colleges & Industrial Canteens in India",
+  metadataBase: new URL("https://mealiez.com"),
+  title: {
+    default: "Mealiez | Mess Management Software for Hostels, Colleges & Industrial Canteens in India",
+    template: "%s | Mealiez",
+  },
   description:
     "Mealiez is India's mess management software. Automate meal bookings, QR attendance, billing, inventory, and analytics for hostel messes, college canteens, and industrial cafeterias. Cut food wastage by up to 30%.",
-  robots: { index: true, follow: true },
+  applicationName: "Mealiez",
+  keywords: ["mess management software", "hostel mess software", "canteen management", "QR attendance", "meal booking app India", "mess billing software"],
+  authors: [{ name: "Mealiez", url: "https://mealiez.com" }],
+  creator: "Mealiez",
+  publisher: "Mealiez",
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_IN",
+    url: "https://mealiez.com",
     siteName: "Mealiez",
     title: "Mealiez | Mess Management Software",
     description:
       "India's mess management software. Automate billing, attendance, inventory & analytics.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Mealiez — Mess Management Software" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mealiez | Mess Management Software",
     description: "India's mess management software for hostels, colleges & industrial canteens.",
+    images: ["/og-image.png"],
   },
 };
 

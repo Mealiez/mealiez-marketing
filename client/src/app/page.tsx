@@ -112,6 +112,223 @@ export default function Home() {
         }
 
         @keyframes fadeIn { to{opacity:1} }
+
+        /* ─────────────────────────────────────────────────
+           RESPONSIVE — Mobile & Tablet
+        ───────────────────────────────────────────────── */
+        .pg-hero-grid {
+          display:grid;
+          grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
+          gap:clamp(32px,5vw,80px);
+          align-items:center;
+        }
+        .pg-stats-grid {
+          display:grid;
+          grid-template-columns:repeat(4,1fr);
+          gap:clamp(16px,3vw,40px);
+        }
+        .pg-problem-grid {
+          display:grid;
+          grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+          gap:clamp(32px,5vw,72px);
+          align-items:start;
+        }
+        .pg-features-grid {
+          display:grid;
+          grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+          gap:clamp(20px,2.5vw,28px);
+        }
+        .pg-workflow-grid {
+          display:grid;
+          grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+          gap:clamp(32px,5vw,64px);
+          align-items:center;
+        }
+        .pg-solutions-grid {
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:clamp(16px,2vw,24px);
+        }
+        .pg-testimonials-grid {
+          display:grid;
+          gap:clamp(20px,2.5vw,32px);
+        }
+        .pg-pricing-grid {
+          display:grid;
+          grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);
+          gap:clamp(16px,2vw,24px);
+          align-items:start;
+        }
+        .pg-resources-grid {
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:clamp(16px,2vw,24px);
+        }
+        .pg-dashboard-col { position:relative; }
+        .pg-problem-sticky { position:sticky; top:100px; }
+
+        /* Testimonials — feature card layout */
+        .pg-testimonials-grid {
+          grid-template-columns: minmax(0,1.15fr) minmax(0,1fr);
+          align-items:start;
+        }
+        .testimonial-card-featured {
+          border-left:3px solid rgba(255,107,53,0.3);
+        }
+
+        /* Tablet ≤ 900px */
+        @media (max-width:900px) {
+          .pg-hero-grid        { grid-template-columns:1fr; }
+          .pg-dashboard-col    { display:none; }
+          .pg-problem-grid     { grid-template-columns:1fr; }
+          .pg-problem-sticky   { position:static; }
+          .pg-features-grid    { grid-template-columns:1fr; }
+          .pg-workflow-grid    { grid-template-columns:1fr; }
+          .pg-solutions-grid   { grid-template-columns:repeat(2,1fr); }
+          .pg-testimonials-grid{ grid-template-columns:1fr; }
+          .pg-pricing-grid     { grid-template-columns:1fr 1fr; }
+        }
+
+        /* Mobile ≤ 640px */
+        @media (max-width:640px) {
+          .pg-stats-grid       { grid-template-columns:repeat(2,1fr); }
+          .pg-solutions-grid   { grid-template-columns:1fr; }
+          .pg-resources-grid   { grid-template-columns:1fr; }
+          .pg-pricing-grid     { grid-template-columns:1fr; }
+          .pg-pricing-featured { transform:none !important; }
+          .hero-stat-item      { padding:0 12px; }
+          .hero-stat-item:not(:last-child)::after { display:none; }
+        }
+
+        /* Small mobile ≤ 480px */
+        @media (max-width:480px) {
+          .pg-stats-grid { grid-template-columns:1fr 1fr; gap:12px; }
+        }
+
+        /* CTA button overrides for inline-style buttons on this page */
+        .pg-cta-primary {
+          display:inline-flex; align-items:center; gap:10px;
+          background:linear-gradient(135deg,#FF6B35,#FF875C);
+          color:#fff; border:none; border-radius:12px;
+          padding:14px 30px; font-size:14px; font-weight:700;
+          font-family:'Barlow',system-ui,sans-serif;
+          text-decoration:none;
+          letter-spacing:0.02em;
+          box-shadow:0 8px 28px rgba(255,107,53,0.30), inset 0 1px 0 rgba(255,255,255,0.2);
+          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+          position:relative; overflow:hidden;
+          cursor:pointer;
+        }
+        .pg-cta-primary:hover {
+          transform:translateY(-2px) scale(1.02);
+          box-shadow:0 14px 44px rgba(255,107,53,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .pg-cta-primary:active {
+          transform:translateY(0) scale(0.97);
+          transition-duration:0.12s;
+        }
+        .pg-cta-primary-lg {
+          padding:16px 34px;
+          font-size:15px;
+        }
+
+        .pg-cta-ghost {
+          display:inline-flex; align-items:center; gap:8px;
+          background:rgba(255,255,255,0.8);
+          backdrop-filter:blur(12px);
+          -webkit-backdrop-filter:blur(12px);
+          color:#1a1a1a; border:1.5px solid rgba(0,0,0,0.08);
+          border-radius:12px; padding:14px 26px;
+          font-size:14px; font-weight:600;
+          font-family:'Barlow',system-ui,sans-serif;
+          text-decoration:none;
+          transition:all .3s cubic-bezier(.22,1,.36,1);
+          cursor:pointer;
+        }
+        .pg-cta-ghost:hover {
+          background:rgba(255,255,255,0.95);
+          border-color:rgba(255,107,53,0.28);
+          transform:translateY(-2px);
+          box-shadow:0 8px 24px rgba(0,0,0,0.06);
+        }
+        .pg-cta-ghost:active {
+          transform:translateY(0) scale(0.97);
+          transition-duration:0.12s;
+        }
+        .pg-cta-ghost-lg {
+          padding:16px 30px;
+          font-size:15px;
+        }
+
+        .pg-pricing-btn-outline {
+          width:100%; margin-top:20px;
+          padding:12px 0; border-radius:10px;
+          border:1.5px solid rgba(255,107,53,0.2);
+          background:rgba(255,107,53,0.05);
+          color:#FF6B35; font-weight:700; font-size:14px;
+          cursor:pointer; font-family:'Barlow',system-ui,sans-serif;
+          transition:all .3s cubic-bezier(.22,1,.36,1);
+        }
+        .pg-pricing-btn-outline:hover {
+          background:rgba(255,107,53,0.10);
+          border-color:rgba(255,107,53,0.40);
+          transform:translateY(-1px);
+        }
+        .pg-pricing-btn-primary {
+          width:100%; margin-top:20px;
+          padding:13px 0; border-radius:10px;
+          border:none;
+          background:rgba(255,255,255,0.95);
+          color:#FF6B35; font-weight:800; font-size:14px;
+          cursor:pointer; font-family:'Barlow',system-ui,sans-serif;
+          box-shadow:0 4px 16px rgba(0,0,0,0.1);
+          transition:all .3s cubic-bezier(.22,1,.36,1);
+        }
+        .pg-pricing-btn-primary:hover {
+          background:#fff;
+          box-shadow:0 8px 28px rgba(0,0,0,0.15);
+          transform:translateY(-1px);
+        }
+
+        /* Resource card thumbnail — more editorial */
+        .pg-resource-thumb {
+          height:130px;
+          display:flex; align-items:center; justify-content:center;
+          border-bottom:1px solid rgba(255,107,53,0.06);
+          position:relative; overflow:hidden;
+        }
+        .pg-resource-thumb::before {
+          content:'';
+          position:absolute; inset:0;
+          background:linear-gradient(135deg,rgba(255,107,53,0.03) 0%,rgba(255,162,127,0.06) 50%,transparent 100%);
+        }
+        .pg-resource-thumb-grid {
+          position:absolute; inset:0;
+          background-image:
+            linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+          background-size:20px 20px;
+        }
+
+        /* Testimonial — asymmetric layout */
+        .testimonial-card-featured {
+          padding:clamp(28px,3vw,40px);
+          border-radius:20px;
+          border:1px solid rgba(255,107,53,0.10);
+          background:linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,230,0.4));
+          transition:transform .35s cubic-bezier(.22,1,.36,1);
+        }
+        .testimonial-card-featured:hover { transform:translateY(-3px); }
+        .testimonial-card-compact {
+          padding:clamp(20px,2.5vw,28px);
+          border-radius:16px;
+          border:1px solid rgba(0,0,0,0.04);
+          background:rgba(255,255,255,0.7);
+          backdrop-filter:blur(8px);
+          -webkit-backdrop-filter:blur(8px);
+          transition:transform .35s cubic-bezier(.22,1,.36,1);
+        }
+        .testimonial-card-compact:hover { transform:translateY(-2px); }
       `}</style>
 
       {/* ════════════════════════════════════════════════════════════
@@ -128,12 +345,7 @@ export default function Home() {
         <FloatingParticles count={8} minSize={2} maxSize={4} speed={0.15} />
 
         <div className="container" style={{ position:"relative", zIndex:2 }}>
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"minmax(0,1fr) minmax(0,1.2fr)",
-            gap:"clamp(32px,5vw,80px)",
-            alignItems:"center",
-          }}>
+          <div className="pg-hero-grid">
             {/* Left — Editorial Content */}
             <div>
               {/* Premium badge */}
@@ -186,38 +398,13 @@ export default function Home() {
               </p>
 
               {/* CTA row */}
-              <div className="rv-el d4" style={{ display:"flex", gap:12, alignItems:"center" }}>
-                <Link href="/book-demo" style={{
-                  display:"inline-flex", alignItems:"center", gap:10,
-                  background:"linear-gradient(135deg,#FF6B35,#FF875C)",
-                  color:"#fff", border:"none", borderRadius:12,
-                  padding:"14px 30px", fontSize:14, fontWeight:700,
-                  fontFamily:"'Barlow',system-ui,sans-serif",
-                  textDecoration:"none",
-                  letterSpacing:"0.02em",
-                  boxShadow:"0 8px 28px rgba(255,107,53,0.30), inset 0 1px 0 rgba(255,255,255,0.2)",
-                  transition:"transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s",
-                  position:"relative", overflow:"hidden",
-                }}
-                  onMouseEnter={(e)=>{e.currentTarget.style.transform="translateY(-2px) scale(1.02)";e.currentTarget.style.boxShadow="0 12px 40px rgba(255,107,53,0.45)"}}
-                  onMouseLeave={(e)=>{e.currentTarget.style.transform="";e.currentTarget.style.boxShadow=""}}>
+              <div className="rv-el d4" style={{ display:"flex", gap:12, alignItems:"center", flexWrap:"wrap" }}>
+                <Link href="/book-demo" className="pg-cta-primary">
                   <span>Book a Demo</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </Link>
-                <Link href="/why-mealiez" style={{
-                  display:"inline-flex", alignItems:"center", gap:8,
-                  background:"rgba(255,255,255,0.8)",
-                  backdropFilter:"blur(12px)",
-                  color:"#1a1a1a", border:"1.5px solid rgba(0,0,0,0.08)",
-                  borderRadius:12, padding:"14px 26px",
-                  fontSize:14, fontWeight:600,
-                  fontFamily:"'Barlow',system-ui,sans-serif",
-                  textDecoration:"none",
-                  transition:"all .3s cubic-bezier(.22,1,.36,1)",
-                }}
-                  onMouseEnter={(e)=>{e.currentTarget.style.background="rgba(255,255,255,0.95)";e.currentTarget.style.borderColor="rgba(255,107,53,0.25)";e.currentTarget.style.transform="translateY(-2px)"}}
-                  onMouseLeave={(e)=>{e.currentTarget.style.background="";e.currentTarget.style.borderColor="";e.currentTarget.style.transform=""}}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <Link href="/why-mealiez" className="pg-cta-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   Why Mealiez?
                 </Link>
               </div>
@@ -247,7 +434,7 @@ export default function Home() {
             </div>
 
             {/* Right — Dashboard Mockup */}
-            <div className="rv-r d3" style={{ position:"relative" }}>
+            <div className="rv-r d3 pg-dashboard-col">
               {/* Ambient glow behind dashboard */}
               <div style={{
                 position:"absolute", width:"80%", height:"80%",
@@ -404,11 +591,7 @@ export default function Home() {
         borderBottom:"1px solid rgba(255,107,53,0.06)",
       }}>
         <div className="container">
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"repeat(4,1fr)",
-            gap:"clamp(16px,3vw,40px)",
-          }}>
+          <div className="pg-stats-grid">
             {[
               { ref:c1, suffix:"+", label:"Institutions Served", desc:"Hostels, colleges & factories" },
               { ref:c2, suffix:"M+", label:"Meals Managed", desc:"Tracked and accounted for" },
@@ -453,7 +636,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>THE PROBLEM</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="problem-heading" className="editorial-heading" style={{
               fontSize:"clamp(32px,4vw,52px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08, maxWidth:700,
@@ -468,12 +651,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"minmax(0,1.3fr) minmax(0,1fr)",
-            gap:"clamp(32px,5vw,72px)",
-            alignItems:"start",
-          }}>
+          <div className="pg-problem-grid">
             {/* Left — editorial large number list */}
             <div style={{ display:"flex", flexDirection:"column", gap:48 }}>
               {[
@@ -506,7 +684,7 @@ export default function Home() {
             </div>
 
             {/* Right — Impact stat card */}
-            <div className="rv-r d2" style={{
+            <div className="rv-r d2 pg-problem-sticky" style={{
               background:"linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,232,0.6))",
               borderRadius:20,
               border:"1px solid rgba(255,107,53,0.08)",
@@ -568,7 +746,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>FEATURES</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="features-heading" className="editorial-heading" style={{
               fontSize:"clamp(32px,4vw,52px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08, maxWidth:600,
@@ -579,7 +757,7 @@ export default function Home() {
           </div>
 
           {/* Asymmetrical grid: 1 large + 2 small */}
-          <div style={{ display:"grid", gridTemplateColumns:"minmax(0,1.4fr) minmax(0,1fr)", gap:"clamp(20px,2.5vw,28px)" }}>
+          <div className="pg-features-grid">
             {/* Left — Large feature card */}
             <div className="rv-s d2" style={{
               background:"rgba(255,255,255,0.75)",
@@ -683,7 +861,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>WORKFLOW</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="workflow-heading" className="editorial-heading" style={{
               fontSize:"clamp(28px,3.5vw,44px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08,
@@ -698,12 +876,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr)",
-            gap:"clamp(32px,5vw,64px)",
-            alignItems:"center",
-          }}>
+          <div className="pg-workflow-grid">
             {/* Left — Flow diagram */}
             <div className="rv-l d2" style={{
               background:"linear-gradient(145deg,rgba(255,248,244,0.9),rgba(255,240,232,0.7))",
@@ -802,11 +975,15 @@ export default function Home() {
       {/* ════════════════════════════════════════════════════════════
           SOLUTIONS — Magazine Style
       ════════════════════════════════════════════════════════════ */}
-      <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"#fef6f0",
-        position:"relative",
-      }}>
+      <section
+        id="solutions"
+        aria-labelledby="solutions-heading"
+        style={{
+          width:"100%", padding:"clamp(72px,9vw,120px) 0",
+          background:"#fef6f0",
+          position:"relative",
+        }}
+      >
         <div className="container">
           <div className="rv-el" style={{ marginBottom:48 }}>
             <span style={{
@@ -817,7 +994,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>SOLUTIONS</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="solutions-heading" className="editorial-heading" style={{
               fontSize:"clamp(28px,3.5vw,44px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08, maxWidth:500,
@@ -826,11 +1003,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)",
-            gap:"clamp(16px,2vw,24px)",
-          }}>
+          <div className="pg-solutions-grid">
             {[
               { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>, title:"Hostel & College Mess", desc:"Manage student meal plans, opt-in bookings, dietary preferences, and automated monthly fee collection across all hostel blocks." },
               { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M12 8v8M8 12h8"/></svg>, title:"Factory & Industrial Canteen", desc:"Track shift-wise meals for hundreds of workers, manage subsidised meals, and integrate with access control systems." },
@@ -864,11 +1037,15 @@ export default function Home() {
       {/* ════════════════════════════════════════════════════════════
           TESTIMONIALS — Magazine Style
       ════════════════════════════════════════════════════════════ */}
-      <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"#fff",
-        position:"relative",
-      }}>
+      <section
+        id="testimonials"
+        aria-labelledby="testimonials-heading"
+        style={{
+          width:"100%", padding:"clamp(72px,9vw,120px) 0",
+          background:"linear-gradient(180deg, #fdf8f5 0%, #fef6f0 100%)",
+          position:"relative",
+        }}
+      >
         <div className="container">
           <div className="rv-el" style={{ marginBottom:48 }}>
             <span style={{
@@ -879,7 +1056,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>TESTIMONIALS</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="testimonials-heading" className="editorial-heading" style={{
               fontSize:"clamp(28px,3.5vw,44px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08, maxWidth:500,
@@ -888,23 +1065,13 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr)",
-            gap:"clamp(20px,2.5vw,32px)",
-          }}>
+          <div className="pg-testimonials-grid">
             {[
-              { quote:"We were managing our hostel mess on WhatsApp and a shared Excel file. Every week there was a fight about the food bill. Since we switched to Mealiez, our food wastage has come down by almost 30% and the monthly billing just happens automatically. I wish we had done this sooner.", name:"Rajesh Nair", role:"Hostel Warden, Engineering College, Pune", tag:"HOSTEL" },
-              { quote:"Collecting monthly mess fees was the most stressful part of my job — chasing students, cross-checking Excel entries, handling disputes. Now parents pay online through Mealiez, I get instant confirmation, and the ledger is always accurate. It's saved me at least 10 hours every month.", name:"Priya Sharma", role:"Mess Administrator, Student Housing Facility, Bengaluru", tag:"MESS" },
-            ].map((t,i)=>(
-              <div key={i} className="rv-el" style={{
-                padding:"clamp(24px,3vw,36px)",
-                borderRadius:16,
-                border:"1px solid rgba(0,0,0,0.04)",
-                background:"rgba(255,248,244,0.3)",
-                transition:"transform .35s cubic-bezier(.22,1,.36,1)",
-              }}>
-                <div className="testimonial-quote-mark">"</div>
+              { quote:"We were managing our hostel mess on WhatsApp and a shared Excel file. Every week there was a fight about the food bill. Since we switched to Mealiez, our food wastage has come down by almost 30% and the monthly billing just happens automatically. I wish we had done this sooner.", name:"Rajesh Nair", role:"Hostel Warden, Engineering College, Pune", tag:"HOSTEL", featured:true },
+              { quote:"Collecting monthly mess fees was the most stressful part of my job — chasing students, cross-checking Excel entries, handling disputes. Now parents pay online through Mealiez, I get instant confirmation, and the ledger is always accurate. It's saved me at least 10 hours every month.", name:"Priya Sharma", role:"Mess Administrator, Student Housing Facility, Bengaluru", tag:"MESS", featured:false },
+            ].map((t,i)=>
+              <div key={i} className={t.featured ? "testimonial-card-featured rv-el" : "testimonial-card-compact rv-el"}>
+                <div className="testimonial-quote-mark" aria-hidden="true">“</div>
                 <p style={{
                   fontSize:"clamp(14px,1.1vw,15px)",
                   color:"#444", lineHeight:1.82,
@@ -928,7 +1095,7 @@ export default function Home() {
                   }}>{t.tag}</span>
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -951,7 +1118,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>PRICING</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="pricing-heading" className="editorial-heading" style={{
               fontSize:"clamp(28px,3.5vw,44px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08,
@@ -960,12 +1127,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr)",
-            gap:"clamp(16px,2vw,24px)",
-            alignItems:"start",
-          }}>
+          <div className="pg-pricing-grid">
             {/* Free */}
             <div className="rv-s d1" style={{
               padding:"clamp(20px,2.5vw,28px)",
@@ -996,19 +1158,11 @@ export default function Home() {
                   <span style={{ color:"#ccc" }}>{f}</span>
                 </div>
               ))}
-              <button style={{
-                width:"100%", marginTop:20,
-                padding:"12px 0", borderRadius:10,
-                border:"1.5px solid rgba(255,107,53,0.15)",
-                background:"rgba(255,107,53,0.05)",
-                color:"#FF6B35", fontWeight:700, fontSize:14,
-                cursor:"pointer", fontFamily:"'Barlow',system-ui,sans-serif",
-                transition:"all .3s cubic-bezier(.22,1,.36,1)",
-              }}>Get Started</button>
+              <button className="pg-pricing-btn-outline">Get Started</button>
             </div>
 
             {/* Starter — Spotlight */}
-            <div className="rv-s d2" style={{
+            <div className="rv-s d2 pg-pricing-featured" style={{
               padding:"clamp(24px,3vw,32px)",
               borderRadius:20,
               background:"linear-gradient(145deg,#FF6B35 0%,#FF875C 55%,#FFA27F 100%)",
@@ -1047,16 +1201,7 @@ export default function Home() {
                   {f}
                 </div>
               ))}
-              <button style={{
-                width:"100%", marginTop:20,
-                padding:"13px 0", borderRadius:10,
-                border:"none",
-                background:"rgba(255,255,255,0.95)",
-                color:"#FF6B35", fontWeight:800, fontSize:14,
-                cursor:"pointer", fontFamily:"'Barlow',system-ui,sans-serif",
-                boxShadow:"0 4px 16px rgba(0,0,0,0.1)",
-                transition:"all .3s cubic-bezier(.22,1,.36,1)",
-              }}>Choose Starter</button>
+              <button className="pg-pricing-btn-primary">Choose Starter</button>
             </div>
 
             {/* Pro */}
@@ -1084,15 +1229,7 @@ export default function Home() {
                   <span style={{ color:"#444" }}>{f}</span>
                 </div>
               ))}
-              <button style={{
-                width:"100%", marginTop:20,
-                padding:"12px 0", borderRadius:10,
-                border:"1.5px solid rgba(255,107,53,0.15)",
-                background:"rgba(255,107,53,0.05)",
-                color:"#FF6B35", fontWeight:700, fontSize:14,
-                cursor:"pointer", fontFamily:"'Barlow',system-ui,sans-serif",
-                transition:"all .3s cubic-bezier(.22,1,.36,1)",
-              }}>Choose Pro</button>
+              <button className="pg-pricing-btn-outline">Choose Pro</button>
             </div>
           </div>
         </div>
@@ -1101,11 +1238,15 @@ export default function Home() {
       {/* ════════════════════════════════════════════════════════════
           RESOURCES — Editorial Card Row
       ════════════════════════════════════════════════════════════ */}
-      <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"#fff",
-        position:"relative",
-      }}>
+      <section
+        id="resources"
+        aria-labelledby="resources-heading"
+        style={{
+          width:"100%", padding:"clamp(72px,9vw,120px) 0",
+          background:"linear-gradient(180deg,#fff 0%,#fef6f0 100%)",
+          position:"relative",
+        }}
+      >
         <div className="container">
           <div className="rv-el" style={{ marginBottom:48 }}>
             <span style={{
@@ -1116,7 +1257,7 @@ export default function Home() {
               borderRadius:100, padding:"4px 12px",
               display:"inline-block", marginBottom:16,
             }}>RESOURCES</span>
-            <h2 className="editorial-heading" style={{
+            <h2 id="resources-heading" className="editorial-heading" style={{
               fontSize:"clamp(28px,3.5vw,44px)",
               fontWeight:900, color:"#0a0a0a",
               lineHeight:1.08,
@@ -1126,11 +1267,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{
-            display:"grid",
-            gridTemplateColumns:"repeat(3,1fr)",
-            gap:"clamp(16px,2vw,24px)",
-          }}>
+          <div className="pg-resources-grid">
             {[
               { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>, badge:"REPORT", title:"Indian Hostel Mess Food Wastage Report 2026" },
               { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, badge:"CASE STUDY", title:"How a 1,200-Member Hostel Reduced Wastage by 28%" },
@@ -1144,13 +1281,9 @@ export default function Home() {
                 transition:"transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s",
                 cursor:"pointer",
               }}>
-                <div style={{
-                  height:120,
-                  background:"linear-gradient(135deg,rgba(255,107,53,0.04),rgba(255,162,127,0.02))",
-                  display:"flex", alignItems:"center", justifyContent:"center",
-                  borderBottom:"1px solid rgba(255,107,53,0.05)",
-                }}>
-                  {r.icon}
+                <div className="pg-resource-thumb">
+                  <div className="pg-resource-thumb-grid" aria-hidden="true"/>
+                  <div style={{ position:"relative", zIndex:1 }}>{r.icon}</div>
                 </div>
                 <div style={{ padding:"16px 18px" }}>
                   <span style={{
@@ -1221,34 +1354,11 @@ export default function Home() {
               Book a free 30-minute demo and see exactly how Mealiez cuts food wastage, automates monthly billing, and gives you complete visibility over your operations.
             </p>
             <div style={{ display:"flex", gap:14, justifyContent:"center", flexWrap:"wrap", position:"relative" }}>
-              <Link href="/book-demo" style={{
-                display:"inline-flex", alignItems:"center", gap:10,
-                background:"linear-gradient(135deg,#FF6B35,#FF875C)",
-                color:"#fff", border:"none", borderRadius:12,
-                padding:"16px 34px", fontSize:15, fontWeight:700,
-                fontFamily:"'Barlow',system-ui,sans-serif",
-                textDecoration:"none",
-                boxShadow:"0 8px 28px rgba(255,107,53,0.30), inset 0 1px 0 rgba(255,255,255,0.2)",
-                transition:"transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s",
-              }}
-                onMouseEnter={(e)=>{e.currentTarget.style.transform="translateY(-3px) scale(1.02)";e.currentTarget.style.boxShadow="0 12px 40px rgba(255,107,53,0.45)"}}
-                onMouseLeave={(e)=>{e.currentTarget.style.transform="";e.currentTarget.style.boxShadow=""}}>
+              <Link href="/book-demo" className="pg-cta-primary pg-cta-primary-lg" aria-label="Book a free demo with Mealiez">
                 Book a Free Demo
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </Link>
-              <Link href="/why-mealiez" style={{
-                display:"inline-flex", alignItems:"center", gap:8,
-                background:"rgba(255,255,255,0.8)",
-                backdropFilter:"blur(12px)",
-                color:"#1a1a1a", border:"1.5px solid rgba(0,0,0,0.08)",
-                borderRadius:12, padding:"16px 30px",
-                fontSize:15, fontWeight:600,
-                fontFamily:"'Barlow',system-ui,sans-serif",
-                textDecoration:"none",
-                transition:"all .3s cubic-bezier(.22,1,.36,1)",
-              }}
-                onMouseEnter={(e)=>{e.currentTarget.style.background="rgba(255,255,255,0.95)";e.currentTarget.style.borderColor="rgba(255,107,53,0.25)";e.currentTarget.style.transform="translateY(-2px)"}}
-                onMouseLeave={(e)=>{e.currentTarget.style.background="";e.currentTarget.style.borderColor="";e.currentTarget.style.transform=""}}>
+              <Link href="/why-mealiez" className="pg-cta-ghost pg-cta-ghost-lg">
                 Calculate Your ROI
               </Link>
             </div>
