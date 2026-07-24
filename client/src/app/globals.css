@@ -970,20 +970,10 @@ html, body { max-width: 100vw; overflow-x: hidden; }
   0%,100% { background-position: 0% 50%; }
   50%     { background-position: 100% 50%; }
 }
-@keyframes btnGlowBreathe {
-  0%,100% {
-    box-shadow:
-      0 4px 18px rgba(255,107,53,0.28),
-      0 1px 4px rgba(255,107,53,0.15),
-      inset 0 1px 0 rgba(255,255,255,0.22);
-  }
-  50% {
-    box-shadow:
-      0 8px 32px rgba(255,107,53,0.42),
-      0 2px 8px rgba(255,107,53,0.20),
-      0 0 0 4px rgba(255,107,53,0.06),
-      inset 0 1px 0 rgba(255,255,255,0.25);
-  }
+/* btnGlowBreathe replaced with opacity-only pulse — no box-shadow paint cost */
+@keyframes btnGlowOpacity {
+  0%,100% { opacity: 0.55; transform: scale(0.98); }
+  50%      { opacity: 1;    transform: scale(1.04); }
 }
 @keyframes btnRippleExpand {
   to { transform: scale(5); opacity: 0; }
@@ -1067,7 +1057,7 @@ html, body { max-width: 100vw; overflow-x: hidden; }
     box-shadow 0.35s cubic-bezier(0.22,1,0.36,1),
     background-position 0.5s ease,
     letter-spacing 0.3s ease !important;
-  animation: btnGlowBreathe 3.5s ease-in-out infinite !important;
+  /* Glow pulse now on ::after pseudo — GPU-composited, no paint cost */
 }
 
 /* Shine sweep */
@@ -1156,7 +1146,7 @@ html, body { max-width: 100vw; overflow-x: hidden; }
     transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
     box-shadow 0.35s cubic-bezier(0.22,1,0.36,1),
     background-position 0.5s ease !important;
-  animation: btnGlowBreathe 3.5s ease-in-out infinite !important;
+  /* Glow pulse on ::after pseudo — GPU-composited, no paint cost */
 }
 .btn-orange::before {
   content: '';
@@ -1231,7 +1221,8 @@ html, body { max-width: 100vw; overflow-x: hidden; }
 .btn-premium:active { transform: translateY(0) scale(0.96); transition-duration: 0.1s; }
 
 .btn-cta {
-  animation: btnAuroraDrift 5s ease-in-out infinite, btnGlowBreathe 3.5s ease-in-out infinite;
+  animation: btnAuroraDrift 5s ease-in-out infinite;
+  /* Glow breathing removed — was animating box-shadow every frame (GPU paint) */
 }
 .btn-cta:hover {
   box-shadow: 0 14px 44px rgba(255,107,53,0.48), 0 4px 14px rgba(255,107,53,0.26), inset 0 1px 0 rgba(255,255,255,0.22);
@@ -1435,4 +1426,561 @@ a[href="/book-demo"]:not(.header-book-btn):not(.btn-ora):not(.btn-orange):not(.d
   .btn-secondary-premium:hover, .btn-ghost-premium:hover,
   .social-premium:hover, .btn-icon:hover,
   .dl-btn:hover { transform: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PREMIUM VISUAL INTERACTION SYSTEM v1
+   Targets: cards, icon containers, hero visuals, testimonials, logos
+   CSS-only — GPU-accelerated transforms + opacity only
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%     { transform: translateY(-8px) rotate(0.4deg); }
+  66%     { transform: translateY(4px) rotate(-0.3deg); }
+}
+@keyframes iconBounce {
+  0%       { transform: scale(1) rotate(0deg); }
+  40%      { transform: scale(1.18) rotate(-4deg); }
+  70%      { transform: scale(0.96) rotate(2deg); }
+  100%     { transform: scale(1.08) rotate(0deg); }
+}
+@keyframes glowRingPulse {
+  0%,100% { opacity: 0.5; transform: scale(0.96); }
+  50%     { opacity: 1;   transform: scale(1.06); }
+}
+@keyframes shineSweepCard {
+  0%   { left: -80%; }
+  100% { left: 180%; }
+}
+@keyframes cardBorderGlow {
+  0%,100% { border-color: rgba(255,107,53,0.10); box-shadow: 0 4px 20px rgba(17,17,17,0.04); }
+  50%     { border-color: rgba(255,107,53,0.22); box-shadow: 0 8px 32px rgba(255,107,53,0.10); }
+}
+@keyframes skeletonShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px  0; }
+}
+@keyframes revealFadeUp {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+@keyframes overlayReveal {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to   { opacity: 1; backdrop-filter: blur(8px);  }
+}
+@keyframes logoColorReveal {
+  from { filter: grayscale(1) opacity(0.5); }
+  to   { filter: grayscale(0) opacity(1);   }
+}
+
+/* ── Card base — upgrades .card everywhere ──────────────────────── */
+.card {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition:
+    transform 0.42s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.42s cubic-bezier(0.22,1,0.36,1),
+    border-color 0.35s ease !important;
+  backface-visibility: hidden;
+}
+
+/* Shine sweep layer on every card */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255,255,255,0.14) 50%,
+    transparent 80%
+  );
+  transform: skewX(-20deg);
+  transition: left 0s;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+/* Glass top-edge reflection */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.012) !important;
+  box-shadow:
+    0 20px 56px rgba(255,107,53,0.12),
+    0 8px 24px rgba(17,17,17,0.05),
+    0 0 0 1px rgba(255,107,53,0.10) !important;
+}
+
+.card:hover::before {
+  animation: shineSweepCard 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  opacity: 1;
+}
+.card:hover::after { opacity: 1; }
+
+.card:active {
+  transform: translateY(-2px) scale(0.99) !important;
+  transition-duration: 0.12s !important;
+}
+
+/* ── Testimonial card ───────────────────────────────────────────── */
+.test-card {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition:
+    transform 0.42s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.42s cubic-bezier(0.22,1,0.36,1),
+    border-color 0.35s ease !important;
+}
+.test-card::before {
+  content: '';
+  position: absolute;
+  top: -60%; left: -80%;
+  width: 50%; height: 220%;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.12) 50%, transparent 80%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+.test-card:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow:
+    0 16px 48px rgba(255,107,53,0.10),
+    0 4px 16px rgba(17,17,17,0.04),
+    0 0 0 1px rgba(255,107,53,0.08) !important;
+}
+.test-card:hover::before {
+  animation: shineSweepCard 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  opacity: 1;
+}
+
+/* ── Blog / guide / report post-card ───────────────────────────── */
+.post-card,
+.guide-card,
+.report-card {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition:
+    transform 0.42s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.42s cubic-bezier(0.22,1,0.36,1),
+    border-color 0.35s ease !important;
+}
+.post-card::before,
+.guide-card::before,
+.report-card::before {
+  content: '';
+  position: absolute;
+  top: -60%; left: -80%;
+  width: 50%; height: 220%;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.12) 50%, transparent 80%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+.post-card:hover,
+.guide-card:hover,
+.report-card:hover {
+  transform: translateY(-6px) scale(1.012) !important;
+  box-shadow:
+    0 20px 56px rgba(255,107,53,0.10),
+    0 6px 20px rgba(17,17,17,0.04),
+    0 0 0 1px rgba(255,107,53,0.10) !important;
+  border-color: rgba(255,107,53,0.18) !important;
+}
+.post-card:hover::before,
+.guide-card:hover::before,
+.report-card:hover::before {
+  animation: shineSweepCard 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  opacity: 1;
+}
+
+/* ── Discipline card ────────────────────────────────────────────── */
+.disc-card {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+.disc-card::before {
+  content: '';
+  position: absolute;
+  top: -60%; left: -80%;
+  width: 50%; height: 220%;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.14) 50%, transparent 80%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+.disc-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow:
+    0 16px 44px rgba(255,107,53,0.13),
+    0 0 0 1.5px rgba(255,107,53,0.20) !important;
+  border-color: rgba(255,107,53,0.22) !important;
+  background: #fff !important;
+}
+.disc-card:hover::before {
+  animation: shineSweepCard 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  opacity: 1;
+}
+
+/* ── Avatar / emoji icon containers ────────────────────────────── */
+.avatar-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.35s ease;
+  will-change: transform;
+  cursor: default;
+}
+.avatar-icon:hover {
+  transform: scale(1.14) rotate(-4deg);
+  box-shadow: 0 8px 24px rgba(255,107,53,0.22);
+}
+.avatar-icon:hover + .avatar-glow,
+.avatar-icon:hover::after {
+  opacity: 1;
+}
+/* Ambient glow ring behind avatar */
+.avatar-icon::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+.avatar-icon:hover::before { opacity: 1; }
+
+/* ── Feature icon area (inside cards) ──────────────────────────── */
+.feature-icon-area {
+  transition:
+    transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+    background 0.35s ease,
+    box-shadow 0.35s ease !important;
+  will-change: transform;
+  position: relative;
+}
+*:hover > .feature-icon-area {
+  transform: scale(1.10) rotate(-3deg) !important;
+  box-shadow: 0 6px 18px rgba(255,107,53,0.18) !important;
+}
+
+/* ── Hero float — apply to the dashboard mockup ─────────────────── */
+.hero-float {
+  animation: heroFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── PremiumCard 3D tilt perspective container ───────────────────── */
+.pc-wrap {
+  perspective: 900px;
+  display: inline-block;
+}
+.pc-inner {
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  transform-style: preserve-3d;
+  will-change: transform;
+  border-radius: inherit;
+}
+.pc-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(32px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 65%);
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+}
+
+/* ── Cursor-follow glow helper (position set by JS) ─────────────── */
+.cursor-glow-container {
+  position: relative;
+  overflow: hidden;
+}
+.cursor-glow-spot {
+  position: absolute;
+  pointer-events: none;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,53,0.12) 0%, transparent 65%);
+  filter: blur(24px);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+.cursor-glow-container:hover .cursor-glow-spot { opacity: 1; }
+
+/* ── Client logo hover ──────────────────────────────────────────── */
+.logo-item {
+  transition:
+    transform 0.38s cubic-bezier(0.34,1.56,0.64,1),
+    filter 0.38s ease,
+    opacity 0.35s ease;
+  filter: grayscale(0.3) opacity(0.75);
+  will-change: transform;
+}
+.logo-item:hover {
+  transform: translateY(-3px) scale(1.07);
+  filter: grayscale(0) opacity(1);
+  box-shadow: 0 8px 24px rgba(255,107,53,0.10);
+}
+
+/* ── Scroll reveal — image/visual fade-in ───────────────────────── */
+.vis-reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition:
+    opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+    transform 0.75s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.vis-reveal.vis-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ── Skeleton loader ────────────────────────────────────────────── */
+.img-skeleton {
+  background: linear-gradient(90deg,
+    rgba(255,107,53,0.04) 0%,
+    rgba(255,107,53,0.10) 40%,
+    rgba(255,107,53,0.04) 80%
+  );
+  background-size: 800px 100%;
+  animation: skeletonShimmer 1.6s linear infinite;
+  border-radius: inherit;
+}
+
+/* ── Image/visual quality boost on hover ────────────────────────── */
+.img-rich {
+  transition:
+    filter 0.45s ease,
+    transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  filter: brightness(1) saturate(1) contrast(1);
+  will-change: filter, transform;
+}
+.img-rich:hover {
+  filter: brightness(1.06) saturate(1.12) contrast(1.03);
+  transform: scale(1.04);
+}
+
+/* ── Float idle ─────────────────────────────────────────────────── */
+.img-float {
+  animation: heroFloat 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Glass overlay reveal ───────────────────────────────────────── */
+.img-glass-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.img-glass-overlay .overlay-content {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  transition:
+    opacity 0.4s ease,
+    backdrop-filter 0.4s ease;
+  border-radius: inherit;
+}
+.img-glass-overlay:hover .overlay-content {
+  opacity: 1;
+  backdrop-filter: blur(8px);
+}
+
+/* ── Glow border on cards (optional) ───────────────────────────── */
+.card-glow-border {
+  position: relative;
+}
+.card-glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+    transparent 0%,
+    rgba(255,107,53,0.0) 40%,
+    rgba(255,107,53,0.25) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+.card-glow-border:hover::before { opacity: 1; }
+
+/* ── Tag / badge reveal on card hover ───────────────────────────── */
+.card-tag {
+  transition:
+    transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+*:hover > .card-tag,
+.card:hover .card-tag,
+.post-card:hover .card-tag {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 12px rgba(255,107,53,0.16);
+}
+
+/* ── Arrow icon slide inside cards ─────────────────────────────── */
+.card-arrow {
+  display: inline-block;
+  transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1);
+}
+.card:hover .card-arrow,
+.post-card:hover .card-arrow,
+.disc-card:hover .card-arrow {
+  transform: translateX(5px);
+}
+
+/* ── CTA icon inside cards ──────────────────────────────────────── */
+.card-cta-icon {
+  transition:
+    transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+    opacity 0.3s ease;
+  opacity: 0.7;
+}
+.card:hover .card-cta-icon,
+.post-card:hover .card-cta-icon { transform: translateX(4px); opacity: 1; }
+
+/* ── PREFERS-REDUCED-MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .test-card,
+  .post-card,
+  .guide-card,
+  .report-card,
+  .disc-card,
+  .logo-item,
+  .avatar-icon,
+  .feature-icon-area,
+  .img-rich,
+  .vis-reveal,
+  .card-tag,
+  .card-arrow,
+  .card-cta-icon {
+    animation: none !important;
+    transition: box-shadow 0.2s ease, opacity 0.2s ease !important;
+  }
+  .card:hover,
+  .test-card:hover,
+  .post-card:hover,
+  .disc-card:hover { transform: none !important; }
+
+  .hero-float,
+  .img-float { animation: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RENDERING PERFORMANCE — content-visibility + contain
+   Applied to off-screen sections to defer rendering work.
+   Browser skips layout + paint for content outside the viewport.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Defer rendering of below-fold page sections */
+section:not(:first-of-type),
+.s-cream,
+.s-white,
+.s-dark {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px; /* estimated height prevents layout shift */
+}
+
+/* Isolate card layout calculations — prevents card hover from
+   triggering parent reflows */
+.card,
+.test-card,
+.post-card,
+.guide-card,
+.report-card,
+.disc-card {
+  contain: layout style;
+}
+
+/* Isolate grid containers */
+.pricing-grid,
+.features-grid,
+.blog-grid,
+.testimonial-grid {
+  contain: layout;
+}
+
+/* Font rendering optimisation — applied globally */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force GPU layer for fixed/sticky elements */
+.site-header-float,
+.scroll-progress-bar,
+.mouse-cursor-glow {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce backdrop-filter stacking — only allow on navbar + modals */
+.card,
+.test-card,
+.post-card,
+.disc-card {
+  /* Remove backdrop-filter from cards if somehow inherited */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* ── Smooth scroll with passive listeners hint ─────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Font CSS variable fallbacks ──────────────────────────────── */
+/* next/font injects --font-barlow and --font-barlow-condensed */
+/* Fallback ensures fonts work even before next/font hydrates */
+:root {
+  --font-barlow: 'Barlow', system-ui, sans-serif;
+  --font-barlow-condensed: 'Barlow Condensed', system-ui, sans-serif;
 }

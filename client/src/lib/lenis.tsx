@@ -1,9 +1,14 @@
 "use client";
 
 /**
- * lenis.tsx — Smooth scroll provider using Lenis
- * Wraps the entire app to enable silky 60fps scrolling.
- * Respects prefers-reduced-motion automatically.
+ * lenis.tsx — Smooth scroll provider (optimised)
+ *
+ * Optimisations:
+ *  - Uses requestIdleCallback to init Lenis after first paint
+ *    (doesn't block TTI or FCP)
+ *  - Removed @studio-freight/lenis import (duplicate package)
+ *  - raf_loop cancels correctly on unmount
+ *  - Respects prefers-reduced-motion
  */
 
 import { useEffect, useRef, createContext, useContext } from "react";
@@ -15,39 +20,50 @@ export function useLenis() {
   return useContext(LenisContext);
 }
 
+// requestIdleCallback polyfill for Safari
+const scheduleIdle = (cb: () => void) => {
+  if (typeof requestIdleCallback !== "undefined") {
+    requestIdleCallback(cb, { timeout: 2000 });
+  } else {
+    setTimeout(cb, 200);
+  }
+};
+
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Never run during SSR
+    if (typeof window === "undefined") return;
+
     // Bail out if user prefers reduced motion
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
 
-    // Dynamically import to avoid SSR issues
-    import("lenis").then(({ default: LenisClass }) => {
-      const lenis = new LenisClass({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        touchMultiplier: 2,
-        infinite: false,
-      });
+    let raf: number;
 
-      lenisRef.current = lenis;
+    // Delay Lenis init until browser is idle — after first paint
+    scheduleIdle(() => {
+      import("lenis").then(({ default: LenisClass }) => {
+        const lenis = new LenisClass({
+          duration: 1.1,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          touchMultiplier: 2,
+          infinite: false,
+        });
 
-      let raf: number;
-      function raf_loop(time: number) {
-        lenis.raf(time);
+        lenisRef.current = lenis;
+
+        function raf_loop(time: number) {
+          lenis.raf(time);
+          raf = requestAnimationFrame(raf_loop);
+        }
         raf = requestAnimationFrame(raf_loop);
-      }
-      raf = requestAnimationFrame(raf_loop);
-
-      return () => {
-        cancelAnimationFrame(raf);
-        lenis.destroy();
-      };
+      });
     });
 
     return () => {
+      cancelAnimationFrame(raf);
       if (lenisRef.current) {
         lenisRef.current.destroy();
         lenisRef.current = null;
