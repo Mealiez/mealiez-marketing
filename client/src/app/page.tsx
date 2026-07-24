@@ -329,6 +329,42 @@ export default function Home() {
           transition:transform .35s cubic-bezier(.22,1,.36,1);
         }
         .testimonial-card-compact:hover { transform:translateY(-2px); }
+
+        /* ── Card hover effects (inline-style cards need CSS :hover) ── */
+        .pg-solution-card {
+          transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+        }
+        .pg-solution-card:hover {
+          transform:translateY(-6px);
+          box-shadow:0 16px 40px rgba(255,107,53,0.12), 0 4px 12px rgba(17,17,17,0.06);
+        }
+
+        .pg-resource-card {
+          transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+        }
+        .pg-resource-card:hover {
+          transform:translateY(-6px);
+          box-shadow:0 16px 40px rgba(255,107,53,0.12), 0 4px 12px rgba(17,17,17,0.06);
+        }
+        .pg-resource-card:hover .pg-resource-thumb {
+          background:linear-gradient(135deg,rgba(255,107,53,0.06),rgba(255,162,127,0.10));
+        }
+
+        .pg-feature-small-card {
+          transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+        }
+        .pg-feature-small-card:hover {
+          transform:translateY(-5px);
+          box-shadow:0 12px 32px rgba(255,107,53,0.10), 0 4px 12px rgba(17,17,17,0.04);
+        }
+
+        .pg-feature-large-card {
+          transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+        }
+        .pg-feature-large-card:hover {
+          transform:translateY(-5px);
+          box-shadow:0 12px 32px rgba(255,107,53,0.10), 0 4px 12px rgba(17,17,17,0.04);
+        }
       `}</style>
 
       {/* ════════════════════════════════════════════════════════════
@@ -759,14 +795,13 @@ export default function Home() {
           {/* Asymmetrical grid: 1 large + 2 small */}
           <div className="pg-features-grid">
             {/* Left — Large feature card */}
-            <div className="rv-s d2" style={{
+            <div className="rv-s d2 pg-feature-large-card" style={{
               background:"rgba(255,255,255,0.75)",
               backdropFilter:"blur(28px) saturate(1.6)",
               WebkitBackdropFilter:"blur(28px) saturate(1.6)",
               borderRadius:20,
               border:"1px solid rgba(255,107,53,0.08)",
               padding:"clamp(28px,3vw,40px)",
-              transition:"transform .4s cubic-bezier(.22,1,.36,1)",
             }}>
               <span style={{
                 fontSize:10, fontWeight:800, color:"#FF6B35",
@@ -802,7 +837,7 @@ export default function Home() {
                 { badge:"BILLING", title:"Automated Billing & Fee Collection", desc:"Monthly fee statements generated automatically based on meals attended. Members pay online, you get instant confirmation.", checks:["Auto-generated monthly fee statements","Online payment with instant digital receipts"] },
                 { badge:"ANALYTICS", title:"Operations Reports & Analytics", desc:"Daily reports on food wastage, attendance, collection status, and cost-per-meal — all in one dashboard.", checks:["Daily food wastage & cost-per-meal","Revenue and outstanding dues dashboard"] },
               ].map((item,i)=>(
-                <div key={i} className="rv-s" style={{
+                <div key={i} className="rv-s pg-feature-small-card" style={{
                   flex:1,
                   background:"rgba(255,255,255,0.65)",
                   backdropFilter:"blur(24px) saturate(1.4)",
@@ -810,7 +845,6 @@ export default function Home() {
                   borderRadius:16,
                   border:"1px solid rgba(255,255,255,0.7)",
                   padding:"clamp(20px,2.5vw,28px)",
-                  transition:"transform .4s cubic-bezier(.22,1,.36,1)",
                   boxShadow:"0 4px 20px rgba(17,17,17,0.03)",
                 }}>
                   <span style={{
@@ -1009,13 +1043,12 @@ export default function Home() {
               { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M12 8v8M8 12h8"/></svg>, title:"Factory & Industrial Canteen", desc:"Track shift-wise meals for hundreds of workers, manage subsidised meals, and integrate with access control systems." },
               { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>, title:"Corporate Cafeteria", desc:"Multi-vendor dining with digital meal wallets, payroll deduction, guest tracking, and daily spend reports for HR." },
             ].map((item,i)=>(
-              <div key={i} className="rv-s" style={{
+              <div key={i} className="rv-s pg-solution-card" style={{
                 padding:"clamp(24px,2.5vw,32px)",
                 borderRadius:16,
                 border:"1px solid rgba(255,107,53,0.06)",
                 background:"#fff",
                 boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-                transition:"transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s",
               }}>
                 <div style={{
                   width:40, height:40, borderRadius:10,
@@ -1273,12 +1306,11 @@ export default function Home() {
               { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, badge:"CASE STUDY", title:"How a 1,200-Member Hostel Reduced Wastage by 28%" },
               { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>, badge:"GUIDE", title:"Step-by-Step Guide to Digitising Your Hostel Mess" },
             ].map((r,i)=>(
-              <div key={i} className="rv-s" style={{
+              <div key={i} className="rv-s pg-resource-card" style={{
                 padding:0, borderRadius:16, overflow:"hidden",
                 border:"1px solid rgba(0,0,0,0.04)",
                 background:"#fff",
                 boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-                transition:"transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s",
                 cursor:"pointer",
               }}>
                 <div className="pg-resource-thumb">
