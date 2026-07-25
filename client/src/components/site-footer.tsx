@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Icon } from "@/components/ui/icon";
+import BorderGlow from "@/components/ui/border-glow";
 
 const footerColumns = [
   {
@@ -183,13 +184,14 @@ export function SiteFooter() {
       </motion.div>
 
       {/* ── Floating Glass Card ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.97 }}
-        animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.9, ease: easeOut, delay: 0.1 }}
+      <BorderGlow
+        glowColor="20 80 70"
+        backgroundColor="transparent"
+        borderRadius={32}
+        glowRadius={40}
+        glowIntensity={0.5}
+        colors={["#FF6B35", "#FF875C", "#FFA27F"]}
         style={{
-          position: "relative",
-          zIndex: 1,
           maxWidth: 1200,
           margin: "0 auto",
           borderRadius: 32,
@@ -521,7 +523,7 @@ export function SiteFooter() {
             Made for mess operators across India
           </div>
         </motion.div>
-      </motion.div>
+      </BorderGlow>
     </motion.footer>
   );
 }

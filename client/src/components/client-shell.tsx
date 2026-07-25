@@ -11,6 +11,7 @@
 import dynamic from "next/dynamic";
 import { MotionProvider } from "@/lib/motion-config";
 import { LenisProvider } from "@/lib/lenis";
+import LightRays from "@/components/ui/light-rays";
 
 // ── ssr:false dynamic imports ─────────────────────────────────────
 const PageLoader = dynamic(
@@ -51,6 +52,30 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
       <PageLoader />
       <MouseCursor color="rgba(255,107,53,0.06)" size={350} blur={80} opacity={0.7} />
       <TopProgressBar />
+
+      {/* Global LightRays overlay — warm orange glow visible on all pages */}
+      <div style={{
+        position: "fixed",
+        inset: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: 2,
+        pointerEvents: "none",
+        opacity: 0.55,
+        mixBlendMode: "screen",
+      }}>
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#FF6B35"
+          raysSpeed={0.6}
+          lightSpread={0.6}
+          rayLength={1.5}
+          fadeDistance={0.6}
+          saturation={0.7}
+          followMouse={true}
+          mouseInfluence={0.05}
+        />
+      </div>
 
       <MotionProvider>
         <ToastProvider>

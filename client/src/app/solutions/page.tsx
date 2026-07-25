@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { solutions } from "@/lib/site-data";
 import { Icon } from "@/components/ui/icon";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -69,7 +70,8 @@ export default function SolutionsOverviewPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {solutions.map((sol, i) => (
-                <Link key={sol.slug} href={`/solutions/${sol.slug}`} className={`sol-card rv d${(i % 4) + 1}`}>
+                <BorderGlow key={sol.slug} backgroundColor="transparent" borderRadius={20} glowIntensity={0.4} colors={["#FF6B35", "#FF875C", "#FFA27F"]}>
+                <Link href={`/solutions/${sol.slug}`} className={`sol-card rv d${(i % 4) + 1}`}>
                    <div style={{ marginBottom: 16 }}>
                      <Icon name={sol.icon} size={36} color="#FF6B35" />
                    </div>
@@ -83,6 +85,7 @@ export default function SolutionsOverviewPage() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                   </span>
                 </Link>
+                </BorderGlow>
               ))}
             </div>
           </div>

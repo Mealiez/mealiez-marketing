@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { products } from "@/lib/site-data";
 import { Icon } from "@/components/ui/icon";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -70,7 +71,8 @@ export default function ProductOverviewPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {products.map((product, i) => (
-                <Link key={product.slug} href={`/product/${product.slug}`} className={`module-card rv d${(i % 4) + 1}`}>
+                <BorderGlow key={product.slug} backgroundColor="transparent" borderRadius={20} glowIntensity={0.4} colors={["#FF6B35", "#FF875C", "#FFA27F"]}>
+                <Link href={`/product/${product.slug}`} className={`module-card rv d${(i % 4) + 1}`}>
                    <div style={{ marginBottom: 16 }}>
                      <Icon name={product.icon} size={36} color="#FF6B35" />
                    </div>
@@ -89,6 +91,7 @@ export default function ProductOverviewPage() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                   </span>
                 </Link>
+                </BorderGlow>
               ))}
             </div>
           </div>
