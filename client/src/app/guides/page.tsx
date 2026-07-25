@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -145,13 +146,13 @@ export default function GuidesPage() {
           <div className="w">
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {guides.slice(1).map((guide, i) => (
-                <div key={i} className={`guide-card rv d${(i % 3) + 1}`}>
+                <BorderGlow key={i} className={`guide-card rv d${(i % 3) + 1}`} backgroundColor="#ffffff" borderRadius={16}>
                   <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 14 }}>
                     <div style={{ fontSize: 32 }}>{guide.icon}</div>
                     <span style={{ fontSize: 10, fontWeight: 800, color: "#fff", background: guide.tagColor, borderRadius: 100, padding: "3px 10px", letterSpacing: "0.04em", textTransform: "uppercase" }}>
                       {guide.tag}
                     </span>
-                  </div>
+                  </BorderGlow>
                   <h2 style={{ fontSize: 15.5, fontWeight: 800, color: "#1a1a1a", lineHeight: 1.45, marginBottom: 12 }}>{guide.title}</h2>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72, marginBottom: 20 }}>{guide.desc}</p>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>

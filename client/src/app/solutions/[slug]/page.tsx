@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { solutions, products } from "@/lib/site-data";
 import { Icon } from "@/components/ui/icon";
+import BorderGlow from "@/components/ui/border-glow";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -137,13 +138,13 @@ export default function SolutionDetailPage({ params }: Props) {
             <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 520, margin: "0 auto 48px" }}>
               And why traditional approaches fall short at scale.
             </p>
-            <div className="card rv" style={{ maxWidth: 680, margin: "0 auto", padding: "36px 40px" }}>
+            <BorderGlow className="card rv" style={{ maxWidth: 680, margin: "0 auto", padding: "36px 40px" }} backgroundColor="#ffffff" borderRadius={20}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 24 }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
-                </div>
+                </BorderGlow>
                 <div>
                   <h3 style={{ fontSize: 17, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>The Current Reality</h3>
                   <p style={{ fontSize: 14.5, color: "#555", lineHeight: 1.78 }}>{solution.currentProcess}</p>
@@ -169,10 +170,10 @@ export default function SolutionDetailPage({ params }: Props) {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 18 }}>
               {solution.mealiezApproach.map((item, i) => (
-                <div key={i} className={`card rv d${(i % 4) + 1}`} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+                <BorderGlow key={i} className={`card rv d${(i % 4) + 1}`} style={{ display: "flex", alignItems: "flex-start", gap: 14 }} backgroundColor="#ffffff" borderRadius={20}>
                   <div className="ic" style={{ marginTop: 2 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
+                  </BorderGlow>
                   <p style={{ fontSize: 14.5, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.6 }}>{item}</p>
                 </div>
               ))}
@@ -238,7 +239,7 @@ export default function SolutionDetailPage({ params }: Props) {
             <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 48, letterSpacing: "-.025em" }}>
               Real Operator Results
             </h2>
-            <div className="card rv" style={{ maxWidth: 680, margin: "0 auto", padding: "36px 40px" }}>
+            <BorderGlow className="card rv" style={{ maxWidth: 680, margin: "0 auto", padding: "36px 40px" }} backgroundColor="#ffffff" borderRadius={20}>
               <div style={{ fontSize: 32, marginBottom: 16, color: "#FF6B35" }}>"</div>
               <p style={{ fontSize: 16, color: "#333", lineHeight: 1.85, fontStyle: "italic", marginBottom: 24 }}>
                 Switching to Mealiez was the single best operational decision we made this year.
@@ -248,7 +249,7 @@ export default function SolutionDetailPage({ params }: Props) {
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg, #FF6B35, #FF875C)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>
                   <Icon name={solution.icon} size={20} color="#fff" />
-                </div>
+                </BorderGlow>
                 <div>
                   <p style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>Operations Head</p>
                   <p style={{ fontSize: 12, color: "#888" }}>{solution.title} Customer</p>

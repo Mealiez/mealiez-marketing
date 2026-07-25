@@ -1,5 +1,6 @@
 /* Card component — CSS hover transition, no framer-motion */
 import { ReactNode, CSSProperties } from "react";
+import BorderGlow from "@/components/ui/border-glow";
 
 type CardProps = {
   children: ReactNode;
@@ -10,12 +11,14 @@ type CardProps = {
 
 export function Card({ children, className = "", hoverable = true, style }: CardProps) {
   return (
-    <div
+    <BorderGlow
       className={`surface-card ${className}`}
       style={{
         transition: hoverable ? "transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s" : undefined,
         ...style,
       }}
+      backgroundColor="#fff"
+      borderRadius={16}
       onMouseEnter={(e) => {
         if (!hoverable) return;
         (e.currentTarget as HTMLElement).style.transform = "translateY(-6px)";
@@ -28,6 +31,6 @@ export function Card({ children, className = "", hoverable = true, style }: Card
       }}
     >
       {children}
-    </div>
+    </BorderGlow>
   );
 }

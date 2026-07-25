@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -100,10 +101,10 @@ export default function CompanyPage() {
                   { stat: "₹12Cr+", label: "Billing/Month" },
                   { stat: "5 days", label: "Avg Onboarding" },
                 ].map((s, i) => (
-                  <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
+                  <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }} backgroundColor="#ffffff" borderRadius={20}>
                     <div style={{ fontSize: 28, fontWeight: 900, color: "#FF6B35", letterSpacing: "-0.02em", marginBottom: 6 }}>{s.stat}</div>
                     <div style={{ fontSize: 12, color: "#888" }}>{s.label}</div>
-                  </div>
+                  </BorderGlow>
                 ))}
               </div>
             </div>
@@ -117,14 +118,14 @@ export default function CompanyPage() {
             <h2 className="rv d1" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 48, letterSpacing: "-.025em" }}>
               How Mealiez Was Born
             </h2>
-            <div className="card rv d2" style={{ padding: "40px 48px", borderLeft: "4px solid #FF6B35" }}>
+            <BorderGlow className="card rv d2" style={{ padding: "40px 48px", borderLeft: "4px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
               <p style={{ fontSize: 15, color: "#444", lineHeight: 1.9, marginBottom: 24, fontStyle: "italic" }}>
                 "I managed a 600-member hostel mess in my final year. Every day was a battle — paper registers no one could read, billing disputes every week, and no way to know how much food to cook. I wrote everything in Excel. It broke constantly. After graduation, I spent a year talking to 40+ mess operators. They all had the same problems. That's when I knew I had to build Mealiez."
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
                   👨‍💼
-                </div>
+                </BorderGlow>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 800, color: "#1a1a1a" }}>Rohan Mehta</p>
                   <p style={{ fontSize: 13, color: "#888" }}>Co-Founder & CEO, Mealiez</p>
@@ -138,20 +139,20 @@ export default function CompanyPage() {
         <section id="mission-vision" className="s-white">
           <div className="w">
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
-              <div className="card rv d1" style={{ borderTop: "3px solid #FF6B35" }}>
+              <BorderGlow className="card rv d1" style={{ borderTop: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
                 <div style={{ fontSize: 32, marginBottom: 20 }}>🎯</div>
                 <h3 style={{ fontSize: 22, fontWeight: 800, color: "#1a1a1a", marginBottom: 14 }}>Our Mission</h3>
                 <p style={{ fontSize: 15, color: "#555", lineHeight: 1.8 }}>
                   To give every mess operator in India — from a 50-member tiffin service to a 5,000-member university — the operational tools that make their food business efficient, transparent, and profitable.
                 </p>
-              </div>
-              <div className="card rv d2" style={{ borderTop: "3px solid #FF6B35" }}>
+              </BorderGlow>
+              <BorderGlow className="card rv d2" style={{ borderTop: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
                 <div style={{ fontSize: 32, marginBottom: 20 }}>🔭</div>
                 <h3 style={{ fontSize: 22, fontWeight: 800, color: "#1a1a1a", marginBottom: 14 }}>Our Vision</h3>
                 <p style={{ fontSize: 15, color: "#555", lineHeight: 1.8 }}>
                   A world where no food service operator wastes food, loses revenue to manual errors, or spends hours on billing. Where every member gets a transparent, frictionless dining experience.
                 </p>
-              </div>
+              </BorderGlow>
             </div>
           </div>
         </section>
@@ -163,11 +164,11 @@ export default function CompanyPage() {
             <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 460, margin: "0 auto 48px" }}>What guides every decision we make at Mealiez.</p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
               {values.map((v, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{ fontSize: 32, marginBottom: 16 }}>{v.icon}</div>
                   <h3 style={{ fontSize: 15, fontWeight: 800, color: "#1a1a1a", marginBottom: 10 }}>{v.title}</h3>
                   <p style={{ fontSize: 13, color: "#666", lineHeight: 1.7 }}>{v.desc}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -218,7 +219,7 @@ export default function CompanyPage() {
                   </div>
                 ))}
               </div>
-              <div className="card rv d2" style={{ padding: 32 }}>
+              <BorderGlow className="card rv d2" style={{ padding: 32 }} backgroundColor="#ffffff" borderRadius={20}>
                 <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 24, color: "#1a1a1a" }}>Send us a message</h3>
                 <div style={{ display: "grid", gap: 14 }}>
                   {[
@@ -229,7 +230,7 @@ export default function CompanyPage() {
                     <div key={label}>
                       <label className="label">{label}</label>
                       <input type={type} placeholder={placeholder} className="input" />
-                    </div>
+                    </BorderGlow>
                   ))}
                   <div>
                     <label className="label">Message</label>

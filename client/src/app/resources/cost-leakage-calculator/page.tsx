@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { LeakageCalculator } from "@/components/calculators";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -78,11 +79,11 @@ export default function CostLeakageCalculatorPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 18 }}>
               {leakageSources.map((s, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center", borderTop: "3px solid #FF6B35" }}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center", borderTop: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{ fontSize: 32, marginBottom: 14 }}>{s.icon}</div>
                   <h3 style={{ fontSize: 14, fontWeight: 800, color: "#1a1a1a", marginBottom: 8 }}>{s.title}</h3>
                   <p style={{ fontSize: 13, color: "#666", lineHeight: 1.65 }}>{s.desc}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -111,11 +112,11 @@ export default function CostLeakageCalculatorPage() {
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 18 }}>
               {howItWorks.map((h, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#FF6B35", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 900, margin: "0 auto 16px" }}>{h.step}</div>
                   <h3 style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>{h.label}</h3>
                   <p style={{ fontSize: 13, color: "#666", lineHeight: 1.65 }}>{h.desc}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>

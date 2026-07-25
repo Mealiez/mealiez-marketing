@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products } from "@/lib/site-data";
 import { Icon } from "@/components/ui/icon";
+import BorderGlow from "@/components/ui/border-glow";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -187,12 +188,12 @@ export default function ProductDetailPage({ params }: Props) {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
               {product.painPoints.map((pt, i) => (
-                <div key={i} className={`card rv d${i + 1}`}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} backgroundColor="#ffffff" borderRadius={20}>
                   <div className="ic" style={{ marginBottom: 14 }}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
-                  </div>
+                  </BorderGlow>
                   <p style={{ fontSize: 14, color: "#555", lineHeight: 1.75 }}>{pt}</p>
                 </div>
               ))}
@@ -211,10 +212,10 @@ export default function ProductDetailPage({ params }: Props) {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 18 }}>
               {product.features.map((feat, i) => (
-                <div key={i} className={`card rv d${(i % 4) + 1}`} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                <BorderGlow key={i} className={`card rv d${(i % 4) + 1}`} style={{ display: "flex", alignItems: "flex-start", gap: 16 }} backgroundColor="#ffffff" borderRadius={20}>
                   <div className="ic" style={{ marginTop: 2 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
+                  </BorderGlow>
                   <p style={{ fontSize: 14.5, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.55, margin: 0 }}>{feat}</p>
                 </div>
               ))}
@@ -268,7 +269,7 @@ export default function ProductDetailPage({ params }: Props) {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: `repeat(${product.benefits.length}, 1fr)`, gap: 18 }}>
               {product.benefits.map((b, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{
                     width: 44, height: 44, borderRadius: "50%",
                     background: "rgba(255,107,53,.08)", border: "1px solid rgba(255,107,53,.18)",
@@ -276,7 +277,7 @@ export default function ProductDetailPage({ params }: Props) {
                     margin: "0 auto 16px",
                   }}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
+                  </BorderGlow>
                   <p style={{ fontSize: 14.5, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.6, margin: 0 }}>{b}</p>
                 </div>
               ))}

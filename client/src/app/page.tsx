@@ -4,6 +4,9 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { AuroraBg } from "@/components/ambient/aurora-bg";
 import { FloatingParticles } from "@/components/ambient/floating-particles";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { AnimatedSection } from "@/components/ui/animated-section";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -17,31 +20,8 @@ function useReveal() {
   }, []);
 }
 
-function useCounter(target: number, duration = 1800) {
-  const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      let start = 0; const step = target / (duration / 16);
-      const t = setInterval(() => {
-        start = Math.min(start + step, target);
-        el.textContent = Math.floor(start).toLocaleString();
-        if (start >= target) clearInterval(t);
-      }, 16);
-    }, { threshold: 0.5 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, [target, duration]);
-  return ref;
-}
-
 export default function Home() {
   useReveal();
-  const c1 = useCounter(500);
-  const c2 = useCounter(1000000);
-  const c3 = useCounter(100);
 
   return (
     <>
@@ -629,10 +609,10 @@ export default function Home() {
         <div className="container">
           <div className="pg-stats-grid">
             {[
-              { ref:c1, suffix:"+", label:"Institutions Served", desc:"Hostels, colleges & factories" },
-              { ref:c2, suffix:"M+", label:"Meals Managed", desc:"Tracked and accounted for" },
-              { ref:c3, suffix:".9%", label:"Uptime Guarantee", desc:"Enterprise-grade reliability" },
-              { label:"₹100M+", static:true, sub:"Saved", desc:"Wastage reduction achieved" },
+              { value:500, suffix:"+", label:"Institutions Served", desc:"Hostels, colleges & factories" },
+              { value:1000000, suffix:"M+", label:"Meals Managed", desc:"Tracked and accounted for" },
+              { value:100, suffix:".9%", label:"Uptime Guarantee", desc:"Enterprise-grade reliability" },
+              { label:"₹100M+", static:true, desc:"Wastage reduction achieved" },
             ].map((s:any, i) => (
               <div key={i} className="rv-el" style={{
                 textAlign:"center", padding:"8px 0",
@@ -644,9 +624,9 @@ export default function Home() {
                   lineHeight:1,
                   marginBottom:6,
                 }}>
-                  {s.static ? s.label : <><span ref={s.ref}>0</span>{s.suffix}</>}
+                  {s.static ? s.label : <><AnimatedCounter value={s.value} suffix={s.suffix} duration={1.8} /></>}
                 </div>
-                <div style={{ fontSize:13, fontWeight:700, color:"#FF6B35", marginBottom:4, letterSpacing:"0.04em" }}>{s.label}</div>
+                <div style={{ fontSize:13, fontWeight:700, color:"#FF6B35", marginBottom:4, letterSpacing:"0.04em" }}>{s.label || s.desc}</div>
                 <div style={{ fontSize:11, color:"#aaa", fontWeight:500 }}>{s.desc}</div>
               </div>
             ))}
@@ -720,14 +700,23 @@ export default function Home() {
             </div>
 
             {/* Right — Impact stat card */}
-            <div className="rv-r d2 pg-problem-sticky" style={{
-              background:"linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,232,0.6))",
-              borderRadius:20,
-              border:"1px solid rgba(255,107,53,0.08)",
-              padding:"clamp(28px,3vw,44px)",
-              backdropFilter:"blur(12px)",
-              position:"sticky", top:100,
-            }}>
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="transparent"
+              borderRadius={20}
+              glowRadius={30}
+              glowIntensity={0.6}
+              colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+              className="rv-r d2 pg-problem-sticky"
+              style={{
+                background:"linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,232,0.6))",
+                borderRadius:20,
+                border:"1px solid rgba(255,107,53,0.08)",
+                padding:"clamp(28px,3vw,44px)",
+                backdropFilter:"blur(12px)",
+                position:"sticky", top:100,
+              }}
+            >
               <div style={{
                 fontSize:11, fontWeight:800, color:"#FF6B35",
                 letterSpacing:"0.1em", marginBottom:20,
@@ -759,7 +748,7 @@ export default function Home() {
                 <span>Wasted</span>
                 <span>Recoverable</span>
               </div>
-            </div>
+            </BorderGlow>
           </div>
         </div>
       </section>
@@ -795,14 +784,23 @@ export default function Home() {
           {/* Asymmetrical grid: 1 large + 2 small */}
           <div className="pg-features-grid">
             {/* Left — Large feature card */}
-            <div className="rv-s d2 pg-feature-large-card" style={{
-              background:"rgba(255,255,255,0.75)",
-              backdropFilter:"blur(28px) saturate(1.6)",
-              WebkitBackdropFilter:"blur(28px) saturate(1.6)",
-              borderRadius:20,
-              border:"1px solid rgba(255,107,53,0.08)",
-              padding:"clamp(28px,3vw,40px)",
-            }}>
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="transparent"
+              borderRadius={20}
+              glowRadius={30}
+              glowIntensity={0.5}
+              colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+              className="rv-s d2 pg-feature-large-card"
+              style={{
+                background:"rgba(255,255,255,0.75)",
+                backdropFilter:"blur(28px) saturate(1.6)",
+                WebkitBackdropFilter:"blur(28px) saturate(1.6)",
+                borderRadius:20,
+                border:"1px solid rgba(255,107,53,0.08)",
+                padding:"clamp(28px,3vw,40px)",
+              }}
+            >
               <span style={{
                 fontSize:10, fontWeight:800, color:"#FF6B35",
                 letterSpacing:"0.12em", textTransform:"uppercase",
@@ -817,7 +815,7 @@ export default function Home() {
                 fontFamily:"'Barlow Condensed',system-ui,sans-serif",
                 textTransform:"uppercase",
                 letterSpacing:"0.01em",
-              }}>Inventory &amp; Vendor Management</h3>
+              }}>Inventory & Vendor Management</h3>
               <p style={{ fontSize:14, color:"#555", lineHeight:1.72, marginBottom:20 }}>
                 Know exactly what raw materials you have in stock. Mealiez tracks daily ingredient consumption, flags low stock before you run out, and logs every vendor purchase against actual meals served.
               </p>
@@ -829,7 +827,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
+            </BorderGlow>
 
             {/* Right — Two smaller cards stacked */}
             <div style={{ display:"flex", flexDirection:"column", gap:"20px" }}>
@@ -837,16 +835,26 @@ export default function Home() {
                 { badge:"BILLING", title:"Automated Billing & Fee Collection", desc:"Monthly fee statements generated automatically based on meals attended. Members pay online, you get instant confirmation.", checks:["Auto-generated monthly fee statements","Online payment with instant digital receipts"] },
                 { badge:"ANALYTICS", title:"Operations Reports & Analytics", desc:"Daily reports on food wastage, attendance, collection status, and cost-per-meal — all in one dashboard.", checks:["Daily food wastage & cost-per-meal","Revenue and outstanding dues dashboard"] },
               ].map((item,i)=>(
-                <div key={i} className="rv-s pg-feature-small-card" style={{
-                  flex:1,
-                  background:"rgba(255,255,255,0.65)",
-                  backdropFilter:"blur(24px) saturate(1.4)",
-                  WebkitBackdropFilter:"blur(24px) saturate(1.4)",
-                  borderRadius:16,
-                  border:"1px solid rgba(255,255,255,0.7)",
-                  padding:"clamp(20px,2.5vw,28px)",
-                  boxShadow:"0 4px 20px rgba(17,17,17,0.03)",
-                }}>
+                <BorderGlow
+                  key={i}
+                  glowColor="20 80 70"
+                  backgroundColor="transparent"
+                  borderRadius={16}
+                  glowRadius={25}
+                  glowIntensity={0.4}
+                  colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+                  className="rv-s pg-feature-small-card"
+                  style={{
+                    flex:1,
+                    background:"rgba(255,255,255,0.65)",
+                    backdropFilter:"blur(24px) saturate(1.4)",
+                    WebkitBackdropFilter:"blur(24px) saturate(1.4)",
+                    borderRadius:16,
+                    border:"1px solid rgba(255,255,255,0.7)",
+                    padding:"clamp(20px,2.5vw,28px)",
+                    boxShadow:"0 4px 20px rgba(17,17,17,0.03)",
+                  }}
+                >
                   <span style={{
                     fontSize:10, fontWeight:800, color:"#FF6B35",
                     letterSpacing:"0.12em", textTransform:"uppercase",
@@ -870,7 +878,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -1043,13 +1051,23 @@ export default function Home() {
               { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M12 8v8M8 12h8"/></svg>, title:"Factory & Industrial Canteen", desc:"Track shift-wise meals for hundreds of workers, manage subsidised meals, and integrate with access control systems." },
               { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>, title:"Corporate Cafeteria", desc:"Multi-vendor dining with digital meal wallets, payroll deduction, guest tracking, and daily spend reports for HR." },
             ].map((item,i)=>(
-              <div key={i} className="rv-s pg-solution-card" style={{
-                padding:"clamp(24px,2.5vw,32px)",
-                borderRadius:16,
-                border:"1px solid rgba(255,107,53,0.06)",
-                background:"#fff",
-                boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-              }}>
+              <BorderGlow
+                key={i}
+                glowColor="20 80 70"
+                backgroundColor="transparent"
+                borderRadius={16}
+                glowRadius={25}
+                glowIntensity={0.4}
+                colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+                className="rv-s pg-solution-card"
+                style={{
+                  padding:"clamp(24px,2.5vw,32px)",
+                  borderRadius:16,
+                  border:"1px solid rgba(255,107,53,0.06)",
+                  background:"#fff",
+                  boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
+                }}
+              >
                 <div style={{
                   width:40, height:40, borderRadius:10,
                   background:"rgba(255,107,53,0.06)",
@@ -1061,7 +1079,7 @@ export default function Home() {
                   marginBottom:8,
                 }}>{item.title}</h3>
                 <p style={{ fontSize:13, color:"#666", lineHeight:1.68 }}>{item.desc}</p>
-              </div>
+              </BorderGlow>
             ))}
           </div>
         </div>
@@ -1103,7 +1121,29 @@ export default function Home() {
               { quote:"We were managing our hostel mess on WhatsApp and a shared Excel file. Every week there was a fight about the food bill. Since we switched to Mealiez, our food wastage has come down by almost 30% and the monthly billing just happens automatically. I wish we had done this sooner.", name:"Rajesh Nair", role:"Hostel Warden, Engineering College, Pune", tag:"HOSTEL", featured:true },
               { quote:"Collecting monthly mess fees was the most stressful part of my job — chasing students, cross-checking Excel entries, handling disputes. Now parents pay online through Mealiez, I get instant confirmation, and the ledger is always accurate. It's saved me at least 10 hours every month.", name:"Priya Sharma", role:"Mess Administrator, Student Housing Facility, Bengaluru", tag:"MESS", featured:false },
             ].map((t,i)=>
-              <div key={i} className={t.featured ? "testimonial-card-featured rv-el" : "testimonial-card-compact rv-el"}>
+              <BorderGlow
+                key={i}
+                glowColor="20 80 70"
+                backgroundColor="transparent"
+                borderRadius={t.featured ? 20 : 16}
+                glowRadius={25}
+                glowIntensity={0.4}
+                colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+                className={t.featured ? "testimonial-card-featured rv-el" : "testimonial-card-compact rv-el"}
+                style={t.featured ? {
+                  padding:"clamp(28px,3vw,40px)",
+                  borderRadius:20,
+                  border:"1px solid rgba(255,107,53,0.10)",
+                  background:"linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,230,0.4))",
+                } : {
+                  padding:"clamp(20px,2.5vw,28px)",
+                  borderRadius:16,
+                  border:"1px solid rgba(0,0,0,0.04)",
+                  background:"rgba(255,255,255,0.7)",
+                  backdropFilter:"blur(8px)",
+                  WebkitBackdropFilter:"blur(8px)",
+                }}
+              >
                 <div className="testimonial-quote-mark" aria-hidden="true">“</div>
                 <p style={{
                   fontSize:"clamp(14px,1.1vw,15px)",
@@ -1127,7 +1167,7 @@ export default function Home() {
                     textTransform:"uppercase",
                   }}>{t.tag}</span>
                 </div>
-              </div>
+              </BorderGlow>
             )}
           </div>
         </div>
@@ -1306,13 +1346,23 @@ export default function Home() {
               { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, badge:"CASE STUDY", title:"How a 1,200-Member Hostel Reduced Wastage by 28%" },
               { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>, badge:"GUIDE", title:"Step-by-Step Guide to Digitising Your Hostel Mess" },
             ].map((r,i)=>(
-              <div key={i} className="rv-s pg-resource-card" style={{
-                padding:0, borderRadius:16, overflow:"hidden",
-                border:"1px solid rgba(0,0,0,0.04)",
-                background:"#fff",
-                boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-                cursor:"pointer",
-              }}>
+              <BorderGlow
+                key={i}
+                glowColor="20 80 70"
+                backgroundColor="transparent"
+                borderRadius={16}
+                glowRadius={25}
+                glowIntensity={0.4}
+                colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+                className="rv-s pg-resource-card"
+                style={{
+                  padding:0, borderRadius:16, overflow:"hidden",
+                  border:"1px solid rgba(0,0,0,0.04)",
+                  background:"#fff",
+                  boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
+                  cursor:"pointer",
+                }}
+              >
                 <div className="pg-resource-thumb">
                   <div className="pg-resource-thumb-grid" aria-hidden="true"/>
                   <div style={{ position:"relative", zIndex:1 }}>{r.icon}</div>
@@ -1328,7 +1378,7 @@ export default function Home() {
                   }}>{r.badge}</span>
                   <p style={{ fontSize:14, fontWeight:600, color:"#1a1a1a", lineHeight:1.45 }}>{r.title}</p>
                 </div>
-              </div>
+              </BorderGlow>
             ))}
           </div>
         </div>
@@ -1346,17 +1396,26 @@ export default function Home() {
       }}>
         <FloatingParticles count={6} minSize={3} maxSize={5} speed={0.1} />
         <div className="container" style={{ position:"relative", zIndex:2 }}>
-          <div className="rv-s" style={{
-            maxWidth:800, margin:"0 auto", textAlign:"center",
-            padding:"clamp(48px,6vw,80px) clamp(24px,4vw,56px)",
-            borderRadius:24,
-            background:"rgba(255,255,255,0.5)",
-            backdropFilter:"blur(32px) saturate(1.6)",
-            WebkitBackdropFilter:"blur(32px) saturate(1.6)",
-            border:"1px solid rgba(255,255,255,0.8)",
-            boxShadow:"0 4px 24px rgba(17,17,17,0.03)",
-            position:"relative",
-          }}>
+          <BorderGlow
+            glowColor="20 80 70"
+            backgroundColor="transparent"
+            borderRadius={24}
+            glowRadius={35}
+            glowIntensity={0.5}
+            colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+            className="rv-s"
+            style={{
+              maxWidth:800, margin:"0 auto", textAlign:"center",
+              padding:"clamp(48px,6vw,80px) clamp(24px,4vw,56px)",
+              borderRadius:24,
+              background:"rgba(255,255,255,0.5)",
+              backdropFilter:"blur(32px) saturate(1.6)",
+              WebkitBackdropFilter:"blur(32px) saturate(1.6)",
+              border:"1px solid rgba(255,255,255,0.8)",
+              boxShadow:"0 4px 24px rgba(17,17,17,0.03)",
+              position:"relative",
+            }}
+          >
             <div style={{
               position:"absolute", width:"50%", height:"50%",
               top:"25%", left:"25%",
@@ -1394,7 +1453,7 @@ export default function Home() {
                 Calculate Your ROI
               </Link>
             </div>
-          </div>
+          </BorderGlow>
         </div>
       </section>
     </>

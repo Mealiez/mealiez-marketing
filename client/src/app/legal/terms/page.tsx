@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -238,16 +239,16 @@ export default function TermsOfServicePage() {
                   {sec.title}
                 </h2>
                 {sec.content.map((block, bi) => (
-                  <div key={bi} className="lp-card">
+                  <BorderGlow key={bi} className="lp-card" backgroundColor="#ffffff" borderRadius={16}>
                     <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FF6B35", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>{block.heading}</h3>
                     <p style={{ fontSize: 14.5, color: "#555", lineHeight: 1.8, margin: 0 }}>{block.body}</p>
-                  </div>
+                  </BorderGlow>
                 ))}
               </div>
             ))}
 
             {/* Contact */}
-            <div className="rv lp-card" style={{ borderTop: "3px solid #FF6B35", textAlign: "center", padding: "36px 32px", marginTop: 16 }}>
+            <BorderGlow className="rv lp-card" style={{ borderTop: "3px solid #FF6B35", textAlign: "center", padding: "36px 32px", marginTop: 16 }} backgroundColor="#ffffff" borderRadius={16}>
               <div style={{ fontSize: 36, marginBottom: 12 }}>⚖️</div>
               <h3 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", marginBottom: 8 }}>Legal Questions?</h3>
               <p style={{ fontSize: 14, color: "#666", lineHeight: 1.75, margin: "0 auto 20px", maxWidth: 400 }}>
@@ -256,7 +257,7 @@ export default function TermsOfServicePage() {
               <a href="mailto:legal@mealiez.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
                 legal@mealiez.com
               </a>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 

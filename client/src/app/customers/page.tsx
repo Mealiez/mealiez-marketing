@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -159,11 +160,11 @@ export default function CustomersPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {stories.map((s, i) => (
-                <div key={i} className={`card rv d${i + 1}`}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                     <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
                       {s.icon}
-                    </div>
+                    </BorderGlow>
                     <div>
                       <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a" }}>{s.name}</h3>
                       <p style={{ fontSize: 12, color: "#888" }}>{s.type} · {s.members} members</p>
@@ -192,7 +193,7 @@ export default function CustomersPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
               {stories.map((s, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ borderLeft: "3px solid #FF6B35" }}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ borderLeft: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Case Study</div>
                   <h3 style={{ fontSize: 16, fontWeight: 800, color: "#1a1a1a", marginBottom: 8 }}>
                     How {s.name} achieved {s.result}
@@ -206,7 +207,7 @@ export default function CustomersPage() {
                     <div key={label} style={{ marginBottom: 12 }}>
                       <div style={{ fontSize: 10, fontWeight: 800, color: "#888", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>{label}</div>
                       <div style={{ fontSize: 13, color: "#444", lineHeight: 1.6 }}>{text}</div>
-                    </div>
+                    </BorderGlow>
                   ))}
                   <Link href="/book-demo" style={{ fontSize: 13, fontWeight: 700, color: "#FF6B35", textDecoration: "none", display: "flex", alignItems: "center", gap: 4, marginTop: 16 }}>
                     Replicate these results →
@@ -228,13 +229,13 @@ export default function CustomersPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18 }}>
               {testimonials.map((t, i) => (
-                <div key={i} className={`test-card rv d${(i % 3) + 1}`}>
+                <BorderGlow key={i} className={`test-card rv d${(i % 3) + 1}`} backgroundColor="#ffffff" borderRadius={18}>
                   <div style={{ fontSize: 24, color: "#FF6B35", marginBottom: 14 }}>"</div>
                   <p style={{ fontSize: 14, color: "#333", lineHeight: 1.8, fontStyle: "italic", marginBottom: 20 }}>{t.text}</p>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>
                       {t.icon}
-                    </div>
+                    </BorderGlow>
                     <div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: "#1a1a1a" }}>{t.author}</p>
                       <p style={{ fontSize: 11, color: "#888" }}>{t.role}, {t.org}</p>

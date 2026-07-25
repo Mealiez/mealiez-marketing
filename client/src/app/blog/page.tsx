@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -375,7 +376,7 @@ export default function BlogPage() {
 
             <div className="disc-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14 }}>
               {disciplines.map((d, i) => (
-                <div key={d.title} className={`disc-card rv d${Math.min(i+1,6)}`}>
+                <BorderGlow key={d.title} className={`disc-card rv d${Math.min(i+1,6)}`} backgroundColor="#ffffff" borderRadius={14}>
                   <span className="disc-tag" style={{
                     background:`${tagColors[d.tag]}18`,
                     color: tagColors[d.tag],
@@ -390,7 +391,7 @@ export default function BlogPage() {
                     {d.title}
                   </h3>
                   <p style={{ fontSize:12.5, color:"#777", lineHeight:1.65 }}>{d.desc}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -429,7 +430,7 @@ export default function BlogPage() {
             {/* Grid */}
             <div className="post-grid" style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:20 }}>
               {filtered.map((post, i) => (
-                <article key={i} className={`post-card rv d${Math.min(i+1,6)}`}>
+                <BorderGlow key={i} className={`post-card rv d${Math.min(i+1,6)}`} backgroundColor="#ffffff" borderRadius={16}>
                   <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
                     <div className="post-icon-wrap">{post.icon}</div>
                     <span className="post-tag" style={{
@@ -474,7 +475,7 @@ export default function BlogPage() {
                       <polyline points="9 18 15 12 9 6"/>
                     </svg>
                   </Link>
-                </article>
+                </BorderGlow>
               ))}
             </div>
 

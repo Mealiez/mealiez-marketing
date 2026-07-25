@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 /* ── Scroll reveal ── */
 function useReveal() {
@@ -361,7 +362,7 @@ export default function WhyMealiezPage() {
                   body: "Procurement, kitchen, and billing operate on different versions of reality, causing daily reconciliation nightmares.",
                 },
               ].map((c, i) => (
-                <div key={i} className={`prob-card rv d${i+1}`}>
+                <BorderGlow key={i} className={`prob-card rv d${i+1}`} backgroundColor="#ffffff" borderRadius={16}>
                   <div style={{
                     width: 44, height: 44, borderRadius: 12,
                     background: c.color, border: `1px solid ${c.stroke}`,
@@ -369,7 +370,7 @@ export default function WhyMealiezPage() {
                     fontSize: 20, marginBottom: 16,
                   }}>
                     {c.icon}
-                  </div>
+                  </BorderGlow>
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a", marginBottom: 10, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
                     {c.title}
                   </h3>
@@ -487,7 +488,7 @@ export default function WhyMealiezPage() {
                   metric: "Average 7-day delay in billing reconciliation",
                 },
               ].map((c, i) => (
-                <div key={i} className={`leak-card rv d${i+1}`} style={{ position: "relative", overflow: "hidden" }}>
+                <BorderGlow key={i} className={`leak-card rv d${i+1}`} style={{ position: "relative", overflow: "hidden" }} backgroundColor="#ffffff" borderRadius={18}>
                   {/* Big background number */}
                   <div style={{
                     position: "absolute", top: -10, right: 16, fontSize: 120,
@@ -495,7 +496,7 @@ export default function WhyMealiezPage() {
                     fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", userSelect: "none",
                   }}>
                     {c.num}
-                  </div>
+                  </BorderGlow>
                   <h3 style={{
                     fontSize: 19, fontWeight: 700, color: "#1a1a1a", marginBottom: 14,
                     fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",

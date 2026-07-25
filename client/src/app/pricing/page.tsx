@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { RoiCalculator } from "@/components/calculators";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -130,7 +131,7 @@ export default function PricingPage() {
             <div style={{ display: "flex", gap: 24, alignItems: "stretch" }}>
 
               {/* Standard */}
-              <div className="plan-card rv d1">
+              <BorderGlow className="plan-card rv d1" backgroundColor="#ffffff" borderRadius={20}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: "#888", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Standard</div>
                 <h2 style={{ fontSize: 26, fontWeight: 900, color: "#1a1a1a", marginBottom: 4 }}>
                   {billing === "monthly" ? "₹9,999" : "₹7,999"}
@@ -145,7 +146,7 @@ export default function PricingPage() {
                     <div key={f} className="check">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                       {f}
-                    </div>
+                    </BorderGlow>
                   ))}
                 </div>
                 <Link href="/book-demo" className="btn-ora" style={{ width: "100%", justifyContent: "center", boxSizing: "border-box" }}>
@@ -154,10 +155,10 @@ export default function PricingPage() {
               </div>
 
               {/* Enterprise */}
-              <div className="plan-card enterprise rv d2">
+              <BorderGlow className="plan-card enterprise rv d2" backgroundColor="#ffffff" borderRadius={20}>
                 <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: "linear-gradient(135deg,#FF6B35,#FF875C)", color: "#fff", borderRadius: 100, padding: "4px 18px", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
                   Most Popular
-                </div>
+                </BorderGlow>
                 <div style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Enterprise</div>
                 <h2 style={{ fontSize: 26, fontWeight: 900, color: "#1a1a1a", marginBottom: 4 }}>
                   Custom

@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -314,7 +315,7 @@ export default function ResourcesPage() {
                   body: "Temperature logging and safety compliance were manual paper processes, creating audit anxiety and delayed incident response.",
                 },
               ].map((c, i) => (
-                <div key={i} className={`prob-card rv d${i+1}`}>
+                <BorderGlow key={i} className={`prob-card rv d${i+1}`} backgroundColor="#ffffff" borderRadius={16}>
                   <div style={{
                     width: 42, height: 42, borderRadius: 12,
                     background: c.bg, border: `1px solid ${c.border}`,
@@ -322,7 +323,7 @@ export default function ResourcesPage() {
                     fontSize: 20, marginBottom: 16,
                   }}>
                     {c.icon}
-                  </div>
+                  </BorderGlow>
                   <h3 style={{ fontSize: 15.5, fontWeight: 700, color: "#1a1a1a", marginBottom: 10, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
                     {c.title}
                   </h3>
@@ -341,7 +342,7 @@ export default function ResourcesPage() {
             <div className="deploy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
 
               {/* Left — tablet image */}
-              <div className="rv screen-card" style={{ aspectRatio: "4/3", background: "linear-gradient(145deg,#1a1a2e,#16213e)", position: "relative", overflow: "hidden" }}>
+              <BorderGlow className="rv screen-card" style={{ aspectRatio: "4/3", background: "linear-gradient(145deg,#1a1a2e,#16213e)", position: "relative", overflow: "hidden" }} borderRadius={16}>
                 {/* Ambient glow */}
                 <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 60% 60%, rgba(255,107,53,0.15), transparent 65%)" }} />
                 {/* Hand + tablet */}
@@ -358,7 +359,7 @@ export default function ResourcesPage() {
                     {["#FF6B35","rgba(255,255,255,0.2)","rgba(255,255,255,0.2)"].map((c,i) => (
                       <div key={i} style={{ height: 5, flex: i === 0 ? 2 : 1, background: c, borderRadius: 3 }} />
                     ))}
-                  </div>
+                  </BorderGlow>
                   {[80,60,90,45].map((w, i) => (
                     <div key={i} style={{ height: 8, width: `${w}%`, background: "rgba(255,255,255,0.12)", borderRadius: 4 }} />
                   ))}
@@ -466,12 +467,12 @@ export default function ResourcesPage() {
             <div className="screen-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
 
               {/* Dashboard screenshot mock */}
-              <div className="rv screen-card">
+              <BorderGlow className="rv screen-card" borderRadius={16}>
                 <div style={{ background: "#1e293b", padding: "10px 14px", display: "flex", gap: 5 }}>
                   {["#ef4444","#f59e0b","#22c55e"].map((c) => (
                     <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
                   ))}
-                </div>
+                </BorderGlow>
                 <div style={{ background: "#f8fafc", padding: 20 }}>
                   {/* Sidebar + content */}
                   <div style={{ display: "flex", gap: 12 }}>
@@ -514,12 +515,12 @@ export default function ResourcesPage() {
               </div>
 
               {/* Mobile app screenshot mock */}
-              <div className="rv d1 screen-card" style={{ background: "#fef6f0" }}>
+              <BorderGlow className="rv d1 screen-card" style={{ background: "#fef6f0" }} borderRadius={16}>
                 <div style={{ padding: "10px 14px", display: "flex", gap: 5, background: "rgba(255,107,53,0.06)", borderBottom: "1px solid rgba(255,107,53,0.1)" }}>
                   {["#ef4444","#f59e0b","#22c55e"].map((c) => (
                     <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
                   ))}
-                </div>
+                </BorderGlow>
                 <div style={{ padding: 20, display: "flex", justifyContent: "center" }}>
                   {/* Phone mockup */}
                   <div style={{
@@ -632,7 +633,7 @@ export default function ResourcesPage() {
                 { icon: "📘", title: "Guides", desc: "Step-by-step playbooks for modernising your food operations.", href: "/guides", cta: "Browse Guides" },
                 { icon: "📊", title: "Reports", desc: "Data-driven research on food service automation and ROI.", href: "/reports", cta: "View Reports" },
               ].map((r, i) => (
-                <div key={i} className={`prob-card rv d${i+1}`} style={{ display: "flex", flexDirection: "column" }}>
+                <BorderGlow key={i} className={`prob-card rv d${i+1}`} style={{ display: "flex", flexDirection: "column" }} backgroundColor="#ffffff" borderRadius={16}>
                   <div style={{ fontSize: 28, marginBottom: 14 }}>{r.icon}</div>
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a", marginBottom: 8, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>{r.title}</h3>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7, flex: 1, marginBottom: 18 }}>{r.desc}</p>
@@ -643,7 +644,7 @@ export default function ResourcesPage() {
                     {r.cta}
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                   </Link>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -654,7 +655,7 @@ export default function ResourcesPage() {
         ════════════════════════════════════════ */}
         <section style={{ padding: "64px 40px" }}>
           <div style={{ maxWidth: 1060, margin: "0 auto" }}>
-            <div className="cta-card rv">
+            <BorderGlow className="cta-card rv" backgroundColor="#ffffff" borderRadius={22}>
               <h2 style={{
                 fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 900,
                 color: "#1a1a1a", letterSpacing: "-0.025em", marginBottom: 16,
@@ -674,7 +675,7 @@ export default function ResourcesPage() {
               }}>
                 Book a Technical Demo
               </Link>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 

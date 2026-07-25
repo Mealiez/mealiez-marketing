@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useSpring, useTransform } from "framer-motion";
+import { RippleSurface } from "@/components/ux/ripple-effect";
 import { navMenus } from "@/lib/site-data";
 import { Icon } from "@/components/ui/icon";
 
@@ -494,10 +495,6 @@ export function SiteHeader() {
   const ctaRef       = useRef<HTMLAnchorElement>(null);
   const headerRef    = useRef<HTMLDivElement>(null);
 
-  /* Ripple state */
-  const [ripples,  setRipples]  = useState<{ x: number; y: number; id: number }[]>([]);
-  const rippleId = useRef(0);
-
   /* Magnetic CTA mouse offset (spring-smoothed) */
   const rawX = useSpring(0, { stiffness: 180, damping: 22 });
   const rawY = useSpring(0, { stiffness: 180, damping: 22 });
@@ -536,13 +533,9 @@ export function SiteHeader() {
     rawY.set(0);
   }, [rawX, rawY]);
 
-  /* ── CTA ripple ────────────────────────────────────────────────── */
+  /* ── CTA click handler (no ripple logic — handled by RippleSurface) ── */
   const handleCtaClick = useCallback((e: React.MouseEvent) => {
-    if (!ctaRef.current) return;
-    const rect = ctaRef.current.getBoundingClientRect();
-    const id = rippleId.current++;
-    setRipples(prev => [...prev, { x: e.clientX - rect.left, y: e.clientY - rect.top, id }]);
-    setTimeout(() => setRipples(prev => prev.filter(r => r.id !== id)), 700);
+    // ripple handled by RippleSurface wrapper
   }, []);
 
   /* ── Derived scroll values ─────────────────────────────────────── */
@@ -860,29 +853,22 @@ export function SiteHeader() {
 
             {/* ── Magnetic CTA wrapper ── */}
             <motion.div style={{ x: ctaMagX, y: ctaMagY, display: "inline-flex" }}>
-              <Link
-                ref={ctaRef}
-                href="/book-demo"
-                className="header-book-btn"
-                style={{ display: "inline-flex" }}
-                onMouseMove={handleCtaMouseMove}
-                onMouseLeave={handleCtaMouseLeave}
-                onClick={handleCtaClick}
-              >
-                Book Demo
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">
-                  <polyline points="9 18 15 12 9 6"/>
-                </svg>
-                <div className="ripple-container">
-                  {ripples.map(r => (
-                    <span
-                      key={r.id}
-                      className="ripple"
-                      style={{ left: r.x - 12, top: r.y - 12, width: 24, height: 24 }}
-                    />
-                  ))}
-                </div>
-              </Link>
+              <RippleSurface>
+                <Link
+                  ref={ctaRef}
+                  href="/book-demo"
+                  className="header-book-btn"
+                  style={{ display: "inline-flex" }}
+                  onMouseMove={handleCtaMouseMove}
+                  onMouseLeave={handleCtaMouseLeave}
+                  onClick={handleCtaClick}
+                >
+                  Book Demo
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </Link>
+              </RippleSurface>
             </motion.div>
           </div>
 

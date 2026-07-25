@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -167,12 +168,12 @@ export default function SecurityPage() {
                   <h2 className="rv d1" style={{ fontSize: 32, fontWeight: 900, lineHeight: 1.2, letterSpacing: "-.025em", marginBottom: 12 }}>{sec.title}</h2>
                   <div style={{ width: 40, height: 4, borderRadius: 2, background: sec.color, marginTop: 4 }} />
                 </div>
-                <div className="card rv d2" style={{ borderTop: `3px solid ${sec.color}` }}>
+                <BorderGlow className="card rv d2" style={{ borderTop: `3px solid ${sec.color}` }} backgroundColor="#ffffff" borderRadius={20}>
                   {sec.items.map((item, i) => (
                     <div key={i} className="check-item">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={sec.color} strokeWidth="2.5" strokeLinecap="round" style={{ flexShrink: 0, marginTop: 2 }}><polyline points="20 6 9 17 4 12"/></svg>
                       {item}
-                    </div>
+                    </BorderGlow>
                   ))}
                 </div>
               </div>
@@ -183,7 +184,7 @@ export default function SecurityPage() {
         {/* Responsible disclosure */}
         <section className="s-white">
           <div className="w-sm">
-            <div className="card rv" style={{ textAlign: "center", padding: "40px 48px", borderTop: "3px solid #FF6B35" }}>
+            <BorderGlow className="card rv" style={{ textAlign: "center", padding: "40px 48px", borderTop: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
               <div style={{ fontSize: 40, marginBottom: 16 }}>🔍</div>
               <h3 style={{ fontSize: 22, fontWeight: 800, color: "#1a1a1a", marginBottom: 12 }}>Responsible Disclosure</h3>
               <p style={{ fontSize: 14.5, color: "#555", lineHeight: 1.8, marginBottom: 24 }}>
@@ -192,7 +193,7 @@ export default function SecurityPage() {
               <a href="mailto:security@mealiez.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
                 📧 security@mealiez.com
               </a>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 

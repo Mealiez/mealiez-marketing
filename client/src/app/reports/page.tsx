@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -151,7 +152,7 @@ export default function ReportsPage() {
             <h2 className="rv" style={{ fontSize: 28, fontWeight: 900, marginBottom: 36, letterSpacing: "-.025em" }}>All Reports</h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 22 }}>
               {reports.slice(1).map((report, i) => (
-                <div key={i} className={`card rv d${i + 1}`} style={{ borderTop: `3px solid ${report.tagColor}` }}>
+                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ borderTop: `3px solid ${report.tagColor}` }} backgroundColor="#ffffff" borderRadius={20}>
                   <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 16 }}>
                     <div style={{ fontSize: 36 }}>{report.icon}</div>
                     <div style={{ textAlign: "right" }}>
@@ -159,7 +160,7 @@ export default function ReportsPage() {
                         {report.tag}
                       </span>
                       <span style={{ fontSize: 11, color: "#aaa" }}>{report.published} · {report.pages}</span>
-                    </div>
+                    </BorderGlow>
                   </div>
                   <h2 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", lineHeight: 1.4, marginBottom: 12 }}>{report.title}</h2>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72, marginBottom: 20 }}>{report.desc}</p>

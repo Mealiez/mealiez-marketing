@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import BorderGlow from "@/components/ui/border-glow";
 
 const roleOptions = [
   "Mess Admin",
@@ -364,7 +365,7 @@ export default function LoginPage() {
         <div className="blob" style={{ width: 360, height: 360, bottom: -60, left: -40, background: "rgba(255,162,127,0.10)", animationDelay: "3s" }} />
 
         {/* Main outer card */}
-        <div className="outer-card">
+        <BorderGlow className="outer-card" backgroundColor="#ffffff" borderRadius={24}>
 
           {/* ── LEFT PANEL ── */}
           <div className="left-panel">
@@ -381,7 +382,7 @@ export default function LoginPage() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 11l19-9-9 19-2-8-8-2z"/>
                 </svg>
-              </div>
+              </BorderGlow>
               <span style={{ fontSize: 18, fontWeight: 800, color: "#FF6B35", letterSpacing: "-0.025em" }}>Mealiez</span>
             </div>
 

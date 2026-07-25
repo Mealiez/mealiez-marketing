@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import BorderGlow from "@/components/ui/border-glow";
 
 function useReveal() {
   useEffect(() => {
@@ -174,13 +175,13 @@ export default function DataInfrastructurePage() {
         <section style={{ background: "#fef6f0", padding: "64px 0" }}>
           <div className="w-sm">
             {layers.map((layer) => (
-              <div key={layer.id} id={layer.id} className="rv infra-card" style={{ borderTop: `3px solid ${layer.color}` }}>
+              <BorderGlow key={layer.id} id={layer.id} className="rv infra-card" style={{ borderTop: `3px solid ${layer.color}` }} backgroundColor="#ffffff" borderRadius={16}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 24 }}>
                   <div style={{ fontSize: 38, lineHeight: 1, flexShrink: 0 }}>{layer.icon}</div>
                   <div>
                     <div style={{ fontSize: 11, fontWeight: 700, color: layer.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>{layer.subtitle}</div>
                     <h2 style={{ fontSize: 20, fontWeight: 800, color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>{layer.title}</h2>
-                  </div>
+                  </BorderGlow>
                 </div>
                 {layer.points.map((point, i) => (
                   <div key={i} className="check-item">
@@ -192,7 +193,7 @@ export default function DataInfrastructurePage() {
             ))}
 
             {/* SLA Table */}
-            <div id="sla" className="rv infra-card" style={{ borderTop: "3px solid #FF6B35", marginTop: 8 }}>
+            <BorderGlow id="sla" className="rv infra-card" style={{ borderTop: "3px solid #FF6B35", marginTop: 8 }} backgroundColor="#ffffff" borderRadius={16}>
               <h2 style={{ fontSize: 20, fontWeight: 800, color: "#1a1a1a", marginBottom: 24, letterSpacing: "-0.02em", display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ fontSize: 28 }}>📋</span> SLA & Recovery Metrics
               </h2>
@@ -200,12 +201,12 @@ export default function DataInfrastructurePage() {
                 <div key={row.metric} className="sla-row">
                   <span style={{ fontSize: 14, color: "#555" }}>{row.metric}</span>
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a", background: "rgba(255,107,53,0.07)", padding: "3px 12px", borderRadius: 100, border: "1px solid rgba(255,107,53,0.15)" }}>{row.value}</span>
-                </div>
+                </BorderGlow>
               ))}
             </div>
 
             {/* Contact */}
-            <div className="rv infra-card" style={{ textAlign: "center", padding: "36px 32px", marginTop: 4 }}>
+            <BorderGlow className="rv infra-card" style={{ textAlign: "center", padding: "36px 32px", marginTop: 4 }} backgroundColor="#ffffff" borderRadius={16}>
               <div style={{ fontSize: 36, marginBottom: 12 }}>🏗️</div>
               <h3 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", marginBottom: 8 }}>Need a full security questionnaire?</h3>
               <p style={{ fontSize: 14, color: "#666", lineHeight: 1.75, margin: "0 auto 20px", maxWidth: 440 }}>
@@ -214,7 +215,7 @@ export default function DataInfrastructurePage() {
               <Link href="/book-demo" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "linear-gradient(135deg,#FF6B35,#FF875C)", color: "#fff", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, textDecoration: "none", boxShadow: "0 6px 20px rgba(255,107,53,0.3)" }}>
                 Schedule a Security Review →
               </Link>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 

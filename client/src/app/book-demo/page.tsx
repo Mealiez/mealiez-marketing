@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import BorderGlow from "@/components/ui/border-glow";
 
 const companySizes = [
   "1–50 members",
@@ -360,7 +361,7 @@ export default function BookDemoPage() {
           </div>
 
           {/* ── RIGHT — Form card ── */}
-          <div className="bd-card">
+          <BorderGlow className="bd-card" backgroundColor="#ffffff" borderRadius={28}>
             {submitted ? (
               /* ── Success state ── */
               <div className="success-wrap">
@@ -368,7 +369,7 @@ export default function BookDemoPage() {
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
-                </div>
+                </BorderGlow>
                 <h2 style={{ fontSize: 22, fontWeight: 800, color: "#1a1a1a", marginBottom: 10, letterSpacing: "-0.02em" }}>
                   Demo request sent! 🎉
                 </h2>
