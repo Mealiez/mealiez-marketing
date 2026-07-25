@@ -2,11 +2,15 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { AuroraBg } from "@/components/ambient/aurora-bg";
 import { FloatingParticles } from "@/components/ambient/floating-particles";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import BorderGlow from "@/components/ui/border-glow";
+import LightRays from "@/components/ui/light-rays";
+
+const PixelSnow = dynamic(() => import("@/components/ui/PixelSnow"), { ssr: false });
 
 function useReveal() {
   useEffect(() => {
@@ -359,6 +363,45 @@ export default function Home() {
       }}>
         <AuroraBg />
         <FloatingParticles count={8} minSize={2} maxSize={4} speed={0.15} />
+
+        {/* LightRays — warm directional glow */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 1,
+          opacity: 0.4, mixBlendMode: "screen",
+          pointerEvents: "none",
+        }}>
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#FF6B35"
+            raysSpeed={0.8}
+            lightSpread={0.5}
+            rayLength={1.8}
+            fadeDistance={0.5}
+            saturation={0.8}
+            followMouse={true}
+            mouseInfluence={0.08}
+          />
+        </div>
+
+        {/* PixelSnow — white snowflakes on peach hero */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 1,
+          opacity: 0.9,
+          pointerEvents: "none",
+        }}>
+          <PixelSnow
+            color="#ffffff"
+            flakeSize={0.022}
+            minFlakeSize={2.0}
+            pixelResolution={600}
+            speed={1.2}
+            density={0.08}
+            direction={125}
+            brightness={1.8}
+            gamma={0.4545}
+            variant="snowflake"
+          />
+        </div>
 
         <div className="container" style={{ position:"relative", zIndex:2 }}>
           <div className="pg-hero-grid">
