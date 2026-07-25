@@ -13,6 +13,8 @@ import { MotionProvider } from "@/lib/motion-config";
 import { LenisProvider } from "@/lib/lenis";
 import LightRays from "@/components/ui/light-rays";
 
+const ClickSpark = dynamic(() => import("@/components/ui/ClickSpark"), { ssr: false });
+
 // ── ssr:false dynamic imports ─────────────────────────────────────
 const PageLoader = dynamic(
   () => import("@/components/loaders/page-loader").then((m) => ({ default: m.PageLoader })),
@@ -47,7 +49,15 @@ const ScrollToTop = dynamic(
 // ── Shell ─────────────────────────────────────────────────────────
 export function ClientShell({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <ClickSpark
+      sparkColor="#FF6B35"
+      sparkSize={12}
+      sparkRadius={20}
+      sparkCount={8}
+      duration={450}
+      easing="ease-out"
+      extraScale={1.2}
+    >
       {/* Non-critical ambient effects — deferred */}
       <PageLoader />
       <MouseCursor color="rgba(255,107,53,0.06)" size={350} blur={80} opacity={0.7} />
@@ -90,6 +100,6 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
 
         <ScrollToTop />
       </MotionProvider>
-    </>
+    </ClickSpark>
   );
 }
