@@ -164,7 +164,7 @@ export default function CustomersPage() {
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                     <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
                       {s.icon}
-                    </BorderGlow>
+                    </div>
                     <div>
                       <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a" }}>{s.name}</h3>
                       <p style={{ fontSize: 12, color: "#888" }}>{s.type} · {s.members} members</p>
@@ -176,7 +176,7 @@ export default function CustomersPage() {
                   </div>
                   <p style={{ fontSize: 14, color: "#555", lineHeight: 1.75, fontStyle: "italic", marginBottom: 16 }}>"{s.quote}"</p>
                   <p style={{ fontSize: 12, color: "#999" }}>— {s.role}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -207,12 +207,12 @@ export default function CustomersPage() {
                     <div key={label} style={{ marginBottom: 12 }}>
                       <div style={{ fontSize: 10, fontWeight: 800, color: "#888", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>{label}</div>
                       <div style={{ fontSize: 13, color: "#444", lineHeight: 1.6 }}>{text}</div>
-                    </BorderGlow>
+                    </div>
                   ))}
                   <Link href="/book-demo" style={{ fontSize: 13, fontWeight: 700, color: "#FF6B35", textDecoration: "none", display: "flex", alignItems: "center", gap: 4, marginTop: 16 }}>
                     Replicate these results →
                   </Link>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -235,13 +235,13 @@ export default function CustomersPage() {
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>
                       {t.icon}
-                    </BorderGlow>
+                    </div>
                     <div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: "#1a1a1a" }}>{t.author}</p>
                       <p style={{ fontSize: 11, color: "#888" }}>{t.role}, {t.org}</p>
                     </div>
                   </div>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>

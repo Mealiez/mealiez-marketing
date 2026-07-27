@@ -144,7 +144,7 @@ export default function SolutionDetailPage({ params }: Props) {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                   </svg>
-                </BorderGlow>
+                </div>
                 <div>
                   <h3 style={{ fontSize: 17, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>The Current Reality</h3>
                   <p style={{ fontSize: 14.5, color: "#555", lineHeight: 1.78 }}>{solution.currentProcess}</p>
@@ -155,7 +155,7 @@ export default function SolutionDetailPage({ params }: Props) {
                   This is exactly the operational gap Mealiez is built to close.
                 </p>
               </div>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 
@@ -173,9 +173,9 @@ export default function SolutionDetailPage({ params }: Props) {
                 <BorderGlow key={i} className={`card rv d${(i % 4) + 1}`} style={{ display: "flex", alignItems: "flex-start", gap: 14 }} backgroundColor="#ffffff" borderRadius={20}>
                   <div className="ic" style={{ marginTop: 2 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </BorderGlow>
+                  </div>
                   <p style={{ fontSize: 14.5, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.6 }}>{item}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -249,13 +249,13 @@ export default function SolutionDetailPage({ params }: Props) {
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg, #FF6B35, #FF875C)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>
                   <Icon name={solution.icon} size={20} color="#fff" />
-                </BorderGlow>
+                </div>
                 <div>
                   <p style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>Operations Head</p>
                   <p style={{ fontSize: 12, color: "#888" }}>{solution.title} Customer</p>
                 </div>
               </div>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 

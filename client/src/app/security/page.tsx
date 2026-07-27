@@ -173,9 +173,9 @@ export default function SecurityPage() {
                     <div key={i} className="check-item">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={sec.color} strokeWidth="2.5" strokeLinecap="round" style={{ flexShrink: 0, marginTop: 2 }}><polyline points="20 6 9 17 4 12"/></svg>
                       {item}
-                    </BorderGlow>
+                    </div>
                   ))}
-                </div>
+                </BorderGlow>
               </div>
             </div>
           </section>

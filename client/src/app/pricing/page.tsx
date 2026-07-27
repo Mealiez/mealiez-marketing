@@ -146,19 +146,19 @@ export default function PricingPage() {
                     <div key={f} className="check">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                       {f}
-                    </BorderGlow>
+                    </div>
                   ))}
                 </div>
                 <Link href="/book-demo" className="btn-ora" style={{ width: "100%", justifyContent: "center", boxSizing: "border-box" }}>
                   Get Started
                 </Link>
-              </div>
+              </BorderGlow>
 
               {/* Enterprise */}
               <BorderGlow className="plan-card enterprise rv d2" backgroundColor="#ffffff" borderRadius={20}>
                 <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: "linear-gradient(135deg,#FF6B35,#FF875C)", color: "#fff", borderRadius: 100, padding: "4px 18px", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
                   Most Popular
-                </BorderGlow>
+                </div>
                 <div style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Enterprise</div>
                 <h2 style={{ fontSize: 26, fontWeight: 900, color: "#1a1a1a", marginBottom: 4 }}>
                   Custom
@@ -178,7 +178,7 @@ export default function PricingPage() {
                 <Link href="/book-demo" className="btn-ora" style={{ width: "100%", justifyContent: "center", boxSizing: "border-box" }}>
                   Contact Sales
                 </Link>
-              </div>
+              </BorderGlow>
 
             </div>
           </div>

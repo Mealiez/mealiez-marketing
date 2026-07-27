@@ -370,12 +370,12 @@ export default function WhyMealiezPage() {
                     fontSize: 20, marginBottom: 16,
                   }}>
                     {c.icon}
-                  </BorderGlow>
+                  </div>
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a", marginBottom: 10, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
                     {c.title}
                   </h3>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72 }}>{c.body}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -496,7 +496,7 @@ export default function WhyMealiezPage() {
                     fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", userSelect: "none",
                   }}>
                     {c.num}
-                  </BorderGlow>
+                  </div>
                   <h3 style={{
                     fontSize: 19, fontWeight: 700, color: "#1a1a1a", marginBottom: 14,
                     fontFamily: "'Bricolage Grotesque', system-ui, sans-serif",
@@ -512,7 +512,7 @@ export default function WhyMealiezPage() {
                     </svg>
                     {c.metric}
                   </span>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>

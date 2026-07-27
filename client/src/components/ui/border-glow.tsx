@@ -57,6 +57,7 @@ interface BorderGlowProps {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  id?: string;
   edgeSensitivity?: number;
   glowColor?: string;
   backgroundColor?: string;
@@ -67,12 +68,14 @@ interface BorderGlowProps {
   animated?: boolean;
   colors?: string[];
   fillOpacity?: number;
+  [key: string]: any;
 }
 
 function BorderGlow({
   children,
   className = "",
   style,
+  id,
   edgeSensitivity = 30,
   glowColor = "40 80 80",
   backgroundColor = "#120F17",
@@ -83,6 +86,7 @@ function BorderGlow({
   animated = false,
   colors = ["#c084fc", "#f472b6", "#38bdf8"],
   fillOpacity = 0.5,
+  ...rest
 }: BorderGlowProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -159,8 +163,10 @@ function BorderGlow({
   return (
     <div
       ref={cardRef}
+      id={id}
       onPointerMove={handlePointerMove}
       className={`border-glow-card ${className}`}
+      {...rest}
       style={{
         "--card-bg": backgroundColor,
         "--edge-sensitivity": edgeSensitivity,

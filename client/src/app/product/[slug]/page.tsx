@@ -193,9 +193,9 @@ export default function ProductDetailPage({ params }: Props) {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
-                  </BorderGlow>
+                  </div>
                   <p style={{ fontSize: 14, color: "#555", lineHeight: 1.75 }}>{pt}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -215,9 +215,9 @@ export default function ProductDetailPage({ params }: Props) {
                 <BorderGlow key={i} className={`card rv d${(i % 4) + 1}`} style={{ display: "flex", alignItems: "flex-start", gap: 16 }} backgroundColor="#ffffff" borderRadius={20}>
                   <div className="ic" style={{ marginTop: 2 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </BorderGlow>
+                  </div>
                   <p style={{ fontSize: 14.5, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.55, margin: 0 }}>{feat}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -277,9 +277,9 @@ export default function ProductDetailPage({ params }: Props) {
                     margin: "0 auto 16px",
                   }}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </BorderGlow>
+                  </div>
                   <p style={{ fontSize: 14.5, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.6, margin: 0 }}>{b}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>

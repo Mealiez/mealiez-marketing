@@ -152,7 +152,7 @@ export default function GuidesPage() {
                     <span style={{ fontSize: 10, fontWeight: 800, color: "#fff", background: guide.tagColor, borderRadius: 100, padding: "3px 10px", letterSpacing: "0.04em", textTransform: "uppercase" }}>
                       {guide.tag}
                     </span>
-                  </BorderGlow>
+                  </div>
                   <h2 style={{ fontSize: 15.5, fontWeight: 800, color: "#1a1a1a", lineHeight: 1.45, marginBottom: 12 }}>{guide.title}</h2>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72, marginBottom: 20 }}>{guide.desc}</p>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -161,7 +161,7 @@ export default function GuidesPage() {
                       📥 Download
                     </a>
                   </div>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>

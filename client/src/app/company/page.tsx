@@ -125,13 +125,13 @@ export default function CompanyPage() {
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
                   👨‍💼
-                </BorderGlow>
+                </div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 800, color: "#1a1a1a" }}>Rohan Mehta</p>
                   <p style={{ fontSize: 13, color: "#888" }}>Co-Founder & CEO, Mealiez</p>
                 </div>
               </div>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 
@@ -230,7 +230,7 @@ export default function CompanyPage() {
                     <div key={label}>
                       <label className="label">{label}</label>
                       <input type={type} placeholder={placeholder} className="input" />
-                    </BorderGlow>
+                    </div>
                   ))}
                   <div>
                     <label className="label">Message</label>
@@ -240,7 +240,7 @@ export default function CompanyPage() {
                     Send Message
                   </Link>
                 </div>
-              </div>
+              </BorderGlow>
             </div>
           </div>
         </section>

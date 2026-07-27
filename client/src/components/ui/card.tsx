@@ -1,5 +1,5 @@
 /* Card component — CSS hover transition, no framer-motion */
-import { ReactNode, CSSProperties } from "react";
+import { ReactNode, CSSProperties, MouseEvent } from "react";
 import BorderGlow from "@/components/ui/border-glow";
 
 type CardProps = {
@@ -19,12 +19,12 @@ export function Card({ children, className = "", hoverable = true, style }: Card
       }}
       backgroundColor="#fff"
       borderRadius={16}
-      onMouseEnter={(e) => {
+      onMouseEnter={(e: MouseEvent<HTMLDivElement>) => {
         if (!hoverable) return;
         (e.currentTarget as HTMLElement).style.transform = "translateY(-6px)";
         (e.currentTarget as HTMLElement).style.boxShadow = "0 32px 80px rgba(15,23,42,0.12)";
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(e: MouseEvent<HTMLDivElement>) => {
         if (!hoverable) return;
         (e.currentTarget as HTMLElement).style.transform = "none";
         (e.currentTarget as HTMLElement).style.boxShadow = "";

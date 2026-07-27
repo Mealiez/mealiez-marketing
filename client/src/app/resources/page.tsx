@@ -323,12 +323,12 @@ export default function ResourcesPage() {
                     fontSize: 20, marginBottom: 16,
                   }}>
                     {c.icon}
-                  </BorderGlow>
+                  </div>
                   <h3 style={{ fontSize: 15.5, fontWeight: 700, color: "#1a1a1a", marginBottom: 10, fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
                     {c.title}
                   </h3>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72 }}>{c.body}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -359,7 +359,7 @@ export default function ResourcesPage() {
                     {["#FF6B35","rgba(255,255,255,0.2)","rgba(255,255,255,0.2)"].map((c,i) => (
                       <div key={i} style={{ height: 5, flex: i === 0 ? 2 : 1, background: c, borderRadius: 3 }} />
                     ))}
-                  </BorderGlow>
+                  </div>
                   {[80,60,90,45].map((w, i) => (
                     <div key={i} style={{ height: 8, width: `${w}%`, background: "rgba(255,255,255,0.12)", borderRadius: 4 }} />
                   ))}
@@ -376,7 +376,7 @@ export default function ResourcesPage() {
                     borderRadius: "4px 4px 2px 2px",
                   }} />
                 ))}
-              </div>
+              </BorderGlow>
 
               {/* Right — copy */}
               <div className="rv d2">
@@ -472,7 +472,7 @@ export default function ResourcesPage() {
                   {["#ef4444","#f59e0b","#22c55e"].map((c) => (
                     <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
                   ))}
-                </BorderGlow>
+                </div>
                 <div style={{ background: "#f8fafc", padding: 20 }}>
                   {/* Sidebar + content */}
                   <div style={{ display: "flex", gap: 12 }}>
@@ -512,7 +512,7 @@ export default function ResourcesPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </BorderGlow>
 
               {/* Mobile app screenshot mock */}
               <BorderGlow className="rv d1 screen-card" style={{ background: "#fef6f0" }} borderRadius={16}>
@@ -520,7 +520,7 @@ export default function ResourcesPage() {
                   {["#ef4444","#f59e0b","#22c55e"].map((c) => (
                     <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
                   ))}
-                </BorderGlow>
+                </div>
                 <div style={{ padding: 20, display: "flex", justifyContent: "center" }}>
                   {/* Phone mockup */}
                   <div style={{
@@ -567,7 +567,7 @@ export default function ResourcesPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </BorderGlow>
 
             </div>
           </div>

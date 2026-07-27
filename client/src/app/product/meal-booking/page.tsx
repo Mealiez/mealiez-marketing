@@ -346,9 +346,9 @@ export default function ProductMealBookingPage() {
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div className="icon-circle">{item.icon}</div>
                     <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a" }}>{item.title}</h3>
-                  </BorderGlow>
+                  </div>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.75 }}>{item.desc}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -412,45 +412,45 @@ export default function ProductMealBookingPage() {
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
                     <div className="icon-circle">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </BorderGlow>
+                    </div>
                     <div>
                       <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>1. Predictive Entry</h3>
                       <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7 }}>Users book via mobile or web portal. The system utilizes historical data to forecast no shows and walk-ins.</p>
                     </div>
                   </div>
-                </div>
+                </BorderGlow>
 
                 {/* Step 2 */}
                 <BorderGlow className="card-white reveal-right delay-1" backgroundColor="#ffffff" borderRadius={14}>
                   <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
                     <div className="icon-circle">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
-                    </BorderGlow>
+                    </div>
                     <div>
                       <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>2. Dynamic Routing</h3>
                       <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7 }}>Aggregated data instantly routes to procurement and kitchen display systems (KDS) for precise prep scaling.</p>
                     </div>
                   </div>
-                </div>
+                </BorderGlow>
 
                 {/* Step 3 + Specs */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <BorderGlow className="card-white reveal-right delay-2" backgroundColor="#ffffff" borderRadius={14}>
                     <div className="icon-circle" style={{ marginBottom: 12 }}>
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                    </BorderGlow>
+                    </div>
                     <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a", marginBottom: 8 }}>3. Verified Fulfillment</h3>
                     <p style={{ fontSize: 12.5, color: "#666", lineHeight: 1.7 }}>Secure QR or biometric scanning at point of service ensures accurate billing and attendance reconciliation.</p>
-                  </div>
+                  </BorderGlow>
                   <BorderGlow className="card-white reveal-right delay-3" backgroundColor="#ffffff" borderRadius={14}>
                     <div className="badge-label">Module Specs</div>
                     {["Granular cut-off time configuration","Guest meal and exception handling","Multi-location & shift support"].map((s, i) => (
                       <div key={i} className="spec-row">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                         {s}
-                      </BorderGlow>
+                      </div>
                     ))}
-                  </div>
+                  </BorderGlow>
                 </div>
               </div>
             </div>
@@ -501,14 +501,14 @@ export default function ProductMealBookingPage() {
                     <div key={i} style={{ textAlign: "center" }}>
                       <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(255,107,53,0.1)", border: "1px solid rgba(255,107,53,0.2)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>
                         {item.icon}
-                      </BorderGlow>
+                      </div>
                       <div style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a", marginBottom: 4 }}>{item.label}</div>
                       <div style={{ fontSize: 12, color: "#aaa" }}>{item.sub}</div>
                     </div>
                   )
                 ))}
               </div>
-            </div>
+            </BorderGlow>
           </div>
         </section>
 
@@ -524,7 +524,7 @@ export default function ProductMealBookingPage() {
                 <BorderGlow className="dark-card" style={{ marginBottom: 12 }} borderRadius={14}>
                   <div style={{ padding: "14px 16px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: 6 }}>
                     {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{ width:10,height:10,borderRadius:"50%",background:c }} />)}
-                  </BorderGlow>
+                  </div>
                   <div style={{ padding: 16 }}>
                     {/* Fake chart */}
                     <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 100, marginBottom: 12 }}>
@@ -538,7 +538,7 @@ export default function ProductMealBookingPage() {
                       <path d="M0,50 C40,48 60,35 100,38 S160,28 200,30 S260,22 300,20" fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                   </div>
-                </div>
+                </BorderGlow>
                 <div style={{ fontSize: 14, fontWeight: 600, color: "#1a1a1a" }}>Executive Analytics</div>
               </div>
 
@@ -547,7 +547,7 @@ export default function ProductMealBookingPage() {
                 <BorderGlow className="dark-card" style={{ marginBottom: 12 }} borderRadius={14}>
                   <div style={{ padding: "14px 16px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: 6 }}>
                     {["#ff5f57","#febc2e","#28c840"].map(c=><div key={c} style={{ width:10,height:10,borderRadius:"50%",background:c }} />)}
-                  </BorderGlow>
+                  </div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: 155 }}>
                     {/* Circular inventory viz */}
                     <svg viewBox="0 0 200 200" width="180" height="180">
@@ -572,7 +572,7 @@ export default function ProductMealBookingPage() {
                       <text x="100" y="105" textAnchor="middle" fontSize="11" fontWeight="800" fill="#fff">INVENTORY</text>
                     </svg>
                   </div>
-                </div>
+                </BorderGlow>
                 <div style={{ fontSize: 14, fontWeight: 600, color: "#1a1a1a" }}>Real-Time Inventory</div>
               </div>
             </div>

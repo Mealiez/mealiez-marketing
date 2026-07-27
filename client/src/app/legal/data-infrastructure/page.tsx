@@ -181,7 +181,7 @@ export default function DataInfrastructurePage() {
                   <div>
                     <div style={{ fontSize: 11, fontWeight: 700, color: layer.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>{layer.subtitle}</div>
                     <h2 style={{ fontSize: 20, fontWeight: 800, color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>{layer.title}</h2>
-                  </BorderGlow>
+                  </div>
                 </div>
                 {layer.points.map((point, i) => (
                   <div key={i} className="check-item">
@@ -189,7 +189,7 @@ export default function DataInfrastructurePage() {
                     {point}
                   </div>
                 ))}
-              </div>
+              </BorderGlow>
             ))}
 
             {/* SLA Table */}
@@ -201,9 +201,9 @@ export default function DataInfrastructurePage() {
                 <div key={row.metric} className="sla-row">
                   <span style={{ fontSize: 14, color: "#555" }}>{row.metric}</span>
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a", background: "rgba(255,107,53,0.07)", padding: "3px 12px", borderRadius: 100, border: "1px solid rgba(255,107,53,0.15)" }}>{row.value}</span>
-                </BorderGlow>
+                </div>
               ))}
-            </div>
+            </BorderGlow>
 
             {/* Contact */}
             <BorderGlow className="rv infra-card" style={{ textAlign: "center", padding: "36px 32px", marginTop: 4 }} backgroundColor="#ffffff" borderRadius={16}>

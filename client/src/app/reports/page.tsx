@@ -160,7 +160,7 @@ export default function ReportsPage() {
                         {report.tag}
                       </span>
                       <span style={{ fontSize: 11, color: "#aaa" }}>{report.published} · {report.pages}</span>
-                    </BorderGlow>
+                    </div>
                   </div>
                   <h2 style={{ fontSize: 18, fontWeight: 800, color: "#1a1a1a", lineHeight: 1.4, marginBottom: 12 }}>{report.title}</h2>
                   <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.72, marginBottom: 20 }}>{report.desc}</p>
@@ -173,7 +173,7 @@ export default function ReportsPage() {
                     ))}
                   </div>
                   <a href="/book-demo" className="dl-btn">📥 Download Report</a>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>

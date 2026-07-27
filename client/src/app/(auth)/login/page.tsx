@@ -382,7 +382,7 @@ export default function LoginPage() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 11l19-9-9 19-2-8-8-2z"/>
                 </svg>
-              </BorderGlow>
+              </div>
               <span style={{ fontSize: 18, fontWeight: 800, color: "#FF6B35", letterSpacing: "-0.025em" }}>Mealiez</span>
             </div>
 
@@ -583,7 +583,7 @@ export default function LoginPage() {
             </form>
 
           </div>
-        </div>
+        </BorderGlow>
 
       </div>
     </>
