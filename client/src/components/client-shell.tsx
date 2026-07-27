@@ -60,7 +60,7 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
     >
       {/* Non-critical ambient effects — deferred */}
       <PageLoader />
-      <MouseCursor color="rgba(255,107,53,0.06)" size={350} blur={80} opacity={0.7} />
+      <MouseCursor color="rgba(255,107,53,0.05)" size={260} blur={60} opacity={0.6} />
       <TopProgressBar />
 
       {/* Global LightRays overlay — warm orange glow visible on all pages */}
@@ -71,19 +71,19 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
         height: "100vh",
         zIndex: 2,
         pointerEvents: "none",
-        opacity: 0.55,
+        opacity: 0.40,
         mixBlendMode: "screen",
       }}>
         <LightRays
           raysOrigin="top-center"
           raysColor="#FF6B35"
-          raysSpeed={0.6}
-          lightSpread={0.6}
-          rayLength={1.5}
-          fadeDistance={0.6}
-          saturation={0.7}
-          followMouse={true}
-          mouseInfluence={0.05}
+          raysSpeed={0.3}
+          lightSpread={0.5}
+          rayLength={1.2}
+          fadeDistance={0.5}
+          saturation={0.6}
+          followMouse={false}
+          mouseInfluence={0}
         />
       </div>
 

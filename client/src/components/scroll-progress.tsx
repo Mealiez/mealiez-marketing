@@ -3,20 +3,24 @@
 /**
  * scroll-progress.tsx — Thin orange progress bar fixed at top of viewport.
  * Shows scroll depth. GPU-accelerated via transform: scaleX().
+ * Uses direct DOM ref — zero React re-renders on scroll.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+
     function onScroll() {
       const el = document.documentElement;
       const scrollTop = el.scrollTop || document.body.scrollTop;
       const scrollHeight = el.scrollHeight - el.clientHeight;
-      if (scrollHeight === 0) return;
-      setProgress(scrollTop / scrollHeight);
+      if (scrollHeight === 0 || !bar) return;
+      bar.style.transform = `scaleX(${scrollTop / scrollHeight})`;
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -38,12 +42,12 @@ export function ScrollProgress() {
       }}
     >
       <div
+        ref={barRef}
         style={{
           height: "100%",
           background: "linear-gradient(90deg, #FF6B35, #FF875C, #FFa27f)",
           transformOrigin: "left center",
-          transform: `scaleX(${progress})`,
-          transition: "transform 0.05s linear",
+          transform: "scaleX(0)",
           willChange: "transform",
           boxShadow: "0 0 8px rgba(255,107,53,0.6)",
         }}
