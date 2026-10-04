@@ -106,6 +106,20 @@ export default function CompanyPage() {
           border-color: rgba(234,88,12,0.4);
           color: #EA580C;
         }
+
+        @media (max-width: 560px) {
+          .leadership-card {
+            grid-template-columns: 1fr !important;
+            text-align: center !important;
+            justify-items: center !important;
+          }
+          .leadership-header {
+            justify-content: center !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .co-card-pad { padding: 24px 16px !important; }
+        }
       `}</style>
 
       {/* ── 1. Hero: Who is Mealiez? ── */}
@@ -148,7 +162,7 @@ export default function CompanyPage() {
       {/* ── 2. Who We Are & Why Mealiez Was Started ── */}
       <section style={{ background: "#ffffff", padding: "clamp(64px,7vw,96px) 0" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 48, alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: 36, alignItems: "start" }}>
             {/* Who We Are */}
             <div className="rv">
               <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -176,7 +190,7 @@ export default function CompanyPage() {
               glowRadius={22}
               glowIntensity={0.3}
               colors={["#EA580C", "#F97316", "#FB923C"]}
-              className="rv d1"
+              className="rv d1 co-card-pad"
               style={{
                 padding: "clamp(28px,3vw,36px)",
                 borderRadius: 20,
@@ -209,7 +223,7 @@ export default function CompanyPage() {
         borderBottom: "1px solid #E5E7EB"
       }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 28 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 28 }}>
             <BorderGlow
               glowColor="20 80 70"
               backgroundColor="#ffffff"
@@ -217,7 +231,7 @@ export default function CompanyPage() {
               glowRadius={20}
               glowIntensity={0.3}
               colors={["#EA580C", "#F97316", "#FB923C"]}
-              className="rv"
+              className="rv co-card-pad"
               style={{
                 padding: "36px 30px",
                 borderRadius: 18,
@@ -240,7 +254,7 @@ export default function CompanyPage() {
               glowRadius={20}
               glowIntensity={0.3}
               colors={["#EA580C", "#F97316", "#FB923C"]}
-              className="rv d1"
+              className="rv d1 co-card-pad"
               style={{
                 padding: "36px 30px",
                 borderRadius: 18,
@@ -281,7 +295,7 @@ export default function CompanyPage() {
             glowRadius={24}
             glowIntensity={0.35}
             colors={["#EA580C", "#F97316", "#FB923C"]}
-            className="rv d1"
+            className="rv d1 leadership-card co-card-pad"
             style={{
               padding: "clamp(32px,4vw,44px)",
               borderRadius: 20,
@@ -302,7 +316,7 @@ export default function CompanyPage() {
               HP
             </div>
             <div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 4 }}>
+              <div className="leadership-header" style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 4 }}>
                 <h3 style={{ fontSize: 22, fontWeight: 900, color: "#111827", margin: 0 }}>Harsh Potdar</h3>
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#EA580C", background: "#FFF7ED", padding: "2px 8px", borderRadius: 6 }}>Founder & Developer</span>
               </div>
@@ -376,9 +390,9 @@ export default function CompanyPage() {
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 24 }}>
             {companyValues.map((val, i) => (
-              <div key={i} className="rv" style={{
+              <div key={i} className="rv co-card-pad" style={{
                 padding: "28px 22px", borderRadius: 16,
                 border: "1px solid #E5E7EB", background: "#F9FAFB"
               }}>
@@ -418,11 +432,11 @@ export default function CompanyPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 20 }}>
             <div style={{ padding: "24px 20px", background: "#ffffff", borderRadius: 16, border: "1px solid #E5E7EB", textAlign: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>✉️</div>
               <div style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Email Support</div>
-              <a href="mailto:Mealiez.customercare@gmail.com" style={{ fontSize: 14.5, fontWeight: 700, color: "#EA580C", textDecoration: "none", marginTop: 4, display: "block" }}>
+              <a href="mailto:Mealiez.customercare@gmail.com" style={{ fontSize: 14.5, fontWeight: 700, color: "#EA580C", textDecoration: "none", marginTop: 4, display: "block", wordBreak: "break-all", overflowWrap: "anywhere" }}>
                 Mealiez.customercare@gmail.com
               </a>
             </div>
@@ -450,6 +464,7 @@ export default function CompanyPage() {
       <section style={{ background: "#ffffff", padding: "clamp(64px,7vw,96px) 0", textAlign: "center" }}>
         <div className="container">
           <BorderGlow
+            className="co-card-pad"
             glowColor="20 80 70"
             backgroundColor="#ffffff"
             borderRadius={24}

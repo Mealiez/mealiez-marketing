@@ -344,9 +344,12 @@ const NAV_CSS = `
   .hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 5px;
-    padding: 10px;
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
     background: rgba(255,255,255,0.55);
     border: 1px solid rgba(255,255,255,0.80);
     backdrop-filter: blur(12px);
@@ -354,7 +357,6 @@ const NAV_CSS = `
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
     transition: background 0.25s, box-shadow 0.25s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-    min-height: unset !important;
     position: relative;
     z-index: 60;
   }
@@ -380,15 +382,18 @@ const NAV_CSS = `
   .mobile-drawer {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(52px) saturate(1.9);
     -webkit-backdrop-filter: blur(52px) saturate(1.9);
     z-index: 40;
     overflow-y: auto;
-    padding: 92px 16px 48px;
+    -webkit-overflow-scrolling: touch;
+    padding: 88px 16px 40px;
     display: flex;
     flex-direction: column;
     gap: 3px;
+    box-sizing: border-box;
+    max-width: 100vw;
   }
   /* Drawer glass top reflection */
   .mobile-drawer::before {
@@ -410,6 +415,7 @@ const NAV_CSS = `
     letter-spacing: 0.04em; text-transform: uppercase;
     position: relative;
     z-index: 1;
+    min-height: 44px;
   }
   .mobile-nav-link:hover  { background: rgba(234,88,12,0.08); color: #EA580C; transform: translateX(5px); }
   .mobile-nav-link.active {
@@ -427,7 +433,7 @@ const NAV_CSS = `
     transition: background 0.22s, color 0.22s;
     font-family: 'Barlow Condensed', system-ui, sans-serif;
     letter-spacing: 0.04em; text-transform: uppercase;
-    min-height: unset !important;
+    min-height: 44px;
     position: relative; z-index: 1;
   }
   .mobile-section-btn:hover { background: rgba(234,88,12,0.08); color: #EA580C; }
@@ -443,6 +449,7 @@ const NAV_CSS = `
     transition: background 0.2s, color 0.2s, transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
     display: flex; align-items: center; gap: 10px;
     font-family: 'Barlow', system-ui, sans-serif;
+    min-height: 40px;
   }
   .mobile-sub-link:hover { background: rgba(234,88,12,0.07); color: #EA580C; transform: translateX(5px); }
 
@@ -451,8 +458,16 @@ const NAV_CSS = `
     background: linear-gradient(90deg, transparent, rgba(234,88,12,0.14), rgba(249,115,22,0.10), rgba(234,88,12,0.14), transparent);
     margin: 14px 0;
   }
-  .mobile-cta-row { display: flex; gap: 10px; margin-top: 18px; }
-  .mobile-cta-row a { flex: 1; justify-content: center; text-align: center; }
+  .mobile-cta-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .mobile-cta-row a {
+    flex: 1;
+    min-width: 120px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 
   /* ─────────────────────────────────────────────────────────────────
      RESPONSIVE BREAKPOINTS
@@ -464,6 +479,9 @@ const NAV_CSS = `
   }
   @media (min-width: 901px) {
     .mobile-drawer { display: none !important; }
+  }
+  @media (max-width: 480px) {
+    .hdr-main-pill { padding: 0 8px 0 14px !important; }
   }
 
   /* ─────────────────────────────────────────────────────────────────
@@ -666,6 +684,7 @@ export function SiteHeader() {
         ══════════════════════════════════════════════════════════ */}
         <motion.div
           ref={headerRef}
+          className="hdr-main-pill"
           style={{
             position: "relative",
             pointerEvents: "auto",

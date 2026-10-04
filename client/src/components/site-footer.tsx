@@ -148,6 +148,65 @@ export function SiteFooter() {
           box-shadow: 0 8px 24px rgba(234,88,12,0.18);
           background: #ffffff;
         }
+        .ft-cta-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+          gap: clamp(24px, 4vw, 56px);
+          align-items: center;
+        }
+        .ft-main-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+          gap: clamp(28px, 4vw, 60px);
+          align-items: start;
+        }
+        .ft-nav-cols {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(16px, 2vw, 32px);
+        }
+        .ft-cta-pad {
+          position: relative;
+          z-index: 1;
+          padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
+          border-bottom: 1px solid rgba(234,88,12,0.08);
+        }
+        .ft-main-pad {
+          position: relative;
+          z-index: 1;
+          padding: clamp(28px, 3.5vw, 48px) clamp(20px, 4vw, 56px) clamp(20px, 2.5vw, 32px);
+        }
+
+        @media (max-width: 860px) {
+          .ft-cta-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .ft-main-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+
+        @media (max-width: 580px) {
+          .ft-nav-cols {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 24px 16px !important;
+          }
+          .ft-cta-pad {
+            padding: 32px 16px !important;
+          }
+          .ft-main-pad {
+            padding: 24px 16px 20px !important;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .ft-nav-cols {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+        }
       `}</style>
 
       {/* ── Background ambient glow — orange glow outside the card ── */}
@@ -221,18 +280,9 @@ export function SiteFooter() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: easeOut, delay: 0.2 }}
-          style={{
-            position: "relative", zIndex: 1,
-            padding: "clamp(40px, 5vw, 64px) clamp(28px, 4vw, 56px)",
-            borderBottom: "1px solid rgba(234,88,12,0.08)",
-          }}
+          className="ft-cta-pad"
         >
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)",
-            gap: "clamp(24px, 4vw, 56px)",
-            alignItems: "center",
-          }}>
+          <div className="ft-cta-grid">
             {/* Left */}
             <div>
               <motion.p
@@ -360,17 +410,9 @@ export function SiteFooter() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
-          style={{
-            position: "relative", zIndex: 1,
-            padding: "clamp(28px, 3.5vw, 48px) clamp(28px, 4vw, 56px) clamp(20px, 2.5vw, 32px)",
-          }}
+          className="ft-main-pad"
         >
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1.8fr) minmax(0, 1fr)",
-            gap: "clamp(28px, 4vw, 60px)",
-            alignItems: "start",
-          }}>
+          <div className="ft-main-grid">
             {/* Navigation */}
             <div>
               <motion.p
@@ -386,11 +428,7 @@ export function SiteFooter() {
               >
                 Explore
               </motion.p>
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "clamp(16px, 2vw, 32px)",
-              }}>
+              <div className="ft-nav-cols">
                 {footerColumns.map((col, ci) => (
                   <motion.div
                     key={col.title}
@@ -473,7 +511,7 @@ export function SiteFooter() {
                   fontFamily: "'Barlow', system-ui, sans-serif",
                 }}
               >
-                <div>Email: <a href="mailto:Mealiez.customercare@gmail.com" style={{ color: "#EA580C", textDecoration: "none" }}>Mealiez.customercare@gmail.com</a></div>
+                <div>Email: <a href="mailto:Mealiez.customercare@gmail.com" style={{ color: "#EA580C", textDecoration: "none", wordBreak: "break-all", overflowWrap: "anywhere" }}>Mealiez.customercare@gmail.com</a></div>
                 <div>Phone: <a href="tel:+919270398199" style={{ color: "#111827", textDecoration: "none", fontWeight: 600 }}>+91 9270398199</a></div>
               </motion.div>
 
@@ -519,7 +557,7 @@ export function SiteFooter() {
           style={{
             position: "relative", zIndex: 1,
             borderTop: "1px solid rgba(255,107,53,0.04)",
-            padding: "16px clamp(28px, 4vw, 56px)",
+            padding: "16px clamp(16px, 4vw, 56px)",
             display: "flex", alignItems: "center", justifyContent: "space-between",
             flexWrap: "wrap", gap: 10,
           }}

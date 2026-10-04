@@ -286,6 +286,37 @@ export default function ProductPage() {
         @media (max-width: 900px) {
           .grid-2col { grid-template-columns: 1fr; }
         }
+
+        .prod-tabs-wrapper {
+          display: flex;
+          gap: 10px;
+          overflow-x: auto;
+          padding-bottom: 16px;
+          margin-bottom: 40px;
+          border-bottom: 1px solid #E5E7EB;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          max-width: 100%;
+        }
+        .prod-tabs-wrapper::-webkit-scrollbar { display: none; }
+
+        .prod-tiers-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+        @media (max-width: 960px) {
+          .prod-tiers-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+          .prod-tiers-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+          .prod-card-pad { padding: 20px 16px !important; }
+          .prod-subcard-pad { padding: 18px 14px !important; }
+          .pg-cta-primary, .pg-cta-ghost { width: 100%; justify-content: center; }
+        }
       `}</style>
 
       {/* ── 1. Hero Section ── */}
@@ -341,11 +372,7 @@ export default function ProductPage() {
           </div>
 
           {/* Module Selector Tabs */}
-          <div style={{
-            display: "flex", gap: 10, overflowX: "auto", paddingBottom: 16,
-            marginBottom: 40, borderBottom: "1px solid #E5E7EB",
-            scrollbarWidth: "none"
-          }}>
+          <div className="prod-tabs-wrapper">
             {modules.map((m) => (
               <button
                 key={m.id}
@@ -365,8 +392,9 @@ export default function ProductPage() {
             glowRadius={25}
             glowIntensity={0.35}
             colors={["#EA580C", "#F97316", "#FB923C"]}
+            className="prod-card-pad"
             style={{
-              padding: "clamp(32px,4vw,52px)",
+              padding: "clamp(24px,4vw,52px)",
               border: "1px solid #E5E7EB",
               background: "#ffffff",
               boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
@@ -441,12 +469,15 @@ export default function ProductPage() {
               </div>
 
               {/* Right Column: How it Works & Benefits */}
-              <div style={{
-                background: "#F9FAFB",
-                borderRadius: 18,
-                padding: "clamp(24px,3vw,36px)",
-                border: "1px solid #E5E7EB",
-              }}>
+              <div
+                className="prod-subcard-pad"
+                style={{
+                  background: "#F9FAFB",
+                  borderRadius: 18,
+                  padding: "clamp(20px,3vw,36px)",
+                  border: "1px solid #E5E7EB",
+                }}
+              >
                 <div style={{ fontSize: 13, fontWeight: 800, color: "#111827", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 20 }}>
                   How It Works — Step by Step
                 </div>
@@ -518,7 +549,7 @@ export default function ProductPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+          <div className="prod-tiers-grid">
             {[
               {
                 tier: "Standard SaaS (Self-Serve)",
@@ -559,8 +590,9 @@ export default function ProductPage() {
                 glowRadius={20}
                 glowIntensity={0.3}
                 colors={["#EA580C", "#F97316", "#FB923C"]}
+                className="prod-card-pad"
                 style={{
-                  padding: "30px 26px",
+                  padding: "clamp(22px, 3vw, 30px) clamp(16px, 2.5vw, 26px)",
                   borderRadius: 18,
                   border: "1px solid #E5E7EB",
                   background: "#ffffff",

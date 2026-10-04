@@ -111,6 +111,21 @@ export default function PricingPage() {
         @media (max-width: 640px) {
           .plan-grid { grid-template-columns: 1fr; }
         }
+        @media (max-width: 480px) {
+          .pricing-card-pad { padding: 24px 16px !important; }
+          .table-scroll-hint { display: block !important; }
+        }
+        @media (max-width: 380px) {
+          .billing-btn { padding: 7px 10px !important; font-size: 12px !important; }
+        }
+        .table-scroll-hint {
+          display: none;
+          font-size: 12px;
+          color: #EA580C;
+          font-weight: 600;
+          margin-bottom: 8px;
+          text-align: right;
+        }
 
         .btn-brand {
           display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -180,26 +195,28 @@ export default function PricingPage() {
           <div className="rv d3" style={{
             display: "inline-flex", background: "#ffffff",
             border: "1.5px solid #E5E7EB", borderRadius: 100, padding: 4,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.03)"
+            boxShadow: "0 2px 8px rgba(0,0,0,0.03)", maxWidth: "100%"
           }}>
             <button
               onClick={() => setBillingCycle("monthly")}
+              className="billing-btn"
               style={{
                 background: billingCycle === "monthly" ? "#EA580C" : "transparent",
                 color: billingCycle === "monthly" ? "#ffffff" : "#4B5563",
                 borderRadius: 100, padding: "8px 20px", fontSize: 13, fontWeight: 700,
-                border: "none", cursor: "pointer", transition: "all .15s"
+                border: "none", cursor: "pointer", transition: "all .15s", whiteSpace: "nowrap"
               }}
             >
               Monthly Billing
             </button>
             <button
               onClick={() => setBillingCycle("annual")}
+              className="billing-btn"
               style={{
                 background: billingCycle === "annual" ? "#EA580C" : "transparent",
                 color: billingCycle === "annual" ? "#ffffff" : "#4B5563",
                 borderRadius: 100, padding: "8px 20px", fontSize: 13, fontWeight: 700,
-                border: "none", cursor: "pointer", transition: "all .15s"
+                border: "none", cursor: "pointer", transition: "all .15s", whiteSpace: "nowrap"
               }}
             >
               Annual Billing
@@ -221,6 +238,7 @@ export default function PricingPage() {
 
             {/* Plan 1: Free */}
             <BorderGlow
+              className="pricing-card-pad"
               glowColor="20 80 70"
               backgroundColor="#ffffff"
               borderRadius={20}
@@ -283,6 +301,7 @@ export default function PricingPage() {
 
             {/* Plan 2: Starter */}
             <BorderGlow
+              className="pricing-card-pad"
               glowColor="20 80 70"
               backgroundColor="#ffffff"
               borderRadius={20}
@@ -340,6 +359,7 @@ export default function PricingPage() {
 
             {/* Plan 3: Pro (Most Popular) */}
             <BorderGlow
+              className="pricing-card-pad"
               glowColor="20 80 70"
               backgroundColor="#ffffff"
               borderRadius={20}
@@ -408,6 +428,7 @@ export default function PricingPage() {
 
             {/* Plan 4: Enterprise / Custom */}
             <BorderGlow
+              className="pricing-card-pad"
               glowColor="20 80 70"
               backgroundColor="#ffffff"
               borderRadius={20}
@@ -485,7 +506,8 @@ export default function PricingPage() {
             </h2>
           </div>
 
-          <div style={{ background: "#ffffff", borderRadius: 18, border: "1px solid #E5E7EB", overflowX: "auto" }}>
+          <div className="table-scroll-hint">← Swipe to compare all plans →</div>
+          <div style={{ background: "#ffffff", borderRadius: 18, border: "1px solid #E5E7EB", overflowX: "auto", maxWidth: "100%", WebkitOverflowScrolling: "touch" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14, minWidth: 680 }}>
               <thead>
                 <tr style={{ background: "#F9FAFB", borderBottom: "1.5px solid #E5E7EB" }}>
@@ -577,6 +599,7 @@ export default function PricingPage() {
       }}>
         <div className="container">
           <BorderGlow
+            className="pricing-card-pad"
             glowColor="20 80 70"
             backgroundColor="#ffffff"
             borderRadius={24}

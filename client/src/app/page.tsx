@@ -105,6 +105,32 @@ export default function Home() {
           gap:clamp(20px,2.5vw,32px);
         }
 
+        .hero-trust-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+          background: rgba(234,88,12,0.06);
+          border: 1px solid rgba(234,88,12,0.18);
+          border-radius: 100px;
+          padding: 5px 14px 5px 6px;
+          font-size: 12px;
+          font-weight: 600;
+          color: #EA580C;
+          letter-spacing: 0.03em;
+          margin-bottom: 28px;
+          max-width: 100%;
+          line-height: 1.4;
+        }
+
+        .hero-stats-row {
+          display: flex;
+          gap: 0;
+          margin-top: 40px;
+          padding-top: 26px;
+          border-top: 1px solid #E5E7EB;
+        }
+
         @media (max-width:960px) {
           .pg-hero-grid { grid-template-columns:1fr; }
           .pg-dashboard-col { display:none; }
@@ -114,10 +140,35 @@ export default function Home() {
         }
 
         @media (max-width:640px) {
+          .hero-stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 8px;
+            text-align: center;
+          }
+          .hero-stat-item {
+            padding: 0 4px !important;
+          }
+          .hero-stat-item:not(:last-child)::after {
+            display: none !important;
+          }
           .pg-stats-grid { grid-template-columns:repeat(2,1fr); }
+          .pg-stats-grid > div {
+            border-right: none !important;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 16px 8px !important;
+          }
+          .pg-stats-grid > div:nth-last-child(-n+2) {
+            border-bottom: none !important;
+          }
           .pg-overview-grid { grid-template-columns:1fr; }
-          .hero-stat-item { padding:0 10px; }
-          .hero-stat-item:not(:last-child)::after { display:none; }
+        }
+
+        @media (max-width:480px) {
+          .pg-hero-grid { gap: 28px; }
+          .hero-trust-badge { border-radius: 16px; padding: 6px 12px; font-size: 11.5px; }
+          .pg-cta-primary, .pg-cta-ghost { width: 100%; justify-content: center; }
+          .pg-card-hover { padding: 22px 16px !important; }
         }
 
         /* Buttons */
@@ -231,16 +282,7 @@ export default function Home() {
             {/* Left Content */}
             <div>
               {/* Trust Badge */}
-              <div className="rv-el d1" style={{
-                display:"inline-flex", alignItems:"center", gap:8,
-                background:"rgba(234,88,12,0.06)",
-                border:"1px solid rgba(234,88,12,0.18)",
-                borderRadius:100,
-                padding:"5px 14px 5px 6px",
-                fontSize:12, fontWeight:600, color:"#EA580C",
-                letterSpacing:"0.03em",
-                marginBottom:28,
-              }}>
+              <div className="hero-trust-badge rv-el d1">
                 <span style={{
                   background:"#EA580C", color:"#fff",
                   borderRadius:100, padding:"2px 10px",
@@ -291,10 +333,7 @@ export default function Home() {
               </div>
 
               {/* Verified Trust Metrics */}
-              <div className="rv-el d5" style={{
-                display:"flex", gap:0, marginTop:40,
-                paddingTop:26, borderTop:"1px solid #E5E7EB",
-              }}>
+              <div className="hero-stats-row rv-el d5">
                 <div className="hero-stat-item">
                   <div className="stat-value" style={{ fontSize:24, color:"#EA580C" }}>₹0</div>
                   <div style={{ fontSize:11, color:"#6B7280", fontWeight:600, marginTop:2 }}>HARDWARE COST</div>
@@ -893,7 +932,7 @@ export default function Home() {
             className="rv-s"
             style={{
               maxWidth:760, margin:"0 auto", textAlign:"center",
-              padding:"clamp(44px,5vw,72px) clamp(24px,4vw,56px)",
+              padding:"clamp(36px,5vw,72px) clamp(18px,4vw,56px)",
               borderRadius:24,
               background:"#ffffff",
               border:"1px solid #E5E7EB",

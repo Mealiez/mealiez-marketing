@@ -42,6 +42,7 @@ function FaqAccordion({ q, a, category }: FaqItemProps) {
     >
       <button
         onClick={() => setOpen(!open)}
+        className="faq-btn"
         style={{
           width: "100%",
           background: "none",
@@ -59,7 +60,7 @@ function FaqAccordion({ q, a, category }: FaqItemProps) {
           transition: "color 0.2s ease",
         }}
       >
-        <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <span style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", flex: 1, minWidth: 0 }}>
           {category && (
             <span
               style={{
@@ -72,6 +73,7 @@ function FaqAccordion({ q, a, category }: FaqItemProps) {
                 padding: "2px 8px",
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
+                flexShrink: 0,
               }}
             >
               {category}
@@ -82,7 +84,7 @@ function FaqAccordion({ q, a, category }: FaqItemProps) {
         <span
           style={{
             flexShrink: 0,
-            marginLeft: 16,
+            marginLeft: 12,
             width: 30,
             height: 30,
             borderRadius: "50%",
@@ -113,6 +115,7 @@ function FaqAccordion({ q, a, category }: FaqItemProps) {
       </button>
       {open && (
         <div
+          className="faq-content"
           style={{
             padding: "0 24px 22px",
             fontSize: 14.5,
@@ -369,6 +372,13 @@ export default function ReviewsFaqsPage() {
         @media (max-width: 640px) {
           .rf-reviews-grid { grid-template-columns: 1fr; }
         }
+
+        @media (max-width: 480px) {
+          .rf-container, .rf-container-sm { padding: 0 16px !important; }
+          .rf-card-pad { padding: 20px 16px !important; }
+          .faq-btn { padding: 16px 14px !important; }
+          .faq-content { padding: 0 14px 16px !important; }
+        }
       `}</style>
 
       <div className="rf-page">
@@ -490,7 +500,7 @@ export default function ReviewsFaqsPage() {
                   borderRadius={18}
                   glowIntensity={0.35}
                   colors={["#EA580C", "#F97316", "#FB923C"]}
-                  className={`rv d${(i % 3) + 1}`}
+                  className={`rv d${(i % 3) + 1} rf-card-pad`}
                   style={{
                     padding: "28px 24px",
                     border: "1px solid #E5E7EB",
@@ -585,7 +595,7 @@ export default function ReviewsFaqsPage() {
               {caseResults.map((cs, i) => (
                 <div
                   key={i}
-                  className={`rv d${i + 1}`}
+                  className={`rv d${i + 1} rf-card-pad`}
                   style={{
                     background: "#ffffff",
                     borderRadius: 18,
@@ -684,7 +694,7 @@ export default function ReviewsFaqsPage() {
             </div>
 
             <div
-              className="rv d2"
+              className="rv d2 rf-card-pad"
               style={{
                 marginTop: 48,
                 textAlign: "center",

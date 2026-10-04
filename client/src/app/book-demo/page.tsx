@@ -185,6 +185,8 @@ export default function BookDemoPage() {
 
         .f-input, .f-select {
           width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
           border: 1.5px solid #E5E7EB;
           border-radius: 10px;
           padding: 11px 14px;
@@ -211,6 +213,8 @@ export default function BookDemoPage() {
           padding-right: 36px;
           cursor: pointer;
           color: #6B7280;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
         .f-select.has-value { color: #111827; }
 
@@ -292,6 +296,15 @@ export default function BookDemoPage() {
           .bd-left { text-align: center; align-items: center; }
           .bd-sub { max-width: 100%; }
           .trust-row { align-items: center; }
+        }
+        @media (max-width: 580px) {
+          .form-grid-2 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+          .bd { padding: 40px 16px; }
+          .bd-card { padding: 24px 18px !important; }
+          .trust-row { align-items: flex-start; }
+          .trust-item { text-align: left; }
         }
       `}</style>
 
