@@ -212,8 +212,8 @@ export default function PrivacyPolicyPage() {
               <p style={{ fontSize: 14, color: "#666", lineHeight: 1.75, marginBottom: 20, maxWidth: 400, margin: "0 auto 20px" }}>
                 If you have any questions about this policy or want to exercise your rights, contact our Privacy Officer.
               </p>
-              <a href="mailto:privacy@mealiez.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
-                privacy@mealiez.com
+              <a href="mailto:privacy@mealiez.in" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
+                privacy@mealiez.in
               </a>
             </BorderGlow>
           </div>

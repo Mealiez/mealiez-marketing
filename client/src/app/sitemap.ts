@@ -6,7 +6,7 @@ import { products, solutions } from "@/lib/site-data";
  * Next.js 15 serves this at /sitemap.xml automatically.
  */
 
-const BASE = "https://mealiez.com";
+const BASE = "https://mealiez.in";
 
 const staticRoutes = [
   { url: "/",                                    priority: 1.0,  freq: "weekly" },

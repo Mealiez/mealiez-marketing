@@ -31,7 +31,7 @@ const barlowCondensed = Barlow_Condensed({
 
 // ── Metadata ───────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mealiez.com"),
+  metadataBase: new URL("https://mealiez.in"),
   title: {
     default: "Mealiez | Mess Management Software for Hostels, Colleges & Industrial Canteens in India",
     template: "%s | Mealiez",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Mealiez is India's mess management software. Automate meal bookings, QR attendance, billing, inventory, and analytics for hostel messes, college canteens, and industrial cafeterias. Cut food wastage by up to 30%.",
   applicationName: "Mealiez",
   keywords: ["mess management software", "hostel mess software", "canteen management", "QR attendance", "meal booking app India", "mess billing software"],
-  authors: [{ name: "Mealiez", url: "https://mealiez.com" }],
+  authors: [{ name: "Mealiez", url: "https://mealiez.in" }],
   creator: "Mealiez",
   publisher: "Mealiez",
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://mealiez.com",
+    url: "https://mealiez.in",
     siteName: "Mealiez",
     title: "Mealiez | Mess Management Software",
     description:

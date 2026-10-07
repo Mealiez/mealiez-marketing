@@ -425,7 +425,7 @@ The static data architecture is designed for seamless migration to Sanity CMS:
 ```typescript
 // layout.tsx — Metadata configuration
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mealiez.com"),
+  metadataBase: new URL("https://mealiez.in"),
   title: { default: "...", template: "%s | Mealiez" },
   description: "...",
   openGraph: { type: "website", locale: "en_IN", images: [...] },
@@ -447,8 +447,8 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /(auth)/
-Sitemap: https://mealiez.com/sitemap.xml
-Host: https://mealiez.com
+Sitemap: https://mealiez.in/sitemap.xml
+Host: https://mealiez.in
 ```
 
 ### Schema Markup (JSON-LD)
@@ -572,7 +572,7 @@ cd client && npm run lint
 ### CI/CD
 
 - **Branch Previews**: Every PR gets a unique Vercel preview URL
-- **Production**: Merges to `main` auto-deploy to `mealiez.com`
+- **Production**: Merges to `main` auto-deploy to `mealiez.in`
 - **Analytics**: Vercel Web Analytics + Speed Insights enabled
 
 ---

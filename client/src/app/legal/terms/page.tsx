@@ -59,7 +59,7 @@ const sections = [
     content: [
       {
         heading: "Account Security",
-        body: "You are responsible for maintaining the confidentiality of your credentials and for all activity that occurs under your account. Notify us immediately at security@mealiez.com of any unauthorised access.",
+        body: "You are responsible for maintaining the confidentiality of your credentials and for all activity that occurs under your account. Notify us immediately at security@mealiez.in of any unauthorised access.",
       },
       {
         heading: "Accurate Information",
@@ -175,7 +175,7 @@ const sections = [
       },
       {
         heading: "Dispute Resolution",
-        body: "We encourage resolving disputes amicably. Before initiating legal proceedings, please contact legal@mealiez.com and allow 30 days for good-faith resolution.",
+        body: "We encourage resolving disputes amicably. Before initiating legal proceedings, please contact legal@mealiez.in and allow 30 days for good-faith resolution.",
       },
     ],
   },
@@ -254,8 +254,8 @@ export default function TermsOfServicePage() {
               <p style={{ fontSize: 14, color: "#666", lineHeight: 1.75, margin: "0 auto 20px", maxWidth: 400 }}>
                 For any questions about these Terms, please reach out to our legal team.
               </p>
-              <a href="mailto:legal@mealiez.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
-                legal@mealiez.com
+              <a href="mailto:legal@mealiez.in" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
+                legal@mealiez.in
               </a>
             </BorderGlow>
           </div>
