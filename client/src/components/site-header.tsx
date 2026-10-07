@@ -532,6 +532,7 @@ export function SiteHeader() {
 
   /* ── Close mobile on route change ─────────────────────────────── */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
     setMobileProduct(false);
     setMobileSolutions(false);
@@ -551,7 +552,7 @@ export function SiteHeader() {
   }, [rawX, rawY]);
 
   /* ── CTA click handler (no ripple logic — handled by RippleSurface) ── */
-  const handleCtaClick = useCallback((e: React.MouseEvent) => {
+  const handleCtaClick = useCallback(() => {
     // ripple handled by RippleSurface wrapper
   }, []);
 

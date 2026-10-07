@@ -68,7 +68,7 @@ interface BorderGlowProps {
   animated?: boolean;
   colors?: string[];
   fillOpacity?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 function BorderGlow({
