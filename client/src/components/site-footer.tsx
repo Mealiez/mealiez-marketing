@@ -10,32 +10,33 @@ const footerColumns = [
   {
     title: "Product",
     links: [
+      ["All Products", "/product"],
       ["Meal Booking", "/product/meal-booking"],
-      ["Attendance", "/product/attendance"],
+      ["Smart Attendance", "/product/attendance"],
       ["Billing & Payments", "/product/billing"],
-      ["Inventory", "/product/inventory"],
-      ["Analytics", "/product/analytics"],
+      ["Inventory Control", "/product/inventory"],
+      ["Analytics & Reports", "/product/analytics"],
       ["Mobile App", "/product/mobile-app"],
     ],
   },
   {
-    title: "Solutions",
+    title: "Company & Trust",
+    links: [
+      ["About Company", "/company"],
+      ["Reviews & FAQs", "/reviews-faqs"],
+      ["Pricing Plans", "/pricing"],
+      ["Book a Demo", "/book-demo"],
+      ["Customer Stories", "/customers"],
+      ["Why Mealiez", "/why-mealiez"],
+    ],
+  },
+  {
+    title: "Solutions & Tools",
     links: [
       ["Hostel Mess", "/solutions/hostel-mess"],
       ["College Canteens", "/solutions/college-canteen"],
       ["Industrial Canteen", "/solutions/industrial-canteen"],
       ["Corporate Cafeteria", "/solutions/corporate-cafeteria"],
-      ["Cloud Kitchen", "/solutions/cloud-kitchen"],
-      ["Subscription Mess", "/solutions/subscription-mess-business"],
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      ["Blog", "/blog"],
-      ["Guides", "/guides"],
-      ["Reports", "/reports"],
-      ["Case Studies", "/customers"],
       ["ROI Calculator", "/resources/roi-calculator"],
       ["Cost Leakage Calc", "/resources/cost-leakage-calculator"],
     ],
@@ -73,18 +74,19 @@ export function SiteFooter() {
         position: "relative",
         width: "100%",
         background:
-          "radial-gradient(ellipse 100% 60% at 0% 0%, rgba(255,107,53,0.10) 0%, transparent 50%)," +
-          "radial-gradient(ellipse 70% 50% at 100% 0%, rgba(255,162,127,0.08) 0%, transparent 50%)," +
-          "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,135,92,0.06) 0%, transparent 50%)," +
-          "#fef6f0",
+          "radial-gradient(ellipse 100% 60% at 0% 0%, rgba(234,88,12,0.08) 0%, transparent 50%)," +
+          "radial-gradient(ellipse 70% 50% at 100% 0%, rgba(249,115,22,0.06) 0%, transparent 50%)," +
+          "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(234,88,12,0.05) 0%, transparent 50%)," +
+          "#F9FAFB",
         overflow: "hidden",
         padding: "clamp(40px, 5vw, 80px) clamp(16px, 3vw, 48px)",
+        borderTop: "1px solid #E5E7EB",
       }}
     >
       <style>{`
         .ft-nav-link {
           font-size: 13px;
-          color: #444;
+          color: #4B5563;
           font-weight: 500;
           text-decoration: none;
           display: inline-block;
@@ -100,12 +102,12 @@ export function SiteFooter() {
           bottom: 0; left: 0;
           width: 0;
           height: 1px;
-          background: linear-gradient(90deg, #FF6B35, #FF875C);
+          background: linear-gradient(90deg, #EA580C, #F97316);
           transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
           border-radius: 2px;
         }
         .ft-nav-link:hover {
-          color: #FF6B35;
+          color: #EA580C;
           font-weight: 600;
           transform: translateX(4px);
         }
@@ -113,14 +115,14 @@ export function SiteFooter() {
 
         .ft-bottom-link {
           font-size: 12px;
-          color: #666;
+          color: #6B7280;
           font-weight: 500;
           text-decoration: none;
           font-family: 'Barlow', system-ui, sans-serif;
           transition: color 0.3s ease;
           position: relative;
         }
-        .ft-bottom-link:hover { color: #FF6B35; }
+        .ft-bottom-link:hover { color: #EA580C; }
 
         .ft-social-float {
           display: inline-flex;
@@ -129,22 +131,81 @@ export function SiteFooter() {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: rgba(255,255,255,0.5);
+          background: rgba(255,255,255,0.7);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-          border: 1px solid rgba(255,255,255,0.6);
-          color: #666;
+          border: 1px solid rgba(229,231,235,0.8);
+          color: #6B7280;
           text-decoration: none;
           transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
           will-change: transform;
           position: relative;
         }
         .ft-social-float:hover {
-          color: #FF6B35;
-          border-color: rgba(255,107,53,0.3);
+          color: #EA580C;
+          border-color: rgba(234,88,12,0.3);
           transform: translateY(-4px) scale(1.1);
-          box-shadow: 0 8px 24px rgba(255,107,53,0.18);
-          background: rgba(255,255,255,0.8);
+          box-shadow: 0 8px 24px rgba(234,88,12,0.18);
+          background: #ffffff;
+        }
+        .ft-cta-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+          gap: clamp(24px, 4vw, 56px);
+          align-items: center;
+        }
+        .ft-main-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+          gap: clamp(28px, 4vw, 60px);
+          align-items: start;
+        }
+        .ft-nav-cols {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(16px, 2vw, 32px);
+        }
+        .ft-cta-pad {
+          position: relative;
+          z-index: 1;
+          padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
+          border-bottom: 1px solid rgba(234,88,12,0.08);
+        }
+        .ft-main-pad {
+          position: relative;
+          z-index: 1;
+          padding: clamp(28px, 3.5vw, 48px) clamp(20px, 4vw, 56px) clamp(20px, 2.5vw, 32px);
+        }
+
+        @media (max-width: 860px) {
+          .ft-cta-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .ft-main-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+
+        @media (max-width: 580px) {
+          .ft-nav-cols {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 24px 16px !important;
+          }
+          .ft-cta-pad {
+            padding: 32px 16px !important;
+          }
+          .ft-main-pad {
+            padding: 24px 16px 20px !important;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .ft-nav-cols {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
         }
       `}</style>
 
@@ -190,21 +251,19 @@ export function SiteFooter() {
         borderRadius={32}
         glowRadius={40}
         glowIntensity={0.5}
-        colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+        colors={["#EA580C", "#F97316", "#FB923C"]}
         style={{
           maxWidth: 1200,
           margin: "0 auto",
           borderRadius: 32,
-          background: "rgba(255,255,255,0.55)",
+          background: "rgba(255,255,255,0.85)",
           backdropFilter: "blur(32px) saturate(1.6)",
           WebkitBackdropFilter: "blur(32px) saturate(1.6)",
-          border: "1px solid rgba(255,255,255,0.8)",
+          border: "1px solid #E5E7EB",
           boxShadow:
-            "0 0 60px rgba(255,107,53,0.15)," +
-            "0 0 120px rgba(255,107,53,0.08)," +
-            "0 32px 80px rgba(17,17,17,0.06)," +
-            "0 8px 24px rgba(17,17,17,0.04)," +
-            "0 0 0 1px rgba(255,107,53,0.04)," +
+            "0 0 60px rgba(234,88,12,0.10)," +
+            "0 32px 80px rgba(17,24,39,0.05)," +
+            "0 8px 24px rgba(17,24,39,0.03)," +
             "inset 0 1px 0 rgba(255,255,255,0.95)",
           overflow: "hidden",
         }}
@@ -212,7 +271,7 @@ export function SiteFooter() {
         {/* Glass reflection overlay */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0,
-          background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.1) 100%)",
+          background: "linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.2) 100%)",
           borderRadius: 32,
         }}/>
 
@@ -221,18 +280,9 @@ export function SiteFooter() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: easeOut, delay: 0.2 }}
-          style={{
-            position: "relative", zIndex: 1,
-            padding: "clamp(40px, 5vw, 64px) clamp(28px, 4vw, 56px)",
-            borderBottom: "1px solid rgba(255,107,53,0.06)",
-          }}
+          className="ft-cta-pad"
         >
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)",
-            gap: "clamp(24px, 4vw, 56px)",
-            alignItems: "center",
-          }}>
+          <div className="ft-cta-grid">
             {/* Left */}
             <div>
               <motion.p
@@ -240,7 +290,7 @@ export function SiteFooter() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 style={{
-                  fontSize: 10, fontWeight: 800, color: "#FF6B35",
+                  fontSize: 10, fontWeight: 800, color: "#EA580C",
                   letterSpacing: "0.14em", textTransform: "uppercase",
                   marginBottom: 10,
                   fontFamily: "'Barlow Condensed', system-ui, sans-serif",
@@ -255,7 +305,7 @@ export function SiteFooter() {
                 style={{
                   fontSize: "clamp(26px, 3.2vw, 40px)",
                   fontWeight: 900,
-                  color: "#0a0a0a",
+                  color: "#111827",
                   marginBottom: 14,
                   lineHeight: 1.08,
                   fontFamily: "'Barlow Condensed', system-ui, sans-serif",
@@ -265,7 +315,7 @@ export function SiteFooter() {
               >
                 Your mess deserves<br/>
                 <span style={{
-                  background: "linear-gradient(135deg, #FF6B35, #FF875C)",
+                  background: "linear-gradient(135deg, #EA580C, #F97316)",
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -291,33 +341,33 @@ export function SiteFooter() {
               >
                 <Link href="/book-demo" style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
-                  background: "linear-gradient(135deg, #FF6B35, #FF875C)",
+                  background: "linear-gradient(135deg, #EA580C, #F97316)",
                   color: "#fff", border: "none", borderRadius: 10,
                   padding: "12px 24px", fontSize: 13, fontWeight: 700,
                   fontFamily: "'Barlow Condensed', system-ui, sans-serif",
                   textDecoration: "none", letterSpacing: "0.04em",
                   textTransform: "uppercase",
-                  boxShadow: "0 6px 20px rgba(255,107,53,0.28), inset 0 1px 0 rgba(255,255,255,0.2)",
+                  boxShadow: "0 6px 20px rgba(234,88,12,0.28), inset 0 1px 0 rgba(255,255,255,0.2)",
                   transition: "transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s",
                 }}
-                  onMouseEnter={(e)=>{e.currentTarget.style.transform="translateY(-2px) scale(1.02)";e.currentTarget.style.boxShadow="0 10px 32px rgba(255,107,53,0.4)"}}
+                  onMouseEnter={(e)=>{e.currentTarget.style.transform="translateY(-2px) scale(1.02)";e.currentTarget.style.boxShadow="0 10px 32px rgba(234,88,12,0.4)"}}
                   onMouseLeave={(e)=>{e.currentTarget.style.transform="";e.currentTarget.style.boxShadow=""}}>
                   Book a Free Demo
                   <Icon name="arrow-right" size={12} color="#fff" strokeWidth={2.5} />
                 </Link>
                 <Link href="/pricing" style={{
                   display: "inline-flex", alignItems: "center", gap: 6,
-                  background: "rgba(255,255,255,0.6)",
+                  background: "#ffffff",
                   backdropFilter: "blur(8px)",
-                  color: "#1a1a1a", border: "1px solid rgba(0,0,0,0.06)",
+                  color: "#111827", border: "1.5px solid #E5E7EB",
                   borderRadius: 10, padding: "12px 20px",
                   fontSize: 12, fontWeight: 600,
                   fontFamily: "'Barlow', system-ui, sans-serif",
                   textDecoration: "none",
                   transition: "all .3s cubic-bezier(.22,1,.36,1)",
                 }}
-                  onMouseEnter={(e)=>{e.currentTarget.style.background="rgba(255,255,255,0.9)";e.currentTarget.style.borderColor="rgba(255,107,53,0.25)";e.currentTarget.style.transform="translateY(-2px)"}}
-                  onMouseLeave={(e)=>{e.currentTarget.style.background="";e.currentTarget.style.borderColor="";e.currentTarget.style.transform=""}}>
+                  onMouseEnter={(e)=>{e.currentTarget.style.background="#FFF7ED";e.currentTarget.style.borderColor="rgba(234,88,12,0.3)";e.currentTarget.style.transform="translateY(-2px)"}}
+                  onMouseLeave={(e)=>{e.currentTarget.style.background="#ffffff";e.currentTarget.style.borderColor="#E5E7EB";e.currentTarget.style.transform=""}}>
                   View Pricing
                 </Link>
               </motion.div>
@@ -337,18 +387,18 @@ export function SiteFooter() {
                 { value: "₹100M+", label: "Wastage Saved" },
               ].map((s,i)=>(
                 <div key={i} style={{
-                  background: "rgba(255,255,255,0.4)",
-                  backdropFilter: "blur(4px)",
+                  background: "#ffffff",
                   borderRadius: 12, padding: "12px 14px",
-                  border: "1px solid rgba(255,255,255,0.5)",
+                  border: "1px solid #E5E7EB",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.03)",
                 }}>
                   <div style={{
-                    fontSize: 18, fontWeight: 900, color: "#FF6B35",
+                    fontSize: 18, fontWeight: 900, color: "#EA580C",
                     fontFamily: "'Barlow Condensed', system-ui, sans-serif",
                     fontFeatureSettings: "'tnum' on",
                     lineHeight: 1,
                   }}>{s.value}</div>
-                  <div style={{ fontSize: 11, color: "#666", fontWeight: 600, marginTop: 3 }}>{s.label}</div>
+                  <div style={{ fontSize: 11, color: "#6B7280", fontWeight: 600, marginTop: 3 }}>{s.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -360,17 +410,9 @@ export function SiteFooter() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
-          style={{
-            position: "relative", zIndex: 1,
-            padding: "clamp(28px, 3.5vw, 48px) clamp(28px, 4vw, 56px) clamp(20px, 2.5vw, 32px)",
-          }}
+          className="ft-main-pad"
         >
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1.8fr) minmax(0, 1fr)",
-            gap: "clamp(28px, 4vw, 60px)",
-            alignItems: "start",
-          }}>
+          <div className="ft-main-grid">
             {/* Navigation */}
             <div>
               <motion.p
@@ -386,11 +428,7 @@ export function SiteFooter() {
               >
                 Explore
               </motion.p>
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "clamp(16px, 2vw, 32px)",
-              }}>
+              <div className="ft-nav-cols">
                 {footerColumns.map((col, ci) => (
                   <motion.div
                     key={col.title}
@@ -429,10 +467,10 @@ export function SiteFooter() {
                 <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{
                     width: 26, height: 26,
-                    background: "linear-gradient(135deg, #FF6B35, #FF875C)",
+                    background: "linear-gradient(135deg, #EA580C, #F97316)",
                     borderRadius: 7,
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    boxShadow: "0 3px 10px rgba(255,107,53,0.3)",
+                    boxShadow: "0 3px 10px rgba(234,88,12,0.3)",
                     flexShrink: 0,
                   }}>
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
@@ -440,7 +478,7 @@ export function SiteFooter() {
                     </svg>
                   </div>
                   <span style={{
-                    fontSize: 16, fontWeight: 800, color: "#FF6B35",
+                    fontSize: 16, fontWeight: 800, color: "#EA580C",
                     letterSpacing: "-0.02em",
                     fontFamily: "'Barlow Condensed', system-ui, sans-serif",
                     textTransform: "uppercase",
@@ -455,13 +493,27 @@ export function SiteFooter() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.7 }}
                 style={{
-                  fontSize: 13, color: "#666", lineHeight: 1.65, fontWeight: 500,
-                  marginBottom: 16, maxWidth: 240,
+                  fontSize: 13, color: "#4B5563", lineHeight: 1.65, fontWeight: 500,
+                  marginBottom: 10, maxWidth: 260,
                   fontFamily: "'Barlow', system-ui, sans-serif",
                 }}
               >
-                India's mess management platform for hostels, canteens, and cafeterias.
+                India's smart mess management system and marketplace.
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.72 }}
+                style={{
+                  fontSize: 12, color: "#6B7280", lineHeight: 1.6,
+                  marginBottom: 16,
+                  fontFamily: "'Barlow', system-ui, sans-serif",
+                }}
+              >
+                <div>Email: <a href="mailto:Mealiez.customercare@gmail.com" style={{ color: "#EA580C", textDecoration: "none", wordBreak: "break-all", overflowWrap: "anywhere" }}>Mealiez.customercare@gmail.com</a></div>
+                <div>Phone: <a href="tel:+919270398199" style={{ color: "#111827", textDecoration: "none", fontWeight: 600 }}>+91 9270398199</a></div>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
@@ -505,7 +557,7 @@ export function SiteFooter() {
           style={{
             position: "relative", zIndex: 1,
             borderTop: "1px solid rgba(255,107,53,0.04)",
-            padding: "16px clamp(28px, 4vw, 56px)",
+            padding: "16px clamp(16px, 4vw, 56px)",
             display: "flex", alignItems: "center", justifyContent: "space-between",
             flexWrap: "wrap", gap: 10,
           }}

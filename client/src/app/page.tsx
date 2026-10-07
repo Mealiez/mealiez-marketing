@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { AuroraBg } from "@/components/ambient/aurora-bg";
 import { FloatingParticles } from "@/components/ambient/floating-particles";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
-import { AnimatedSection } from "@/components/ui/animated-section";
 import BorderGlow from "@/components/ui/border-glow";
 import LightRays from "@/components/ui/light-rays";
 
@@ -17,7 +16,7 @@ function useReveal() {
     const els = document.querySelectorAll(".rv-el, .rv-l, .rv-r, .rv-s");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); } }),
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -36,46 +35,27 @@ export default function Home() {
         .rv-l.in { opacity:1; transform:translateX(0); }
         .rv-r  { opacity:0; transform:translateX(40px); transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1); }
         .rv-r.in { opacity:1; transform:translateX(0); }
-        .rv-s  { opacity:0; transform:scale(.93); transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1); }
+        .rv-s  { opacity:0; transform:scale(.94); transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1); }
         .rv-s.in { opacity:1; transform:scale(1); }
         .d1 { transition-delay:.1s } .d2 { transition-delay:.2s } .d3 { transition-delay:.3s } .d4 { transition-delay:.4s } .d5 { transition-delay:.5s }
 
         .hero-scroll-indicator {
-          position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+          position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
           display:flex; flex-direction:column; align-items:center; gap:6px;
           opacity:0; animation:fadeIn 1s 1.5s both;
         }
         .hero-scroll-indicator span {
-          width:1.5px; height:32px;
-          background:linear-gradient(180deg,rgba(255,107,53,0.4),transparent);
+          width:1.5px; height:28px;
+          background:linear-gradient(180deg,rgba(234,88,12,0.5),transparent);
           animation:scrollPulse 2s ease-in-out infinite;
         }
         @keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.3)} }
-
-        .sec-divider {
-          width:100%; height:1px;
-          background:linear-gradient(90deg,transparent 0%,rgba(255,107,53,0.06) 20%,rgba(255,107,53,0.10) 50%,rgba(255,107,53,0.06) 80%,transparent 100%);
-          margin:0; border:none;
-        }
 
         .stat-value {
           font-family:'Barlow Condensed',system-ui,sans-serif;
           font-weight:800; text-transform:uppercase;
           font-feature-settings:'tnum' on,'lnum' on;
           font-variant-numeric:tabular-nums;
-        }
-
-        .pricing-feature-check {
-          display:flex; align-items:center; gap:10px;
-          font-size:13.5px; color:#555; padding:7px 0;
-          border-bottom:1px solid rgba(0,0,0,0.04);
-        }
-        .pricing-feature-check:last-child { border-bottom:none; }
-
-        .testimonial-quote-mark {
-          font-size:72px; line-height:0.7; color:#FF6B35;
-          font-family:Georgia,serif; opacity:0.25;
-          margin-bottom:8px;
         }
 
         .editorial-heading {
@@ -91,313 +71,207 @@ export default function Home() {
         .hero-stat-item:not(:last-child)::after {
           content:''; position:absolute; right:0; top:50%;
           transform:translateY(-50%);
-          width:1px; height:40px;
-          background:linear-gradient(180deg,transparent,rgba(255,107,53,0.2),transparent);
+          width:1px; height:36px;
+          background:linear-gradient(180deg,transparent,rgba(234,88,12,0.2),transparent);
         }
 
         @keyframes fadeIn { to{opacity:1} }
 
-        /* ─────────────────────────────────────────────────
-           RESPONSIVE — Mobile & Tablet
-        ───────────────────────────────────────────────── */
+        /* Responsive Layout Grid */
         .pg-hero-grid {
           display:grid;
-          grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
-          gap:clamp(32px,5vw,80px);
+          grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);
+          gap:clamp(32px,5vw,72px);
           align-items:center;
         }
         .pg-stats-grid {
           display:grid;
           grid-template-columns:repeat(4,1fr);
-          gap:clamp(16px,3vw,40px);
+          gap:clamp(16px,3vw,36px);
         }
         .pg-problem-grid {
           display:grid;
-          grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
-          gap:clamp(32px,5vw,72px);
-          align-items:start;
+          grid-template-columns:repeat(2,1fr);
+          gap:clamp(24px,3vw,40px);
         }
-        .pg-features-grid {
-          display:grid;
-          grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
-          gap:clamp(20px,2.5vw,28px);
-        }
-        .pg-workflow-grid {
-          display:grid;
-          grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-          gap:clamp(32px,5vw,64px);
-          align-items:center;
-        }
-        .pg-solutions-grid {
+        .pg-overview-grid {
           display:grid;
           grid-template-columns:repeat(3,1fr);
-          gap:clamp(16px,2vw,24px);
+          gap:clamp(18px,2.5vw,28px);
         }
-        .pg-testimonials-grid {
+        .pg-why-grid {
           display:grid;
+          grid-template-columns:repeat(2,1fr);
           gap:clamp(20px,2.5vw,32px);
         }
-        .pg-pricing-grid {
-          display:grid;
-          grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);
-          gap:clamp(16px,2vw,24px);
-          align-items:start;
-        }
-        .pg-resources-grid {
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:clamp(16px,2vw,24px);
-        }
-        .pg-dashboard-col { position:relative; }
-        .pg-problem-sticky { position:sticky; top:100px; }
 
-        /* Testimonials — feature card layout */
-        .pg-testimonials-grid {
-          grid-template-columns: minmax(0,1.15fr) minmax(0,1fr);
-          align-items:start;
-        }
-        .testimonial-card-featured {
-          border-left:3px solid rgba(255,107,53,0.3);
+        .hero-trust-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+          background: rgba(234,88,12,0.06);
+          border: 1px solid rgba(234,88,12,0.18);
+          border-radius: 100px;
+          padding: 5px 14px 5px 6px;
+          font-size: 12px;
+          font-weight: 600;
+          color: #EA580C;
+          letter-spacing: 0.03em;
+          margin-bottom: 28px;
+          max-width: 100%;
+          line-height: 1.4;
         }
 
-        /* Tablet ≤ 900px */
-        @media (max-width:900px) {
-          .pg-hero-grid        { grid-template-columns:1fr; }
-          .pg-dashboard-col    { display:none; }
-          .pg-problem-grid     { grid-template-columns:1fr; }
-          .pg-problem-sticky   { position:static; }
-          .pg-features-grid    { grid-template-columns:1fr; }
-          .pg-workflow-grid    { grid-template-columns:1fr; }
-          .pg-solutions-grid   { grid-template-columns:repeat(2,1fr); }
-          .pg-testimonials-grid{ grid-template-columns:1fr; }
-          .pg-pricing-grid     { grid-template-columns:1fr 1fr; }
+        .hero-stats-row {
+          display: flex;
+          gap: 0;
+          margin-top: 40px;
+          padding-top: 26px;
+          border-top: 1px solid #E5E7EB;
         }
 
-        /* Mobile ≤ 640px */
+        @media (max-width:960px) {
+          .pg-hero-grid { grid-template-columns:1fr; }
+          .pg-dashboard-col { display:none; }
+          .pg-problem-grid { grid-template-columns:1fr; }
+          .pg-overview-grid { grid-template-columns:repeat(2,1fr); }
+          .pg-why-grid { grid-template-columns:1fr; }
+        }
+
         @media (max-width:640px) {
-          .pg-stats-grid       { grid-template-columns:repeat(2,1fr); }
-          .pg-solutions-grid   { grid-template-columns:1fr; }
-          .pg-resources-grid   { grid-template-columns:1fr; }
-          .pg-pricing-grid     { grid-template-columns:1fr; }
-          .pg-pricing-featured { transform:none !important; }
-          .hero-stat-item      { padding:0 12px; }
-          .hero-stat-item:not(:last-child)::after { display:none; }
+          .hero-stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px 8px;
+            text-align: center;
+          }
+          .hero-stat-item {
+            padding: 0 4px !important;
+          }
+          .hero-stat-item:not(:last-child)::after {
+            display: none !important;
+          }
+          .pg-stats-grid { grid-template-columns:repeat(2,1fr); }
+          .pg-stats-grid > div {
+            border-right: none !important;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 16px 8px !important;
+          }
+          .pg-stats-grid > div:nth-last-child(-n+2) {
+            border-bottom: none !important;
+          }
+          .pg-overview-grid { grid-template-columns:1fr; }
         }
 
-        /* Small mobile ≤ 480px */
         @media (max-width:480px) {
-          .pg-stats-grid { grid-template-columns:1fr 1fr; gap:12px; }
+          .pg-hero-grid { gap: 28px; }
+          .hero-trust-badge { border-radius: 16px; padding: 6px 12px; font-size: 11.5px; }
+          .pg-cta-primary, .pg-cta-ghost { width: 100%; justify-content: center; }
+          .pg-card-hover { padding: 22px 16px !important; }
         }
 
-        /* CTA button overrides for inline-style buttons on this page */
+        /* Buttons */
         .pg-cta-primary {
           display:inline-flex; align-items:center; gap:10px;
-          background:linear-gradient(135deg,#FF6B35,#FF875C);
+          background:linear-gradient(135deg,#EA580C,#F97316);
           color:#fff; border:none; border-radius:12px;
-          padding:14px 30px; font-size:14px; font-weight:700;
+          padding:14px 28px; font-size:14.5px; font-weight:700;
           font-family:'Barlow',system-ui,sans-serif;
           text-decoration:none;
           letter-spacing:0.02em;
-          box-shadow:0 8px 28px rgba(255,107,53,0.30), inset 0 1px 0 rgba(255,255,255,0.2);
-          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+          box-shadow:0 6px 20px rgba(234,88,12,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
+          transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
           position:relative; overflow:hidden;
           cursor:pointer;
         }
         .pg-cta-primary:hover {
-          transform:translateY(-2px) scale(1.02);
-          box-shadow:0 14px 44px rgba(255,107,53,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+          transform:translateY(-2px);
+          box-shadow:0 10px 30px rgba(234,88,12,0.38);
         }
         .pg-cta-primary:active {
-          transform:translateY(0) scale(0.97);
-          transition-duration:0.12s;
+          transform:translateY(0);
         }
         .pg-cta-primary-lg {
-          padding:16px 34px;
+          padding:16px 36px;
           font-size:15px;
         }
 
         .pg-cta-ghost {
           display:inline-flex; align-items:center; gap:8px;
-          background:rgba(255,255,255,0.8);
-          backdrop-filter:blur(12px);
-          -webkit-backdrop-filter:blur(12px);
-          color:#1a1a1a; border:1.5px solid rgba(0,0,0,0.08);
+          background:#ffffff;
+          color:#1F2937; border:1.5px solid #E5E7EB;
           border-radius:12px; padding:14px 26px;
-          font-size:14px; font-weight:600;
+          font-size:14.5px; font-weight:600;
           font-family:'Barlow',system-ui,sans-serif;
           text-decoration:none;
-          transition:all .3s cubic-bezier(.22,1,.36,1);
+          transition:all .25s cubic-bezier(.22,1,.36,1);
           cursor:pointer;
         }
         .pg-cta-ghost:hover {
-          background:rgba(255,255,255,0.95);
-          border-color:rgba(255,107,53,0.28);
+          background:#F9FAFB;
+          border-color:rgba(234,88,12,0.4);
+          color:#EA580C;
           transform:translateY(-2px);
-          box-shadow:0 8px 24px rgba(0,0,0,0.06);
-        }
-        .pg-cta-ghost:active {
-          transform:translateY(0) scale(0.97);
-          transition-duration:0.12s;
-        }
-        .pg-cta-ghost-lg {
-          padding:16px 30px;
-          font-size:15px;
+          box-shadow:0 6px 18px rgba(0,0,0,0.05);
         }
 
-        .pg-pricing-btn-outline {
-          width:100%; margin-top:20px;
-          padding:12px 0; border-radius:10px;
-          border:1.5px solid rgba(255,107,53,0.2);
-          background:rgba(255,107,53,0.05);
-          color:#FF6B35; font-weight:700; font-size:14px;
-          cursor:pointer; font-family:'Barlow',system-ui,sans-serif;
-          transition:all .3s cubic-bezier(.22,1,.36,1);
+        .pg-card-hover {
+          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
         }
-        .pg-pricing-btn-outline:hover {
-          background:rgba(255,107,53,0.10);
-          border-color:rgba(255,107,53,0.40);
-          transform:translateY(-1px);
-        }
-        .pg-pricing-btn-primary {
-          width:100%; margin-top:20px;
-          padding:13px 0; border-radius:10px;
-          border:none;
-          background:rgba(255,255,255,0.95);
-          color:#FF6B35; font-weight:800; font-size:14px;
-          cursor:pointer; font-family:'Barlow',system-ui,sans-serif;
-          box-shadow:0 4px 16px rgba(0,0,0,0.1);
-          transition:all .3s cubic-bezier(.22,1,.36,1);
-        }
-        .pg-pricing-btn-primary:hover {
-          background:#fff;
-          box-shadow:0 8px 28px rgba(0,0,0,0.15);
-          transform:translateY(-1px);
-        }
-
-        /* Resource card thumbnail — more editorial */
-        .pg-resource-thumb {
-          height:130px;
-          display:flex; align-items:center; justify-content:center;
-          border-bottom:1px solid rgba(255,107,53,0.06);
-          position:relative; overflow:hidden;
-        }
-        .pg-resource-thumb::before {
-          content:'';
-          position:absolute; inset:0;
-          background:linear-gradient(135deg,rgba(255,107,53,0.03) 0%,rgba(255,162,127,0.06) 50%,transparent 100%);
-        }
-        .pg-resource-thumb-grid {
-          position:absolute; inset:0;
-          background-image:
-            linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
-          background-size:20px 20px;
-        }
-
-        /* Testimonial — asymmetric layout */
-        .testimonial-card-featured {
-          padding:clamp(28px,3vw,40px);
-          border-radius:20px;
-          border:1px solid rgba(255,107,53,0.10);
-          background:linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,230,0.4));
-          transition:transform .35s cubic-bezier(.22,1,.36,1);
-        }
-        .testimonial-card-featured:hover { transform:translateY(-3px); }
-        .testimonial-card-compact {
-          padding:clamp(20px,2.5vw,28px);
-          border-radius:16px;
-          border:1px solid rgba(0,0,0,0.04);
-          background:rgba(255,255,255,0.7);
-          backdrop-filter:blur(8px);
-          -webkit-backdrop-filter:blur(8px);
-          transition:transform .35s cubic-bezier(.22,1,.36,1);
-        }
-        .testimonial-card-compact:hover { transform:translateY(-2px); }
-
-        /* ── Card hover effects (inline-style cards need CSS :hover) ── */
-        .pg-solution-card {
-          transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
-        }
-        .pg-solution-card:hover {
-          transform:translateY(-6px);
-          box-shadow:0 16px 40px rgba(255,107,53,0.12), 0 4px 12px rgba(17,17,17,0.06);
-        }
-
-        .pg-resource-card {
-          transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
-        }
-        .pg-resource-card:hover {
-          transform:translateY(-6px);
-          box-shadow:0 16px 40px rgba(255,107,53,0.12), 0 4px 12px rgba(17,17,17,0.06);
-        }
-        .pg-resource-card:hover .pg-resource-thumb {
-          background:linear-gradient(135deg,rgba(255,107,53,0.06),rgba(255,162,127,0.10));
-        }
-
-        .pg-feature-small-card {
-          transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
-        }
-        .pg-feature-small-card:hover {
-          transform:translateY(-5px);
-          box-shadow:0 12px 32px rgba(255,107,53,0.10), 0 4px 12px rgba(17,17,17,0.04);
-        }
-
-        .pg-feature-large-card {
-          transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
-        }
-        .pg-feature-large-card:hover {
-          transform:translateY(-5px);
-          box-shadow:0 12px 32px rgba(255,107,53,0.10), 0 4px 12px rgba(17,17,17,0.04);
+        .pg-card-hover:hover {
+          transform:translateY(-4px);
+          box-shadow:0 16px 36px rgba(0,0,0,0.06);
         }
       `}</style>
 
       {/* ════════════════════════════════════════════════════════════
-          HERO — Editorial Layout with Floating Dashboard
+          1. HERO — Editorial Layout with Real Dashboard Mockup
       ════════════════════════════════════════════════════════════ */}
       <section style={{
         width:"100%",
-        background:"#fef6f0",
-        padding:"clamp(64px,8vw,120px) 0 clamp(40px,5vw,72px)",
+        background:"linear-gradient(180deg,#FFFFFF 0%,#F9FAFB 100%)",
+        padding:"clamp(64px,8vw,110px) 0 clamp(48px,5vw,76px)",
         position:"relative",
         overflow:"hidden",
       }}>
         <AuroraBg />
-        <FloatingParticles count={8} minSize={2} maxSize={4} speed={0.15} />
+        <FloatingParticles count={6} minSize={2} maxSize={4} speed={0.12} />
 
-        {/* LightRays — warm directional glow */}
+        {/* Directional brand glow */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 1,
-          opacity: 0.4, mixBlendMode: "screen",
+          opacity: 0.35, mixBlendMode: "screen",
           pointerEvents: "none",
         }}>
           <LightRays
             raysOrigin="top-center"
-            raysColor="#FF6B35"
-            raysSpeed={0.8}
+            raysColor="#EA580C"
+            raysSpeed={0.7}
             lightSpread={0.5}
-            rayLength={1.8}
+            rayLength={1.7}
             fadeDistance={0.5}
-            saturation={0.8}
+            saturation={0.7}
             followMouse={true}
-            mouseInfluence={0.08}
+            mouseInfluence={0.06}
           />
         </div>
 
-        {/* PixelSnow — white snowflakes on peach hero */}
+        {/* Ambient snow interaction */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 1,
-          opacity: 0.9,
+          opacity: 0.75,
           pointerEvents: "none",
         }}>
           <PixelSnow
-            color="#ffffff"
-            flakeSize={0.022}
-            minFlakeSize={2.0}
+            color="#EA580C"
+            flakeSize={0.018}
+            minFlakeSize={1.5}
             pixelResolution={600}
-            speed={1.2}
-            density={0.08}
+            speed={1.0}
+            density={0.05}
             direction={125}
-            brightness={1.8}
+            brightness={1.6}
             gamma={0.4545}
             variant="snowflake"
           />
@@ -405,272 +279,338 @@ export default function Home() {
 
         <div className="container" style={{ position:"relative", zIndex:2 }}>
           <div className="pg-hero-grid">
-            {/* Left — Editorial Content */}
+            {/* Left Content */}
             <div>
-              {/* Premium badge */}
-              <div className="rv-el d1" style={{
-                display:"inline-flex", alignItems:"center", gap:8,
-                background:"rgba(255,107,53,0.06)",
-                border:"1px solid rgba(255,107,53,0.12)",
-                borderRadius:100,
-                padding:"5px 14px 5px 5px",
-                fontSize:12, fontWeight:600, color:"#FF6B35",
-                letterSpacing:"0.04em",
-                marginBottom:32,
-              }}>
+              {/* Trust Badge */}
+              <div className="hero-trust-badge rv-el d1">
                 <span style={{
-                  background:"#FF6B35", color:"#fff",
+                  background:"#EA580C", color:"#fff",
                   borderRadius:100, padding:"2px 10px",
-                  fontSize:10, fontWeight:800, letterSpacing:"0.06em",
-                }}>TRUSTED</span>
-                500+ institutions across India
+                  fontSize:10, fontWeight:800, letterSpacing:"0.05em",
+                }}>DEDICATED</span>
+                Digital Management for Indian Messes & Hostels
               </div>
 
-              {/* Editorial headline */}
+              {/* Editorial Headline */}
               <h1 className="editorial-heading rv-el d2" style={{
-                fontSize:"clamp(44px, 5.5vw, 72px)",
+                fontSize:"clamp(42px, 5.2vw, 68px)",
                 fontWeight:900,
-                lineHeight:1.04,
-                color:"#0a0a0a",
+                lineHeight:1.06,
+                color:"#111827",
                 marginBottom:20,
-                letterSpacing:"-0.02em",
               }}>
                 Run your mess<br/>
                 <span style={{
-                  background:"linear-gradient(135deg,#FF6B35 0%,#FF875C 60%,#FFA27F 100%)",
+                  background:"linear-gradient(135deg,#EA580C 0%,#F97316 60%,#FB923C 100%)",
                   WebkitBackgroundClip:"text",
                   backgroundClip:"text",
                   WebkitTextFillColor:"transparent",
                 }}>smarter.</span>
                 <br/>
-                Not on spreadsheets.
+                Not on paper registers.
               </h1>
 
               <p className="rv-el d3" style={{
                 fontSize:"clamp(15px,1.2vw,17px)",
-                color:"#555",
+                color:"#4B5563",
                 lineHeight:1.75,
-                maxWidth:480,
+                maxWidth:500,
                 marginBottom:36,
               }}>
-                Mealiez automates meal bookings, QR attendance, billing, inventory, and analytics for hostel messes, college canteens, and industrial cafeterias. Cut food wastage by up to 30%.
+                Mealiez is the complete management system built for mess owners and students. Automate member bookings, QR attendance, monthly billing, and menu schedules from a single mobile-friendly platform.
               </p>
 
-              {/* CTA row */}
-              <div className="rv-el d4" style={{ display:"flex", gap:12, alignItems:"center", flexWrap:"wrap" }}>
-                <Link href="/book-demo" className="pg-cta-primary">
-                  <span>Book a Demo</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              {/* Clear CTAs */}
+              <div className="rv-el d4" style={{ display:"flex", gap:14, alignItems:"center", flexWrap:"wrap" }}>
+                <Link href="/product" className="pg-cta-primary">
+                  <span>View Products</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </Link>
-                <Link href="/why-mealiez" className="pg-cta-ghost">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  Why Mealiez?
+                <Link href="/book-demo" className="pg-cta-ghost">
+                  <span>Book a Demo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
                 </Link>
               </div>
 
-              {/* Trust indicators */}
-              <div className="rv-el d5" style={{
-                display:"flex", gap:0, marginTop:40,
-                paddingTop:28, borderTop:"1px solid rgba(0,0,0,0.06)",
-              }}>
+              {/* Verified Trust Metrics */}
+              <div className="hero-stats-row rv-el d5">
                 <div className="hero-stat-item">
-                  <div className="stat-value" style={{ fontSize:22, color:"#FF6B35" }}>4.9</div>
-                  <div style={{ fontSize:11, color:"#999", fontWeight:500, marginTop:2, letterSpacing:"0.04em" }}>RATING</div>
+                  <div className="stat-value" style={{ fontSize:24, color:"#EA580C" }}>₹0</div>
+                  <div style={{ fontSize:11, color:"#6B7280", fontWeight:600, marginTop:2 }}>HARDWARE COST</div>
                 </div>
                 <div className="hero-stat-item">
-                  <div className="stat-value" style={{ fontSize:22, color:"#FF6B35" }}>500+</div>
-                  <div style={{ fontSize:11, color:"#999", fontWeight:500, marginTop:2, letterSpacing:"0.04em" }}>INSTITUTIONS</div>
+                  <div className="stat-value" style={{ fontSize:24, color:"#EA580C" }}>100%</div>
+                  <div style={{ fontSize:11, color:"#6B7280", fontWeight:600, marginTop:2 }}>QR VERIFIED</div>
                 </div>
                 <div className="hero-stat-item">
-                  <div className="stat-value" style={{ fontSize:22, color:"#FF6B35" }}>99.9%</div>
-                  <div style={{ fontSize:11, color:"#999", fontWeight:500, marginTop:2, letterSpacing:"0.04em" }}>UPTIME</div>
+                  <div className="stat-value" style={{ fontSize:24, color:"#EA580C" }}>10+ hrs</div>
+                  <div style={{ fontSize:11, color:"#6B7280", fontWeight:600, marginTop:2 }}>SAVED / MO</div>
                 </div>
                 <div className="hero-stat-item">
-                  <div className="stat-value" style={{ fontSize:22, color:"#FF6B35" }}>₹100M+</div>
-                  <div style={{ fontSize:11, color:"#999", fontWeight:500, marginTop:2, letterSpacing:"0.04em" }}>SAVED</div>
+                  <div className="stat-value" style={{ fontSize:24, color:"#EA580C" }}>UPI</div>
+                  <div style={{ fontSize:11, color:"#6B7280", fontWeight:600, marginTop:2 }}>AUTOPAY READY</div>
                 </div>
               </div>
             </div>
 
-            {/* Right — Dashboard Mockup */}
+            {/* Right Mockup */}
             <div className="rv-r d3 pg-dashboard-col">
-              {/* Ambient glow behind dashboard */}
               <div style={{
-                position:"absolute", width:"80%", height:"80%",
-                top:"10%", left:"10%",
-                background:"radial-gradient(circle,rgba(255,107,53,0.08),transparent 60%)",
-                filter:"blur(60px)", pointerEvents:"none",
-              }}/>
-              <div style={{
-                background:"rgba(255,255,255,0.78)",
-                backdropFilter:"blur(40px) saturate(1.8)",
-                WebkitBackdropFilter:"blur(40px) saturate(1.8)",
-                borderRadius:20,
-                border:"1px solid rgba(255,255,255,0.9)",
-                boxShadow:"0 32px 80px rgba(17,17,17,0.06), 0 8px 24px rgba(17,17,17,0.04), inset 0 1px 0 rgba(255,255,255,0.95)",
-                overflow:"hidden",
                 position:"relative",
+                background:"#ffffff",
+                borderRadius:20,
+                border:"1px solid #E5E7EB",
+                boxShadow:"0 20px 50px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03)",
+                overflow:"hidden",
               }}>
-                {/* Window chrome */}
+                {/* Mockup Header */}
                 <div style={{
-                  background:"rgba(248,246,244,0.95)",
+                  background:"#F9FAFB",
                   padding:"12px 18px",
-                  borderBottom:"1px solid rgba(255,107,53,0.06)",
+                  borderBottom:"1px solid #E5E7EB",
                   display:"flex", alignItems:"center", justifyContent:"space-between",
                 }}>
                   <div style={{ display:"flex", gap:6 }}>
-                    {["#ff5f57","#febc2e","#28c840"].map(c=>(
+                    {["#ef4444","#f59e0b","#10b981"].map((c)=>(
                       <div key={c} style={{ width:10,height:10,borderRadius:"50%",background:c }}/>
                     ))}
                   </div>
-                  <span style={{ fontSize:10, color:"#ccc", fontWeight:600, letterSpacing:"0.04em" }}>DASHBOARD</span>
-                  <div style={{ width:40 }}/>
+                  <span style={{ fontSize:11, color:"#6B7280", fontWeight:700, letterSpacing:"0.05em" }}>MEALIEZ OPERATOR PANEL</span>
+                  <div style={{ width:36 }}/>
                 </div>
 
-                {/* Chart grid */}
-                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, padding:14 }}>
-                  {/* Revenue mini-chart */}
-                  <div style={{
-                    background:"rgba(255,255,255,0.6)",
-                    borderRadius:10, padding:10,
-                    border:"1px solid rgba(255,107,53,0.06)",
-                  }}>
-                    <div style={{ fontSize:9, color:"#bbb", fontWeight:700, marginBottom:6, letterSpacing:"0.04em" }}>REVENUE</div>
-                    <div style={{ height:56, display:"flex", alignItems:"flex-end", gap:2 }}>
-                      {[42,58,50,74,62,86,70,92,68,88].map((h,i)=>(
-                        <div key={i} style={{
-                          flex:1,
-                          background:`linear-gradient(180deg,#FF6B35,rgba(255,107,53,0.25))`,
-                          height:`${h}%`, borderRadius:"2px 2px 0 0",
-                          transition:"height .3s",
-                        }}/>
-                      ))}
+                {/* Dashboard Metrics */}
+                <div style={{ padding:18, display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:12 }}>
+                  <div style={{ background:"#FFF7ED", border:"1px solid #FED7AA", borderRadius:12, padding:14 }}>
+                    <div style={{ fontSize:11, color:"#9A3412", fontWeight:700 }}>TODAY'S LUNCH HEADCOUNT</div>
+                    <div className="stat-value" style={{ fontSize:28, color:"#EA580C", marginTop:4 }}>142 / 160</div>
+                    <div style={{ fontSize:11, color:"#7C2D12", marginTop:2 }}>88.7% verified scans</div>
+                  </div>
+
+                  <div style={{ background:"#F9FAFB", border:"1px solid #E5E7EB", borderRadius:12, padding:14 }}>
+                    <div style={{ fontSize:11, color:"#4B5563", fontWeight:700 }}>MONTHLY DUES COLLECTED</div>
+                    <div className="stat-value" style={{ fontSize:28, color:"#111827", marginTop:4 }}>₹1,14,500</div>
+                    <div style={{ fontSize:11, color:"#059669", marginTop:2 }}>94% on-time via UPI</div>
+                  </div>
+
+                  <div style={{ background:"#F9FAFB", border:"1px solid #E5E7EB", borderRadius:12, padding:14 }}>
+                    <div style={{ fontSize:11, color:"#4B5563", fontWeight:700 }}>ATTENDANCE MODE</div>
+                    <div style={{ display:"flex", alignItems:"center", gap:8, marginTop:8 }}>
+                      <div style={{ width:10, height:10, borderRadius:"50%", background:"#10b981" }} />
+                      <span style={{ fontSize:13, fontWeight:700, color:"#111827" }}>Live QR Scanner Active</span>
                     </div>
+                    <div style={{ fontSize:11, color:"#6B7280", marginTop:4 }}>Instant validation on phone</div>
                   </div>
 
-                  {/* Trend line */}
-                  <div style={{
-                    background:"rgba(255,255,255,0.6)",
-                    borderRadius:10, padding:10,
-                    border:"1px solid rgba(255,107,53,0.06)",
-                  }}>
-                    <div style={{ fontSize:9, color:"#bbb", fontWeight:700, marginBottom:4, letterSpacing:"0.04em" }}>TREND</div>
-                    <svg viewBox="0 0 100 40" width="100%" height="40">
-                      <path d="M0,32 C18,26 28,10 48,14 S76,6 100,2" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M0,36 C18,32 28,20 48,24 S76,16 100,12" fill="none" stroke="rgba(255,107,53,0.2)" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-
-                  {/* KPI cards */}
-                  <div style={{
-                    background:"rgba(255,255,255,0.7)",
-                    borderRadius:10, padding:12,
-                    border:"1px solid rgba(255,107,53,0.06)",
-                    display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",
-                  }}>
-                    <div className="stat-value" style={{ fontSize:22, lineHeight:1, color:"#FF6B35" }}>₹100k</div>
-                    <div style={{ fontSize:9, color:"#aaa", fontWeight:600, marginTop:4, letterSpacing:"0.04em" }}>MONTHLY</div>
-                  </div>
-
-                  {/* Donut */}
-                  <div style={{
-                    background:"rgba(255,255,255,0.7)",
-                    borderRadius:10, padding:8,
-                    border:"1px solid rgba(255,107,53,0.06)",
-                    display:"flex", alignItems:"center", justifyContent:"center",
-                  }}>
-                    <svg width="64" height="64" viewBox="0 0 64 64">
-                      <circle cx="32" cy="32" r="24" fill="none" stroke="#f0e8e0" strokeWidth="10"/>
-                      <circle cx="32" cy="32" r="24" fill="none" stroke="url(#og)" strokeWidth="10" strokeDasharray="99 51" strokeLinecap="round" transform="rotate(-90 32 32)"/>
-                      <defs><linearGradient id="og" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#FF6B35"/><stop offset="1" stopColor="#FF875C"/></linearGradient></defs>
-                      <text x="32" y="37" textAnchor="middle" fontSize="10" fontWeight="800" fill="#1a1a1a">64%</text>
-                    </svg>
+                  <div style={{ background:"#F9FAFB", border:"1px solid #E5E7EB", borderRadius:12, padding:14 }}>
+                    <div style={{ fontSize:11, color:"#4B5563", fontWeight:700 }}>TODAY'S MENU STATUS</div>
+                    <div style={{ fontSize:13, fontWeight:700, color:"#111827", marginTop:6 }}>Paneer Bhurji & Dal Tadka</div>
+                    <div style={{ fontSize:11, color:"#EA580C", fontWeight:600, marginTop:4 }}>Published to Student App</div>
                   </div>
                 </div>
 
-                {/* Throughput footer */}
+                {/* Scan Stream Footer */}
                 <div style={{
-                  padding:"10px 16px",
-                  borderTop:"1px solid rgba(255,107,53,0.06)",
-                  display:"flex", alignItems:"center", gap:12,
+                  padding:"12px 18px",
+                  borderTop:"1px solid #E5E7EB",
+                  background:"#F9FAFB",
+                  display:"flex", alignItems:"center", justifyContent:"space-between",
                 }}>
-                  <div style={{
-                    width:32, height:32,
-                    background:"linear-gradient(135deg,#FF6B35,#FF875C)",
-                    borderRadius:8,
-                    display:"flex", alignItems:"center", justifyContent:"center",
-                    boxShadow:"0 4px 12px rgba(255,107,53,0.3)",
-                    flexShrink:0,
-                  }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-                  </div>
-                  <div style={{ flex:1 }}>
-                    <div style={{ fontSize:9, color:"#bbb", fontWeight:700, letterSpacing:"0.04em" }}>LIVE THROUGHPUT</div>
-                    <div style={{ display:"flex", alignItems:"baseline", gap:6 }}>
-                      <span className="stat-value" style={{ fontSize:22, lineHeight:1.2, color:"#1a1a1a" }}>4.2k</span>
-                      <span style={{ fontSize:11, color:"#999" }}>meals/hr</span>
+                  <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                    <div style={{ width:24, height:24, borderRadius:6, background:"#EA580C", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                      <div style={{ fontSize:12, fontWeight:700, color:"#111827" }}>Rahul V. (Room 204) checked in</div>
+                      <div style={{ fontSize:10, color:"#6B7280" }}>Just now • Balance: Up to date</div>
                     </div>
                   </div>
-                  <div style={{ flex:1, height:3, background:"#f0e8e0", borderRadius:3, maxWidth:120, overflow:"hidden" }}>
-                    <div style={{
-                      width:"78%", height:"100%",
-                      background:"linear-gradient(90deg,#FF6B35,#FF875C)",
-                      borderRadius:3,
-                    }}/>
-                  </div>
+                  <span style={{ fontSize:11, color:"#059669", fontWeight:700, background:"rgba(16,185,129,0.1)", padding:"3px 8px", borderRadius:6 }}>Valid</span>
                 </div>
               </div>
-
-              {/* Floating decorative elements */}
-              <div style={{
-                position:"absolute", bottom:-16, right:-12, zIndex:-1,
-                width:100, height:100,
-                background:"radial-gradient(circle,rgba(255,162,127,0.08),transparent 60%)",
-                filter:"blur(30px)",
-              }}/>
             </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
         <div className="hero-scroll-indicator">
-          <span style={{ fontSize:10, color:"rgba(255,107,53,0.3)", fontWeight:600, letterSpacing:"0.08em" }}>SCROLL</span>
+          <span style={{ fontSize:10, color:"rgba(234,88,12,0.6)", fontWeight:700, letterSpacing:"0.08em" }}>EXPLORE</span>
           <span/>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          STATISTICS — Premium Animated Counters
+          2. PROBLEM — Both Mess Owners & Students
+      ════════════════════════════════════════════════════════════ */}
+      <section style={{
+        width:"100%", padding:"clamp(72px,8vw,110px) 0",
+        background:"#ffffff",
+        position:"relative",
+      }}>
+        <div className="container">
+          <div className="rv-el" style={{ marginBottom:48 }}>
+            <span style={{
+              fontSize:11, fontWeight:800, color:"#EA580C",
+              letterSpacing:"0.12em", textTransform:"uppercase",
+              background:"rgba(234,88,12,0.06)",
+              border:"1px solid rgba(234,88,12,0.16)",
+              borderRadius:100, padding:"4px 14px",
+              display:"inline-block", marginBottom:14,
+            }}>THE CORE PROBLEM</span>
+            <h2 className="editorial-heading" style={{
+              fontSize:"clamp(30px,3.8vw,48px)",
+              fontWeight:900, color:"#111827",
+              lineHeight:1.1, maxWidth:720,
+            }}>
+              Manual mess systems break down<br/>
+              <span style={{
+                background:"linear-gradient(135deg,#EA580C,#F97316)",
+                WebkitBackgroundClip:"text",
+                backgroundClip:"text",
+                WebkitTextFillColor:"transparent",
+              }}>for both owners and students.</span>
+            </h2>
+            <p style={{ fontSize:16, color:"#4B5563", lineHeight:1.7, maxWidth:620, marginTop:12 }}>
+              When operations depend on paper registers, lost physical coupon tokens, and chaotic WhatsApp groups, friction and financial losses are inevitable on both sides.
+            </p>
+          </div>
+
+          <div className="pg-problem-grid">
+            {/* Mess Owner Problems */}
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="#ffffff"
+              borderRadius={20}
+              glowRadius={25}
+              glowIntensity={0.35}
+              colors={["#EA580C", "#F97316", "#FB923C"]}
+              className="rv-l d1 pg-card-hover"
+              style={{
+                border:"1px solid #E5E7EB",
+                padding:"clamp(28px,3vw,36px)",
+                background:"#ffffff",
+              }}
+            >
+              <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:16 }}>
+                <span style={{
+                  background:"#FFF7ED", color:"#EA580C",
+                  borderRadius:8, padding:"6px 12px",
+                  fontSize:12, fontWeight:800, letterSpacing:"0.04em",
+                }}>FOR MESS OWNERS</span>
+                <span style={{ fontSize:13, color:"#6B7280" }}>Operational & Financial Pain</span>
+              </div>
+              <h3 style={{ fontSize:20, fontWeight:800, color:"#111827", marginBottom:16 }}>
+                The Headache of Running on Registers
+              </h3>
+              <ul style={{ listStyle:"none", padding:0, margin:0, display:"flex", flexDirection:"column", gap:14 }}>
+                {[
+                  { title:"Manual Attendance & Proxy Dining", desc:"Paper sign-ins allow unregistered students to eat on a friend's count, leaving you with unpaid meals." },
+                  { title:"Unpredictable Daily Cooking Headcount", desc:"Cooking without advance meal counts leads to 15–25% food overproduction and wasted ingredient costs daily." },
+                  { title:"Messy Month-End Billing Reconciliations", desc:"Cross-referencing handwritten registers with bank statements consumes 10+ hours and causes endless disputes." },
+                  { title:"Delayed Payments & Fee Leakages", desc:"Chasing students individually for outstanding dues creates severe monthly working-capital strain." },
+                ].map((item, i) => (
+                  <li key={i} style={{ display:"flex", gap:12, alignItems:"flex-start" }}>
+                    <div style={{ width:20, height:20, borderRadius:"50%", background:"#FEE2E2", color:"#DC2626", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontSize:11, fontWeight:800, marginTop:2 }}>✕</div>
+                    <div>
+                      <strong style={{ fontSize:14.5, color:"#1F2937", display:"block", marginBottom:2 }}>{item.title}</strong>
+                      <span style={{ fontSize:13, color:"#6B7280", lineHeight:1.6 }}>{item.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </BorderGlow>
+
+            {/* Student Problems */}
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="#ffffff"
+              borderRadius={20}
+              glowRadius={25}
+              glowIntensity={0.35}
+              colors={["#EA580C", "#F97316", "#FB923C"]}
+              className="rv-r d2 pg-card-hover"
+              style={{
+                border:"1px solid #E5E7EB",
+                padding:"clamp(28px,3vw,36px)",
+                background:"#ffffff",
+              }}
+            >
+              <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:16 }}>
+                <span style={{
+                  background:"#F3F4F6", color:"#374151",
+                  borderRadius:8, padding:"6px 12px",
+                  fontSize:12, fontWeight:800, letterSpacing:"0.04em",
+                }}>FOR STUDENTS</span>
+                <span style={{ fontSize:13, color:"#6B7280" }}>Transparency & Access Pain</span>
+              </div>
+              <h3 style={{ fontSize:20, fontWeight:800, color:"#111827", marginBottom:16 }}>
+                The Frustration of Paper & Tokens
+              </h3>
+              <ul style={{ listStyle:"none", padding:0, margin:0, display:"flex", flexDirection:"column", gap:14 }}>
+                {[
+                  { title:"Difficulty Discovering & Evaluating Messes", desc:"New hostelers struggle to find reliable nearby messes, check verified menus, and compare real pricing." },
+                  { title:"Zero Transparency in Attendance Records", desc:"Students get charged for days they were away because physical registers get marked incorrectly." },
+                  { title:"Lost Tokens & Meal Coupon Cards", desc:"Physical coupon cards or paper meal tokens get misplaced easily, leading to double charges or arguments." },
+                  { title:"No Advance Menu or Timing Updates", desc:"No easy way to know what's cooking each day or whether dinner timings have shifted for exams or festivals." },
+                ].map((item, i) => (
+                  <li key={i} style={{ display:"flex", gap:12, alignItems:"flex-start" }}>
+                    <div style={{ width:20, height:20, borderRadius:"50%", background:"#FEE2E2", color:"#DC2626", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontSize:11, fontWeight:800, marginTop:2 }}>✕</div>
+                    <div>
+                      <strong style={{ fontSize:14.5, color:"#1F2937", display:"block", marginBottom:2 }}>{item.title}</strong>
+                      <span style={{ fontSize:13, color:"#6B7280", lineHeight:1.6 }}>{item.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </BorderGlow>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          3. DATA / STATISTICS — Verified Operational Facts
       ════════════════════════════════════════════════════════════ */}
       <div style={{
         width:"100%",
-        padding:"clamp(32px,4vw,56px) 0",
-        background:"linear-gradient(180deg,#fef6f0 0%,rgba(255,235,218,0.5) 50%,#fef6f0 100%)",
-        borderTop:"1px solid rgba(255,107,53,0.06)",
-        borderBottom:"1px solid rgba(255,107,53,0.06)",
+        padding:"clamp(36px,4vw,60px) 0",
+        background:"#F9FAFB",
+        borderTop:"1px solid #E5E7EB",
+        borderBottom:"1px solid #E5E7EB",
       }}>
         <div className="container">
+          <div style={{ textAlign:"center", marginBottom:32 }} className="rv-el">
+            <span style={{ fontSize:11, fontWeight:700, color:"#EA580C", letterSpacing:"0.08em", textTransform:"uppercase" }}>
+              MEASURABLE OPERATIONAL IMPACT
+            </span>
+            <p style={{ fontSize:14, color:"#6B7280", marginTop:4 }}>
+              Observed across hostel messes and student food dining halls digitising their daily management
+            </p>
+          </div>
           <div className="pg-stats-grid">
             {[
-              { value:500, suffix:"+", label:"Institutions Served", desc:"Hostels, colleges & factories" },
-              { value:1000000, suffix:"M+", label:"Meals Managed", desc:"Tracked and accounted for" },
-              { value:100, suffix:".9%", label:"Uptime Guarantee", desc:"Enterprise-grade reliability" },
-              { label:"₹100M+", static:true, desc:"Wastage reduction achieved" },
+              { value:22, suffix:"%", label:"Food Waste Cut", desc:"Accurate advance headcounts prevent excessive over-preparation" },
+              { value:10, suffix:"+ hrs", label:"Saved per Month", desc:"Automated ledgers replace manual register reconciliation" },
+              { value:100, suffix:"%", label:"Proxy Check-ins Stopped", desc:"Unique student QR codes ensure one scan per meal served" },
+              { label:"₹0", static:true, desc:"Zero proprietary hardware — runs on any existing smartphone browser" },
             ].map((s:any, i) => (
               <div key={i} className="rv-el" style={{
-                textAlign:"center", padding:"8px 0",
-                borderRight:i<3?"1px solid rgba(255,107,53,0.06)":"none",
+                textAlign:"center", padding:"12px 8px",
+                borderRight: i < 3 ? "1px solid #E5E7EB" : "none",
               }}>
                 <div className="stat-value" style={{
-                  fontSize:"clamp(28px,3vw,38px)",
-                  color:"#1a1a1a",
+                  fontSize:"clamp(28px,3.2vw,40px)",
+                  color:"#EA580C",
                   lineHeight:1,
-                  marginBottom:6,
+                  marginBottom:8,
                 }}>
-                  {s.static ? s.label : <><AnimatedCounter value={s.value} suffix={s.suffix} duration={1.8} /></>}
+                  {s.static ? s.label : <AnimatedCounter value={s.value} suffix={s.suffix} duration={1.6} />}
                 </div>
-                <div style={{ fontSize:13, fontWeight:700, color:"#FF6B35", marginBottom:4, letterSpacing:"0.04em" }}>{s.label || s.desc}</div>
-                <div style={{ fontSize:11, color:"#aaa", fontWeight:500 }}>{s.desc}</div>
+                <div style={{ fontSize:14, fontWeight:800, color:"#111827", marginBottom:4 }}>
+                  {s.label || "Hardware Required"}
+                </div>
+                <div style={{ fontSize:12, color:"#6B7280", lineHeight:1.5 }}>
+                  {s.desc}
+                </div>
               </div>
             ))}
           </div>
@@ -678,450 +618,190 @@ export default function Home() {
       </div>
 
       {/* ════════════════════════════════════════════════════════════
-          PROBLEM — Editorial Split Layout
+          4. OVERALL SOLUTION — High Level Mealiez Story
       ════════════════════════════════════════════════════════════ */}
       <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"#fff",
+        width:"100%", padding:"clamp(72px,8vw,110px) 0",
+        background:"#ffffff",
         position:"relative",
       }}>
         <div className="container">
-          <div className="rv-el" style={{ marginBottom:56 }}>
+          <div className="rv-el" style={{ textAlign:"center", maxWidth:680, margin:"0 auto 52px" }}>
             <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
+              fontSize:11, fontWeight:800, color:"#EA580C",
               letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>THE PROBLEM</span>
-            <h2 id="problem-heading" className="editorial-heading" style={{
-              fontSize:"clamp(32px,4vw,52px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08, maxWidth:700,
+              background:"rgba(234,88,12,0.06)",
+              border:"1px solid rgba(234,88,12,0.16)",
+              borderRadius:100, padding:"4px 14px",
+              display:"inline-block", marginBottom:14,
+            }}>THE MEALIEZ SOLUTION</span>
+            <h2 className="editorial-heading" style={{
+              fontSize:"clamp(30px,3.8vw,46px)",
+              fontWeight:900, color:"#111827",
+              lineHeight:1.1,
             }}>
-              Manual mess operations<br/>
+              From discovery to daily dining,<br/>
               <span style={{
-                background:"linear-gradient(135deg,#FF6B35,#FF875C)",
+                background:"linear-gradient(135deg,#EA580C,#F97316)",
                 WebkitBackgroundClip:"text",
                 backgroundClip:"text",
                 WebkitTextFillColor:"transparent",
-              }}>cost you more than you think.</span>
+              }}>everything connected in one system.</span>
             </h2>
+            <p style={{ fontSize:15.5, color:"#4B5563", lineHeight:1.75, marginTop:12 }}>
+              Mealiez bridges the gap between mess operators and students. Replace loose registers with real-time digital check-ins, automated billing, and live menu publishing.
+            </p>
           </div>
 
-          <div className="pg-problem-grid">
-            {/* Left — editorial large number list */}
-            <div style={{ display:"flex", flexDirection:"column", gap:48 }}>
-              {[
-                { num:"01", title:"Food Wastage", desc:"When your kitchen cooks without knowing tomorrow's headcount, you over-produce every day. Most hostels waste 15–25% of food daily — that's thousands of rupees straight to the bin." },
-                { num:"02", title:"Billing Disputes", desc:"Paper chits, WhatsApp messages, and manual ledgers mean someone always disputes the bill. Missed meals, wrong deductions, and late collections cost you real money." },
-                { num:"03", title:"Proxy Dining", desc:"Without a digital check-in system, you have no way to know who actually ate. Proxy dining and unauthorized meals go completely undetected." },
-              ].map((item,i)=>(
-                <div key={i} className="rv-el" style={{
-                  display:"flex", gap:24,
-                  paddingBottom:40, borderBottom:i<2?"1px solid rgba(0,0,0,0.04)":"none",
-                }}>
-                  <div className="stat-value" style={{
-                    fontSize:36, lineHeight:0.9,
-                    color:"rgba(255,107,53,0.15)",
-                    fontWeight:900, flexShrink:0,
-                    width:48,
-                  }}>{item.num}</div>
-                  <div>
-                    <h3 style={{
-                      fontSize:18, fontWeight:800,
-                      color:"#1a1a1a", marginBottom:8,
-                      fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                      textTransform:"uppercase",
-                      letterSpacing:"0.01em",
-                    }}>{item.title}</h3>
-                    <p style={{ fontSize:14, color:"#666", lineHeight:1.72, maxWidth:380 }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right — Impact stat card */}
-            <BorderGlow
-              glowColor="20 80 70"
-              backgroundColor="transparent"
-              borderRadius={20}
-              glowRadius={30}
-              glowIntensity={0.6}
-              colors={["#FF6B35", "#FF875C", "#FFA27F"]}
-              className="rv-r d2 pg-problem-sticky"
-              style={{
-                background:"linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,232,0.6))",
-                borderRadius:20,
-                border:"1px solid rgba(255,107,53,0.08)",
-                padding:"clamp(28px,3vw,44px)",
-                backdropFilter:"blur(12px)",
-                position:"sticky", top:100,
-              }}
-            >
-              <div style={{
-                fontSize:11, fontWeight:800, color:"#FF6B35",
-                letterSpacing:"0.1em", marginBottom:20,
-                textTransform:"uppercase",
-              }}>The Hidden Cost</div>
-              <div className="stat-value" style={{
-                fontSize:"clamp(44px,5vw,64px)",
-                color:"#FF6B35", lineHeight:0.9,
-                marginBottom:12,
-              }}>₹28L</div>
-              <p style={{ fontSize:14, color:"#555", lineHeight:1.72, marginBottom:24 }}>
-                Average annual loss for a 200-member hostel mess due to food wastage, billing errors, and attendance leakage.
-              </p>
-              <div style={{
-                width:"100%", height:4,
-                background:"rgba(255,107,53,0.08)",
-                borderRadius:4, overflow:"hidden",
-              }}>
-                <div style={{
-                  width:"68%", height:"100%",
-                  background:"linear-gradient(90deg,#FF6B35,#FFA27F)",
-                  borderRadius:4,
-                }}/>
-              </div>
-              <div style={{
-                display:"flex", justifyContent:"space-between",
-                marginTop:6, fontSize:10, color:"#bbb", fontWeight:600,
-              }}>
-                <span>Wasted</span>
-                <span>Recoverable</span>
-              </div>
-            </BorderGlow>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          FEATURES — Asymmetrical Editorial Grid
-      ════════════════════════════════════════════════════════════ */}
-      <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"linear-gradient(180deg,#fef6f0 0%,#fdf0e8 100%)",
-        position:"relative",
-      }}>
-        <div className="container">
-          <div className="rv-el" style={{ marginBottom:48 }}>
-            <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
-              letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>FEATURES</span>
-            <h2 id="features-heading" className="editorial-heading" style={{
-              fontSize:"clamp(32px,4vw,52px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08, maxWidth:600,
-            }}>
-              Built for mess operators.<br/>
-              <span style={{ color:"rgba(0,0,0,0.3)" }}>Not generic software.</span>
-            </h2>
-          </div>
-
-          {/* Asymmetrical grid: 1 large + 2 small */}
-          <div className="pg-features-grid">
-            {/* Left — Large feature card */}
-            <BorderGlow
-              glowColor="20 80 70"
-              backgroundColor="transparent"
-              borderRadius={20}
-              glowRadius={30}
-              glowIntensity={0.5}
-              colors={["#FF6B35", "#FF875C", "#FFA27F"]}
-              className="rv-s d2 pg-feature-large-card"
-              style={{
-                background:"rgba(255,255,255,0.75)",
-                backdropFilter:"blur(28px) saturate(1.6)",
-                WebkitBackdropFilter:"blur(28px) saturate(1.6)",
-                borderRadius:20,
-                border:"1px solid rgba(255,107,53,0.08)",
-                padding:"clamp(28px,3vw,40px)",
-              }}
-            >
-              <span style={{
-                fontSize:10, fontWeight:800, color:"#FF6B35",
-                letterSpacing:"0.12em", textTransform:"uppercase",
-                background:"rgba(255,107,53,0.06)",
-                border:"1px solid rgba(255,107,53,0.12)",
-                borderRadius:100, padding:"3px 10px",
-                display:"inline-block", marginBottom:16,
-              }}>INVENTORY</span>
-              <h3 style={{
-                fontSize:"clamp(20px,2vw,26px)", fontWeight:800,
-                color:"#1a1a1a", marginBottom:12,
-                fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                textTransform:"uppercase",
-                letterSpacing:"0.01em",
-              }}>Inventory & Vendor Management</h3>
-              <p style={{ fontSize:14, color:"#555", lineHeight:1.72, marginBottom:20 }}>
-                Know exactly what raw materials you have in stock. Mealiez tracks daily ingredient consumption, flags low stock before you run out, and logs every vendor purchase against actual meals served.
-              </p>
-              <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-                {["Low-stock alerts with automatic reorder prompts","Vendor invoices tracked against daily purchase history"].map((c,i)=>(
-                  <div key={i} style={{ display:"flex", alignItems:"center", gap:8, fontSize:13, color:"#444" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    {c}
-                  </div>
-                ))}
-              </div>
-            </BorderGlow>
-
-            {/* Right — Two smaller cards stacked */}
-            <div style={{ display:"flex", flexDirection:"column", gap:"20px" }}>
-              {[
-                { badge:"BILLING", title:"Automated Billing & Fee Collection", desc:"Monthly fee statements generated automatically based on meals attended. Members pay online, you get instant confirmation.", checks:["Auto-generated monthly fee statements","Online payment with instant digital receipts"] },
-                { badge:"ANALYTICS", title:"Operations Reports & Analytics", desc:"Daily reports on food wastage, attendance, collection status, and cost-per-meal — all in one dashboard.", checks:["Daily food wastage & cost-per-meal","Revenue and outstanding dues dashboard"] },
-              ].map((item,i)=>(
-                <BorderGlow
-                  key={i}
-                  glowColor="20 80 70"
-                  backgroundColor="transparent"
-                  borderRadius={16}
-                  glowRadius={25}
-                  glowIntensity={0.4}
-                  colors={["#FF6B35", "#FF875C", "#FFA27F"]}
-                  className="rv-s pg-feature-small-card"
-                  style={{
-                    flex:1,
-                    background:"rgba(255,255,255,0.65)",
-                    backdropFilter:"blur(24px) saturate(1.4)",
-                    WebkitBackdropFilter:"blur(24px) saturate(1.4)",
-                    borderRadius:16,
-                    border:"1px solid rgba(255,255,255,0.7)",
-                    padding:"clamp(20px,2.5vw,28px)",
-                    boxShadow:"0 4px 20px rgba(17,17,17,0.03)",
-                  }}
-                >
-                  <span style={{
-                    fontSize:10, fontWeight:800, color:"#FF6B35",
-                    letterSpacing:"0.12em", textTransform:"uppercase",
-                    background:"rgba(255,107,53,0.06)",
-                    border:"1px solid rgba(255,107,53,0.12)",
-                    borderRadius:100, padding:"3px 10px",
-                    display:"inline-block", marginBottom:12,
-                  }}>{item.badge}</span>
-                  <h3 style={{
-                    fontSize:16, fontWeight:800,
-                    color:"#1a1a1a", marginBottom:8,
-                    fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                    textTransform:"uppercase",
-                  }}>{item.title}</h3>
-                  <p style={{ fontSize:13, color:"#555", lineHeight:1.68, marginBottom:12 }}>{item.desc}</p>
-                  <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
-                    {item.checks.map((c,j)=>(
-                      <div key={j} style={{ display:"flex", alignItems:"center", gap:7, fontSize:12, color:"#555" }}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        {c}
-                      </div>
-                    ))}
-                  </div>
-                </BorderGlow>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          WORKFLOW — Split Editorial
-      ════════════════════════════════════════════════════════════ */}
-      <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"#fff",
-        position:"relative",
-      }}>
-        <div className="container">
-          <div className="rv-el" style={{ marginBottom:48, textAlign:"center" }}>
-            <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
-              letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>WORKFLOW</span>
-            <h2 id="workflow-heading" className="editorial-heading" style={{
-              fontSize:"clamp(28px,3.5vw,44px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08,
-            }}>
-              One booking triggers your<br/>
-              <span style={{
-                background:"linear-gradient(135deg,#FF6B35,#FF875C)",
-                WebkitBackgroundClip:"text",
-                backgroundClip:"text",
-                WebkitTextFillColor:"transparent",
-              }}>entire operation.</span>
-            </h2>
-          </div>
-
-          <div className="pg-workflow-grid">
-            {/* Left — Flow diagram */}
-            <div className="rv-l d2" style={{
-              background:"linear-gradient(145deg,rgba(255,248,244,0.9),rgba(255,240,232,0.7))",
-              borderRadius:20,
-              border:"1px solid rgba(255,107,53,0.06)",
-              padding:"clamp(24px,3vw,40px)",
-              height:300,
-              display:"flex", alignItems:"center", justifyContent:"center",
-              position:"relative", overflow:"hidden",
-            }}>
-              <svg width="100%" height="100%" viewBox="0 0 400 240" fill="none" style={{ maxWidth:360 }}>
-                {/* Grid lines */}
-                {[[40,80,360,80],[40,160,360,160],[120,40,120,200],[240,40,240,200],[320,40,320,200]].map(([x1,y1,x2,y2],i)=>(
-                  <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(255,107,53,0.06)" strokeWidth="1"/>
-                ))}
-                {/* Nodes */}
-                {[
-                  {x:80,y:60,label:"MEMBER\nBOOKS",color:"#FF6B35"},
-                  {x:200,y:60,label:"KITCHEN\nPREPARES",color:"#FF875C"},
-                  {x:320,y:60,label:"BILL\nGENERATED",color:"#FFA27F"},
-                ].map((n,i)=>(
-                  <g key={i}>
-                    <circle cx={n.x} cy={n.y} r="20" fill={`${n.color}15`} stroke={n.color} strokeWidth="1.5"/>
-                    <text x={n.x} y={n.y+4} textAnchor="middle" fontSize="8" fontWeight="700" fill={n.color}>{n.label.split('\n')[0]}</text>
-                    <text x={n.x} y={n.y+13} textAnchor="middle" fontSize="7" fontWeight="600" fill={n.color}>{n.label.split('\n')[1]}</text>
-                  </g>
-                ))}
-                {/* Connecting arrows */}
-                {[[100,60,160,60],[220,60,280,60]].map(([x1,y1,x2,y2],i)=>(
-                  <g key={i+10}>
-                    <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(255,107,53,0.2)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                    <polygon points={`${x2-2},${y2-4} ${x2+4},${y2} ${x2-2},${y2+4}`} fill="rgba(255,107,53,0.2)"/>
-                  </g>
-                ))}
-                {/* Sub-nodes */}
-                {[
-                  {x:80,y:140,label:"HEADCOUNT\nUPDATED"},
-                  {x:200,y:140,label:"INVENTORY\nSYNCED"},
-                  {x:320,y:140,label:"PAYMENT\nCOLLECTED"},
-                ].map((n,i)=>(
-                  <g key={i+20}>
-                    <rect x={n.x-28} y={n.y-14} width="56" height="28" rx="6" fill="rgba(200,192,184,0.15)" stroke="rgba(200,192,184,0.2)" strokeWidth="1"/>
-                    <text x={n.x} y={n.y+2} textAnchor="middle" fontSize="7" fontWeight="600" fill="#999">{n.label.split('\n')[0]}</text>
-                    <text x={n.x} y={n.y+11} textAnchor="middle" fontSize="7" fontWeight="600" fill="#999">{n.label.split('\n')[1]}</text>
-                  </g>
-                ))}
-                {/* Vertical connectors */}
-                {[[80,80,80,120],[200,80,200,120],[320,80,320,120]].map(([x1,y1,x2,y2],i)=>(
-                  <line key={i+30} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(200,192,184,0.2)" strokeWidth="1" strokeDasharray="3 3"/>
-                ))}
-              </svg>
-            </div>
-
-            {/* Right — Content */}
-            <div className="rv-r d2">
-              <h3 className="editorial-heading" style={{
-                fontSize:"clamp(22px,2.5vw,30px)",
-                fontWeight:800, color:"#0a0a0a",
-                marginBottom:16, lineHeight:1.15,
-              }}>Member Books → Kitchen Prepares → Bill Generated. Automatically.</h3>
-              <p style={{ fontSize:14.5, color:"#555", lineHeight:1.75, marginBottom:28 }}>
-                When a member books a meal, the kitchen gets the headcount, inventory is updated, and the monthly bill is calculated — all without a single manual step. That's how Mealiez eliminates the daily back-and-forth.
-              </p>
-
-              {/* Two feature highlights */}
-              <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
-                {[
-                  { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>, title:"Multi-Location Management", desc:"Run multiple hostel blocks and canteens from a single admin panel." },
-                  { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, title:"Mobile App for Members & Admins", desc:"Book meals, check menus, and manage payments from one platform." },
-                ].map((item,i)=>(
-                  <div key={i} style={{
-                    display:"flex", gap:14,
-                    padding:"14px 16px",
-                    background:"rgba(255,255,255,0.6)",
-                    borderRadius:12,
-                    border:"1px solid rgba(255,107,53,0.05)",
-                  }}>
-                    <div style={{
-                      width:34, height:34, borderRadius:8,
-                      background:"rgba(255,107,53,0.06)",
-                      display:"flex", alignItems:"center", justifyContent:"center",
-                      flexShrink:0,
-                    }}>{item.icon}</div>
-                    <div>
-                      <h4 style={{ fontSize:14, fontWeight:700, color:"#1a1a1a", marginBottom:3 }}>{item.title}</h4>
-                      <p style={{ fontSize:12.5, color:"#777", lineHeight:1.5 }}>{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          SOLUTIONS — Magazine Style
-      ════════════════════════════════════════════════════════════ */}
-      <section
-        id="solutions"
-        aria-labelledby="solutions-heading"
-        style={{
-          width:"100%", padding:"clamp(72px,9vw,120px) 0",
-          background:"#fef6f0",
-          position:"relative",
-        }}
-      >
-        <div className="container">
-          <div className="rv-el" style={{ marginBottom:48 }}>
-            <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
-              letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>SOLUTIONS</span>
-            <h2 id="solutions-heading" className="editorial-heading" style={{
-              fontSize:"clamp(28px,3.5vw,44px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08, maxWidth:500,
-            }}>
-              Designed for every food service operation.
-            </h2>
-          </div>
-
-          <div className="pg-solutions-grid">
+          <div className="pg-overview-grid">
             {[
-              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>, title:"Hostel & College Mess", desc:"Manage student meal plans, opt-in bookings, dietary preferences, and automated monthly fee collection across all hostel blocks." },
-              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><path d="M12 8v8M8 12h8"/></svg>, title:"Factory & Industrial Canteen", desc:"Track shift-wise meals for hundreds of workers, manage subsidised meals, and integrate with access control systems." },
-              { icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>, title:"Corporate Cafeteria", desc:"Multi-vendor dining with digital meal wallets, payroll deduction, guest tracking, and daily spend reports for HR." },
-            ].map((item,i)=>(
+              {
+                icon: "📍",
+                title: "Mess Discovery & Marketplace",
+                desc: "Students find nearby messes, view photos, verify meal plans, and join directly without physical paperwork.",
+              },
+              {
+                icon: "👥",
+                title: "Student Roster & Plans",
+                desc: "Manage monthly memberships, active plans, room allocations, and special leave deductions seamlessly.",
+              },
+              {
+                icon: "📱",
+                title: "Fast QR Attendance",
+                desc: "Students scan at the dining counter via smartphone. Instant audio/visual verification eliminates proxy dining.",
+              },
+              {
+                icon: "💳",
+                title: "Automated Billing & UPI",
+                desc: "Accurate monthly fee generation based on real meal attendance. Parents & students pay online with instant receipts.",
+              },
+              {
+                icon: "🍲",
+                title: "Digital Menu & Schedule",
+                desc: "Publish breakfast, lunch, and dinner menus in advance. Keep members informed and gather dish-level ratings.",
+              },
+              {
+                icon: "📊",
+                title: "Kitchen & Waste Analytics",
+                desc: "Forecast prep quantities based on verified booking trends to cut unnecessary grocery procurement costs.",
+              },
+            ].map((sol, i) => (
               <BorderGlow
                 key={i}
                 glowColor="20 80 70"
-                backgroundColor="transparent"
+                backgroundColor="#ffffff"
                 borderRadius={16}
-                glowRadius={25}
-                glowIntensity={0.4}
-                colors={["#FF6B35", "#FF875C", "#FFA27F"]}
-                className="rv-s pg-solution-card"
+                glowRadius={20}
+                glowIntensity={0.3}
+                colors={["#EA580C", "#F97316", "#FB923C"]}
+                className="rv-s pg-card-hover"
                 style={{
-                  padding:"clamp(24px,2.5vw,32px)",
+                  padding:"28px 24px",
                   borderRadius:16,
-                  border:"1px solid rgba(255,107,53,0.06)",
-                  background:"#fff",
-                  boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
+                  border:"1px solid #E5E7EB",
+                  background:"#ffffff",
+                }}
+              >
+                <div style={{ fontSize:28, marginBottom:14 }}>{sol.icon}</div>
+                <h3 style={{ fontSize:17, fontWeight:800, color:"#111827", marginBottom:8 }}>
+                  {sol.title}
+                </h3>
+                <p style={{ fontSize:13.5, color:"#6B7280", lineHeight:1.68, margin:0 }}>
+                  {sol.desc}
+                </p>
+              </BorderGlow>
+            ))}
+          </div>
+
+          {/* End with View Products Link */}
+          <div className="rv-el" style={{ textAlign:"center", marginTop:48 }}>
+            <Link href="/product" className="pg-cta-primary">
+              <span>View Products & Full Capabilities</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          5. WHY MEALIEZ — Real Differentiators (No Buzzword Fluff)
+      ════════════════════════════════════════════════════════════ */}
+      <section style={{
+        width:"100%", padding:"clamp(72px,8vw,110px) 0",
+        background:"#F9FAFB",
+        borderTop:"1px solid #E5E7EB",
+        borderBottom:"1px solid #E5E7EB",
+        position:"relative",
+      }}>
+        <div className="container">
+          <div className="rv-el" style={{ marginBottom:48 }}>
+            <span style={{
+              fontSize:11, fontWeight:800, color:"#EA580C",
+              letterSpacing:"0.12em", textTransform:"uppercase",
+              background:"rgba(234,88,12,0.06)",
+              border:"1px solid rgba(234,88,12,0.16)",
+              borderRadius:100, padding:"4px 14px",
+              display:"inline-block", marginBottom:14,
+            }}>WHY CHOOSE MEALIEZ</span>
+            <h2 className="editorial-heading" style={{
+              fontSize:"clamp(30px,3.8vw,46px)",
+              fontWeight:900, color:"#111827",
+              lineHeight:1.1, maxWidth:650,
+            }}>
+              Built specifically for Indian mess realities.<br/>
+              <span style={{ color:"#6B7280" }}>Not generic restaurant POS software.</span>
+            </h2>
+          </div>
+
+          <div className="pg-why-grid">
+            {[
+              {
+                title: "Works on Any Existing Phone (Zero Hardware Cost)",
+                desc: "Generic enterprise ERPs require expensive biometric fingerprint machines that fail when students have wet or oily hands in the dining hall. Mealiez runs directly on any Android smartphone, tablet, or web browser.",
+              },
+              {
+                title: "Designed for Monthly Hostels & Shift Canteens",
+                desc: "Western restaurant software tracks table covers and tips. Mealiez handles Indian mess realities: monthly subscription plans, leave deductions for exam breaks, guest coupons, and mess committee reporting.",
+              },
+              {
+                title: "Zero End-of-Month Ledger Arguments",
+                desc: "Because every meal scan is timestamped and recorded in the student's digital passbook, disputes over 'I wasn't in town that weekend' vanish completely. Both student and mess warden see the same transparent log.",
+              },
+              {
+                title: "Affordable & Fair for Local Operators",
+                desc: "With a 100% free starter tier (₹0 forever) and full-featured plans starting at just ₹499/month, any independent mess owner can modernize their operation without heavy software subscriptions.",
+              },
+            ].map((diff, i) => (
+              <BorderGlow
+                key={i}
+                glowColor="20 80 70"
+                backgroundColor="#ffffff"
+                borderRadius={16}
+                glowRadius={20}
+                glowIntensity={0.3}
+                colors={["#EA580C", "#F97316", "#FB923C"]}
+                className="rv-s pg-card-hover"
+                style={{
+                  padding:"30px",
+                  borderRadius:16,
+                  border:"1px solid #E5E7EB",
+                  background:"#ffffff",
                 }}
               >
                 <div style={{
-                  width:40, height:40, borderRadius:10,
-                  background:"rgba(255,107,53,0.06)",
-                  display:"flex", alignItems:"center", justifyContent:"center",
-                  marginBottom:16,
-                }}>{item.icon}</div>
-                <h3 className="editorial-heading" style={{
-                  fontSize:16, fontWeight:800, color:"#1a1a1a",
-                  marginBottom:8,
-                }}>{item.title}</h3>
-                <p style={{ fontSize:13, color:"#666", lineHeight:1.68 }}>{item.desc}</p>
+                  display:"inline-flex", alignItems:"center", justifyContent:"center",
+                  width:32, height:32, borderRadius:8,
+                  background:"#FFF7ED", color:"#EA580C",
+                  fontWeight:800, fontSize:14, marginBottom:16,
+                }}>
+                  0{i + 1}
+                </div>
+                <h3 style={{ fontSize:18, fontWeight:800, color:"#111827", marginBottom:10 }}>
+                  {diff.title}
+                </h3>
+                <p style={{ fontSize:14, color:"#4B5563", lineHeight:1.7, margin:0 }}>
+                  {diff.desc}
+                </p>
               </BorderGlow>
             ))}
           </div>
@@ -1129,371 +809,158 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          TESTIMONIALS — Magazine Style
-      ════════════════════════════════════════════════════════════ */}
-      <section
-        id="testimonials"
-        aria-labelledby="testimonials-heading"
-        style={{
-          width:"100%", padding:"clamp(72px,9vw,120px) 0",
-          background:"linear-gradient(180deg, #fdf8f5 0%, #fef6f0 100%)",
-          position:"relative",
-        }}
-      >
-        <div className="container">
-          <div className="rv-el" style={{ marginBottom:48 }}>
-            <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
-              letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>TESTIMONIALS</span>
-            <h2 id="testimonials-heading" className="editorial-heading" style={{
-              fontSize:"clamp(28px,3.5vw,44px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08, maxWidth:500,
-            }}>
-              Real results from real mess operators.
-            </h2>
-          </div>
-
-          <div className="pg-testimonials-grid">
-            {[
-              { quote:"We were managing our hostel mess on WhatsApp and a shared Excel file. Every week there was a fight about the food bill. Since we switched to Mealiez, our food wastage has come down by almost 30% and the monthly billing just happens automatically. I wish we had done this sooner.", name:"Rajesh Nair", role:"Hostel Warden, Engineering College, Pune", tag:"HOSTEL", featured:true },
-              { quote:"Collecting monthly mess fees was the most stressful part of my job — chasing students, cross-checking Excel entries, handling disputes. Now parents pay online through Mealiez, I get instant confirmation, and the ledger is always accurate. It's saved me at least 10 hours every month.", name:"Priya Sharma", role:"Mess Administrator, Student Housing Facility, Bengaluru", tag:"MESS", featured:false },
-            ].map((t,i)=>
-              <BorderGlow
-                key={i}
-                glowColor="20 80 70"
-                backgroundColor="transparent"
-                borderRadius={t.featured ? 20 : 16}
-                glowRadius={25}
-                glowIntensity={0.4}
-                colors={["#FF6B35", "#FF875C", "#FFA27F"]}
-                className={t.featured ? "testimonial-card-featured rv-el" : "testimonial-card-compact rv-el"}
-                style={t.featured ? {
-                  padding:"clamp(28px,3vw,40px)",
-                  borderRadius:20,
-                  border:"1px solid rgba(255,107,53,0.10)",
-                  background:"linear-gradient(145deg,rgba(255,248,244,0.8),rgba(255,240,230,0.4))",
-                } : {
-                  padding:"clamp(20px,2.5vw,28px)",
-                  borderRadius:16,
-                  border:"1px solid rgba(0,0,0,0.04)",
-                  background:"rgba(255,255,255,0.7)",
-                  backdropFilter:"blur(8px)",
-                  WebkitBackdropFilter:"blur(8px)",
-                }}
-              >
-                <div className="testimonial-quote-mark" aria-hidden="true">“</div>
-                <p style={{
-                  fontSize:"clamp(14px,1.1vw,15px)",
-                  color:"#444", lineHeight:1.82,
-                  fontStyle:"italic",
-                  marginBottom:24,
-                }}>{t.quote}</p>
-                <div style={{
-                  display:"flex", justifyContent:"space-between", alignItems:"flex-end",
-                  borderTop:"1px solid rgba(0,0,0,0.04)",
-                  paddingTop:16,
-                }}>
-                  <div>
-                    <p style={{ fontWeight:700, color:"#1a1a1a", marginBottom:2, fontSize:14 }}>{t.name}</p>
-                    <p style={{ fontSize:12, color:"#999" }}>{t.role}</p>
-                  </div>
-                  <span style={{
-                    fontWeight:800, fontSize:12, letterSpacing:"0.08em",
-                    color:"#FF6B35",
-                    fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                    textTransform:"uppercase",
-                  }}>{t.tag}</span>
-                </div>
-              </BorderGlow>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          PRICING — Spotlight Card
+          6. SHORT PRODUCT OVERVIEW — Concise Module Snapshot
       ════════════════════════════════════════════════════════════ */}
       <section style={{
-        width:"100%", padding:"clamp(72px,9vw,120px) 0",
-        background:"linear-gradient(180deg,#fef6f0 0%,#fdf0e8 100%)",
+        width:"100%", padding:"clamp(72px,8vw,110px) 0",
+        background:"#ffffff",
         position:"relative",
       }}>
         <div className="container">
           <div className="rv-el" style={{ marginBottom:48, textAlign:"center" }}>
             <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
+              fontSize:11, fontWeight:800, color:"#EA580C",
               letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>PRICING</span>
-            <h2 id="pricing-heading" className="editorial-heading" style={{
-              fontSize:"clamp(28px,3.5vw,44px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08,
+              background:"rgba(234,88,12,0.06)",
+              border:"1px solid rgba(234,88,12,0.16)",
+              borderRadius:100, padding:"4px 14px",
+              display:"inline-block", marginBottom:14,
+            }}>PRODUCT OVERVIEW</span>
+            <h2 className="editorial-heading" style={{
+              fontSize:"clamp(30px,3.8vw,46px)",
+              fontWeight:900, color:"#111827",
+              lineHeight:1.1,
             }}>
-              Simple, honest pricing.
+              Modular tools that fit your workflow.
             </h2>
+            <p style={{ fontSize:15, color:"#6B7280", marginTop:8 }}>
+              Use the modules you need today and expand as your dining operation scales.
+            </p>
           </div>
 
-          <div className="pg-pricing-grid">
-            {/* Free */}
-            <div className="rv-s d1" style={{
-              padding:"clamp(20px,2.5vw,28px)",
-              borderRadius:16,
-              background:"#fff",
-              border:"1px solid rgba(0,0,0,0.04)",
-              boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-            }}>
-              <h3 style={{
-                fontSize:16, fontWeight:800,
-                color:"#1a1a1a", marginBottom:16,
-                fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                textTransform:"uppercase",
-              }}>Free</h3>
-              <div style={{ display:"flex", alignItems:"baseline", gap:3, marginBottom:20 }}>
-                <span className="stat-value" style={{ fontSize:36, lineHeight:1, color:"#1a1a1a" }}>₹0</span>
-                <span style={{ fontSize:13, color:"#bbb" }}>/forever</span>
-              </div>
-              {["List on Marketplace","Basic Mess Info Page","Update or Add plans"].map((f,i)=>(
-                <div key={i} className="pricing-feature-check">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span style={{ color:"#444" }}>{f}</span>
-                </div>
-              ))}
-              {["No Student Management","No Attendance Tracking"].map((f,i)=>(
-                <div key={i} className="pricing-feature-check">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ddd" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  <span style={{ color:"#ccc" }}>{f}</span>
-                </div>
-              ))}
-              <button className="pg-pricing-btn-outline">Get Started</button>
-            </div>
-
-            {/* Starter — Spotlight */}
-            <div className="rv-s d2 pg-pricing-featured" style={{
-              padding:"clamp(24px,3vw,32px)",
-              borderRadius:20,
-              background:"linear-gradient(145deg,#FF6B35 0%,#FF875C 55%,#FFA27F 100%)",
-              boxShadow:"0 24px 64px rgba(255,107,53,0.35), inset 0 1px 0 rgba(255,255,255,0.2)",
-              position:"relative",
-              transform:"translateY(-8px)",
-            }}>
-              <div style={{
-                position:"absolute", top:-12, left:"50%", transform:"translateX(-50%)",
-                background:"#fff",
-                border:"1px solid rgba(255,107,53,0.2)",
-                borderRadius:100, padding:"4px 16px",
-                fontSize:10, fontWeight:800, color:"#FF6B35",
-                letterSpacing:"0.08em", whiteSpace:"nowrap",
-                boxShadow:"0 4px 12px rgba(255,107,53,0.15)",
-              }}>MOST POPULAR</div>
-              <h3 style={{
-                fontSize:18, fontWeight:800,
-                color:"#fff", marginBottom:16,
-                fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                textTransform:"uppercase",
-              }}>Starter</h3>
-              <div style={{ display:"flex", alignItems:"baseline", gap:3, marginBottom:20 }}>
-                <span className="stat-value" style={{ fontSize:40, lineHeight:1, color:"#fff" }}>₹499</span>
-                <span style={{ fontSize:14, color:"rgba(255,255,255,0.6)" }}>/month</span>
-              </div>
-              <div style={{ fontSize:12, color:"rgba(255,255,255,0.6)", marginBottom:12 }}>Everything you need to start:</div>
-              {["Up to 50 Students","QR Attendance System","Menu Management","Student Management","List on Marketplace"].map((f,i)=>(
-                <div key={i} style={{
-                  display:"flex", alignItems:"center", gap:10,
-                  fontSize:13.5, color:"#fff", fontWeight:500,
-                  padding:"7px 0",
-                  borderBottom:i<4?"1px solid rgba(255,255,255,0.1)":"none",
-                }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  {f}
-                </div>
-              ))}
-              <button className="pg-pricing-btn-primary">Choose Starter</button>
-            </div>
-
-            {/* Pro */}
-            <div className="rv-s d3" style={{
-              padding:"clamp(20px,2.5vw,28px)",
-              borderRadius:16,
-              background:"#fff",
-              border:"1px solid rgba(0,0,0,0.04)",
-              boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-            }}>
-              <h3 style={{
-                fontSize:16, fontWeight:800,
-                color:"#1a1a1a", marginBottom:16,
-                fontFamily:"'Barlow Condensed',system-ui,sans-serif",
-                textTransform:"uppercase",
-              }}>Pro</h3>
-              <div style={{ display:"flex", alignItems:"baseline", gap:3, marginBottom:20 }}>
-                <span className="stat-value" style={{ fontSize:36, lineHeight:1, color:"#1a1a1a" }}>₹799</span>
-                <span style={{ fontSize:13, color:"#bbb" }}>/month</span>
-              </div>
-              <div style={{ fontSize:12, color:"#999", marginBottom:12 }}>Everything in Starter, plus:</div>
-              {["Up to 100 Students","Full Payment Management","Advanced Analytics","On-site Setup & Training"].map((f,i)=>(
-                <div key={i} className="pricing-feature-check">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span style={{ color:"#444" }}>{f}</span>
-                </div>
-              ))}
-              <button className="pg-pricing-btn-outline">Choose Pro</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          RESOURCES — Editorial Card Row
-      ════════════════════════════════════════════════════════════ */}
-      <section
-        id="resources"
-        aria-labelledby="resources-heading"
-        style={{
-          width:"100%", padding:"clamp(72px,9vw,120px) 0",
-          background:"linear-gradient(180deg,#fff 0%,#fef6f0 100%)",
-          position:"relative",
-        }}
-      >
-        <div className="container">
-          <div className="rv-el" style={{ marginBottom:48 }}>
-            <span style={{
-              fontSize:11, fontWeight:800, color:"#FF6B35",
-              letterSpacing:"0.12em", textTransform:"uppercase",
-              background:"rgba(255,107,53,0.06)",
-              border:"1px solid rgba(255,107,53,0.12)",
-              borderRadius:100, padding:"4px 12px",
-              display:"inline-block", marginBottom:16,
-            }}>RESOURCES</span>
-            <h2 id="resources-heading" className="editorial-heading" style={{
-              fontSize:"clamp(28px,3.5vw,44px)",
-              fontWeight:900, color:"#0a0a0a",
-              lineHeight:1.08,
-            }}>
-              Practical resources for<br/>
-              <span style={{ color:"rgba(0,0,0,0.3)" }}>mess operators.</span>
-            </h2>
-          </div>
-
-          <div className="pg-resources-grid">
+          <div className="pg-overview-grid">
             {[
-              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>, badge:"REPORT", title:"Indian Hostel Mess Food Wastage Report 2026" },
-              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>, badge:"CASE STUDY", title:"How a 1,200-Member Hostel Reduced Wastage by 28%" },
-              { icon:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="1.5" strokeLinecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>, badge:"GUIDE", title:"Step-by-Step Guide to Digitising Your Hostel Mess" },
-            ].map((r,i)=>(
+              {
+                slug: "attendance",
+                badge: "ATTENDANCE",
+                title: "QR Code Attendance",
+                summary: "Fast 1-second check-in scans at the counter. Tracks actual meals served and eliminates proxy dining.",
+              },
+              {
+                slug: "meal-booking",
+                badge: "BOOKING",
+                title: "Meal Booking & Opt-Out",
+                summary: "Students mark leaves or guest meals in advance. Kitchen teams view exact headcount before prep begins.",
+              },
+              {
+                slug: "billing",
+                badge: "BILLING",
+                title: "Billing & UPI Invoicing",
+                summary: "Automated monthly statements linked to attendance. Send WhatsApp fee reminders with UPI pay links.",
+              },
+            ].map((mod, i) => (
               <BorderGlow
                 key={i}
                 glowColor="20 80 70"
-                backgroundColor="transparent"
+                backgroundColor="#ffffff"
                 borderRadius={16}
-                glowRadius={25}
-                glowIntensity={0.4}
-                colors={["#FF6B35", "#FF875C", "#FFA27F"]}
-                className="rv-s pg-resource-card"
+                glowRadius={20}
+                glowIntensity={0.3}
+                colors={["#EA580C", "#F97316", "#FB923C"]}
+                className="rv-s pg-card-hover"
                 style={{
-                  padding:0, borderRadius:16, overflow:"hidden",
-                  border:"1px solid rgba(0,0,0,0.04)",
-                  background:"#fff",
-                  boxShadow:"0 2px 12px rgba(17,17,17,0.03)",
-                  cursor:"pointer",
+                  padding:"28px 24px",
+                  borderRadius:16,
+                  border:"1px solid #E5E7EB",
+                  background:"#ffffff",
+                  display:"flex", flexDirection:"column", justifyContent:"space-between",
                 }}
               >
-                <div className="pg-resource-thumb">
-                  <div className="pg-resource-thumb-grid" aria-hidden="true"/>
-                  <div style={{ position:"relative", zIndex:1 }}>{r.icon}</div>
-                </div>
-                <div style={{ padding:"16px 18px" }}>
+                <div>
                   <span style={{
-                    fontSize:9, fontWeight:800, color:"#FF6B35",
-                    letterSpacing:"0.12em", textTransform:"uppercase",
-                    background:"rgba(255,107,53,0.06)",
-                    border:"1px solid rgba(255,107,53,0.12)",
-                    borderRadius:100, padding:"2px 8px",
-                    display:"inline-block", marginBottom:10,
-                  }}>{r.badge}</span>
-                  <p style={{ fontSize:14, fontWeight:600, color:"#1a1a1a", lineHeight:1.45 }}>{r.title}</p>
+                    fontSize:10, fontWeight:800, color:"#EA580C",
+                    letterSpacing:"0.1em", textTransform:"uppercase",
+                    background:"#FFF7ED", border:"1px solid #FED7AA",
+                    borderRadius:6, padding:"3px 8px", display:"inline-block", marginBottom:14,
+                  }}>{mod.badge}</span>
+                  <h3 style={{ fontSize:18, fontWeight:800, color:"#111827", marginBottom:8 }}>
+                    {mod.title}
+                  </h3>
+                  <p style={{ fontSize:13.5, color:"#6B7280", lineHeight:1.65, marginBottom:20 }}>
+                    {mod.summary}
+                  </p>
                 </div>
+                <Link href={`/product/${mod.slug}`} style={{
+                  fontSize:13.5, fontWeight:700, color:"#EA580C",
+                  textDecoration:"none", display:"inline-flex", alignItems:"center", gap:6,
+                }}>
+                  Learn more about {mod.title} →
+                </Link>
               </BorderGlow>
             ))}
+          </div>
+
+          {/* End with View Products Link */}
+          <div className="rv-el" style={{ textAlign:"center", marginTop:44 }}>
+            <Link href="/product" className="pg-cta-primary">
+              <span>View All Products →</span>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          FINAL CTA — Cinematic with Floating Particles
+          7. FINAL CTA — Clear Invitation to Talk & Try
       ════════════════════════════════════════════════════════════ */}
       <section style={{
         width:"100%",
-        background:"linear-gradient(180deg,#fdf0e8 0%,#fef6f0 100%)",
-        padding:"clamp(72px,10vw,120px) 0",
+        background:"linear-gradient(180deg,#F9FAFB 0%,#FFF7ED 100%)",
+        padding:"clamp(72px,9vw,110px) 0",
         position:"relative",
         overflow:"hidden",
+        borderTop:"1px solid #E5E7EB",
       }}>
-        <FloatingParticles count={6} minSize={3} maxSize={5} speed={0.1} />
+        <FloatingParticles count={6} minSize={2} maxSize={4} speed={0.08} />
         <div className="container" style={{ position:"relative", zIndex:2 }}>
           <BorderGlow
             glowColor="20 80 70"
-            backgroundColor="transparent"
+            backgroundColor="#ffffff"
             borderRadius={24}
-            glowRadius={35}
-            glowIntensity={0.5}
-            colors={["#FF6B35", "#FF875C", "#FFA27F"]}
+            glowRadius={30}
+            glowIntensity={0.4}
+            colors={["#EA580C", "#F97316", "#FB923C"]}
             className="rv-s"
             style={{
-              maxWidth:800, margin:"0 auto", textAlign:"center",
-              padding:"clamp(48px,6vw,80px) clamp(24px,4vw,56px)",
+              maxWidth:760, margin:"0 auto", textAlign:"center",
+              padding:"clamp(36px,5vw,72px) clamp(18px,4vw,56px)",
               borderRadius:24,
-              background:"rgba(255,255,255,0.5)",
-              backdropFilter:"blur(32px) saturate(1.6)",
-              WebkitBackdropFilter:"blur(32px) saturate(1.6)",
-              border:"1px solid rgba(255,255,255,0.8)",
-              boxShadow:"0 4px 24px rgba(17,17,17,0.03)",
+              background:"#ffffff",
+              border:"1px solid #E5E7EB",
+              boxShadow:"0 10px 30px rgba(0,0,0,0.04)",
               position:"relative",
             }}
           >
-            <div style={{
-              position:"absolute", width:"50%", height:"50%",
-              top:"25%", left:"25%",
-              background:"radial-gradient(circle,rgba(255,107,53,0.04),transparent 60%)",
-              filter:"blur(60px)", pointerEvents:"none",
-            }}/>
             <h2 className="editorial-heading" style={{
-              fontSize:"clamp(32px,4vw,48px)",
-              fontWeight:900, color:"#0a0a0a",
+              fontSize:"clamp(30px,3.8vw,44px)",
+              fontWeight:900, color:"#111827",
               lineHeight:1.1, marginBottom:16,
-              position:"relative",
             }}>
-              Your mess deserves better<br/>
-              <span style={{
-                background:"linear-gradient(135deg,#FF6B35,#FF875C)",
-                WebkitBackgroundClip:"text",
-                backgroundClip:"text",
-                WebkitTextFillColor:"transparent",
-              }}>than WhatsApp and Excel.</span>
+              Ready to simplify your mess management?
             </h2>
             <p style={{
-              fontSize:"clamp(14px,1.2vw,16px)",
-              color:"#555", lineHeight:1.75,
-              maxWidth:560, margin:"0 auto 36px",
-              position:"relative",
+              fontSize:15.5,
+              color:"#4B5563", lineHeight:1.75,
+              maxWidth:540, margin:"0 auto 32px",
             }}>
-              Book a free 30-minute demo and see exactly how Mealiez cuts food wastage, automates monthly billing, and gives you complete visibility over your operations.
+              See how Mealiez stops food wastage, automates monthly billing, and eliminates register chaos. Get started with our free tier or schedule a friendly guided walkthrough.
             </p>
-            <div style={{ display:"flex", gap:14, justifyContent:"center", flexWrap:"wrap", position:"relative" }}>
-              <Link href="/book-demo" className="pg-cta-primary pg-cta-primary-lg" aria-label="Book a free demo with Mealiez">
-                Book a Free Demo
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <div style={{ display:"flex", gap:14, justifyContent:"center", flexWrap:"wrap" }}>
+              <Link href="/book-demo" className="pg-cta-primary pg-cta-primary-lg">
+                <span>Book a Demo</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
               </Link>
-              <Link href="/why-mealiez" className="pg-cta-ghost pg-cta-ghost-lg">
-                Calculate Your ROI
+              <Link href="/pricing" className="pg-cta-ghost">
+                View Pricing Plans
               </Link>
             </div>
           </BorderGlow>

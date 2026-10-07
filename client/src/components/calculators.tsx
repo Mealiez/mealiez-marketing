@@ -18,40 +18,99 @@ export function RoiCalculator() {
   }, []);
 
   return (
-    <div className="rounded-3xl border border-[#FF6B35]/20 bg-white p-6 shadow-sm">
-      <h3 className="text-xl font-semibold text-slate-900">ROI Calculator</h3>
-      <p className="mt-1 text-sm text-slate-600">Estimate annual savings from reduced wastage.</p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-3">
-        <label className="text-sm text-slate-700">
+    <div style={{
+      background: "#ffffff",
+      border: "1.5px solid rgba(234, 88, 12, 0.2)",
+      borderRadius: 24,
+      padding: "clamp(20px, 4vw, 28px)",
+      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
+      maxWidth: "100%",
+      boxSizing: "border-box",
+    }}>
+      <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: "0 0 6px" }}>ROI Calculator</h3>
+      <p style={{ fontSize: 13.5, color: "#64748B", margin: "0 0 20px" }}>Estimate annual savings from reduced wastage.</p>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 160px), 1fr))",
+        gap: 14,
+        marginBottom: 20,
+      }}>
+        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, fontWeight: 600, color: "#334155" }}>
           Members
           <input
             type="number"
             value={members}
             onChange={(e) => setMembers(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 outline-none"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              borderRadius: 12,
+              border: "1px solid #CBD5E1",
+              padding: "10px 12px",
+              fontSize: 14,
+              color: "#0F172A",
+              background: "#F8FAFC",
+              outline: "none",
+            }}
           />
         </label>
-        <label className="text-sm text-slate-700">
+        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, fontWeight: 600, color: "#334155" }}>
           Avg meal cost (₹)
           <input
             type="number"
             value={mealCost}
             onChange={(e) => setMealCost(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 outline-none"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              borderRadius: 12,
+              border: "1px solid #CBD5E1",
+              padding: "10px 12px",
+              fontSize: 14,
+              color: "#0F172A",
+              background: "#F8FAFC",
+              outline: "none",
+            }}
           />
         </label>
-        <label className="text-sm text-slate-700">
+        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, fontWeight: 600, color: "#334155" }}>
           Wastage %
           <input
             type="number"
             value={wastage}
             onChange={(e) => setWastage(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 outline-none"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              borderRadius: 12,
+              border: "1px solid #CBD5E1",
+              padding: "10px 12px",
+              fontSize: 14,
+              color: "#0F172A",
+              background: "#F8FAFC",
+              outline: "none",
+            }}
           />
         </label>
       </div>
-      <div className="mt-5 rounded-2xl bg-gradient-to-br from-[#FF6B35]/10 to-[#FF875C]/10 p-4 text-slate-900">
-        Estimated annual savings: <span className="text-2xl font-bold text-[#FF6B35]">₹{isClient ? annualSavings.toLocaleString() : annualSavings}</span>
+      <div style={{
+        borderRadius: 16,
+        background: "linear-gradient(135deg, rgba(234,88,12,0.08) 0%, rgba(249,115,22,0.05) 100%)",
+        border: "1px solid rgba(234,88,12,0.15)",
+        padding: "16px 20px",
+        fontSize: 15,
+        fontWeight: 600,
+        color: "#0F172A",
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 10,
+      }}>
+        <span>Estimated annual savings:</span>
+        <span style={{ fontSize: 24, fontWeight: 900, color: "#EA580C", fontFamily: "'Barlow Condensed',system-ui,sans-serif" }}>
+          ₹{isClient ? annualSavings.toLocaleString() : annualSavings}
+        </span>
       </div>
     </div>
   );
@@ -73,40 +132,99 @@ export function LeakageCalculator() {
   }, []);
 
   return (
-    <div className="rounded-3xl border border-[#FF6B35]/20 bg-white p-6 shadow-sm">
-      <h3 className="text-xl font-semibold text-slate-900">Cost Leakage Calculator</h3>
-      <p className="mt-1 text-sm text-slate-600">Find revenue leakage caused by attendance mismatch.</p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-3">
-        <label className="text-sm text-slate-700">
+    <div style={{
+      background: "#ffffff",
+      border: "1.5px solid rgba(234, 88, 12, 0.2)",
+      borderRadius: 24,
+      padding: "clamp(20px, 4vw, 28px)",
+      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
+      maxWidth: "100%",
+      boxSizing: "border-box",
+    }}>
+      <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: "0 0 6px" }}>Cost Leakage Calculator</h3>
+      <p style={{ fontSize: 13.5, color: "#64748B", margin: "0 0 20px" }}>Find revenue leakage caused by attendance mismatch.</p>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 160px), 1fr))",
+        gap: 14,
+        marginBottom: 20,
+      }}>
+        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, fontWeight: 600, color: "#334155" }}>
           Daily meals
           <input
             type="number"
             value={dailyMeals}
             onChange={(e) => setDailyMeals(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 outline-none"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              borderRadius: 12,
+              border: "1px solid #CBD5E1",
+              padding: "10px 12px",
+              fontSize: 14,
+              color: "#0F172A",
+              background: "#F8FAFC",
+              outline: "none",
+            }}
           />
         </label>
-        <label className="text-sm text-slate-700">
+        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, fontWeight: 600, color: "#334155" }}>
           Avg meal price (₹)
           <input
             type="number"
             value={mealPrice}
             onChange={(e) => setMealPrice(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 outline-none"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              borderRadius: 12,
+              border: "1px solid #CBD5E1",
+              padding: "10px 12px",
+              fontSize: 14,
+              color: "#0F172A",
+              background: "#F8FAFC",
+              outline: "none",
+            }}
           />
         </label>
-        <label className="text-sm text-slate-700">
+        <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, fontWeight: 600, color: "#334155" }}>
           Mismatch %
           <input
             type="number"
             value={mismatch}
             onChange={(e) => setMismatch(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 outline-none"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              borderRadius: 12,
+              border: "1px solid #CBD5E1",
+              padding: "10px 12px",
+              fontSize: 14,
+              color: "#0F172A",
+              background: "#F8FAFC",
+              outline: "none",
+            }}
           />
         </label>
       </div>
-      <div className="mt-5 rounded-2xl bg-gradient-to-br from-[#FF875C]/10 to-[#FFA27F]/10 p-4 text-slate-900">
-        Annual leakage estimate: <span className="text-2xl font-bold text-[#FF6B35]">₹{isClient ? leakage.toLocaleString() : leakage}</span>
+      <div style={{
+        borderRadius: 16,
+        background: "linear-gradient(135deg, rgba(234,88,12,0.08) 0%, rgba(249,115,22,0.05) 100%)",
+        border: "1px solid rgba(234,88,12,0.15)",
+        padding: "16px 20px",
+        fontSize: 15,
+        fontWeight: 600,
+        color: "#0F172A",
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 10,
+      }}>
+        <span>Annual leakage estimate:</span>
+        <span style={{ fontSize: 24, fontWeight: 900, color: "#EA580C", fontFamily: "'Barlow Condensed',system-ui,sans-serif" }}>
+          ₹{isClient ? leakage.toLocaleString() : leakage}
+        </span>
       </div>
     </div>
   );

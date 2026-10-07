@@ -42,7 +42,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         style={{
           position: "fixed",
           bottom: 24,
-          right: 24,
+          right: "clamp(12px, 3vw, 24px)",
+          maxWidth: "calc(100vw - 24px)",
+          boxSizing: "border-box",
           zIndex: 9999,
           display: "flex",
           flexDirection: "column",
@@ -90,8 +92,9 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
         borderRadius: 14,
         boxShadow: "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)",
         border: "1px solid rgba(0,0,0,0.06)",
-        minWidth: 280,
-        maxWidth: 400,
+        minWidth: "min(280px, calc(100vw - 32px))",
+        maxWidth: "min(400px, calc(100vw - 32px))",
+        boxSizing: "border-box",
       }}
     >
       <div

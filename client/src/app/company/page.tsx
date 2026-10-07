@@ -9,254 +9,493 @@ function useReveal() {
     const els = document.querySelectorAll(".rv");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
 }
 
-const team = [
-  { name: "Rohan Mehta", role: "Co-Founder & CEO", bio: "10+ years in food service operations. Built Mealiez after managing a 600-member mess with nothing but Excel and regret.", icon: "👨‍💼" },
-  { name: "Priya Sharma", role: "Co-Founder & CTO", bio: "Former SDE at a leading food-tech company. Obsessed with building software that works for field operators, not just boardrooms.", icon: "👩‍💻" },
-  { name: "Aditya Kumar", role: "Head of Product", bio: "Spent 3 years doing hostel mess audits across 40 institutions. Every Mealiez feature was born from that fieldwork.", icon: "🎯" },
+const journeyMilestones = [
+  {
+    period: "The Genesis",
+    title: "Identifying the Daily Mess Chaos",
+    desc: "Observing students and mess operators struggling daily with frayed paper registers, misplaced coupon tokens, and heated month-end billing arguments in college hostel hubs.",
+  },
+  {
+    period: "First Prototype",
+    title: "Phone-Based QR Attendance",
+    desc: "Built the initial smartphone scanning system to prove that hostel mess check-ins could be verified in under one second with zero expensive biometric hardware.",
+  },
+  {
+    period: "Core Platform",
+    title: "Automated Billing & Digital Menus",
+    desc: "Expanded into automated dues calculation, attendance-adjusted holiday deductions, and transparent digital menu publishing for students and parents.",
+  },
+  {
+    period: "Today & Beyond",
+    title: "Serving Messes & Canteens Across India",
+    desc: "Empowering hostel wardens, independent mess owners, and student canteens with reliable, affordable tools that streamline daily food service operations.",
+  },
 ];
 
-const timeline = [
-  { year: "2021", event: "Mealiez founded after experiencing the chaos of managing a 600-member hostel mess manually." },
-  { year: "2022", event: "First 10 hostel operators onboarded. Product-market fit confirmed with 0% churn in year one." },
-  { year: "2023", event: "Expanded to college canteens and industrial operations. Crossed 100 active operator accounts." },
-  { year: "2024", event: "Launched enterprise plan. Crossed 500 operators and 10 lakh meals tracked monthly." },
-  { year: "2025", event: "Raised seed funding to accelerate product and team growth across India's Tier 1 and Tier 2 cities." },
-  { year: "2026", event: "Serving 500+ operators, processing ₹12Cr+ in billings monthly, and expanding to new food service verticals." },
-];
-
-const values = [
-  { icon: "🎯", title: "Operator First", desc: "Every feature we build starts with a field visit or operator interview. We ship for the warden, not the investor deck." },
-  { icon: "🔍", title: "Radical Transparency", desc: "No hidden fees, no gotcha contracts. Our pricing, data policies, and roadmap are always open to our customers." },
-  { icon: "⚡", title: "Speed Over Perfection", desc: "We ship fast, listen faster, and iterate based on real operator feedback — not internal assumptions." },
-  { icon: "🤝", title: "Partnership Mindset", desc: "We don't just sell software. We help our operators grow their business, save money, and serve their members better." },
+const companyValues = [
+  {
+    icon: "📱",
+    title: "Built for Real Field Conditions",
+    desc: "Software must work in hot, busy dining halls on regular smartphones. We prioritize speed, reliability, and simple interfaces over unnecessary complexity.",
+  },
+  {
+    icon: "🤝",
+    title: "Honest Transparency",
+    desc: "Both the mess operator and the student diner see the exact same attendance logs and dues calculation. Zero hidden deductions, zero disputes.",
+  },
+  {
+    icon: "🍲",
+    title: "Food Waste Reduction",
+    desc: "By giving kitchen cooks reliable daily headcount forecasts, we actively help institutional kitchens reduce preventable food waste and grocery losses.",
+  },
+  {
+    icon: "🇮🇳",
+    title: "Accessible for Every Operator",
+    desc: "We believe modernization shouldn't require enterprise budgets. That's why we maintain a ₹0 free tier and low-cost plans for independent local messes.",
+  },
 ];
 
 export default function CompanyPage() {
   useReveal();
+
   return (
     <>
       <style>{`
-        .rv   { opacity:0; transform:translateY(26px); transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1); }
+        .rv { opacity:0; transform:translateY(24px); transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1); }
         .rv.in { opacity:1; transform:none; }
-        .d1{transition-delay:.1s!important} .d2{transition-delay:.2s!important}
-        .d3{transition-delay:.3s!important} .d4{transition-delay:.4s!important}
-        .co { font-family:'Inter',system-ui,sans-serif; color:#1a1a1a; }
-        .w  { max-width:1080px; margin:0 auto; padding:0 40px; }
-        .w-sm{ max-width:760px; margin:0 auto; padding:0 40px; }
-        .s-cream{ background:#fef6f0; padding:80px 0; }
-        .s-white{ background:#fff; padding:80px 0; }
-        .card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:32px;}
-        .btn-ora{background:linear-gradient(135deg,#FF6B35,#FF875C);color:#fff;border:none;border-radius:10px;padding:15px 32px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(255,107,53,.36);transition:transform .2s,opacity .2s;}
-        .btn-ora:hover{transform:translateY(-2px);opacity:.92;}
-        .input{width:100%;border:1.5px solid rgba(0,0,0,.12);border-radius:12px;padding:13px 16px;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;font-family:'Inter',system-ui,sans-serif;box-sizing:border-box;}
-        .input:focus{border-color:#FF6B35;box-shadow:0 0 0 3px rgba(255,107,53,.1);}
-        .label{font-size:13px;font-weight:600;color:#555;margin-bottom:8px;display:block;}
+        .d1{transition-delay:.1s!important} .d2{transition-delay:.2s!important} .d3{transition-delay:.3s!important}
+
+        .company-hero {
+          background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+          padding: clamp(64px,7vw,96px) 0 clamp(48px,5vw,72px);
+          text-align: center;
+          border-bottom: 1px solid #E5E7EB;
+        }
+
+        .btn-brand {
+          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+          background: linear-gradient(135deg, #EA580C, #F97316);
+          color: #ffffff; border: none; border-radius: 12px;
+          padding: 14px 28px; font-size: 14.5px; font-weight: 700;
+          text-decoration: none; cursor: pointer;
+          box-shadow: 0 4px 16px rgba(234,88,12,0.28);
+          transition: transform .2s, box-shadow .2s;
+        }
+        .btn-brand:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(234,88,12,0.36);
+        }
+
+        .btn-outline {
+          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+          background: #ffffff; color: #1F2937;
+          border: 1.5px solid #E5E7EB; border-radius: 12px;
+          padding: 14px 26px; font-size: 14.5px; font-weight: 600;
+          text-decoration: none;
+          transition: all .2s;
+        }
+        .btn-outline:hover {
+          background: #F9FAFB;
+          border-color: rgba(234,88,12,0.4);
+          color: #EA580C;
+        }
+
+        @media (max-width: 560px) {
+          .leadership-card {
+            grid-template-columns: 1fr !important;
+            text-align: center !important;
+            justify-items: center !important;
+          }
+          .leadership-header {
+            justify-content: center !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .co-card-pad { padding: 24px 16px !important; }
+        }
       `}</style>
 
-      <div className="co">
-
-        {/* Hero */}
-        <section style={{ background: "#fef6f0", padding: "80px 0 72px", textAlign: "center" }}>
-          <div className="w">
-            <div className="rv" style={{ display: "inline-flex", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.15)", borderRadius: 100, padding: "6px 16px", fontSize: 12, fontWeight: 700, color: "#FF6B35", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 24 }}>
-              Our Company
-            </div>
-            <h1 className="rv d1" style={{ fontSize: 54, fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#1a1a1a", marginBottom: 20 }}>
-              We're on a mission to<br />
-              <span style={{ color: "#FF6B35" }}>modernise India's messes</span>
-            </h1>
-            <p className="rv d2" style={{ fontSize: 17, color: "#555", lineHeight: 1.75, maxWidth: 560, margin: "0 auto" }}>
-              Mealiez started when our founders got tired of running a hostel mess with registers, WhatsApp groups, and spreadsheets. We built the tool we wished existed.
-            </p>
+      {/* ── 1. Hero: Who is Mealiez? ── */}
+      <section className="company-hero">
+        <div className="container">
+          <div className="rv" style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: "rgba(234,88,12,0.06)", border: "1px solid rgba(234,88,12,0.18)",
+            borderRadius: 100, padding: "5px 16px",
+            fontSize: 12, fontWeight: 700, color: "#EA580C",
+            letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 20
+          }}>
+            About Mealiez
           </div>
-        </section>
-
-        {/* About Mealiez */}
-        <section id="about" className="s-white">
-          <div className="w">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-              <div>
-                <div className="rv" style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>About Mealiez</div>
-                <h2 className="rv d1" style={{ fontSize: 36, fontWeight: 900, lineHeight: 1.2, letterSpacing: "-.025em", marginBottom: 20 }}>
-                  Built for operators, by someone who was one
-                </h2>
-                <p className="rv d2" style={{ fontSize: 15, color: "#555", lineHeight: 1.8, marginBottom: 16 }}>
-                  Mealiez is India's leading mess management and food operations platform. We help hostel operators, college canteens, industrial kitchens, corporate cafeterias, cloud kitchens, and subscription mess businesses run their entire operation from one platform.
-                </p>
-                <p className="rv d3" style={{ fontSize: 15, color: "#555", lineHeight: 1.8 }}>
-                  Today, we serve 500+ operators across India, processing over 10 lakh meals and ₹12 crore in billings every month — and growing.
-                </p>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                {[
-                  { stat: "500+", label: "Active Operators" },
-                  { stat: "10L+", label: "Meals/Month" },
-                  { stat: "₹12Cr+", label: "Billing/Month" },
-                  { stat: "5 days", label: "Avg Onboarding" },
-                ].map((s, i) => (
-                  <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }} backgroundColor="#ffffff" borderRadius={20}>
-                    <div style={{ fontSize: 28, fontWeight: 900, color: "#FF6B35", letterSpacing: "-0.02em", marginBottom: 6 }}>{s.stat}</div>
-                    <div style={{ fontSize: 12, color: "#888" }}>{s.label}</div>
-                  </BorderGlow>
-                ))}
-              </div>
-            </div>
+          <h1 className="rv d1" style={{
+            fontSize: "clamp(36px,4.5vw,56px)", fontWeight: 900,
+            lineHeight: 1.1, color: "#111827", marginBottom: 18,
+            fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase",
+          }}>
+            Who is <span style={{ color: "#EA580C" }}>Mealiez?</span>
+          </h1>
+          <p className="rv d2" style={{
+            fontSize: "clamp(15px,1.2vw,17px)", color: "#4B5563",
+            lineHeight: 1.75, maxWidth: 620, margin: "0 auto 32px"
+          }}>
+            We are building simple, dependable digital tools designed specifically for Indian hostel messes, college canteens, and independent food operators.
+          </p>
+          <div className="rv d3" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/book-demo" className="btn-brand">
+              <span>Book a Demo</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </Link>
+            <Link href="/reviews-faqs" className="btn-outline">
+              Read Customer Reviews
+            </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Founder Story */}
-        <section id="founder-story" className="s-cream">
-          <div className="w-sm">
-            <div className="rv" style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12, textAlign: "center" }}>Founder Story</div>
-            <h2 className="rv d1" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 48, letterSpacing: "-.025em" }}>
-              How Mealiez Was Born
-            </h2>
-            <BorderGlow className="card rv d2" style={{ padding: "40px 48px", borderLeft: "4px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
-              <p style={{ fontSize: 15, color: "#444", lineHeight: 1.9, marginBottom: 24, fontStyle: "italic" }}>
-                "I managed a 600-member hostel mess in my final year. Every day was a battle — paper registers no one could read, billing disputes every week, and no way to know how much food to cook. I wrote everything in Excel. It broke constantly. After graduation, I spent a year talking to 40+ mess operators. They all had the same problems. That's when I knew I had to build Mealiez."
+      {/* ── 2. Who We Are & Why Mealiez Was Started ── */}
+      <section style={{ background: "#ffffff", padding: "clamp(64px,7vw,96px) 0" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: 36, alignItems: "start" }}>
+            {/* Who We Are */}
+            <div className="rv">
+              <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                WHO WE ARE
+              </span>
+              <h2 style={{
+                fontSize: "clamp(26px,3vw,36px)", fontWeight: 900, color: "#111827",
+                fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase", marginTop: 6, marginBottom: 16
+              }}>
+                A dedicated team modernizing Indian dining halls
+              </h2>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
+                Mealiez is a food management technology platform crafted to solve the unique operational realities of Indian hostel dining halls, PG kitchens, and college canteens.
               </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg,#FF6B35,#FF875C)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
-                  👨‍💼
-                </div>
-                <div>
-                  <p style={{ fontSize: 15, fontWeight: 800, color: "#1a1a1a" }}>Rohan Mehta</p>
-                  <p style={{ fontSize: 13, color: "#888" }}>Co-Founder & CEO, Mealiez</p>
-                </div>
-              </div>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8 }}>
+                Unlike generic enterprise ERP systems designed for corporate cafeterias or Western point-of-sale systems built for dine-in restaurants, Mealiez is built directly around Indian monthly subscription cycles, coupon systems, and warden workflows.
+              </p>
+            </div>
+
+            {/* Why Mealiez Was Started */}
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="#ffffff"
+              borderRadius={20}
+              glowRadius={22}
+              glowIntensity={0.3}
+              colors={["#EA580C", "#F97316", "#FB923C"]}
+              className="rv d1 co-card-pad"
+              style={{
+                padding: "clamp(28px,3vw,36px)",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "#ffffff",
+              }}
+            >
+              <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                WHY MEALIEZ WAS STARTED
+              </span>
+              <h3 style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginTop: 6, marginBottom: 14 }}>
+                The Frustration of Paper Registers
+              </h3>
+              <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.75, marginBottom: 14 }}>
+                Every semester in college towns across India, the same scene repeats: mess wardens flip through torn paper notebooks trying to verify whether a student had lunch, students dispute charges for days they were home on leave, and kitchen cooks discard buckets of untouched food because they guessed headcounts.
+              </p>
+              <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.75, margin: 0 }}>
+                Mealiez was started to replace this manual friction with a seamless, camera-based QR attendance and automated billing system that runs directly on any phone — giving mess operators dignity, efficiency, and clarity.
+              </p>
             </BorderGlow>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Mission & Vision */}
-        <section id="mission-vision" className="s-white">
-          <div className="w">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
-              <BorderGlow className="card rv d1" style={{ borderTop: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
-                <div style={{ fontSize: 32, marginBottom: 20 }}>🎯</div>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: "#1a1a1a", marginBottom: 14 }}>Our Mission</h3>
-                <p style={{ fontSize: 15, color: "#555", lineHeight: 1.8 }}>
-                  To give every mess operator in India — from a 50-member tiffin service to a 5,000-member university — the operational tools that make their food business efficient, transparent, and profitable.
-                </p>
-              </BorderGlow>
-              <BorderGlow className="card rv d2" style={{ borderTop: "3px solid #FF6B35" }} backgroundColor="#ffffff" borderRadius={20}>
-                <div style={{ fontSize: 32, marginBottom: 20 }}>🔭</div>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: "#1a1a1a", marginBottom: 14 }}>Our Vision</h3>
-                <p style={{ fontSize: 15, color: "#555", lineHeight: 1.8 }}>
-                  A world where no food service operator wastes food, loses revenue to manual errors, or spends hours on billing. Where every member gets a transparent, frictionless dining experience.
-                </p>
-              </BorderGlow>
-            </div>
+      {/* ── 3. Mission & Vision ── */}
+      <section style={{
+        background: "#F9FAFB",
+        padding: "clamp(64px,7vw,96px) 0",
+        borderTop: "1px solid #E5E7EB",
+        borderBottom: "1px solid #E5E7EB"
+      }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 28 }}>
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="#ffffff"
+              borderRadius={18}
+              glowRadius={20}
+              glowIntensity={0.3}
+              colors={["#EA580C", "#F97316", "#FB923C"]}
+              className="rv co-card-pad"
+              style={{
+                padding: "36px 30px",
+                borderRadius: 18,
+                border: "1px solid #E5E7EB",
+                background: "#ffffff",
+                borderTop: "4px solid #EA580C"
+              }}
+            >
+              <div style={{ fontSize: 32, marginBottom: 14 }}>🎯</div>
+              <h3 style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginBottom: 12 }}>Our Mission</h3>
+              <p style={{ fontSize: 14.5, color: "#4B5563", lineHeight: 1.75, margin: 0 }}>
+                To empower Indian hostel mess proprietors, campus canteen operators, and dining supervisors with accessible, mobile-first tools that eliminate manual register work, stop food wastage, and build transparent relationships with student diners.
+              </p>
+            </BorderGlow>
+
+            <BorderGlow
+              glowColor="20 80 70"
+              backgroundColor="#ffffff"
+              borderRadius={18}
+              glowRadius={20}
+              glowIntensity={0.3}
+              colors={["#EA580C", "#F97316", "#FB923C"]}
+              className="rv d1 co-card-pad"
+              style={{
+                padding: "36px 30px",
+                borderRadius: 18,
+                border: "1px solid #E5E7EB",
+                background: "#ffffff",
+                borderTop: "4px solid #F97316"
+              }}
+            >
+              <div style={{ fontSize: 32, marginBottom: 14 }}>🔭</div>
+              <h3 style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginBottom: 12 }}>Our Vision</h3>
+              <p style={{ fontSize: 14.5, color: "#4B5563", lineHeight: 1.75, margin: 0 }}>
+                To create a future where every student hostel and institutional kitchen in India operates with digital clarity — where no food is cooked in the dark, every transaction is accounted for, and mess management is effortless.
+              </p>
+            </BorderGlow>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Company Values */}
-        <section className="s-cream">
-          <div className="w">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 12, letterSpacing: "-.025em" }}>Our Values</h2>
-            <p className="rv d1" style={{ fontSize: 15, color: "#666", textAlign: "center", lineHeight: 1.72, maxWidth: 460, margin: "0 auto 48px" }}>What guides every decision we make at Mealiez.</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
-              {values.map((v, i) => (
-                <BorderGlow key={i} className={`card rv d${i + 1}`} style={{ textAlign: "center" }} backgroundColor="#ffffff" borderRadius={20}>
-                  <div style={{ fontSize: 32, marginBottom: 16 }}>{v.icon}</div>
-                  <h3 style={{ fontSize: 15, fontWeight: 800, color: "#1a1a1a", marginBottom: 10 }}>{v.title}</h3>
-                  <p style={{ fontSize: 13, color: "#666", lineHeight: 1.7 }}>{v.desc}</p>
-                </BorderGlow>
-              ))}
-            </div>
+      {/* ── 4. Leadership & Team ── */}
+      <section style={{ background: "#ffffff", padding: "clamp(64px,7vw,96px) 0" }}>
+        <div className="container" style={{ maxWidth: 840 }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }} className="rv">
+            <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              LEADERSHIP & ENGINEERING
+            </span>
+            <h2 style={{
+              fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#111827",
+              fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase", marginTop: 6
+            }}>
+              The People Behind Mealiez
+            </h2>
           </div>
-        </section>
 
-        {/* Timeline */}
-        <section className="s-white">
-          <div className="w-sm">
-            <h2 className="rv" style={{ fontSize: 36, fontWeight: 900, textAlign: "center", marginBottom: 48, letterSpacing: "-.025em" }}>Our Journey</h2>
-            <div style={{ position: "relative" }}>
-              <div style={{ position: "absolute", left: 24, top: 0, bottom: 0, width: 2, background: "rgba(255,107,53,0.15)" }} />
-              {timeline.map((t, i) => (
-                <div key={i} className={`rv d${(i % 3) + 1}`} style={{ display: "flex", gap: 28, alignItems: "flex-start", marginBottom: 32 }}>
-                  <div style={{ width: 48, height: 48, borderRadius: "50%", background: "#FF6B35", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, flexShrink: 0, boxShadow: "0 4px 14px rgba(255,107,53,0.35)" }}>
-                    {t.year.slice(2)}
-                  </div>
-                  <div style={{ paddingTop: 12 }}>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.06em", marginBottom: 6 }}>{t.year}</div>
-                    <p style={{ fontSize: 14.5, color: "#444", lineHeight: 1.72 }}>{t.event}</p>
-                  </div>
-                </div>
-              ))}
+          <BorderGlow
+            glowColor="20 80 70"
+            backgroundColor="#ffffff"
+            borderRadius={20}
+            glowRadius={24}
+            glowIntensity={0.35}
+            colors={["#EA580C", "#F97316", "#FB923C"]}
+            className="rv d1 leadership-card co-card-pad"
+            style={{
+              padding: "clamp(32px,4vw,44px)",
+              borderRadius: 20,
+              border: "1px solid #E5E7EB",
+              background: "#ffffff",
+              display: "grid",
+              gridTemplateColumns: "auto 1fr",
+              gap: 28,
+              alignItems: "center"
+            }}
+          >
+            <div style={{
+              width: 72, height: 72, borderRadius: "50%",
+              background: "linear-gradient(135deg, #EA580C, #F97316)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#ffffff", fontSize: 26, fontWeight: 800, flexShrink: 0
+            }}>
+              HP
             </div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section id="contact" className="s-cream">
-          <div className="w">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start" }}>
-              <div>
-                <div className="rv" style={{ fontSize: 11, fontWeight: 800, color: "#FF6B35", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Get in Touch</div>
-                <h2 className="rv d1" style={{ fontSize: 36, fontWeight: 900, lineHeight: 1.2, letterSpacing: "-.025em", marginBottom: 20 }}>Let's talk about your operation</h2>
-                <p className="rv d2" style={{ fontSize: 15, color: "#555", lineHeight: 1.8, marginBottom: 32 }}>
-                  Whether you're exploring Mealiez for the first time, looking for a custom enterprise quote, or interested in a partnership — we'd love to hear from you.
-                </p>
-                {[
-                  { icon: "📧", label: "Email", value: "hello@mealiez.com" },
-                  { icon: "📞", label: "Phone", value: "+91 99000 00000" },
-                  { icon: "🏢", label: "HQ", value: "Bangalore, Karnataka, India" },
-                ].map((c, i) => (
-                  <div key={i} className="rv" style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
-                    <div style={{ fontSize: 20 }}>{c.icon}</div>
-                    <div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: "#888", marginBottom: 2 }}>{c.label}</div>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: "#333" }}>{c.value}</div>
-                    </div>
-                  </div>
-                ))}
+            <div>
+              <div className="leadership-header" style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 4 }}>
+                <h3 style={{ fontSize: 22, fontWeight: 900, color: "#111827", margin: 0 }}>Harsh Potdar</h3>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#EA580C", background: "#FFF7ED", padding: "2px 8px", borderRadius: 6 }}>Founder & Developer</span>
               </div>
-              <BorderGlow className="card rv d2" style={{ padding: 32 }} backgroundColor="#ffffff" borderRadius={20}>
-                <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 24, color: "#1a1a1a" }}>Send us a message</h3>
-                <div style={{ display: "grid", gap: 14 }}>
-                  {[
-                    { label: "Your Name", placeholder: "Full name", type: "text" },
-                    { label: "Email Address", placeholder: "you@company.com", type: "email" },
-                    { label: "Subject", placeholder: "Partnership, Enterprise, Press...", type: "text" },
-                  ].map(({ label, placeholder, type }) => (
-                    <div key={label}>
-                      <label className="label">{label}</label>
-                      <input type={type} placeholder={placeholder} className="input" />
-                    </div>
-                  ))}
-                  <div>
-                    <label className="label">Message</label>
-                    <textarea placeholder="Tell us about your operation and how we can help..." rows={4} className="input" style={{ resize: "vertical" }} />
-                  </div>
-                  <Link href="/book-demo" className="btn-ora" style={{ justifyContent: "center" }}>
-                    Send Message
-                  </Link>
+              <p style={{ fontSize: 14.5, color: "#4B5563", lineHeight: 1.7, margin: "10px 0 0" }}>
+                Harsh built and designed Mealiez after directly studying the friction in hostel mess operations and student canteens. Leading product architecture and customer support, he works closely with mess operators and wardens on the ground to ensure Mealiez remains intuitive, robust, and lightning-fast.
+              </p>
+            </div>
+          </BorderGlow>
+        </div>
+      </section>
+
+      {/* ── 5. Company Journey ── */}
+      <section style={{
+        background: "#F9FAFB",
+        padding: "clamp(64px,7vw,96px) 0",
+        borderTop: "1px solid #E5E7EB",
+        borderBottom: "1px solid #E5E7EB"
+      }}>
+        <div className="container" style={{ maxWidth: 780 }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }} className="rv">
+            <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              HOW WE EVOLVED
+            </span>
+            <h2 style={{
+              fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#111827",
+              fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase", marginTop: 6
+            }}>
+              The Mealiez Journey
+            </h2>
+          </div>
+
+          <div style={{ position: "relative", paddingLeft: 32 }}>
+            <div style={{ position: "absolute", left: 11, top: 8, bottom: 8, width: 2, background: "#E5E7EB" }} />
+            {journeyMilestones.map((m, i) => (
+              <div key={i} className="rv" style={{ position: "relative", marginBottom: 36 }}>
+                <div style={{
+                  position: "absolute", left: -32, top: 4,
+                  width: 24, height: 24, borderRadius: "50%",
+                  background: "#EA580C", border: "4px solid #ffffff",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
+                }} />
+                <div>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                    {m.period}
+                  </span>
+                  <h4 style={{ fontSize: 17, fontWeight: 800, color: "#111827", margin: "4px 0 6px" }}>
+                    {m.title}
+                  </h4>
+                  <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.65, margin: 0 }}>
+                    {m.desc}
+                  </p>
                 </div>
-              </BorderGlow>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. Company Values ── */}
+      <section style={{ background: "#ffffff", padding: "clamp(64px,7vw,96px) 0" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 48 }} className="rv">
+            <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              GUIDING PRINCIPLES
+            </span>
+            <h2 style={{
+              fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#111827",
+              fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase", marginTop: 6
+            }}>
+              Our Core Values
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 24 }}>
+            {companyValues.map((val, i) => (
+              <div key={i} className="rv co-card-pad" style={{
+                padding: "28px 22px", borderRadius: 16,
+                border: "1px solid #E5E7EB", background: "#F9FAFB"
+              }}>
+                <div style={{ fontSize: 28, marginBottom: 12 }}>{val.icon}</div>
+                <h3 style={{ fontSize: 16.5, fontWeight: 800, color: "#111827", marginBottom: 8 }}>
+                  {val.title}
+                </h3>
+                <p style={{ fontSize: 13.5, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>
+                  {val.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. Verified Contact & Office Information ── */}
+      <section style={{
+        background: "#F9FAFB",
+        padding: "clamp(64px,7vw,96px) 0",
+        borderTop: "1px solid #E5E7EB",
+        borderBottom: "1px solid #E5E7EB"
+      }}>
+        <div className="container" style={{ maxWidth: 840 }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }} className="rv">
+            <span style={{ fontSize: 11, fontWeight: 800, color: "#EA580C", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              GENUINE SUPPORT & CONTACT
+            </span>
+            <h2 style={{
+              fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#111827",
+              fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase", marginTop: 6
+            }}>
+              Speak Directly with Us
+            </h2>
+            <p style={{ fontSize: 15, color: "#6B7280", marginTop: 8 }}>
+              Have questions about setting up your mess or need help with a custom requirement?
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 20 }}>
+            <div style={{ padding: "24px 20px", background: "#ffffff", borderRadius: 16, border: "1px solid #E5E7EB", textAlign: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>✉️</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Email Support</div>
+              <a href="mailto:Mealiez.customercare@gmail.com" style={{ fontSize: 14.5, fontWeight: 700, color: "#EA580C", textDecoration: "none", marginTop: 4, display: "block", wordBreak: "break-all", overflowWrap: "anywhere" }}>
+                Mealiez.customercare@gmail.com
+              </a>
+            </div>
+
+            <div style={{ padding: "24px 20px", background: "#ffffff", borderRadius: 16, border: "1px solid #E5E7EB", textAlign: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>📞</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Direct Helpline</div>
+              <a href="tel:+919270398199" style={{ fontSize: 14.5, fontWeight: 700, color: "#EA580C", textDecoration: "none", marginTop: 4, display: "block" }}>
+                +91 9270398199
+              </a>
+            </div>
+
+            <div style={{ padding: "24px 20px", background: "#ffffff", borderRadius: 16, border: "1px solid #E5E7EB", textAlign: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>📍</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Location</div>
+              <div style={{ fontSize: 14.5, fontWeight: 700, color: "#111827", marginTop: 4 }}>
+                Maharashtra, India
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA */}
-        <section style={{ background: "#1a1a1a", padding: "80px 40px", textAlign: "center" }}>
-          <h2 className="rv" style={{ fontSize: 40, fontWeight: 900, color: "#fff", marginBottom: 16, letterSpacing: "-.025em" }}>
-            Want to see Mealiez in action?
-          </h2>
-          <p className="rv d1" style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 440, margin: "0 auto 36px" }}>
-            Book a free 30-minute demo and we'll show you exactly how it works for your operation.
-          </p>
-          <Link href="/book-demo" className="btn-ora rv d2">Book a Free Demo</Link>
-        </section>
-
-      </div>
+      {/* ── 8. Call to Action: Book a Demo ── */}
+      <section style={{ background: "#ffffff", padding: "clamp(64px,7vw,96px) 0", textAlign: "center" }}>
+        <div className="container">
+          <BorderGlow
+            className="co-card-pad"
+            glowColor="20 80 70"
+            backgroundColor="#ffffff"
+            borderRadius={24}
+            glowRadius={25}
+            glowIntensity={0.35}
+            colors={["#EA580C", "#F97316", "#FB923C"]}
+            style={{
+              maxWidth: 720, margin: "0 auto", padding: "48px 32px",
+              borderRadius: 24, border: "1px solid #E5E7EB", background: "#ffffff"
+            }}
+          >
+            <h2 style={{
+              fontSize: "clamp(28px,3.5vw,40px)", fontWeight: 900, color: "#111827",
+              fontFamily: "'Barlow Condensed',system-ui,sans-serif", textTransform: "uppercase", marginBottom: 12
+            }}>
+              Want to see how Mealiez fits your operation?
+            </h2>
+            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 500, margin: "0 auto 28px", lineHeight: 1.7 }}>
+              Schedule a quick 20-minute live demonstration tailored to your mess type, student capacity, and dining schedule.
+            </p>
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/book-demo" className="btn-brand" style={{ padding: "15px 36px", fontSize: 15 }}>
+                <span>Book a Demo →</span>
+              </Link>
+              <Link href="/pricing" className="btn-outline" style={{ padding: "15px 28px", fontSize: 15 }}>
+                <span>View Pricing</span>
+              </Link>
+            </div>
+          </BorderGlow>
+        </div>
+      </section>
     </>
   );
 }

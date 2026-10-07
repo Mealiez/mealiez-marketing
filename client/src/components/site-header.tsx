@@ -8,12 +8,11 @@ import { RippleSurface } from "@/components/ux/ripple-effect";
 import { navMenus } from "@/lib/site-data";
 import { Icon } from "@/components/ui/icon";
 
-const topLinks = [
-  { href: "/why-mealiez", label: "Why Mealiez" },
+const mainNavLinks = [
+  { href: "/",            label: "Home" },
   { href: "/pricing",     label: "Pricing" },
-  { href: "/customers",   label: "Customers" },
-  { href: "/resources",   label: "Resources" },
-  { href: "/company",     label: "Company" },
+  { href: "/reviews-faqs", label: "Reviews & FAQs" },
+  { href: "/company",     label: "About Company" },
 ];
 
 const easeNav    = [0.22, 1, 0.36, 1]    as [number, number, number, number];
@@ -101,7 +100,7 @@ const NAV_CSS = `
     z-index: -1;
   }
   .nav-link:hover {
-    color: #FF6B35;
+    color: #EA580C;
     letter-spacing: 0.08em;
     transform: translateY(-1.5px);
   }
@@ -112,16 +111,16 @@ const NAV_CSS = `
 
   /* Active state */
   .nav-link.active {
-    color: #FF6B35;
+    color: #EA580C;
     font-weight: 600;
     letter-spacing: 0.07em;
   }
   .nav-link.active::before {
     opacity: 1;
     transform: scale(1);
-    background: linear-gradient(135deg, rgba(255,107,53,0.13) 0%, rgba(255,162,127,0.07) 100%);
-    border-color: rgba(255,107,53,0.18);
-    box-shadow: 0 0 18px rgba(255,107,53,0.10), inset 0 1px 0 rgba(255,255,255,0.65);
+    background: linear-gradient(135deg, rgba(234,88,12,0.12) 0%, rgba(249,115,22,0.06) 100%);
+    border-color: rgba(234,88,12,0.18);
+    box-shadow: 0 0 18px rgba(234,88,12,0.08), inset 0 1px 0 rgba(255,255,255,0.65);
   }
 
   /* Gradient underline */
@@ -133,7 +132,7 @@ const NAV_CSS = `
     width: 0;
     height: 1.5px;
     border-radius: 2px;
-    background: linear-gradient(90deg, transparent, #FF6B35, #FF875C, #FFA27F, transparent);
+    background: linear-gradient(90deg, transparent, #EA580C, #F97316, #FB923C, transparent);
     transform: translateX(-50%);
     transition: width 0.38s cubic-bezier(0.22,1,0.36,1);
     opacity: 0.8;
@@ -206,20 +205,20 @@ const NAV_CSS = `
   }
   .dropdown-item .di-icon { flex-shrink: 0; }
   .dropdown-item:hover {
-    background: linear-gradient(135deg, rgba(255,107,53,0.09), rgba(255,135,92,0.04));
-    color: #FF6B35;
+    background: linear-gradient(135deg, rgba(234,88,12,0.08), rgba(249,115,22,0.03));
+    color: #EA580C;
     transform: translateX(4px);
   }
   .dropdown-item.active-item {
-    color: #FF6B35;
-    background: rgba(255,107,53,0.07);
+    color: #EA580C;
+    background: rgba(234,88,12,0.07);
   }
 
   /* ─────────────────────────────────────────────────────────────────
      CTA BUTTON
   ───────────────────────────────────────────────────────────────── */
   .header-book-btn {
-    background: linear-gradient(135deg, #FF6B35 0%, #FF875C 50%, #FF9A72 100%);
+    background: linear-gradient(135deg, #EA580C 0%, #F97316 50%, #FB923C 100%);
     background-size: 220% 220%;
     color: #fff;
     border-radius: 9999px;
@@ -238,8 +237,8 @@ const NAV_CSS = `
       background-position 0.5s ease,
       transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
     box-shadow:
-      0 4px 18px rgba(255,107,53,0.30),
-      0 1px 4px rgba(255,107,53,0.18),
+      0 4px 18px rgba(234,88,12,0.28),
+      0 1px 4px rgba(234,88,12,0.16),
       inset 0 1px 0 rgba(255,255,255,0.22);
     white-space: nowrap;
     will-change: transform;
@@ -256,10 +255,10 @@ const NAV_CSS = `
     inset: -3px;
     border-radius: 9999px;
     background: linear-gradient(135deg,
-      rgba(255,107,53,0.50),
-      rgba(255,162,127,0.25),
-      rgba(255,200,170,0.15),
-      rgba(255,107,53,0.40)
+      rgba(234,88,12,0.45),
+      rgba(249,115,22,0.25),
+      rgba(254,215,170,0.15),
+      rgba(234,88,12,0.38)
     );
     background-size: 300% 300%;
     animation: auroraDrift 5s ease-in-out infinite;
@@ -289,9 +288,9 @@ const NAV_CSS = `
   .header-book-btn:hover {
     background-position: 100% 100%;
     box-shadow:
-      0 10px 36px rgba(255,107,53,0.46),
-      0 2px 8px rgba(255,107,53,0.22),
-      0 0 0 1.5px rgba(255,107,53,0.25),
+      0 10px 36px rgba(234,88,12,0.42),
+      0 2px 8px rgba(234,88,12,0.20),
+      0 0 0 1.5px rgba(234,88,12,0.22),
       inset 0 1px 0 rgba(255,255,255,0.28);
     transform: translateY(-2.5px) scale(1.03);
     animation: none;
@@ -317,8 +316,8 @@ const NAV_CSS = `
     text-transform: uppercase;
   }
   .header-login:hover {
-    color: #FF6B35;
-    background: rgba(255,107,53,0.07);
+    color: #EA580C;
+    background: rgba(234,88,12,0.07);
     transform: translateY(-1px);
   }
 
@@ -345,9 +344,12 @@ const NAV_CSS = `
   .hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 5px;
-    padding: 10px;
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
     background: rgba(255,255,255,0.55);
     border: 1px solid rgba(255,255,255,0.80);
     backdrop-filter: blur(12px);
@@ -355,7 +357,6 @@ const NAV_CSS = `
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
     transition: background 0.25s, box-shadow 0.25s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-    min-height: unset !important;
     position: relative;
     z-index: 60;
   }
@@ -371,9 +372,9 @@ const NAV_CSS = `
     transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1);
     transform-origin: center;
   }
-  .hamburger.open .bar:nth-child(1) { transform: translateY(6.8px) rotate(45deg); background: #FF6B35; }
+  .hamburger.open .bar:nth-child(1) { transform: translateY(6.8px) rotate(45deg); background: #EA580C; }
   .hamburger.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .hamburger.open .bar:nth-child(3) { transform: translateY(-6.8px) rotate(-45deg); background: #FF6B35; }
+  .hamburger.open .bar:nth-child(3) { transform: translateY(-6.8px) rotate(-45deg); background: #EA580C; }
 
   /* ─────────────────────────────────────────────────────────────────
      MOBILE DRAWER
@@ -381,15 +382,18 @@ const NAV_CSS = `
   .mobile-drawer {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255,253,250,0.72);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(52px) saturate(1.9);
     -webkit-backdrop-filter: blur(52px) saturate(1.9);
     z-index: 40;
     overflow-y: auto;
-    padding: 92px 16px 48px;
+    -webkit-overflow-scrolling: touch;
+    padding: 88px 16px 40px;
     display: flex;
     flex-direction: column;
     gap: 3px;
+    box-sizing: border-box;
+    max-width: 100vw;
   }
   /* Drawer glass top reflection */
   .mobile-drawer::before {
@@ -397,13 +401,13 @@ const NAV_CSS = `
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 180px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, transparent 100%);
     pointer-events: none;
     z-index: 0;
   }
 
   .mobile-nav-link {
-    font-size: 15px; font-weight: 600; color: #1a1a1a;
+    font-size: 15px; font-weight: 600; color: #111827;
     text-decoration: none; padding: 13px 16px; border-radius: 14px;
     transition: background 0.22s, color 0.22s, transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
     display: flex; align-items: center; justify-content: space-between;
@@ -411,27 +415,28 @@ const NAV_CSS = `
     letter-spacing: 0.04em; text-transform: uppercase;
     position: relative;
     z-index: 1;
+    min-height: 44px;
   }
-  .mobile-nav-link:hover  { background: rgba(255,107,53,0.08); color: #FF6B35; transform: translateX(5px); }
+  .mobile-nav-link:hover  { background: rgba(234,88,12,0.08); color: #EA580C; transform: translateX(5px); }
   .mobile-nav-link.active {
-    color: #FF6B35;
-    background: linear-gradient(135deg, rgba(255,107,53,0.10), rgba(255,162,127,0.05));
-    border: 1px solid rgba(255,107,53,0.12);
-    box-shadow: 0 0 20px rgba(255,107,53,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
+    color: #EA580C;
+    background: linear-gradient(135deg, rgba(234,88,12,0.10), rgba(249,115,22,0.05));
+    border: 1px solid rgba(234,88,12,0.12);
+    box-shadow: 0 0 20px rgba(234,88,12,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
   }
 
   .mobile-section-btn {
-    font-size: 15px; font-weight: 600; color: #1a1a1a;
+    font-size: 15px; font-weight: 600; color: #111827;
     padding: 13px 16px; border-radius: 14px;
     background: none; border: none; cursor: pointer; width: 100%;
     display: flex; align-items: center; justify-content: space-between;
     transition: background 0.22s, color 0.22s;
     font-family: 'Barlow Condensed', system-ui, sans-serif;
     letter-spacing: 0.04em; text-transform: uppercase;
-    min-height: unset !important;
+    min-height: 44px;
     position: relative; z-index: 1;
   }
-  .mobile-section-btn:hover { background: rgba(255,107,53,0.08); color: #FF6B35; }
+  .mobile-section-btn:hover { background: rgba(234,88,12,0.08); color: #EA580C; }
 
   .mobile-submenu {
     padding: 4px 0 4px 16px;
@@ -439,21 +444,30 @@ const NAV_CSS = `
     overflow: hidden;
   }
   .mobile-sub-link {
-    font-size: 14px; font-weight: 500; color: #555;
+    font-size: 14px; font-weight: 500; color: #4B5563;
     text-decoration: none; padding: 10px 12px; border-radius: 12px;
     transition: background 0.2s, color 0.2s, transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
     display: flex; align-items: center; gap: 10px;
     font-family: 'Barlow', system-ui, sans-serif;
+    min-height: 40px;
   }
-  .mobile-sub-link:hover { background: rgba(255,107,53,0.07); color: #FF6B35; transform: translateX(5px); }
+  .mobile-sub-link:hover { background: rgba(234,88,12,0.07); color: #EA580C; transform: translateX(5px); }
 
   .mobile-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,107,53,0.14), rgba(255,162,127,0.10), rgba(255,107,53,0.14), transparent);
+    background: linear-gradient(90deg, transparent, rgba(234,88,12,0.14), rgba(249,115,22,0.10), rgba(234,88,12,0.14), transparent);
     margin: 14px 0;
   }
-  .mobile-cta-row { display: flex; gap: 10px; margin-top: 18px; }
-  .mobile-cta-row a { flex: 1; justify-content: center; text-align: center; }
+  .mobile-cta-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .mobile-cta-row a {
+    flex: 1;
+    min-width: 120px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 
   /* ─────────────────────────────────────────────────────────────────
      RESPONSIVE BREAKPOINTS
@@ -465,6 +479,9 @@ const NAV_CSS = `
   }
   @media (min-width: 901px) {
     .mobile-drawer { display: none !important; }
+  }
+  @media (max-width: 480px) {
+    .hdr-main-pill { padding: 0 8px 0 14px !important; }
   }
 
   /* ─────────────────────────────────────────────────────────────────
@@ -667,6 +684,7 @@ export function SiteHeader() {
         ══════════════════════════════════════════════════════════ */}
         <motion.div
           ref={headerRef}
+          className="hdr-main-pill"
           style={{
             position: "relative",
             pointerEvents: "auto",
@@ -729,19 +747,19 @@ export function SiteHeader() {
               whileHover={{ scale: 1.10, rotate: -5, transition: { duration: 0.3, ease: easeSpring } }}
               style={{
                 width: 30, height: 30,
-                background: "linear-gradient(135deg, #FF6B35 0%, #FF875C 60%, #FFA27F 100%)",
+                background: "linear-gradient(135deg, #EA580C 0%, #F97316 60%, #FB923C 100%)",
                 borderRadius: 9,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 3px 12px rgba(255,107,53,0.32), 0 0 0 1px rgba(255,107,53,0.12), inset 0 1px 0 rgba(255,255,255,0.30)",
+                boxShadow: "0 3px 12px rgba(234,88,12,0.32), 0 0 0 1px rgba(234,88,12,0.12), inset 0 1px 0 rgba(255,255,255,0.30)",
                 animation: "logoGlimmer 4s ease-in-out infinite",
                 willChange: "box-shadow",
                 flexShrink: 0,
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = "0 6px 24px rgba(255,107,53,0.58), 0 0 0 3px rgba(255,107,53,0.12), 0 0 40px rgba(255,107,53,0.18), inset 0 1px 0 rgba(255,255,255,0.35)";
+                e.currentTarget.style.boxShadow = "0 6px 24px rgba(234,88,12,0.58), 0 0 0 3px rgba(234,88,12,0.12), 0 0 40px rgba(234,88,12,0.18), inset 0 1px 0 rgba(255,255,255,0.35)";
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.boxShadow = "0 3px 12px rgba(255,107,53,0.32), 0 0 0 1px rgba(255,107,53,0.12), inset 0 1px 0 rgba(255,255,255,0.30)";
+                e.currentTarget.style.boxShadow = "0 3px 12px rgba(234,88,12,0.32), 0 0 0 1px rgba(234,88,12,0.12), inset 0 1px 0 rgba(255,255,255,0.30)";
               }}
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round">
@@ -755,7 +773,7 @@ export function SiteHeader() {
               style={{
                 fontSize: 17,
                 fontWeight: 800,
-                color: "#FF6B35",
+                color: "#EA580C",
                 letterSpacing: "-0.01em",
                 fontFamily: "'Barlow Condensed', system-ui, sans-serif",
                 textTransform: "uppercase",
@@ -769,33 +787,38 @@ export function SiteHeader() {
               DESKTOP NAV LINKS
           ════════════════════════════════════════════════════ */}
           <nav className="desktop-nav" style={{
-            display: "flex", alignItems: "center", gap: 1,
+            display: "flex", alignItems: "center", gap: 2,
             flex: 1, justifyContent: "center", zIndex: 1,
           }}>
-            {/* Product dropdown */}
+            {/* Home */}
+            <Link href="/" className={`nav-link${isActive("/") ? " active" : ""}`}>
+              Home
+            </Link>
+
+            {/* Products dropdown */}
             <div className="nav-group">
               <Link href="/product" className={`nav-link${isActive("/product") ? " active" : ""}`}>
-                Product
+                Products
                 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ opacity: 0.45 }}>
                   <polyline points="6 9 12 15 18 9"/>
                 </svg>
               </Link>
               <div className="nav-dropdown">
                 <div style={{
-                  background: "linear-gradient(135deg, rgba(255,107,53,0.07), rgba(255,135,92,0.03))",
+                  background: "linear-gradient(135deg, rgba(234,88,12,0.07), rgba(249,115,22,0.03))",
                   borderRadius: 10, padding: "8px 12px",
-                  fontSize: 11, color: "#999", marginBottom: 10,
+                  fontSize: 11, color: "#6B7280", marginBottom: 10,
                   fontFamily: "'Barlow', system-ui, sans-serif",
-                  border: "1px solid rgba(255,107,53,0.07)",
+                  border: "1px solid rgba(234,88,12,0.08)",
                   lineHeight: 1.5,
                 }}>
-                  Automated modules for booking, attendance, billing, inventory and growth.
+                  Smart modules for booking, attendance, billing, inventory and growth.
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
                   {navMenus.product.map((item) => (
                     <Link key={item.slug} href={`/product/${item.slug}`}
                       className={`dropdown-item${path === `/product/${item.slug}` ? " active-item" : ""}`}>
-                      <span className="di-icon"><Icon name={item.icon} size={16} color="#FF6B35" /></span>
+                      <span className="di-icon"><Icon name={item.icon} size={16} color="#EA580C" /></span>
                       {item.title}
                     </Link>
                   ))}
@@ -803,44 +826,20 @@ export function SiteHeader() {
               </div>
             </div>
 
-            {/* Solutions dropdown */}
-            <div className="nav-group">
-              <Link href="/solutions" className={`nav-link${isActive("/solutions") ? " active" : ""}`}>
-                Solutions
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ opacity: 0.45 }}>
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </Link>
-              <div className="nav-dropdown">
-                <div style={{
-                  background: "linear-gradient(135deg, rgba(255,107,53,0.07), rgba(255,135,92,0.03))",
-                  borderRadius: 10, padding: "8px 12px",
-                  fontSize: 11, color: "#999", marginBottom: 10,
-                  fontFamily: "'Barlow', system-ui, sans-serif",
-                  border: "1px solid rgba(255,107,53,0.07)",
-                  lineHeight: 1.5,
-                }}>
-                  Industry-specific workflows for operational scale and control.
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
-                  {navMenus.solutions.map((item) => (
-                    <Link key={item.slug} href={`/solutions/${item.slug}`}
-                      className={`dropdown-item${path === `/solutions/${item.slug}` ? " active-item" : ""}`}>
-                      <span className="di-icon"><Icon name={item.icon} size={16} color="#FF6B35" /></span>
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+            {/* Pricing */}
+            <Link href="/pricing" className={`nav-link${isActive("/pricing") ? " active" : ""}`}>
+              Pricing
+            </Link>
 
-            {/* Top-level links */}
-            {topLinks.map((link) => (
-              <Link key={link.href} href={link.href}
-                className={`nav-link${isActive(link.href) ? " active" : ""}`}>
-                {link.label}
-              </Link>
-            ))}
+            {/* Reviews & FAQs */}
+            <Link href="/reviews-faqs" className={`nav-link${isActive("/reviews-faqs") ? " active" : ""}`}>
+              Reviews & FAQs
+            </Link>
+
+            {/* About Company */}
+            <Link href="/company" className={`nav-link${isActive("/company") ? " active" : ""}`}>
+              About Company
+            </Link>
           </nav>
 
           {/* ════════════════════════════════════════════════════
@@ -919,14 +918,29 @@ export function SiteHeader() {
               }}
             />
 
+            {/* Home link */}
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.02, duration: 0.38, ease: easeNav }}
+            >
+              <Link
+                href="/"
+                className={`mobile-nav-link${isActive("/") ? " active" : ""}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                Home
+              </Link>
+            </motion.div>
+
             {/* PRODUCT accordion */}
             <motion.div
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.04, duration: 0.38, ease: easeNav }}
+              transition={{ delay: 0.06, duration: 0.38, ease: easeNav }}
             >
               <button className="mobile-section-btn" onClick={() => setMobileProduct(!mobileProduct)}>
-                Product
+                Products
                 <motion.svg
                   width="14" height="14" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
@@ -947,6 +961,10 @@ export function SiteHeader() {
                     style={{ overflow: "hidden" }}
                   >
                     <div className="mobile-submenu">
+                      <Link href="/product" className="mobile-sub-link" onClick={() => setMobileOpen(false)} style={{ fontWeight: 700, color: "#EA580C" }}>
+                        <Icon name="check-circle" size={18} color="#EA580C" />
+                        All Products Overview
+                      </Link>
                       {navMenus.product.map((item, i) => (
                         <motion.div
                           key={item.slug}
@@ -955,7 +973,7 @@ export function SiteHeader() {
                           transition={{ delay: i * 0.04, duration: 0.3, ease: easeNav }}
                         >
                           <Link href={`/product/${item.slug}`} className="mobile-sub-link" onClick={() => setMobileOpen(false)}>
-                            <Icon name={item.icon} size={18} color="#FF6B35" />
+                            <Icon name={item.icon} size={18} color="#EA580C" />
                             {item.title}
                           </Link>
                         </motion.div>
@@ -966,76 +984,56 @@ export function SiteHeader() {
               </AnimatePresence>
             </motion.div>
 
-            {/* SOLUTIONS accordion */}
+            {/* Pricing */}
             <motion.div
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.09, duration: 0.38, ease: easeNav }}
+              transition={{ delay: 0.10, duration: 0.38, ease: easeNav }}
             >
-              <button className="mobile-section-btn" onClick={() => setMobileSolutions(!mobileSolutions)}>
-                Solutions
-                <motion.svg
-                  width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
-                  animate={{ rotate: mobileSolutions ? 180 : 0 }}
-                  transition={{ duration: 0.32, ease: easeSpring }}
-                  style={{ flexShrink: 0 }}
-                >
-                  <polyline points="6 9 12 15 18 9"/>
-                </motion.svg>
-              </button>
-              <AnimatePresence>
-                {mobileSolutions && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.32, ease: easeNav }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <div className="mobile-submenu">
-                      {navMenus.solutions.map((item, i) => (
-                        <motion.div
-                          key={item.slug}
-                          initial={{ opacity: 0, x: -14 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.04, duration: 0.3, ease: easeNav }}
-                        >
-                          <Link href={`/solutions/${item.slug}`} className="mobile-sub-link" onClick={() => setMobileOpen(false)}>
-                            <Icon name={item.icon} size={18} color="#FF6B35" />
-                            {item.title}
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <Link
+                href="/pricing"
+                className={`mobile-nav-link${isActive("/pricing") ? " active" : ""}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                Pricing
+              </Link>
             </motion.div>
 
-            {/* Top-level links */}
-            {topLinks.map((link, i) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.14 + i * 0.05, duration: 0.38, ease: easeNav }}
+            {/* Reviews & FAQs */}
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.14, duration: 0.38, ease: easeNav }}
+            >
+              <Link
+                href="/reviews-faqs"
+                className={`mobile-nav-link${isActive("/reviews-faqs") ? " active" : ""}`}
+                onClick={() => setMobileOpen(false)}
               >
-                <Link
-                  href={link.href}
-                  className={`mobile-nav-link${isActive(link.href) ? " active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
+                Reviews & FAQs
+              </Link>
+            </motion.div>
+
+            {/* About Company */}
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.18, duration: 0.38, ease: easeNav }}
+            >
+              <Link
+                href="/company"
+                className={`mobile-nav-link${isActive("/company") ? " active" : ""}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                About Company
+              </Link>
+            </motion.div>
 
             {/* Divider */}
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
-              transition={{ delay: 0.38, duration: 0.42, ease: easeNav }}
+              transition={{ delay: 0.22, duration: 0.42, ease: easeNav }}
               className="mobile-divider"
               style={{ transformOrigin: "center" }}
             />
