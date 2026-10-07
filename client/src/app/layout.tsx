@@ -61,6 +61,9 @@ export const metadata: Metadata = {
     description: "India's mess management software for hostels, colleges & industrial canteens.",
     images: ["/og-image.png"],
   },
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -69,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link rel="preload" href="/icon.png" as="image" type="image/png" />
       </head>
       <body
         style={{ margin: 0, padding: 0 }}

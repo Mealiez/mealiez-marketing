@@ -51,6 +51,7 @@ export function useMediaQuery(query: string): boolean {
 
   useEffect(() => {
     const mql = window.matchMedia(query);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMatches(mql.matches);
 
     const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
@@ -77,6 +78,7 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T 
   useEffect(() => {
     try {
       const item = window.localStorage.getItem(key);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (item) setStoredValue(JSON.parse(item));
     } catch {}
   }, [key]);

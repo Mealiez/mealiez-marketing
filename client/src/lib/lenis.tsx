@@ -11,7 +11,7 @@
  *  - Respects prefers-reduced-motion
  */
 
-import { useEffect, useRef, createContext, useContext } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import type Lenis from "lenis";
 
 const LenisContext = createContext<Lenis | null>(null);
@@ -30,7 +30,7 @@ const scheduleIdle = (cb: () => void) => {
 };
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
+  const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
 
   useEffect(() => {
     // Never run during SSR
@@ -41,6 +41,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     if (reduced) return;
 
     let raf: number;
+    let localLenis: Lenis | null = null;
 
     // Delay Lenis init until browser is idle — after first paint
     scheduleIdle(() => {
@@ -53,7 +54,8 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
           infinite: false,
         });
 
-        lenisRef.current = lenis;
+        localLenis = lenis;
+        setLenisInstance(lenis);
 
         function raf_loop(time: number) {
           lenis.raf(time);
@@ -65,15 +67,14 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       cancelAnimationFrame(raf);
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-        lenisRef.current = null;
+      if (localLenis) {
+        localLenis.destroy();
       }
     };
   }, []);
 
   return (
-    <LenisContext.Provider value={lenisRef.current}>
+    <LenisContext.Provider value={lenisInstance}>
       {children}
     </LenisContext.Provider>
   );

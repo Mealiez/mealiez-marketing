@@ -9,8 +9,6 @@ import { AnimatedCounter } from "@/components/ui/animated-counter";
 import BorderGlow from "@/components/ui/border-glow";
 import LightRays from "@/components/ui/light-rays";
 
-const PixelSnow = dynamic(() => import("@/components/ui/PixelSnow"), { ssr: false });
-
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".rv-el, .rv-l, .rv-r, .rv-s");
@@ -254,26 +252,6 @@ export default function Home() {
             saturation={0.7}
             followMouse={true}
             mouseInfluence={0.06}
-          />
-        </div>
-
-        {/* Ambient snow interaction */}
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 1,
-          opacity: 0.75,
-          pointerEvents: "none",
-        }}>
-          <PixelSnow
-            color="#EA580C"
-            flakeSize={0.018}
-            minFlakeSize={1.5}
-            pixelResolution={600}
-            speed={1.0}
-            density={0.05}
-            direction={125}
-            brightness={1.6}
-            gamma={0.4545}
-            variant="snowflake"
           />
         </div>
 

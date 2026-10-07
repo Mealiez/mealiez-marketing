@@ -79,7 +79,7 @@ export function FloatingParticles({
     if (!ctx) return;
 
     let animationId: number;
-    let startTime = Date.now();
+    const startTime = Date.now();
     let frameCount = 0;
 
     const resize = () => {

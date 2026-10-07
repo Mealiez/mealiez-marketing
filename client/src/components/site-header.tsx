@@ -532,6 +532,7 @@ export function SiteHeader() {
 
   /* ── Close mobile on route change ─────────────────────────────── */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
     setMobileProduct(false);
     setMobileSolutions(false);
@@ -551,7 +552,7 @@ export function SiteHeader() {
   }, [rawX, rawY]);
 
   /* ── CTA click handler (no ripple logic — handled by RippleSurface) ── */
-  const handleCtaClick = useCallback((e: React.MouseEvent) => {
+  const handleCtaClick = useCallback(() => {
     // ripple handled by RippleSurface wrapper
   }, []);
 
@@ -746,25 +747,12 @@ export function SiteHeader() {
               }}
               whileHover={{ scale: 1.10, rotate: -5, transition: { duration: 0.3, ease: easeSpring } }}
               style={{
-                width: 30, height: 30,
-                background: "linear-gradient(135deg, #EA580C 0%, #F97316 60%, #FB923C 100%)",
-                borderRadius: 9,
+                width: 32, height: 32,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 3px 12px rgba(234,88,12,0.32), 0 0 0 1px rgba(234,88,12,0.12), inset 0 1px 0 rgba(255,255,255,0.30)",
-                animation: "logoGlimmer 4s ease-in-out infinite",
-                willChange: "box-shadow",
                 flexShrink: 0,
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = "0 6px 24px rgba(234,88,12,0.58), 0 0 0 3px rgba(234,88,12,0.12), 0 0 40px rgba(234,88,12,0.18), inset 0 1px 0 rgba(255,255,255,0.35)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.boxShadow = "0 3px 12px rgba(234,88,12,0.32), 0 0 0 1px rgba(234,88,12,0.12), inset 0 1px 0 rgba(255,255,255,0.30)";
-              }}
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round">
-                <path d="M3 11l19-9-9 19-2-8-8-2z"/>
-              </svg>
+              <img src="/logo.png" alt="Mealiez Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </motion.div>
 
             <motion.span
