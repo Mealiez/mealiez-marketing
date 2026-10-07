@@ -13,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/(auth)/"],
       },
     ],
-    sitemap: "https://mealiez.com/sitemap.xml",
-    host: "https://mealiez.com",
+    sitemap: "https://mealiez.in/sitemap.xml",
+    host: "https://mealiez.in",
   };
 }

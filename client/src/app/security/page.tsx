@@ -81,7 +81,7 @@ const sections = [
     items: [
       "99.9% uptime SLA guaranteed for all Standard plan customers",
       "99.99% uptime SLA for Enterprise customers with dedicated infrastructure",
-      "Real-time public status page at status.mealiez.com",
+      "Real-time public status page at status.mealiez.in",
       "Proactive incident communication with postmortem reports",
       "Scheduled maintenance during off-peak hours with advance notice",
       "24/7 automated monitoring with sub-minute alert response",
@@ -190,8 +190,8 @@ export default function SecurityPage() {
               <p style={{ fontSize: 14.5, color: "#555", lineHeight: 1.8, marginBottom: 24 }}>
                 If you discover a security vulnerability in Mealiez, please report it responsibly. We take all reports seriously and aim to respond within 24 hours.
               </p>
-              <a href="mailto:security@mealiez.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
-                📧 security@mealiez.com
+              <a href="mailto:security@mealiez.in" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,107,53,0.08)", border: "1px solid rgba(255,107,53,0.2)", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 700, color: "#FF6B35", textDecoration: "none" }}>
+                📧 security@mealiez.in
               </a>
             </BorderGlow>
           </div>
@@ -207,7 +207,7 @@ export default function SecurityPage() {
           </p>
           <div className="rv d2" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/book-demo" className="btn-ora">Schedule a Security Review</Link>
-            <a href="mailto:security@mealiez.com" style={{ color: "rgba(255,255,255,.6)", textDecoration: "none", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 6, padding: "15px 0" }}>
+            <a href="mailto:security@mealiez.in" style={{ color: "rgba(255,255,255,.6)", textDecoration: "none", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 6, padding: "15px 0" }}>
               Email Security Team →
             </a>
           </div>

@@ -12,7 +12,7 @@ const roleOptions = [
   "Enterprise Admin",
 ];
 
-const DEMO_EMAIL    = "admin@mealiez.com";
+const DEMO_EMAIL    = "admin@mealiez.in";
 const DEMO_PASSWORD = "mealiez123";
 
 export default function LoginPage() {

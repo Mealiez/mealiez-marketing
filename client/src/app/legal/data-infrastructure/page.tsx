@@ -102,7 +102,7 @@ const layers = [
       "Centralised log aggregation with anomaly detection and alert rules",
       "P0 incidents trigger automated paging to on-call engineers within 2 minutes",
       "Incident response runbooks maintained and reviewed quarterly",
-      "Post-incident reviews (PIRs) published for all major incidents on status.mealiez.com",
+      "Post-incident reviews (PIRs) published for all major incidents on status.mealiez.in",
       "Annual third-party penetration testing with remediation tracked to closure",
     ],
   },
