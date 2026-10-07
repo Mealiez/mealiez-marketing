@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { products, solutions } from "@/lib/site-data";
 
 /**
  * sitemap.ts — Auto-generated sitemap for Mealiez marketing site.
@@ -14,29 +15,23 @@ const staticRoutes = [
   { url: "/customers",                           priority: 0.8,  freq: "monthly" },
   { url: "/company",                             priority: 0.7,  freq: "monthly" },
   { url: "/book-demo",                           priority: 0.95, freq: "monthly" },
-  // Product
+  { url: "/reviews-faqs",                        priority: 0.8,  freq: "monthly" },
+  
+  // Product Landing Pages
   { url: "/product",                             priority: 0.85, freq: "monthly" },
-  { url: "/product/meal-booking",                priority: 0.8,  freq: "monthly" },
-  { url: "/product/attendance",                  priority: 0.8,  freq: "monthly" },
-  { url: "/product/billing",                     priority: 0.8,  freq: "monthly" },
-  { url: "/product/inventory",                   priority: 0.8,  freq: "monthly" },
-  { url: "/product/analytics",                   priority: 0.8,  freq: "monthly" },
-  { url: "/product/mobile-app",                  priority: 0.75, freq: "monthly" },
-  // Solutions
+  { url: "/product/overview",                    priority: 0.8,  freq: "monthly" },
+  
+  // Solutions Landing Page
   { url: "/solutions",                           priority: 0.85, freq: "monthly" },
-  { url: "/solutions/hostel-mess",               priority: 0.8,  freq: "monthly" },
-  { url: "/solutions/college-canteen",           priority: 0.8,  freq: "monthly" },
-  { url: "/solutions/industrial-canteen",        priority: 0.8,  freq: "monthly" },
-  { url: "/solutions/corporate-cafeteria",       priority: 0.75, freq: "monthly" },
-  { url: "/solutions/cloud-kitchen",             priority: 0.7,  freq: "monthly" },
-  { url: "/solutions/subscription-mess-business",priority: 0.7,  freq: "monthly" },
-  // Resources
+  
+  // Resources & Content
   { url: "/resources",                           priority: 0.75, freq: "weekly" },
   { url: "/resources/roi-calculator",            priority: 0.8,  freq: "monthly" },
   { url: "/resources/cost-leakage-calculator",   priority: 0.8,  freq: "monthly" },
   { url: "/blog",                                priority: 0.7,  freq: "weekly" },
   { url: "/guides",                              priority: 0.7,  freq: "weekly" },
   { url: "/reports",                             priority: 0.7,  freq: "monthly" },
+  
   // Security & Legal
   { url: "/security",                            priority: 0.5,  freq: "yearly" },
   { url: "/legal/privacy",                       priority: 0.4,  freq: "yearly" },
@@ -47,10 +42,33 @@ const staticRoutes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  return staticRoutes.map(({ url, priority, freq }) => ({
+  // Map static routes
+  const routes: MetadataRoute.Sitemap = staticRoutes.map(({ url, priority, freq }) => ({
     url: `${BASE}${url}`,
     lastModified: now,
     changeFrequency: freq as MetadataRoute.Sitemap[number]["changeFrequency"],
     priority,
   }));
+
+  // Dynamically map product routes
+  products.forEach((product) => {
+    routes.push({
+      url: `${BASE}/product/${product.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  });
+
+  // Dynamically map solutions routes
+  solutions.forEach((solution) => {
+    routes.push({
+      url: `${BASE}/solutions/${solution.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  });
+
+  return routes;
 }
